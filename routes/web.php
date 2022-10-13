@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 
 Route::get('/priceblade',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('priceblade');
+//
