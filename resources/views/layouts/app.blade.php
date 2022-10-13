@@ -7,6 +7,21 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Axes Bussiness Automation</title>
+        <link rel="icon" href="{{asset('adminAsset')}}/assets/images/favicon-32x32.png" type="image/png" />
+        <!--plugins-->
+        <link href="{{asset('adminAsset')}}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+        <link href="{{asset('adminAsset')}}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+        <link href="{{asset('adminAsset')}}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+        <!-- Bootstrap CSS -->
+        <link href="{{asset('adminAsset')}}/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="{{asset('adminAsset')}}/assets/css/bootstrap-extended.css" rel="stylesheet" />
+        <link href="{{asset('adminAsset')}}/assets/css/style.css" rel="stylesheet" />
+        <link href="{{asset('adminAsset')}}/assets/css/icons.css" rel="stylesheet">
+
+
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -33,6 +48,20 @@
                 </footer>
             </div>
         </div>
+
+        <!--plugins-->
+        <script src="{{asset('adminAsset')}}/assets/js/jquery.min.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/plugins/simplebar/js/simplebar.min.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/js/pace.min.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+        <script src="{{asset('adminAsset')}}/assets/js/table-datatable.js"></script>
+
+        <!--app-->
+        <script src="{{asset('adminAsset')}}/assets/js/app.js"></script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -40,5 +69,8 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+
+
+
     </body>
 </html>

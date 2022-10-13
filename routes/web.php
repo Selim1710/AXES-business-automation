@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/priceblade',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('priceblade');
-//
+Route::get('/price-list',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('price-list');
+Route::get('/expense-record',[\App\Http\Controllers\DailyProcess:: class,'expenseRecord'])->name('expense-record');
+Route::get('/expenses-head',[\App\Http\Controllers\DailyProcess:: class,'expensesHead'])->name('expenses-head');
+Route::get('/add-expenses-head',[\App\Http\Controllers\DailyProcess:: class,'AddExpensesHead'])->name('add-expenses-head');
+
