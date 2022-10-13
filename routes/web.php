@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +23,9 @@ Route::get('/expense-record',[\App\Http\Controllers\DailyProcess:: class,'expens
 Route::get('/expenses-head',[\App\Http\Controllers\DailyProcess:: class,'expensesHead'])->name('expenses-head');
 Route::get('/add-expenses-head',[\App\Http\Controllers\DailyProcess:: class,'AddExpensesHead'])->name('add-expenses-head');
 
+Route::get('/priceblade',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('priceblade');
+//
+Route::namespace('App\Http\Controllers')->group(function(){
+
+    Route::resource('users', 'UserController');
+});
