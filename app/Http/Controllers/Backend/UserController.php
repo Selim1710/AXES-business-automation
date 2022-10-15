@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $user= User::latest()->get();
 
-        return view('user_and_roles.index',['users'=>$user]);
+        return view('user_and_roles.user.index',['users'=>$user]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('user_and_roles.new',['roles'=>$roles]);
+        return view('user_and_roles.user.new',['roles'=>$roles]);
     }
 
     /**
@@ -47,6 +47,7 @@ class UserController extends Controller
             'name'=>'required',
             'email' => 'required|email|unique:users',
             'phone_number'=>'max:20|unique:users',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password'=>'required|confirmed'
         ]);
 
@@ -56,14 +57,23 @@ class UserController extends Controller
                 'error' => $valid->errors()->toArray(),
             ]);
         }else{
-            
-            $user = User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone_number'=>$request->phone_number,
-            'password'=> bcrypt($request->password),
 
-        ]);
+            $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->password = $request->password;
+                
+            // if ($request->file('image')) {
+            //     $imagePath = $request->file('file');
+            //     $imageName = $imagePath->getClientOriginalName();
+    
+            //     $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+            // }
+            // $user->image = '/storage/'+$path+''+$imageName;
+            
+            $user->save();
+        
         $user->syncRoles($request->roles);
 
         return response()->json(['status'=>'success', 'msg'=>'User Created Successfully.']);
@@ -93,7 +103,7 @@ class UserController extends Controller
     {
         $role = Role::get();
         $user->roles;
-       return view('user_and_roles.edit',['user'=>$user,'roles' => $role]);
+       return view('user_and_roles.user.edit',['user'=>$user,'roles' => $role]);
     }
 
     /**
@@ -105,20 +115,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
-        // $validated = $request->validate([
-        //     'name'=>'required',
-        //     'email' => 'required|email|unique:users,email,'.$user->id.',id',
-        //     'phone_number'=>'max:20|unique:users',
-        // ]);
-        
-        if($request->password != null){
-            $request->validate([
-                'password' => 'required|confirmed'
-            ]);
-            $validated['password'] = bcrypt($request->password);
-        }
-
         $valid = Validator::make($request->all(),[
             'name'=>'required',
             'email' => 'required|email|unique:users,email,'.$user->id.',id',
@@ -126,10 +122,21 @@ class UserController extends Controller
             'password'=>'required|confirmed'
         ]);
 
-        $user->update($validated);
+        if($valid->failed()){
+            return redirect()->back()->withSuccess('User not updated!');
+        }else{
+            $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone_number'=>$request->phone_number,
+            'password'=> bcrypt($request->password),
+            ]); 
 
-        $user->syncRoles($request->roles);
-        return redirect()->back()->withSuccess('User updated !!!');
+            $user->syncRoles($request->roles);
+
+            return redirect()->back()->withSuccess('User updated Successfully!');
+        }
+        
     }
 
     /**

@@ -11,7 +11,6 @@
                 $.each(result.error, function(key, val){
                     $('#'+key+'_error').css("display","block");
                     $('#'+key+'_error').html(val[0]);
-                    // $('#create-user')[0].reset();
                 })
             }
             if(result.status=='success'){

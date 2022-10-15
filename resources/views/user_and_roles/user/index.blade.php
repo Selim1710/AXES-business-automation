@@ -15,7 +15,7 @@
                                 <h5 class="modal-title" id="userCreateModelLabel">Create New User</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form id="create-user" method="POST" action="{{route('users.store')}}">
+                            <form id="create-user" method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
                             <div class="modal-body">
                                       <div class="border p-3 rounded">
                                        
@@ -23,30 +23,37 @@
                                           <label class="form-label">Name</label>
                                           <input type="text" class="form-control" name="name">
                                         </div>
-                                        <div class="alert alert-danger" id="name_error" style="display: none"></div>
+                                        <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
 
                                         <div class="col-12">
                                           <label class="form-label">Email Address</label>
                                           <input type="email" class="form-control" name="email">
                                         </div>
-                                        <div class="alert alert-danger" id="email_error" style="display: none"></div>
+                                        <div class="alert alert-danger mt-2" id="email_error" style="display: none"></div>
  
                                         <div class="col-12">
                                             <label class="form-label">Phone</label>
                                             <input type="text" class="form-control" name="phone_number">
-                                          </div>
-                                          <div class="alert alert-danger" id="phone_number_error" style="display: none"></div>
+                                        </div>
+                                        <div class="alert alert-danger mt-2" id="phone_number_error" style="display: none"></div>
+
+                                        <div class="mt-3 mb-3 col-12">
+                                            <label class="form-label" for="inputGroupFile02">Profile Image</label>
+                                            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                                        </div>
+                                        <div class="alert alert-danger mt-2" id="image_error" style="display: none"></div>
+
 
                                         <div class="col-12">
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control" name="password">
-                                          </div>
+                                        </div>
 
-                                          <div class="col-12 mb-4">
+                                        <div class="col-12 mb-3">
                                             <label class="form-label">Conform Password</label>
                                             <input type="password" class="form-control" name="password_confirmation">
-                                          </div>
-                                          <div class="alert alert-danger" id="password_error" style="display: none"></div>
+                                        </div>
+                                        <div class="alert alert-danger" id="password_error" style="display: none"></div>
 
                                       
                                     </div>
@@ -100,8 +107,12 @@
         
                     <tr>
                         <td>{{ $serial }}</td>
-                        <td>
-                            {{ $user->image }}
+                        <td style="text-align: center">
+                            @if ($user->image === null)
+                                <i class="fa-regular fa-circle-user" style="font-size:36px"></i>
+                            @else
+                                
+                            @endif
                         </td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
@@ -110,50 +121,20 @@
                         <td>{{ $user->status }}</td>
                         <td>
                             <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                            <a class="btn btn-danger" style="font-size:13px " href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+                            
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            </form>
                         </td>
                     </tr>
+                
                 @endforeach
-
-                                <div class="col-12">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name">
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" name="email">
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Phone</label>
-                                    <input type="text" class="form-control" name="phone_number">
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-
-                                <div class="col-12 mb-4">
-                                    <label class="form-label">Conform Password</label>
-                                    <input type="password" class="form-control" name="password_confirmation">
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            @csrf
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create User</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </tbody>
+            </table>
         </div>
-    </div>
-
 </div>
+
 
 @endsection
