@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
@@ -41,18 +43,33 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
+        $valid= Validator::make($request->all(),[
             'name'=>'required',
             'email' => 'required|email|unique:users',
+            'phone_number'=>'max:20',
             'password'=>'required|confirmed'
         ]);
-        $user = User::create([
+
+        if($valid->fails()){
+            return response()->json([
+                'status'=>'error',
+                'msg' => $request->errors()->toArray(),
+            ]);
+        }else{
+            
+            $user = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'phone_number'=>$request->phone_number,
             'password'=> bcrypt($request->password),
+
         ]);
         $user->syncRoles($request->roles);
-        return redirect()->back()->with('message', 'User Created Successfully!');
+
+        return response()->json(['status'=>'success', 'msg'=>'User Created Successfully.']);
+        
+        }
+        
     }
 
     /**
