@@ -10,19 +10,7 @@ $(function() {
     })
 
 
-	$(function() {
-		for (var e = window.location, o = $(".sidebar-wrapper .tab-content a").filter(function() {
-				return this.href == e
-			}).addClass("active");
 
-			o.is("a");)
-			
-			o = o.parent("").parent("").addClass("active show");
-			console.log(o[0].id.toString())
-			var tab = "#" + o[0].id.toString()
-			$("[data-bs-target='" + tab + "']").addClass('active')
-			
-		}); 
 
 
 

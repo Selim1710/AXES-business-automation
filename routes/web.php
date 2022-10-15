@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,7 @@ Route::get('/add-expenses-head',[\App\Http\Controllers\DailyProcess:: class,'Add
 
 Route::get('/priceblade',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('priceblade');
 //
-Route::namespace('App\Http\Controllers')->group(function(){
+Route::namespace('App\Http\Controllers\Backend')->group(function(){
 
     Route::resource('users', 'UserController');
 });
