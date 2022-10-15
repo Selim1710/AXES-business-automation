@@ -46,14 +46,14 @@ class UserController extends Controller
         $valid= Validator::make($request->all(),[
             'name'=>'required',
             'email' => 'required|email|unique:users',
-            'phone_number'=>'max:20',
+            'phone_number'=>'max:20|unique:users',
             'password'=>'required|confirmed'
         ]);
 
         if($valid->fails()){
             return response()->json([
                 'status'=>'error',
-                'msg' => $request->errors()->toArray(),
+                'error' => $valid->errors()->toArray(),
             ]);
         }else{
             
@@ -105,17 +105,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validated = $request->validate([
-            'name'=>'required',
-            'email' => 'required|email|unique:users,email,'.$user->id.',id',
-        ]);
 
+        // $validated = $request->validate([
+        //     'name'=>'required',
+        //     'email' => 'required|email|unique:users,email,'.$user->id.',id',
+        //     'phone_number'=>'max:20|unique:users',
+        // ]);
+        
         if($request->password != null){
             $request->validate([
                 'password' => 'required|confirmed'
             ]);
             $validated['password'] = bcrypt($request->password);
         }
+
+        $valid = Validator::make($request->all(),[
+            'name'=>'required',
+            'email' => 'required|email|unique:users,email,'.$user->id.',id',
+            'phone_number'=>'max:20|unique:users',
+            'password'=>'required|confirmed'
+        ]);
 
         $user->update($validated);
 

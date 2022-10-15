@@ -6,34 +6,36 @@
         <div class="card-header d-flex justify-content-between">
             <span>
             </span>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create New User</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">Create New User</button>
                             <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="userCreateModel" tabindex="-1" aria-labelledby="userCreateModelLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Create New User</h5>
+                                <h5 class="modal-title" id="userCreateModelLabel">Create New User</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form id="create-user">
+                            <form id="create-user" method="POST" action="{{route('users.store')}}">
                             <div class="modal-body">
-                                <div class="alert alert-danger" id="errormsg"></div>
                                       <div class="border p-3 rounded">
                                        
                                         <div class="col-12">
                                           <label class="form-label">Name</label>
                                           <input type="text" class="form-control" name="name">
                                         </div>
+                                        <div class="alert alert-danger" id="name_error" style="display: none"></div>
 
                                         <div class="col-12">
                                           <label class="form-label">Email Address</label>
                                           <input type="email" class="form-control" name="email">
                                         </div>
+                                        <div class="alert alert-danger" id="email_error" style="display: none"></div>
  
                                         <div class="col-12">
                                             <label class="form-label">Phone</label>
                                             <input type="text" class="form-control" name="phone_number">
                                           </div>
+                                          <div class="alert alert-danger" id="phone_number_error" style="display: none"></div>
 
                                         <div class="col-12">
                                             <label class="form-label">Password</label>
@@ -44,6 +46,7 @@
                                             <label class="form-label">Conform Password</label>
                                             <input type="password" class="form-control" name="password_confirmation">
                                           </div>
+                                          <div class="alert alert-danger" id="password_error" style="display: none"></div>
 
                                       
                                     </div>
@@ -107,7 +110,7 @@
                         <td>{{ $user->status }}</td>
                         <td>
                             <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button">Edit</a>
-                            <a class="btn btn-danger" style="font-size:13px " href="#" role="button">Ban</a>
+                            <a class="btn btn-danger" style="font-size:13px " href="#" role="button">Delete</a>
                         </td>
                     </tr>
                 @endforeach

@@ -1,21 +1,21 @@
-jQuery('#create-user').submit(function(e){
+
+    $("#create-user").on('submit',function(e){
     e.preventDefault();
-    jQuery('#errormsg').html('');
-    jQuery.ajax({
+    $.ajax({
         url: "users",
-        data:jQuery('#create-user').serialize(),
+        data:$('#create-user').serialize(),
         type: 'post',
         success: function(result){
-            console.log('hellow2')
-            console.log(result)
+            
             if(result.status=='error'){
-                console.log(result.msg)
-                    jQuery('#errormsg').html(result.msg);
-                
+                $.each(result.error, function(key, val){
+                    $('#'+key+'_error').css("display","block");
+                    $('#'+key+'_error').html(val[0]);
+                    // $('#create-user')[0].reset();
+                })
             }
             if(result.status=='success'){
-                
-               window.location.href ="users"
+                window.location.href = 'users';
             }
         }
 
