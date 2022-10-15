@@ -1,18 +1,17 @@
 @extends('layouts.app')
 @section('content')
-
-<h2 class="mt-4 mb-4">All User</h2>
+<h2 class="mt-4 mb-4">All Warhouse</h2>
 <div class="card mb-4">
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create New User</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create New Warehouse</button>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create New User</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Create New Warehouse</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id="create-user">
@@ -85,32 +84,21 @@
                 </tr>
             </tfoot>
             <tbody>
-                @php
-                $serial = 0;
-                @endphp
-
-
-                @foreach($users as $user)
-                @php
-                $serial++;
-                @endphp
-
                 <tr>
-                    <td>{{ $serial }}</td>
+                    <td>serial </td>
                     <td>
-                        {{ $user->image }}
+                        image
                     </td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone_number }}</td>
-                    <td>{{ $user->access }}</td>
-                    <td>{{ $user->status }}</td>
+                    <td>name</td>
+                    <td>email</td>
+                    <td>phone_number</td>
+                    <td>access</td>
+                    <td>status</td>
                     <td>
-                        <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button">Edit</a>
-                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button">Ban</a>
+                    <a class="btn btn-success" style="font-size:13px" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
-                @endforeach
 
             </tbody>
         </table>
