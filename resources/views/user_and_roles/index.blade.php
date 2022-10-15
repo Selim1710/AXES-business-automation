@@ -115,9 +115,101 @@
                     </tr>
                 @endforeach
 
-                </tbody>
-            </table>
+                                <div class="col-12">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control" name="phone_number">
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    <label class="form-label">Conform Password</label>
+                                    <input type="password" class="form-control" name="password_confirmation">
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @csrf
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create User</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Access</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>SN</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Access</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @php
+                $serial = 0;
+                @endphp
+
+
+                @foreach($users as $user)
+                @php
+                $serial++;
+                @endphp
+
+                <tr>
+                    <td>{{ $serial }}</td>
+                    <td>
+                        {{ $user->image }}
+                    </td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phone_number }}</td>
+                    <td>{{ $user->access }}</td>
+                    <td>{{ $user->status }}</td>
+                    <td>
+                        <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button">Edit</a>
+                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button">Ban</a>
+                    </td>
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @endsection

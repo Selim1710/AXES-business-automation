@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\InventoryController;
+use App\Http\Controllers\DailyProcess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 /*
@@ -17,15 +19,27 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
+Route::group(['prefix' => 'backend'], function () {
 
-Route::get('/price-list',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('price-list');
-Route::get('/expense-record',[\App\Http\Controllers\DailyProcess:: class,'expenseRecord'])->name('expense-record');
-Route::get('/expenses-head',[\App\Http\Controllers\DailyProcess:: class,'expensesHead'])->name('expenses-head');
-Route::get('/add-expenses-head',[\App\Http\Controllers\DailyProcess:: class,'AddExpensesHead'])->name('add-expenses-head');
+    // daily process
+    Route::group(['prefix' => 'daily-process'], function () {
+        Route::get('/price-list', [DailyProcess::class, 'PriceList'])->name('price-list');
+        Route::get('/expense-record', [DailyProcess::class, 'expenseRecord'])->name('expense-record');
+        Route::get('/expenses-head', [DailyProcess::class, 'expensesHead'])->name('expenses-head');
+        Route::get('/add-expenses-head', [DailyProcess::class, 'AddExpensesHead'])->name('add-expenses-head');
+        Route::get('/priceblade', [DailyProcess::class, 'PriceList'])->name('priceblade');
+    });
 
-Route::get('/priceblade',[\App\Http\Controllers\DailyProcess:: class,'PriceList'])->name('priceblade');
-//
-Route::namespace('App\Http\Controllers\Backend')->group(function(){
+    // inventory
+    Route::group(['prefix' => 'inventory'], function () {
+        Route::get('/branch', [InventoryController::class, 'branch'])->name('backend.inventory.branch');
+        Route::get('/warhouse', [InventoryController::class, 'warehouse'])->name('backend.inventory.warehouse');
+        
+    });
 
-    Route::resource('users', 'UserController');
+    //user
+    Route::namespace('App\Http\Controllers\Backend')->group(function () {
+        Route::resource('users', 'UserController');
+    });
+
 });
