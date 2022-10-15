@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Core</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="#">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -14,9 +14,9 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route("price-list")}}">Price List</a>
+                        <a class="nav-link" href="{{ route("price-list") }}">Price List</a>
 
-                        <a class="nav-link" href="{{route("expense-record")}}">Expenses Record</a>
+                        <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
                         <a class="nav-link" href="#">Create Expenses</a>
                         <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
                         <a class="nav-link" href="{{route("add-expenses-head")}}">Add Expenses Head</a>
@@ -30,12 +30,23 @@
 
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-sidenav-light.html">Purchase Order</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Purchase Order Create</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Purchase Invoice</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Purchase Invoice Create</a>
-                        <a class="nav-link" href="layout-sidenav-light.html"> Purchase Return</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Purchase Return Create</a>
+                        <a class="nav-link" href="#">Purchase Order</a>
+                        <a class="nav-link" href="#">Purchase Order Create</a>
+                        <a class="nav-link" href="#">Purchase Invoice</a>
+                        <a class="nav-link" href="#">Purchase Invoice Create</a>
+                        <a class="nav-link" href="#"> Purchase Return</a>
+                        <a class="nav-link" href="#">Purchase Return Create</a>
+                    </nav>
+                </div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                       inventory
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="inventory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="#"> Branch </a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -47,8 +58,8 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('users.index')}}">All User</a>
                         <a class="nav-link" href="{{route('users.create')}}">Add User</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Roles</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Permissions</a>
+                        <a class="nav-link" href="#">Roles</a>
+                        <a class="nav-link" href="#">Permissions</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
