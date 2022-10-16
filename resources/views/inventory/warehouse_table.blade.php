@@ -1,56 +1,70 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All Warhouse</h2>
+<h2 class="mt-4 mb-4">All warehouse</h2>
+
+<!-- message -->
+@if(session()->has('message'))
+<p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+@elseif(session()->has('error'))
+<p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+@endif
+<!-- end-message -->
+
 <div class="card mb-4">
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create New Warehouse</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouse">Create New warehouse</button>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="warehouse" tabindex="-1" aria-labelledby="warehouseLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create New Warehouse</h5>
+                        <h5 class="modal-title" id="warehouseLabel">Create New warehouse</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form id="create-user">
+                    <!-- add form -->
+                    <form action="{{ route('inventory.warehouse.add') }}" method="POST">
+                        @csrf
                         <div class="modal-body">
-                            <div class="alert alert-danger" id="errormsg"></div>
-                            <div class="border p-3 rounded">
+                            <div class="message">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                            </div>
 
+                            <div class="border p-3 rounded">
                                 <div class="col-12">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" required>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" required>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label">Phone</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <input type="number" class="form-control" name="phone" required>
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control" name="address" cols="30" rows="4" required></textarea>
                                 </div>
-
-                                <div class="col-12 mb-4">
-                                    <label class="form-label">Conform Password</label>
-                                    <input type="password" class="form-control" name="password_confirmation">
-                                </div>
-
 
                             </div>
                         </div>
                         <div class="modal-footer">
-                            @csrf
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create User</button>
+                            <button type="submit" class="btn btn-primary">Submit now</button>
                         </div>
                     </form>
                 </div>
@@ -62,43 +76,33 @@
             <thead>
                 <tr>
                     <th>SN</th>
-                    <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Access</th>
-                    <th>Status</th>
+                    <th>Address</th>
+
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SN</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Access</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
+
             <tbody>
+                @forelse ($warehouses as $key=>$warehouse)
                 <tr>
-                    <td>serial </td>
+                    <td>{{ $key+1 }} </td>
+                    <td>{{ $warehouse->name }}</td>
+                    <td>{{ $warehouse->email }}</td>
+                    <td>{{ $warehouse->phone }}</td>
+                    <td>{{ $warehouse->address }}</td>
+
                     <td>
-                        image
-                    </td>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>phone_number</td>
-                    <td>access</td>
-                    <td>status</td>
-                    <td>
-                    <a class="btn btn-success" style="font-size:13px" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('inventory.warehouse.edit', $warehouse->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('inventory.warehouse.delete', $warehouse->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
+                @empty
+                <p class="text-danger text-center">No warehouse available</p>
+                @endforelse
+
 
             </tbody>
         </table>

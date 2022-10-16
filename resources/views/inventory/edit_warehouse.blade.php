@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">Edit Branch</h2>
+<h2 class="mt-4 mb-4">Edit warehouse</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -11,7 +11,7 @@
 <!-- end-message -->
 
 <!-- add form -->
-<form action="{{ route('inventory.branch.update',$branch->id) }}" method="POST">
+<form action="{{ route('inventory.warehouse.update',$warehouse->id) }}" method="POST">
     @csrf
     <div class="modal-body">
         <div class="message">
@@ -29,22 +29,22 @@
         <div class="border p-3 rounded">
             <div class="col-12">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" value="{{ $branch->name }}" required>
+                <input type="text" class="form-control" name="name" value="{{ $warehouse->name }}" required>
             </div>
 
             <div class="col-12">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" name="email" value="{{ $branch->email }}" required>
+                <input type="email" class="form-control" name="email" value="{{ $warehouse->email }}" required>
             </div>
 
             <div class="col-12">
                 <label class="form-label">Phone</label>
-                <input type="number" class="form-control" name="phone" value="{{ $branch->phone }}" required>
+                <input type="number" class="form-control" name="phone" value="{{ $warehouse->phone }}" required>
             </div>
 
             <div class="col-12">
                 <label class="form-label">Address</label>
-                <textarea class="form-control" name="address" cols="30" rows="4" required>{{ $branch->address }}</textarea>
+                <textarea class="form-control" name="address" cols="30" rows="4" required>{{ $warehouse->address }}</textarea>
             </div>
 
         </div>

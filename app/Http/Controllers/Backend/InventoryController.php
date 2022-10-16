@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -63,34 +64,52 @@ class InventoryController extends Controller
     ////////////////// warehouse ////////////////
     public function warehouseTable()
     {
-        return view('inventory.warehouse_table');
+        $warehouses = Warehouse::all();
+        return view('inventory.warehouse_table', compact('warehouses'));
     }
 
     public function addWarehouse(Request $request)
     {
-        //
-    }
-
-
-    public function show($id)
-    {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        Warehouse::create([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return back()->with('message', 'Warehouse added successfully');
     }
 
 
     public function editWarehouse($id)
     {
-        //
+        $warehouse = Warehouse::find($id);
+        return view('inventory.edit_warehouse', compact('warehouse'));
     }
 
 
     public function updateWarehouse(Request $request, $id)
     {
-        //
+        $warehouse = Warehouse::find($id);
+        $warehouse->update([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return redirect()->route('inventory.warehouse.table')->with('message', 'Warehouse updated successfully');
     }
 
     public function destroyWarehouse($id)
     {
-        //
+        $warehouse = Warehouse::find($id);
+        $warehouse->delete();
+        return back()->with('error', 'warehouse deleted');
     }
 }
