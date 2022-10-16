@@ -3,45 +3,93 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    
-    public function branch()
+
+    //////////////// branch ////////////////
+    public function branchTable()
     {
-        return view('inventory.branch');
+        $branches = Branch::all();
+        return view('inventory.branch_table', compact('branches'));
     }
 
-    public function warehouse()
+    public function addBranch(Request $request)
     {
-        return view('inventory.warehouse');
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        Branch::create([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return back()->with('message', 'Branch added successfully');
     }
 
-    public function store(Request $request)
+    public function editBranch($id)
+    {
+        $branch = Branch::find($id);
+        return view('inventory.edit_branch', compact('branch'));
+    }
+
+
+    public function updateBranch(Request $request, $id)
+    {
+        $branch = Branch::find($id);
+        $branch->update([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return redirect()->route('inventory.branch.table')->with('message', 'Branch updated successfully');
+    }
+
+    public function destroyBranch($id)
+    {
+        $branch = Branch::find($id);
+        $branch->delete();
+        return back()->with('error', 'Branch deleted');
+    }
+
+    ////////////////// warehouse ////////////////
+    public function warehouseTable()
+    {
+        return view('inventory.warehouse_table');
+    }
+
+    public function addWarehouse(Request $request)
     {
         //
     }
 
-   
+
     public function show($id)
     {
         //
     }
 
-    
-    public function edit($id)
+
+    public function editWarehouse($id)
     {
         //
     }
 
-   
-    public function update(Request $request, $id)
+
+    public function updateWarehouse(Request $request, $id)
     {
         //
     }
 
-    public function destroy($id)
+    public function destroyWarehouse($id)
     {
         //
     }

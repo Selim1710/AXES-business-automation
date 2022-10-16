@@ -4,16 +4,7 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\DailyProcess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('dashboard.index');
@@ -32,8 +23,15 @@ Route::group(['prefix' => 'backend'], function () {
 
     // inventory
     Route::group(['prefix' => 'inventory'], function () {
-        Route::get('/branch', [InventoryController::class, 'branch'])->name('backend.inventory.branch');
-        Route::get('/warhouse', [InventoryController::class, 'warehouse'])->name('backend.inventory.warehouse');
+        // branch
+        Route::get('/branch/table', [InventoryController::class, 'branchTable'])->name('inventory.branch.table');
+        Route::post('/branch/add', [InventoryController::class, 'addBranch'])->name('inventory.branch.add');
+        Route::get('/branch/edit/{id}', [InventoryController::class, 'editBranch'])->name('inventory.branch.edit');
+        Route::post('/branch/update/{id}', [InventoryController::class, 'updateBranch'])->name('inventory.branch.update');
+        Route::get('/branch/delete/{id}', [InventoryController::class, 'destroyBranch'])->name('inventory.branch.delete');
+        
+        // warehouse
+        Route::get('/warhouse', [InventoryController::class, 'warehouseTable'])->name('inventory.warehouse.table');
         
     });
 
