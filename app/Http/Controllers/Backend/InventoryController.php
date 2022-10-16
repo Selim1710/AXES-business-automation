@@ -3,46 +3,113 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    
-    public function branch()
+
+    //////////////// branch ////////////////
+    public function branchTable()
     {
-        return view('inventory.branch');
+        $branches = Branch::all();
+        return view('inventory.branch_table', compact('branches'));
     }
 
-    public function warehouse()
+    public function addBranch(Request $request)
     {
-        return view('inventory.warehouse');
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        Branch::create([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return back()->with('message', 'Branch added successfully');
     }
 
-    public function store(Request $request)
+    public function editBranch($id)
     {
-        //
+        $branch = Branch::find($id);
+        return view('inventory.edit_branch', compact('branch'));
     }
 
-   
-    public function show($id)
+
+    public function updateBranch(Request $request, $id)
     {
-        //
+        $branch = Branch::find($id);
+        $branch->update([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return redirect()->route('inventory.branch.table')->with('message', 'Branch updated successfully');
     }
 
-    
-    public function edit($id)
+    public function destroyBranch($id)
     {
-        //
+        $branch = Branch::find($id);
+        $branch->delete();
+        return back()->with('error', 'Branch deleted');
     }
 
-   
-    public function update(Request $request, $id)
+    ////////////////// warehouse ////////////////
+    public function warehouseTable()
     {
-        //
+        $warehouses = Warehouse::all();
+        return view('inventory.warehouse_table', compact('warehouses'));
     }
 
-    public function destroy($id)
+    public function addWarehouse(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        Warehouse::create([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return back()->with('message', 'Warehouse added successfully');
+    }
+
+
+    public function editWarehouse($id)
+    {
+        $warehouse = Warehouse::find($id);
+        return view('inventory.edit_warehouse', compact('warehouse'));
+    }
+
+
+    public function updateWarehouse(Request $request, $id)
+    {
+        $warehouse = Warehouse::find($id);
+        $warehouse->update([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+        return redirect()->route('inventory.warehouse.table')->with('message', 'Warehouse updated successfully');
+    }
+
+    public function destroyWarehouse($id)
+    {
+        $warehouse = Warehouse::find($id);
+        $warehouse->delete();
+        return back()->with('error', 'warehouse deleted');
     }
 }
