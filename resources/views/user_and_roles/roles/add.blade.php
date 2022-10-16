@@ -1,0 +1,104 @@
+@extends('layouts.app')
+@section('content')
+@if(session()->has('message'))
+<div class="alert alert-success">
+{{ session()->get('message') }}
+
+</div>
+@endif
+
+<div class="card mt-4">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-2">
+      Create New Role
+    </h5>
+    
+  </div>
+  <div class="card-body">
+    <div class="p-4 border rounded">
+      <form class="g-3 needs-validation" novalidate="">
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="validationCustom05" class="form-label">Role Name</label>
+            <input type="text" name="role_name" class="form-control" id="validationCustom05" required>
+
+
+            <label for="roledescription" class="form-label mt-4">Role Description</label>
+            <textarea class="form-control" rows="4" name="role_description" required></textarea>
+
+
+            <label for="rolestatus" class="form-label mt-4">Status</label>
+            <select class="form-select" id="rolestatus" name="role_status" required>
+              <option selected value="0">Inactive</option>
+              <option value="1">Active</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <h4>Module Access</h4>
+            <div class="module-content mt-4">
+
+              @foreach( $modules as $module)
+                <div class="form-check form-switch m-2">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_group_access[]" value="{{$module->group_id}}" checked>
+                  <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+        @foreach( $modules as $module)         
+          <table class="table mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">{{$module->group_name}}</th>
+                <th scope="col">Read</th>
+                <th scope="col">Write</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+                @foreach($permissions as $permission)
+                    @php
+                        $name = explode(" ", $permission->name );
+                        
+                        $sub_module_id[] = $permission->id;
+                        $sub_module_names[] = $name[0];
+                    @endphp
+                @endforeach
+                @php
+                  $sub_module_name = array_unique($sub_module_names)
+                @endphp
+                @foreach($sub_module_name as $sub_module)
+                  <tr>
+                    <th scope="row">{{$sub_module}}</th>
+                    @for ($i = 0; $i < 4; $i++)
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="permissions[]" value="" checked>
+                        
+                      </div>
+                    </td>
+                      @endfor
+                  </tr>
+              @endforeach
+            </tbody>
+          </table>
+        @endforeach
+        <div class="d-flex justify-content-end">
+            <a href="{{route('roles.index')}}" class="btn btn-secondary mt-4" style="margin-right: 1rem">Cancel</a>
+            <button type="submit" class="btn btn-primary mt-4">Save</button>
+        </div>
+          
+      </form>
+    </div>
+    
+  </div>
+</div>
+@endsection

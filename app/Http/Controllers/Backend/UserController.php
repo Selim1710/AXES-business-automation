@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $user= User::latest()->get();
 
-        return view('user_and_roles.user.index',['users'=>$user]);
+        return view('user_and_roles.user.table',['users'=>$user]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('user_and_roles.user.new',['roles'=>$roles]);
+        return view('user_and_roles.user.add',['roles'=>$roles]);
     }
 
     /**

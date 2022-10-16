@@ -4,6 +4,9 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\DailyProcess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\RoleController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,8 +41,10 @@ Route::group(['prefix' => 'backend'], function () {
     });
 
     //user
-    Route::namespace('App\Http\Controllers\Backend')->group(function () {
-        Route::resource('users', 'UserController');
-    });
+    Route::resource('users', UserController::class);
+
+    //Roles
+    Route::resource('roles', RoleController::class);
+
 
 });
