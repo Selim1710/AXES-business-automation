@@ -50,7 +50,7 @@
                         <td>{{ $role->desc }}</td>
                         <td>
                             <div style="min-width: 10rem;">
-                                <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$role->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                <a class="btn btn-success" style="font-size:13px" href="{{route('roles.edit',$role->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                                 
                                 <form action="{{ route('users.destroy', $role->id) }}" method="POST" style="display:inline">
                                     @csrf
