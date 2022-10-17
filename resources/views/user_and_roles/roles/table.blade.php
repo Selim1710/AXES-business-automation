@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th>SN</th>
+                        <th>Role Name</th>
                         <th>Access</th>
                         <th>Description</th>
                         <th>Action</th>
@@ -21,6 +22,7 @@
                 <tfoot>
                     <tr>
                         <th>SN</th>
+                        <th>Role Name</th>
                         <th>Access</th>
                         <th>Description</th>
                         <th>Action</th>
@@ -40,15 +42,22 @@
                     <tr>
                         <td>{{ $serial }}</td>
                         <td>{{ $role->name }}</td>
-                        <td>{{ $role->description }}</td>
                         <td>
-                            <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$role->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                            
-                            <form action="{{ route('users.destroy', $role->id) }}" method="POST" style="display:inline">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                            </form>
+                        @foreach($role->permissions as $permission)
+                            <span class="badge" style="background-color: #28a745;">{{ $permission->name }}</span>
+                        @endforeach
+                        </td>
+                        <td>{{ $role->desc }}</td>
+                        <td>
+                            <div style="min-width: 10rem;">
+                                <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$role->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                
+                                <form action="{{ route('users.destroy', $role->id) }}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 

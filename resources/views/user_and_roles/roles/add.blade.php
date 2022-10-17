@@ -6,7 +6,15 @@
 
 </div>
 @endif
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+      </ul>
+    </div>
+@endif
 <div class="card mt-4">
   <div class="card-header bg-primary text-white">
     <h5 class="mb-2">
@@ -16,7 +24,7 @@
   </div>
   <div class="card-body">
     <div class="p-4 border rounded">
-      <form class="g-3 needs-validation" novalidate="">
+      <form class="g-3 needs-validation" method="POST" action="{{route('roles.store')}}">
 
         <div class="row">
           <div class="col-md-6">
@@ -40,8 +48,9 @@
 
               @foreach( $modules as $module)
                 <div class="form-check form-switch m-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_group[]" value="{{$module->group_id}}" checked onclick='$("#roletable").fadeOut(300, function() 
-                  { $(this).remove();
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="{{$module->group_name}}" value="1" checked onclick='$("#roletable").fadeOut(300, function() 
+                  { 
+                    $(this).remove();
                    });'>
                   <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
                 </div>
@@ -91,7 +100,7 @@
             <a href="{{route('roles.index')}}" class="btn btn-secondary mt-4" style="margin-right: 1rem">Cancel</a>
             <button type="submit" class="btn btn-primary mt-4">Save</button>
         </div>
-          
+          @csrf
       </form>
     </div>
     

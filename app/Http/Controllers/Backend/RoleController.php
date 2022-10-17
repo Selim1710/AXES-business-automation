@@ -55,7 +55,7 @@ class RoleController extends Controller
             $sub_module[] =$value;
         }
         $sub_module = array_chunk($permission,4,true);
-        return view('user_and_roles.roles.add',['modules' => $modules, 'sub_modules' => $sub_module, 'permissions' => $permission ]);
+        return view('user_and_roles.roles.add',['modules' => $modules, 'sub_modules' => $sub_module ]);
     }
 
     /**
@@ -66,9 +66,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name'=>'required']);
+        $request->validate([
+            'role_name'=>'required',
+            'role_description'=>'required',
+            'role_status' => 'required'
+        ]);
 
-        $role = Role::create(['name'=>$request->name]);
+        $role = Role::create([
+            'name'=>$request->role_name,
+            'desc'=>$request->role_description,
+            'status'=>$request->role_status,
+        ]);
 
         $role->syncPermissions($request->permissions);
         

@@ -21,30 +21,30 @@
                                        
                                         <div class="col-12">
                                           <label class="form-label">Name</label>
-                                          <input type="text" class="form-control" name="name">
+                                          <input type="text" class="form-control" name="name" required>
                                         </div>
                                         <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
 
                                         <div class="col-12">
                                           <label class="form-label">Email Address</label>
-                                          <input type="email" class="form-control" name="email">
+                                          <input type="email" class="form-control" name="email" required>
                                         </div>
                                         <div class="alert alert-danger mt-2" id="email_error" style="display: none"></div>
  
                                         <div class="col-12">
                                             <label class="form-label">Phone</label>
-                                            <input type="text" class="form-control" name="phone_number">
+                                            <input type="text" class="form-control" name="phone_number" >
                                         </div>
                                         <div class="alert alert-danger mt-2" id="phone_number_error" style="display: none"></div>
 
                                         <div class="col-12">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password">
+                                            <input type="password" class="form-control" name="password" required>
                                         </div>
 
                                         <div class="col-12 mb-3">
                                             <label class="form-label">Conform Password</label>
-                                            <input type="password" class="form-control" name="password_confirmation">
+                                            <input type="password" class="form-control" name="password_confirmation" required>
                                         </div>
                                         <div class="alert alert-danger" id="password_error" style="display: none"></div>
 
