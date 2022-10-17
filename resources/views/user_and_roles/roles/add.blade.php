@@ -48,11 +48,7 @@
 
               @foreach( $modules as $module)
                 <div class="form-check form-switch m-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="{{$module->group_name}}" value="1" checked onclick="$('#roletable').fadeOut(300, function() 
-                  { 
-                  //  var cacheDom = $('#roletable');
-                  //   $(this).remove();
-                   });">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="{{$module->group_name}}" value="1" checked onclick="">
                   <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
                 </div>
               @endforeach
