@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\DailyProcess;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\RoleController;
 
 
 Route::get('/', function () {

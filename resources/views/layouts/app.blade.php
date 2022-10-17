@@ -52,19 +52,21 @@
         </div>
 
         <!--plugins-->
-        <script src="{{asset('adminAsset')}}/assets/js/jquery.min.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/plugins/simplebar/js/simplebar.min.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/js/pace.min.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-        <script src="{{asset('adminAsset')}}/assets/js/table-datatable.js"></script>
+        <script src="{{asset('adminAsset/assets/js/jquery.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{{asset('adminAsset/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('adminAsset/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('adminAsset/assets/js/table-datatable.js')}}"></script>
+        <script src="{{asset('adminAsset/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
+        <script src="{{asset('adminAsset/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+        <script src="{{asset('adminAsset/assets/js/pace.min.js')}}"></script>
+        
 
         <!--app-->
-        <script src="{{asset('adminAsset')}}/assets/js/app.js"></script>
+        <script src="{{asset('adminAsset/assets/js/app.js')}}"></script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+       
         <script src="{{asset('js/scripts.js')}}"></script>
         <!--network js-->
         <script src="{{asset('js/network.js')}}"></script>

@@ -37,13 +37,6 @@
                                         </div>
                                         <div class="alert alert-danger mt-2" id="phone_number_error" style="display: none"></div>
 
-                                        <div class="mt-3 mb-3 col-12">
-                                            <label class="form-label" for="inputGroupFile02">Profile Image</label>
-                                            <input type="file" class="form-control" id="inputGroupFile02" name="image">
-                                        </div>
-                                        <div class="alert alert-danger mt-2" id="image_error" style="display: none"></div>
-
-
                                         <div class="col-12">
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control" name="password">
@@ -109,7 +102,7 @@
                         <td>{{ $serial }}</td>
                         <td style="text-align: center">
                             @if ($user->image === null)
-                                <i class="fa-regular fa-circle-user" style="font-size:36px"></i>
+                                <img src="{{asset('images/unknown_profile.png')}}" height="35px" width="35px" style="border: 1px solid #dddbdb; border-radius: 50%;">
                             @else
                                 
                             @endif

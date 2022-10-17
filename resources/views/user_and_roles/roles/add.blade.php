@@ -40,7 +40,9 @@
 
               @foreach( $modules as $module)
                 <div class="form-check form-switch m-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_group_access[]" value="{{$module->group_id}}" checked>
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_group[]" value="{{$module->group_id}}" checked onclick='$("#roletable").fadeOut(300, function() 
+                  { $(this).remove();
+                   });'>
                   <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
                 </div>
               @endforeach
@@ -51,11 +53,11 @@
 
         <hr>
 
-        @foreach( $modules as $module)         
-          <table class="table mb-0">
+        @foreach( $modules as $module_group)         
+          <table class="table mb-0" id="roletable">
             <thead class="table-dark">
               <tr>
-                <th scope="col">{{$module->group_name}}</th>
+                <th scope="col">{{$module_group->group_name}}</th>
                 <th scope="col">Read</th>
                 <th scope="col">Write</th>
                 <th scope="col">Edit</th>
@@ -63,34 +65,28 @@
               </tr>
             </thead>
             <tbody>
-             
-                @foreach($permissions as $permission)
-                    @php
-                        $name = explode(" ", $permission->name );
-                        
-                        $sub_module_id[] = $permission->id;
-                        $sub_module_names[] = $name[0];
-                    @endphp
+              @php
+                  $i =0;
+              @endphp
+              @foreach ($sub_modules as $sub_modules)
+              @php
+                  $i =$i+3;
+              @endphp
+              <tr>
+                <th scope="row">{{$sub_modules[$i]}}</th>
+                @foreach ($sub_modules as $key => $value)
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="permissions[]" value="{{$key}}" checked>
+
+                    </div>
+                  </td>
                 @endforeach
-                @php
-                  $sub_module_name = array_unique($sub_module_names)
-                @endphp
-                @foreach($sub_module_name as $sub_module)
-                  <tr>
-                    <th scope="row">{{$sub_module}}</th>
-                    @for ($i = 0; $i < 4; $i++)
-                    <td>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="permissions[]" value="" checked>
-                        
-                      </div>
-                    </td>
-                      @endfor
-                  </tr>
+              </tr>
               @endforeach
             </tbody>
           </table>
-        @endforeach
+          @endforeach
         <div class="d-flex justify-content-end">
             <a href="{{route('roles.index')}}" class="btn btn-secondary mt-4" style="margin-right: 1rem">Cancel</a>
             <button type="submit" class="btn btn-primary mt-4">Save</button>

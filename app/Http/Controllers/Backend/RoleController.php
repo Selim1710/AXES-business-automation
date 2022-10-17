@@ -41,12 +41,21 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::get();
-
         $modules = DB::select('SELECT DISTINCT group_id, group_name FROM `permissions`;');
-
         
-        return view('user_and_roles.roles.add',['permissions'=>$permissions, 'modules' => $modules]);
+        $permissions = Permission::get();
+        foreach ($permissions as $key => $value) {
+
+            $permission_name = explode(" ", $value->name );
+
+            $permission[$key] = $permission_name[0];
+        }
+
+        foreach($permission as $key => $value ){
+            $sub_module[] =$value;
+        }
+        $sub_module = array_chunk($permission,4,true);
+        return view('user_and_roles.roles.add',['modules' => $modules, 'sub_modules' => $sub_module, 'permissions' => $permission ]);
     }
 
     /**

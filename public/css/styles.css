@@ -11625,7 +11625,8 @@ body {
 .dataTable-table > thead > tr > td,
 .dataTable-table > thead > tr > th {
   vertical-align: top;
-  padding: 0.5rem 0.2rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 
 .dataTable-table > thead > tr > th {
