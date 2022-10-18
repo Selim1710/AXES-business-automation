@@ -48,7 +48,7 @@
 
               @foreach( $modules as $module)
                 <div class="form-check form-switch m-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="{{$module->group_name}}" value="1" checked onclick="">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_access[]" value="{{$module->group_id}}" checked onclick='$("#roletable{{$module->group_id}}").toggle();'>
                   <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
                 </div>
               @endforeach
@@ -60,13 +60,13 @@
         <hr>
 
         @foreach( $modules as $module_group)         
-          <table class="table mb-0" id="roletable">
+          <table class="table mb-0" id="roletable{{$module_group->group_id}}">
             <thead class="table-dark">
               <tr>
                 <th scope="col">{{$module_group->group_name}}</th>
                 <th scope="col">Read</th>
-                <th scope="col">Write</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Create</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
