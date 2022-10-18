@@ -99,15 +99,18 @@
                     <td>{{$expenseshead->description}}</td>
 
                     <td>
-                        <a class="btn btn-success" style="font-size:13px" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" style="font-size:13px" href="{{'edit-expenses-head'}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('delete-expenses-head')}}" method="post"style="display:inline">
+                            @csrf
+                            <input type="hidden" name="expenseshead_id" value="{{$expenseshead->id}}" >
+                            <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                           </form>
+
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-<tbody>
 
-</tbody>
             </table>
         </div>
     </div>

@@ -17,9 +17,9 @@
                         <a class="nav-link" href="{{ route("price-list") }}">Price List</a>
 
                         <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
-                        <a class="nav-link" href="#">Create Expenses</a>
+                        <a class="nav-link" href="{{ route("create-expense") }}">Create Expenses</a>
                         <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
-                        <a class="nav-link" href="{{route("add-expenses-head")}}">Add Expenses Head</a>
+
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
@@ -60,7 +60,7 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('users.index')}}">Users</a>
                         <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
-                        
+
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">

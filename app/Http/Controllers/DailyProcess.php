@@ -57,4 +57,19 @@ class DailyProcess extends Controller
         return back();
     }
 
+    public function deleteExpensesHead(Request $request){
+        $expenseshead=Expenseshead::find($request->expenseshead_id);
+        $expenseshead->delete();
+        return back()->with('message','Deleted');
+
+    }
+    public function editExpensesHead(){
+        return view('daily_process.edit-expenses-head',[
+            'expenseshead'=>Expenseshead::find('$expenseshead->id')
+        ]);
+    }
+    public function createExpense(){
+        return view('daily_process.create-expense');
+    }
+
 }

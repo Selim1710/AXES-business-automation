@@ -24,6 +24,10 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/add-expenses-category',[DailyProcess::class,'addExpensesCategory'])->name('add-expenses-category');
         Route::get('/new-category',[DailyProcess::class,'saveCategory'])->name('new-category');
         Route::post('/add-expenses',[DailyProcess::class,'saveExpenses'])->name('add-expenses');
+        Route::post('/delete-expenses-head',[DailyProcess:: class,'deleteExpensesHead'])->name('delete-expenses-head');
+        Route::get('/edit-expenses-head',[DailyProcess:: class,'editExpensesHead'])->name('edit-expenses-head');
+        Route::get('/create-expense',[DailyProcess:: class,'createExpense'])->name('create-expense');
+
     });
 
     // inventory
@@ -34,14 +38,14 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/branch/edit/{id}', [InventoryController::class, 'editBranch'])->name('inventory.branch.edit');
         Route::post('/branch/update/{id}', [InventoryController::class, 'updateBranch'])->name('inventory.branch.update');
         Route::get('/branch/delete/{id}', [InventoryController::class, 'destroyBranch'])->name('inventory.branch.delete');
-        
+
         // warehouse
         Route::get('/warehouse/table', [InventoryController::class, 'warehouseTable'])->name('inventory.warehouse.table');
         Route::post('/warehouse/add', [InventoryController::class, 'addWarehouse'])->name('inventory.warehouse.add');
         Route::get('/warehouse/edit/{id}', [InventoryController::class, 'editWarehouse'])->name('inventory.warehouse.edit');
         Route::post('/warehouse/update/{id}', [InventoryController::class, 'updateWarehouse'])->name('inventory.warehouse.update');
         Route::get('/warehouse/delete/{id}', [InventoryController::class, 'destroyWarehouse'])->name('inventory.warehouse.delete');
-        
+
     });
 
     //user
