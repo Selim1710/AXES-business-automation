@@ -29,28 +29,28 @@
         <form method="POST" action="{{route('users.store')}}">
         <div class="col-12">
           <label class="form-label">Name</label>
-          <input type="text" class="form-control" name="name">
+          <input type="text" class="form-control" name="name" required>
         </div>
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <div class="col-12">
           <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" name="email">
+          <input type="email" class="form-control" name="email" required>
         </div>
         @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <div class="col-12">
             <label class="form-label">Password</label>
-            <input type="password" class="form-control" name="password">
+            <input type="password" class="form-control" name="password" required>
           </div>
           @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
           <div class="col-12 mb-4">
             <label class="form-label">Conform Password</label>
-            <input type="password" class="form-control" name="password_confirmation">
+            <input type="password" class="form-control" name="password_confirmation" required>
           </div>
           @error('conform_password')
             <div class="alert alert-danger">{{ $message }}</div>

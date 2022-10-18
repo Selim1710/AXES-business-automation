@@ -19,7 +19,6 @@
                         <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
                         <a class="nav-link" href="#">Create Expenses</a>
                         <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
-                        <a class="nav-link" href="{{route("add-expenses-head")}}">Add Expenses Head</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
@@ -68,14 +67,14 @@
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutUser" aria-expanded="false" aria-controls="collapseLayoutUser">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    User & Role
+                    Users & Roles
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseLayoutUser" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('users.index')}}">All User</a>
+                        <a class="nav-link" href="{{route('users.index')}}">Users</a>
                         <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Permissions</a>
+                        
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">

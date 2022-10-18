@@ -41,12 +41,21 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::get();
-
         $modules = DB::select('SELECT DISTINCT group_id, group_name FROM `permissions`;');
-
         
-        return view('user_and_roles.roles.add',['permissions'=>$permissions, 'modules' => $modules]);
+        $permissions = Permission::get();
+        foreach ($permissions as $key => $value) {
+
+            $permission_name = explode(" ", $value->name );
+
+            $permission[$value->id] = $permission_name[0];
+        }
+
+        foreach($permission as $key => $value ){
+            $sub_module[] =$value;
+        }
+        $sub_module = array_chunk($permission,4,true);
+        return view('user_and_roles.roles.add',['modules' => $modules, 'sub_modules' => $sub_module ]);
     }
 
     /**
@@ -57,13 +66,35 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name'=>'required']);
-
-        $role = Role::create(['name'=>$request->name]);
-
-        $role->syncPermissions($request->permissions);
         
-        return redirect()->back()->withSuccess('Role created !!!');
+        
+        foreach($request->module_access as $modules){
+            $modules_id = DB::table('permissions')->select('id')->where('group_id', '=', $modules)->get();
+            $request->permissions;
+            
+           foreach ($modules_id as $key => $value) {
+           $module_ids[] = $value->id;
+           }
+           
+           $selected_permission[] = array_intersect($request->permissions, $module_ids);
+            
+        }
+        $permissions = call_user_func_array('array_merge', $selected_permission);
+
+        $request->validate([
+            'role_name'=>'required',
+            'role_description'=>'required',
+            'role_status' => 'required'
+            ]);
+
+            $role = Role::create([
+                'name'=>$request->role_name,
+                'desc'=>$request->role_description,
+                'status'=>$request->role_status,
+            ]);
+        $role->syncPermissions($permissions);
+        
+        return redirect()->route('roles.index')->withSuccess('Role created Successfully!');
     }
 
     /**

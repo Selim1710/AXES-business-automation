@@ -1,17 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="mb-4"></div>
-<div class="row mb-4">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="text-center">
-                    Edit User
-                </h3>
-            </div>
-        </div>
-    </div>
-</div>
+
 @if(session()->has('message'))
 <div class="alert alert-success">
 {{ session()->get('message') }}
