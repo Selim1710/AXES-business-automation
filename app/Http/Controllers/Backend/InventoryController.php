@@ -86,13 +86,11 @@ class InventoryController extends Controller
         return back()->with('message', 'Warehouse added successfully');
     }
 
-
     public function editWarehouse($id)
     {
         $warehouse = Warehouse::find($id);
         return view('inventory.edit_warehouse', compact('warehouse'));
     }
-
 
     public function updateWarehouse(Request $request, $id)
     {
@@ -112,4 +110,7 @@ class InventoryController extends Controller
         $warehouse->delete();
         return back()->with('error', 'warehouse deleted');
     }
+
+    ////////////////// product delivery ////////////////
+
 }
