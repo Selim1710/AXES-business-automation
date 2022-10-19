@@ -115,7 +115,7 @@
                     <td>
                         <a class="btn btn-primary" href="{{ route('admin.view.product', $product->id) }}" style="font-size:13px"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         <a class="btn btn-success" href="{{ route('admin.edit.product', $product->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.product', $product->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.product', $product->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
