@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-6">
                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;height: 34px;">
-                                    <a class="nav-link" href="{{ route('add-expenses-category') }}"style="color: white; margin-top: -10px;">Add Expenses Type</a>
+                                    <a class="nav-link" href="#"style="color: white; margin-top: -10px;">Add Expenses Type</a>
                                 </button>
                             </div>
                         </div>
@@ -101,10 +101,11 @@
 
                         <td>
                             <div style="min-width: 10rem;">
-                                <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                <form action="" method="post"style="display:inline">
+                                <a class="btn btn-success" style="font-size:13px" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                <form action="#" method="#"style="display:inline">
                                     @csrf
-                                    <input type="hidden" name="expenseshead_id" value="" >
+                                    <input type="hidden" name="#" value="#" >
+                                 {{--   <input type="hidden" name="expenseshead_id" value="" >--}}
                                     <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
+@if(session('success'))
+<div class="alert alert-success mt-4" role="alert">
+    {{session('success')}}
+</div>
+@endif
     <h2 class="mt-4 mb-4">All User</h2>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
@@ -48,7 +52,17 @@
                                         </div>
                                         <div class="alert alert-danger" id="password_error" style="display: none"></div>
 
-                                      
+                                      <div class="create-user-with-role">
+                                        <h6>Roles</h6>
+                                            <div class="grid grid-cols-3 gap-4">
+                                            @foreach($roles as $role)
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{$role->id}}" name="roles[] "value="{{$role->id}}">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault{{$role->id}}">{{ $role->name }}</label>
+                                            </div>
+                                            @endforeach
+                                            </div>
+                                      </div>
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -71,7 +85,6 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Access</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -83,7 +96,6 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Access</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -110,8 +122,11 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone_number }}</td>
-                        <td>{{ $user->access }}</td>
-                        <td>{{ $user->status }}</td>
+                        <td>
+                            @foreach($user->roles as $role)
+                               <span class="badge" style="background-color: #0a58ca">{{ $role->name }}</span>
+                             @endforeach    
+                        </td>
                         <td>
                             <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                             

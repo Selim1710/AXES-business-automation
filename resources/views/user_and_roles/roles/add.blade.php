@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if(session()->has('message'))
-<div class="alert alert-success">
-{{ session()->get('message') }}
 
-</div>
-@endif
 @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -48,7 +43,7 @@
 
               @foreach( $modules as $module)
                 <div class="form-check form-switch m-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_access[]" value="{{$module->group_id}}" checked onclick='$("#roletable{{$module->group_id}}").toggle();'>
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="module_access[]" value="{{$module->group_id}}" checked onclick='$("#roletable{{$module->group_id}}").fadeToggle(900,"swing");'>
                   <label class="form-check-label" for="flexSwitchCheckChecked">{{$module->group_name}}</label>
                 </div>
               @endforeach
@@ -58,8 +53,8 @@
 
 
         <hr>
-
-        @foreach( $modules as $module_group)         
+        @foreach( $modules as $module_group) 
+       
           <table class="table mb-0" id="roletable{{$module_group->group_id}}">
             <thead class="table-dark">
               <tr>
@@ -72,15 +67,30 @@
             </thead>
             <tbody>
               @php
-                  $i =0;
-              @endphp
-              @foreach ($sub_modules as $sub_modules)
-              @php
-                  $i =$i+3;
-              @endphp
+                unset($submodules);
+                unset($permission_name);
+                unset($permission);
+               $submodules = \Spatie\Permission\Models\Permission::where(['group_id' => $module_group->group_id])->get();
+               
+               foreach ($submodules as $key => $value) {
+
+                    $permission_name = explode(" ", $value->name );
+                    $sliced_permission_name = array_slice($permission_name, 0, -1);
+                    $permission[$value->id] = implode(" ", $sliced_permission_name);
+                }
+
+                foreach($permission as $key => $value ){
+                    $sub_module[] =$value;
+                }
+                $sub_module = array_chunk($permission,4,true);
+                
+             @endphp
+              @foreach ($sub_module as $sub_mod)
+              
               <tr>
-                <th scope="row">{{$sub_modules[$i]}}</th>
-                @foreach ($sub_modules as $key => $value)
+                <th scope="row">{{reset($sub_mod)}}</th>
+
+                @foreach ($sub_mod as $key => $value)
                   <td>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="permissions[]" value="{{$key}}" checked>

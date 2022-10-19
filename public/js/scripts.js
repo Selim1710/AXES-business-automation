@@ -24,3 +24,19 @@ window.addEventListener('DOMContentLoaded', event => {
     // }
 
 });
+
+$(function(){
+    var current = window.location.href;
+    console.log(current);
+    $('#sidebar-main nav a').each(function(){
+        var $this = $(this);
+        console.log($this.attr('href'));
+        // if the current path is like this link, make it active
+        if($this.attr('href') == current){
+            console.log($this.attr('href'));
+            $this.css({"background-color": "#393939"});
+            $this.parent('.nav').parent('.collapse').addClass('show');
+
+        }
+    })
+})

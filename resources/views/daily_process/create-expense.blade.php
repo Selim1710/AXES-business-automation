@@ -43,7 +43,7 @@
                                         <div class="form-group" >
                                             <div class="input-group">
                                                 <span class="input-group-addon"><b>Date:</b></span>
-                                                <input type="text" class="form-control datetimepicker" name="apdate" id="apdate" value="2022-10-11" placeholder="Date:" autocomplete="off" readonly>
+                                                <input class="form-control" id="inputEmail" type="date" name="date"/>
                                             </div>
                                         </div>
                                         <br>
