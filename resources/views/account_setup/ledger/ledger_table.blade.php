@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All subclass</h2>
+<h2 class="mt-4 mb-4">All ledger</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,17 +14,17 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subclass">Create New Sub class</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ledger">Create New Ledger</button>
         <!-- Modal -->
-        <div class="modal fade" id="subclass" tabindex="-1" aria-labelledby="subclassLabel" aria-hidden="true">
+        <div class="modal fade" id="ledger" tabindex="-1" aria-labelledby="ledgerLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="subclassLabel">Create New Sub class</h5>
+                        <h5 class="modal-title" id="ledgerLabel">Create New Ledger</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="{{ route('admin.store.subclass') }}" method="POST">
+                    <form action="{{ route('admin.store.ledger') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -41,11 +41,11 @@
 
                             <div class="border p-3 rounded">
                                 <div class="col-12">
-                                    <label class="form-label">Class Name</label>
-                                    <select name="all_classes_id" class="form-control">
+                                    <label class="form-label">Sub-Group Name</label>
+                                    <select name="sub_group_id" class="form-control">
                                         <option value="">-- SELECT --</option>
-                                        @foreach ($classes as $class)
-                                        <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                        @foreach ($subGroups as $subGroup)
+                                        <option value="{{ $subGroup->id }}">{{ $subGroup->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label">description</label>
+                                    <label class="form-label">Description</label>
                                     <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
                                 </div>
 
@@ -85,19 +85,19 @@
             </thead>
 
             <tbody>
-                @forelse ($subCategories as $key=>$subclass)
+                @forelse ($ledgers as $key=>$ledger)
                 <tr>
                     <td>{{ $key+1 }} </td>
-                    <td>{{ $subclass->name }}</td>
-                    <td>{{ $subclass->description }}</td>
+                    <td>{{ $ledger->name }}</td>
+                    <td>{{ $ledger->description }}</td>
 
                     <td>
-                        <a class="btn btn-success" href="{{ route('admin.edit.subclass', $subclass->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.subclass', $subclass->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('admin.edit.ledger', $ledger->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.ledger', $ledger->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
-                <p class="text-danger text-center">No subclass available</p>
+                <p class="text-danger text-center">No ledger available</p>
                 @endforelse
             </tbody>
         </table>

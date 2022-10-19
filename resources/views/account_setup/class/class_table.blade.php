@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All subclass</h2>
+<h2 class="mt-4 mb-4">All class</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,17 +14,17 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subclass">Create New Sub class</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#class">Create New Class</button>
         <!-- Modal -->
-        <div class="modal fade" id="subclass" tabindex="-1" aria-labelledby="subclassLabel" aria-hidden="true">
+        <div class="modal fade" id="class" tabindex="-1" aria-labelledby="classLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="subclassLabel">Create New Sub class</h5>
+                        <h5 class="modal-title" id="classLabel">Create New Class</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="{{ route('admin.store.subclass') }}" method="POST">
+                    <form action="{{ route('admin.store.class') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -40,16 +40,6 @@
                             </div>
 
                             <div class="border p-3 rounded">
-                                <div class="col-12">
-                                    <label class="form-label">Class Name</label>
-                                    <select name="all_classes_id" class="form-control">
-                                        <option value="">-- SELECT --</option>
-                                        @foreach ($classes as $class)
-                                        <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <div class="col-12">
                                     <label class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" required>
@@ -85,19 +75,19 @@
             </thead>
 
             <tbody>
-                @forelse ($subCategories as $key=>$subclass)
+                @forelse ($classes as $key=>$class)
                 <tr>
                     <td>{{ $key+1 }} </td>
-                    <td>{{ $subclass->name }}</td>
-                    <td>{{ $subclass->description }}</td>
+                    <td>{{ $class->name }}</td>
+                    <td>{{ $class->description }}</td>
 
                     <td>
-                        <a class="btn btn-success" href="{{ route('admin.edit.subclass', $subclass->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.subclass', $subclass->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('admin.edit.class', $class->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.class', $class->id) }}" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
-                <p class="text-danger text-center">No subclass available</p>
+                <p class="text-danger text-center">No class available</p>
                 @endforelse
             </tbody>
         </table>

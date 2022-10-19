@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">Edit warehouse</h2>
+<h2 class="mt-4 mb-4">Edit class</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -11,7 +11,7 @@
 <!-- end-message -->
 
 <!-- add form -->
-<form action="{{ route('inventory.warehouse.update',$warehouse->id) }}" method="POST">
+<form action="{{ route('admin.update.class',$class->id) }}" method="POST">
     @csrf
     <div class="modal-body">
         <div class="message">
@@ -29,29 +29,19 @@
         <div class="border p-3 rounded">
             <div class="col-12">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" value="{{ $warehouse->name }}" required>
+                <input type="text" class="form-control" name="name" value="{{ $class->name }}" required>
             </div>
 
             <div class="col-12">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" name="email" value="{{ $warehouse->email }}" required>
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">Phone</label>
-                <input type="number" class="form-control" name="phone" value="{{ $warehouse->phone }}" required>
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">Address</label>
-                <textarea class="form-control" name="address" cols="30" rows="4" required>{{ $warehouse->address }}</textarea>
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="description" cols="30" rows="4" required>{{ $class->description }}</textarea>
             </div>
 
         </div>
     </div>
     <div class="modal-footer">
         <a href="{{ URL::previous() }}" class="btn btn-secondary">Close</a>
-        <button type="submit" class="btn btn-primary">Submit now</button>
+        <button type="submit" class="btn btn-info">Update now</button>
     </div>
 </form>
 @endsection

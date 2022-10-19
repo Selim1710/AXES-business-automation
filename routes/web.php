@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AccountSetupController;
 use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\DailyProcess;
@@ -77,6 +78,39 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/edit/stock/{id}', [ProductSetupController::class, 'editStock'])->name('admin.edit.stock');
         Route::post('/update/stock/{id}', [ProductSetupController::class, 'updateStock'])->name('admin.update.stock');
         Route::get('/delete/stock/{id}', [ProductSetupController::class, 'deleteStock'])->name('admin.delete.stock');
+        
+    });
+
+    // account setup
+    Route::group(['prefix' => 'account-setup'], function () {
+
+        // class
+        Route::get('/manage/class', [AccountSetupController::class, 'manageClass'])->name('admin.manage.class');
+        Route::post('/store/class', [AccountSetupController::class, 'storeClass'])->name('admin.store.class');
+        Route::get('/edit/class/{id}', [AccountSetupController::class, 'editClass'])->name('admin.edit.class');
+        Route::post('/update/class/{id}', [AccountSetupController::class, 'updateClass'])->name('admin.update.class');
+        Route::get('/delete/class/{id}', [AccountSetupController::class, 'deleteClass'])->name('admin.delete.class');
+
+        // group
+        Route::get('/manage/group', [AccountSetupController::class, 'manageGroup'])->name('admin.manage.group');
+        Route::post('/store/group', [AccountSetupController::class, 'storeGroup'])->name('admin.store.group');
+        Route::get('/edit/group/{id}', [AccountSetupController::class, 'editGroup'])->name('admin.edit.group');
+        Route::post('/update/group/{id}', [AccountSetupController::class, 'updateGroup'])->name('admin.update.group');
+        Route::get('/delete/group/{id}', [AccountSetupController::class, 'deleteGroup'])->name('admin.delete.group');
+
+        // sub-group
+        Route::get('/manage/sub-group', [AccountSetupController::class, 'manageSubGroup'])->name('admin.manage.sub-group');
+        Route::post('/store/sub-group', [AccountSetupController::class, 'storeSubGroup'])->name('admin.store.sub-group');
+        Route::get('/edit/sub-group/{id}', [AccountSetupController::class, 'editSubGroup'])->name('admin.edit.sub-group');
+        Route::post('/update/sub-group/{id}', [AccountSetupController::class, 'updateSubGroup'])->name('admin.update.sub-group');
+        Route::get('/delete/sub-group/{id}', [AccountSetupController::class, 'deleteSubGroup'])->name('admin.delete.sub-group');
+        
+        // ledger
+        Route::get('/manage/ledger', [AccountSetupController::class, 'manageLedger'])->name('admin.manage.ledger');
+        Route::post('/store/ledger', [AccountSetupController::class, 'storeLedger'])->name('admin.store.ledger');
+        Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
+        Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
+        Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
         
     });
 
