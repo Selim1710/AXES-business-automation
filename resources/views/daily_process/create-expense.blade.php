@@ -36,7 +36,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><b>Expenses No:</b></span>
-                                                <input type="text" class="form-control" maxlength="15" name="invno" id="invno" value="EXP181022102" placeholder="e.g. AXE121119101" autocomplete="off">
+                                                <input type="text" class="form-control" maxlength="15" name="invno" id="invno"  placeholder="e.g. AXE121119101" autocomplete="off">
                                             </div>
                                         </div>
                                         <br>

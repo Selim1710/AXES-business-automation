@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
 
-
-
 Route::get('/', function () {
     return view('dashboard.index');
 });
@@ -31,6 +29,9 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
         Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
+        //RecitController
+         Route::get('/billReciept','RecieptController@index');
+         Route::get('/getPrice/{id}', 'RecieptController@getPrice');
 
     });
 
@@ -110,14 +111,14 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/edit/sub-group/{id}', [AccountSetupController::class, 'editSubGroup'])->name('admin.edit.sub-group');
         Route::post('/update/sub-group/{id}', [AccountSetupController::class, 'updateSubGroup'])->name('admin.update.sub-group');
         Route::get('/delete/sub-group/{id}', [AccountSetupController::class, 'deleteSubGroup'])->name('admin.delete.sub-group');
-        
+
         // ledger
         Route::get('/manage/ledger', [AccountSetupController::class, 'manageLedger'])->name('admin.manage.ledger');
         Route::post('/store/ledger', [AccountSetupController::class, 'storeLedger'])->name('admin.store.ledger');
         Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
         Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
         Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
-        
+
     });
 
     //user
