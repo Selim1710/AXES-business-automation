@@ -24,16 +24,6 @@
                                     </button>
                                 </div>
                         </div>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
 
                         <form action="{{  route('add-expenses') }}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -99,18 +89,23 @@
                     <td>{{$expenseshead->description}}</td>
 
                     <td>
-                        <a class="btn btn-success" style="font-size:13px" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" style="font-size:13px " href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <div style="min-width: 10rem;">
+                            <a class="btn btn-success" style="font-size:13px" href="{{route ('edit-expenses-head',['id'=>$expenseshead->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('delete-expenses-head')}}" method="post"style="display:inline">
+                            @csrf
+                            <input type="hidden" name="expenseshead_id" value="{{$expenseshead->id}}" >
+                            <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                           </form>
+                        </div>
+
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
-<tbody>
 
-</tbody>
             </table>
         </div>
-    </div>
+
 
 
 @endsection
