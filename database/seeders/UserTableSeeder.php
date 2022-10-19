@@ -19,29 +19,44 @@ class UserTableSeeder extends Seeder
         $admistrator = User::create([
             'name'=> 'Administrator',
             'email'=> 'administrator@gmail.com',
-            'password'=>'$2y$10$Q0Ar5Ap.3JtsegrGWXN0cOAY0qUAPj9qDkLJWeNH9Uht.vwtIsuD.'
+            'password'=>bcrypt(1111)
         ]);
         
         $super_admin = User::create([
             'name'=> 'Super Admin',
             'email'=> 'superadmin@gmail.com',
-            'password'=>'$2y$10$Q0Ar5Ap.3JtsegrGWXN0cOAY0qUAPj9qDkLJWeNH9Uht.vwtIsuD.'
+            'password'=>bcrypt(1111)
         ]);
 
 
         //
-        $admistrator_role = Role::create(['name' => 'administrator']);
-        $super_admin_role = Role::create(['name' => 'super_admin']);
+        $admistrator_role = Role::create(['name' => 'Administrator']);
+        $super_admin_role = Role::create(['name' => 'Super Admin']);
 
         $permission = Permission::create(['name' => 'Role access','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'Role edit','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'Role create','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'Role delete','group_id'=>'1', 'group_name'=>'Users And Role']);
+        $permission = Permission::create(['name' => 'Role print','group_id'=>'1', 'group_name'=>'Users And Role']);
 
         $permission = Permission::create(['name' => 'User access','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'User edit','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'User create','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'User delete','group_id'=>'1', 'group_name'=>'Users And Role']);
+        $permission = Permission::create(['name' => 'User print','group_id'=>'1', 'group_name'=>'Users And Role']);
+
+        $permission = Permission::create(['name' => 'Expenses Head access','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head edit','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head create','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head delete','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head print','group_id'=>'2', 'group_name'=>'Daily Process']);
+
+        $permission = Permission::create(['name' => 'Expense access','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense edit','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense create','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense delete','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense print','group_id'=>'2', 'group_name'=>'Daily Process']);
+
 
         // $permission = Permission::create(['name' => 'Permission access']);
         // $permission = Permission::create(['name' => 'Permission edit']);

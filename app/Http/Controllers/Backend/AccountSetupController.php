@@ -111,7 +111,7 @@ class AccountSetupController extends Controller
     public function storeSubGroup(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:sub_groups',
             'description' => 'required',
 
             'group_id' => 'required',
@@ -191,4 +191,6 @@ class AccountSetupController extends Controller
     }
 
     ///////////////// Journal entry ///////////////
+
+    
 }

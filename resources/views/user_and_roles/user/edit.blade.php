@@ -10,9 +10,12 @@
 @endif
 <div class="d-flex justify-content-center">
 <div class="card" style="width: 500px">
-    <div class="card-header d-flex justify-content-between">
-        Edit User
-    </div>
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-2">
+      Edit User
+    </h5>
+    
+  </div>
     <div class="card-body">
       <div class="border p-3 rounded">
         <form method="POST" action="{{route('users.update', $user->id)}}">
@@ -52,7 +55,20 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
           
-          
+        <div class="create-user-with-role">
+          <h6>Roles</h6>
+              <div class="grid grid-cols-3 gap-4">
+              @foreach($roles as $role)
+
+              <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{$role->id}}" name="roles[] "value="{{$role->id}}" @if (count($user->roles->where('id',$role->id)))
+                      checked
+                  @endif>
+                  <label class="form-check-label" for="flexSwitchCheckDefault{{$role->id}}">{{ $role->name }}</label>
+              </div>
+              @endforeach
+              </div>
+        </div>
         <div class="col-12">
           <div class="d-grid">
             @csrf
