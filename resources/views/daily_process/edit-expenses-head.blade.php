@@ -29,7 +29,7 @@
                         <label class="form-label">NAME</label>
                         <input type="text" class="form-control" name="name" value="{{ $expenseshead->name }}" placeholder="Name">
                     </div>
-                    
+
                     <br>
                     <div class="col-12">
                         <label class="form-label">DESCRIPTION</label>
