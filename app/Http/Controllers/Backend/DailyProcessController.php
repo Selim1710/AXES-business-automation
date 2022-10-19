@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Category;
-use App\Models\Expenseshead;
-use App\Models\ExpensestypeModel;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use DB;
+use Illuminate\Http\Request;
+use App\Models\ExpensestypeModel;
+use App\Models\Expenseshead;
 
-
-class DailyProcess extends Controller
+class DailyProcessController extends Controller
 {
     public function PriceList(){
         return view('daily_process.price');
@@ -63,13 +62,26 @@ class DailyProcess extends Controller
         return back()->with('message','Deleted');
 
     }
-    public function editExpensesHead(){
+    public function editExpensesHead($id){
+
         return view('daily_process.edit-expenses-head',[
-            'expenseshead'=>Expenseshead::find('$expenseshead->id')
+            'expenseshead' => Expenseshead::find($id),
+
+
         ]);
     }
+    public function updateExpensesHead(Request $request,$id){
+        $expenseshead = Expenseshead::find($id);
+        $expenseshead ->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        
+
+        return redirect()->back()->with('message', 'Update Successfully');
+    }
+
     public function createExpense(){
         return view('daily_process.create-expense');
     }
-
 }

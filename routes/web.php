@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
-use App\Http\Controllers\DailyProcess;
+use App\Http\Controllers\Backend\DailyProcessController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
+
 
 
 Route::get('/', function () {
@@ -16,18 +17,19 @@ Route::group(['prefix' => 'backend'], function () {
 
     // daily process
      Route::group(['prefix' => 'daily-process'], function () {
-        Route::get('/price-list', [DailyProcess::class, 'PriceList'])->name('price-list');
-        Route::get('/expense-record', [DailyProcess::class, 'expenseRecord'])->name('expense-record');
-        Route::get('/expenses-head', [DailyProcess::class, 'expensesHead'])->name('expenses-head');
-        Route::get('/add-expenses-head', [DailyProcess::class, 'AddExpensesHead'])->name('add-expenses-head');
-        Route::get('/priceblade', [DailyProcess::class, 'PriceList'])->name('priceblade');
+        Route::get('/price-list', [DailyProcessController::class, 'PriceList'])->name('price-list');
+        Route::get('/expense-record', [DailyProcessController::class, 'expenseRecord'])->name('expense-record');
+        Route::get('/expenses-head', [DailyProcessController::class, 'expensesHead'])->name('expenses-head');
+        Route::get('/add-expenses-head', [DailyProcessController::class, 'AddExpensesHead'])->name('add-expenses-head');
+        Route::get('/priceblade', [DailyProcessController::class, 'PriceList'])->name('priceblade');
 
-        Route::get('/add-expenses-category',[DailyProcess::class,'addExpensesCategory'])->name('add-expenses-category');
-        Route::get('/new-category',[DailyProcess::class,'saveCategory'])->name('new-category');
-        Route::post('/add-expenses',[DailyProcess::class,'saveExpenses'])->name('add-expenses');
-        Route::post('/delete-expenses-head',[DailyProcess:: class,'deleteExpensesHead'])->name('delete-expenses-head');
-        Route::get('/edit-expenses-head',[DailyProcess:: class,'editExpensesHead'])->name('edit-expenses-head');
-        Route::get('/create-expense',[DailyProcess:: class,'createExpense'])->name('create-expense');
+        Route::get('/add-expenses-category',[DailyProcessController::class,'addExpensesCategory'])->name('add-expenses-category');
+        Route::get('/new-category',[DailyProcessController::class,'saveCategory'])->name('new-category');
+        Route::post('/add-expenses',[DailyProcessController::class,'saveExpenses'])->name('add-expenses');
+        Route::post('/delete-expenses-head',[DailyProcessController:: class,'deleteExpensesHead'])->name('delete-expenses-head');
+        Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
+        Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
+        Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
 
     });
 
@@ -81,7 +83,7 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/edit/stock/{id}', [ProductSetupController::class, 'editStock'])->name('admin.edit.stock');
         Route::post('/update/stock/{id}', [ProductSetupController::class, 'updateStock'])->name('admin.update.stock');
         Route::get('/delete/stock/{id}', [ProductSetupController::class, 'deleteStock'])->name('admin.delete.stock');
-        
+
     });
 
     //user

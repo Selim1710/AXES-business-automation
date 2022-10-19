@@ -54,7 +54,7 @@
                                         <div class="form-group" >
                                             <label>Expenses Head</label>
                                             <div class="input-group">
-                                                <select class="form-control select2" name="expid" id="expid">
+                                                <select class="form-control" name="expid" id="expid">
                                                     <option value="">-Select-</option>
                                                     <option value="15">900032 - Telephones &amp; Mobile Bill</option>
                                                     <option value="16">900022 - Electricity Bills</option>
@@ -70,21 +70,11 @@
                                                     <option value="31">900026 - Office Rent</option>
                                                     <option value="35">900031 - Water Bill</option>
                                                     <option value="53">900037 - Vehicle  Bill</option>
-                                                    <option value="54">900036 - Entertainment</option>
-                                                    <option value="80">900049 - Printing Bill</option>
-                                                    <option value="82">900054 - Service Bill</option>
-                                                    <option value="85">900039 - Software Expence</option>
-                                                    <option value="86">900040 - Md. Ayazul Haque (Remuneration)</option>
-                                                    <option value="93">900057 - Warranty Product Service Bill</option>
-                                                    <option value="94">900047 - Festival Bonus</option>
-                                                    <option value="95">900048 - Loan Commission</option>
-                                                    <option value="102">900051 - Delivery Expense</option>
-                                                    <option value="104">900052 - Profit On Loan (Azizul Haque Khoka)</option>
-                                                    <option value="105">900053 - Remuneration (Md. Kamrul Hasan)</option>
-                                                    <option value="109">800032 - Sale Comition</option>
-                                                    <option value="110">900058 - Cleaning Bill</option>
+
                                                 </select>
-                                                <span class="input-group-addon"><a id="aexpi"><span class="fa fa-plus"></span></a></span>
+
+
+
                                             </div>
                                         </div>
                                     </div>
