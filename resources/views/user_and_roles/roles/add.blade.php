@@ -62,7 +62,9 @@
                 <th scope="col">Read</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Create</th>
+                
                 <th scope="col">Delete</th>
+                <th scope="col">Print</th>
               </tr>
             </thead>
             <tbody>
@@ -82,7 +84,7 @@
                 foreach($permission as $key => $value ){
                     $sub_module[] =$value;
                 }
-                $sub_module = array_chunk($permission,4,true);
+                $sub_module = array_chunk($permission,5,true);
                 
              @endphp
               @foreach ($sub_module as $sub_mod)
