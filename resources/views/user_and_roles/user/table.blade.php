@@ -54,6 +54,7 @@
 
                                       <div class="create-user-with-role">
                                         <h6>Roles</h6>
+                                        
                                             <div class="grid grid-cols-3 gap-4">
                                             @foreach($roles as $role)
                                             <div class="form-check form-switch mb-3">
