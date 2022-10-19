@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All warehouse</h2>
+<h2 class="mt-4 mb-4">All Sub-Group</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,17 +14,19 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouse">Create New warehouse</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subGroup">
+            Create New Sub-Group
+        </button>
         <!-- Modal -->
-        <div class="modal fade" id="warehouse" tabindex="-1" aria-labelledby="warehouseLabel" aria-hidden="true">
+        <div class="modal fade" id="subGroup" tabindex="-1" aria-labelledby="subGroupLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="warehouseLabel">Create New warehouse</h5>
+                        <h5 class="modal-title" id="subGroupLabel">Create New Sub-Group</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="{{ route('inventory.warehouse.add') }}" method="POST">
+                    <form action="{{ route('admin.store.sub-group') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -41,23 +43,23 @@
 
                             <div class="border p-3 rounded">
                                 <div class="col-12">
+                                    <label class="form-label">Group Name</label>
+                                    <select name="group_id" class="form-control">
+                                        <option value="">-- SELECT --</option>
+                                        @foreach ($groups as $group)
+                                        <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
                                     <label class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" name="email" required>
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Phone</label>
-                                    <input type="number" class="form-control" name="phone" required>
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Address</label>
-                                    <textarea class="form-control" name="address" cols="30" rows="4" required></textarea>
+                                    <label class="form-label">description</label>
+                                    <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
                                 </div>
 
                             </div>
@@ -71,39 +73,34 @@
             </div>
         </div>
     </div>
+    <!-- table -->
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
                     <th>SN</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
+                    <th>Description</th>
 
                     <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($warehouses as $key=>$warehouse)
+                @forelse ($subGroups as $key=>$subGroup)
                 <tr>
                     <td>{{ $key+1 }} </td>
-                    <td>{{ $warehouse->name }}</td>
-                    <td>{{ $warehouse->email }}</td>
-                    <td>{{ $warehouse->phone }}</td>
-                    <td>{{ $warehouse->address }}</td>
+                    <td>{{ $subGroup->name }}</td>
+                    <td>{{ $subGroup->description }}</td>
 
                     <td>
-                        <a class="btn btn-success" href="{{ route('inventory.warehouse.edit', $warehouse->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('inventory.warehouse.delete', $warehouse->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('admin.edit.sub-group', $subGroup->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.sub-group', $subGroup->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
-                <p class="text-danger text-center">No warehouse available</p>
+                <p class="text-danger text-center">No Sub-Group available</p>
                 @endforelse
-
-
             </tbody>
         </table>
     </div>

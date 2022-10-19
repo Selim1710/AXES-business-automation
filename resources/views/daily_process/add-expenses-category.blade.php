@@ -9,6 +9,12 @@
             <div class="col-lg-7">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Add Category Form</h3></div>
+                    <!-- message -->
+                    @if(session()->has('message'))
+                        <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+                    @elseif(session()->has('error'))
+                        <p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+                    @endif
                     <div class="card-body">
                         <form action="{{ route('new-category') }}"  enctype="multipart/form-data">
                             @csrf

@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Category;
-use App\Models\Expenseshead;
-use App\Models\ExpensestypeModel;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use DB;
+use Illuminate\Http\Request;
+use App\Models\ExpensestypeModel;
+use App\Models\Expenseshead;
 
-
-class DailyProcess extends Controller
+class DailyProcessController extends Controller
 {
     public function PriceList(){
         return view('daily_process.price');
@@ -39,13 +38,14 @@ class DailyProcess extends Controller
     }
     public function addExpensesCategory(){
         return view('daily_process.add-expenses-category');
+
     }
 
     public function saveCategory(Request $request){
         $category =new ExpensestypeModel();
         $category->category_name=$request->category_name;
         $category->save();
-        return back();
+        return redirect()->back()->with('message', 'Category Add Successfully');
 
     }
     public function saveExpenses(Request $request){
@@ -57,4 +57,32 @@ class DailyProcess extends Controller
         return back();
     }
 
+    public function deleteExpensesHead(Request $request){
+        $expenseshead=Expenseshead::find($request->expenseshead_id);
+        $expenseshead->delete();
+        return back()->with('message','Deleted');
+
+    }
+    public function editExpensesHead($id){
+
+        return view('daily_process.edit-expenses-head',[
+            'expenseshead' => Expenseshead::find($id),
+
+
+        ]);
+    }
+    public function updateExpensesHead(Request $request,$id){
+        $expenseshead = Expenseshead::find($id);
+        $expenseshead ->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+
+        return redirect()->back()->with('message', 'Update Successfully');
+    }
+
+    public function createExpense(){
+        return view('daily_process.create-expense');
+    }
 }
