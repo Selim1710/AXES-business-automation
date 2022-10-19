@@ -38,13 +38,14 @@ class DailyProcessController extends Controller
     }
     public function addExpensesCategory(){
         return view('daily_process.add-expenses-category');
+
     }
 
     public function saveCategory(Request $request){
         $category =new ExpensestypeModel();
         $category->category_name=$request->category_name;
         $category->save();
-        return back();
+        return redirect()->back()->with('message', 'Category Add Successfully');
 
     }
     public function saveExpenses(Request $request){
@@ -76,7 +77,7 @@ class DailyProcessController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
-        
+
 
         return redirect()->back()->with('message', 'Update Successfully');
     }
