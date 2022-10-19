@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
+@if(session('success'))
+<div class="alert alert-success mt-4" role="alert">
+    {{session('success')}}
+</div>
+@endif
     <h2 class="mt-4 mb-4">All Roles</h2>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
@@ -52,7 +56,7 @@
                             <div style="min-width: 10rem;">
                                 <a class="btn btn-success" style="font-size:13px" href="{{route('roles.edit',$role->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                                 
-                                <form action="{{ route('users.destroy', $role->id) }}" method="POST" style="display:inline">
+                                <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

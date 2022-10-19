@@ -43,6 +43,16 @@ class UserTableSeeder extends Seeder
         $permission = Permission::create(['name' => 'User create','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'User delete','group_id'=>'1', 'group_name'=>'Users And Role']);
 
+        $permission = Permission::create(['name' => 'Expenses Head access','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head edit','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head create','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expenses Head delete','group_id'=>'2', 'group_name'=>'Daily Process']);
+
+        $permission = Permission::create(['name' => 'Expense access','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense edit','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense create','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = Permission::create(['name' => 'Expense delete','group_id'=>'2', 'group_name'=>'Daily Process']);
+
         // $permission = Permission::create(['name' => 'Permission access']);
         // $permission = Permission::create(['name' => 'Permission edit']);
         // $permission = Permission::create(['name' => 'Permission create']);

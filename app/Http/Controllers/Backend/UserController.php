@@ -19,8 +19,8 @@ class UserController extends Controller
     public function index()
     {
         $user= User::latest()->get();
-
-        return view('user_and_roles.user.table',['users'=>$user]);
+        $roles = Role::get();
+        return view('user_and_roles.user.table',['users'=>$user, 'roles'=> $roles]);
     }
 
     /**
@@ -145,9 +145,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(User $user)
     {
-        $role->delete();
-        return redirect()->back()->withSuccess('Role deleted !!!');
+        $user->delete();
+        return redirect()->back()->withSuccess('User deleted Successfully!');
     }
 }
