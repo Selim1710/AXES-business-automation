@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Axes Bussiness Automation</title>
+
     <link rel="icon" href="{{asset('adminAsset')}}/assets/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
     <link href="{{asset('adminAsset')}}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -29,27 +31,29 @@
 </head>
 
 <body class="sb-nav-fixed">
-    @include('layouts.navbar')
+    @if (Route::has('login'))
+        @auth
+            @include('layouts.navbar')
+        @endauth
+    @endif
     <div id="layoutSidenav">
-        @include('layouts.sidebar');
+        @if (Route::has('login'))
+            @auth
+                @include('layouts.sidebar');
+            @endauth
+        @endif
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     @yield('content')
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            @if (Route::has('login'))
+            @auth
+                @include('layouts.footer')
+            @endauth
+        @endif
+            
         </div>
     </div>
 

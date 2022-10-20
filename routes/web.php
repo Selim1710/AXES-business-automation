@@ -9,15 +9,20 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
 
 
-
 Route::get('/', function () {
+    return view('auth.login');
+})->middleware(['guest']);
+
+Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware(['auth'])->name('dashboard');
 
-Route::group(['prefix' => 'backend'], function () {
+require __DIR__.'/auth.php';
 
-    // daily process
-     Route::group(['prefix' => 'daily-process'], function () {
+Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
+
+        // daily process
+        Route::group(['prefix' => 'daily-process'], function () {
         Route::get('/price-list', [DailyProcessController::class, 'PriceList'])->name('price-list');
         Route::get('/expense-record', [DailyProcessController::class, 'expenseRecord'])->name('expense-record');
         Route::get('/expenses-head', [DailyProcessController::class, 'expensesHead'])->name('expenses-head');
