@@ -56,20 +56,9 @@
                                             <div class="input-group">
                                                 <select class="form-control" name="expid" id="expid">
                                                     <option value="">-Select-</option>
-                                                    <option value="15">900032 - Telephones &amp; Mobile Bill</option>
-                                                    <option value="16">900022 - Electricity Bills</option>
-                                                    <option value="19">900019 - Conveyances</option>
-                                                    <option value="20">900027 - Office Stationeries</option>
-                                                    <option value="21">900020 - Internet &amp; IT Expenses</option>
-                                                    <option value="22">900034 - Sundry Expenses</option>
-                                                    <option value="23">900025 - Licences &amp; Renewals</option>
-                                                    <option value="24">900029 - Sales Commission</option>
-                                                    <option value="25">900056 - VAT On Purchase</option>
-                                                    <option value="26">900055 - Tax On Purchase</option>
-                                                    <option value="28">900033 - Tips &amp; Donations</option>
-                                                    <option value="31">900026 - Office Rent</option>
-                                                    <option value="35">900031 - Water Bill</option>
-                                                    <option value="53">900037 - Vehicle  Bill</option>
+                                                    @foreach($categories as $category)
+                                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                    @endforeach
 
                                                 </select>
 

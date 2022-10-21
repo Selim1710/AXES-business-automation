@@ -18,6 +18,9 @@
 
                         <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
                         <a class="nav-link" href="{{ route("create-expense") }}">Create Expenses</a>
+
+                        <a class="nav-link" href="{{ route("expenses/page") }}">Expenses</a>
+
                         <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
 
                     </nav>
@@ -69,7 +72,7 @@
                         <a class="nav-link" href="{{ route('admin.manage.stock') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Stock</a>
                     </nav>
                 </div>
-                
+
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -98,8 +101,8 @@
                         <a class="nav-link" href="{{route('roles.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Role List</a>
                         <a class="nav-link" href="{{route('roles.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Role</a>
                         <a class="nav-link" href="{{route('users.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Users</a>
-                        
-                        
+
+
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">

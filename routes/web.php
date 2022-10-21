@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DailyProcessController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SalesController;
 
 Route::get('/', function () {
     return view('dashboard.index');
@@ -29,9 +30,17 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
         Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
-        //RecitController
-         Route::get('/billReciept','RecieptController@index');
-         Route::get('/getPrice/{id}', 'RecieptController@getPrice');
+
+
+        // expenses
+
+         Route::get('/payments',[SalesController:: class,'Payments'])->name('payments');
+         Route::get('/expenses/page',[SalesController:: class,'Expenses'])->name('expenses/page');
+         Route::post('/expenses/save',[SalesController:: class,'saveRecord'])->name('expenses/save');
+         Route::post('/expenses/update',[SalesController:: class,'updateRecord'])->name('expenses/update');
+         Route::post('/expenses/delete',[SalesController:: class,'deleteRecord'])->name('expenses/delete');
+         Route::get('/expenses/search',[SalesController:: class,'searchRecord'])->name('expenses/search');
+
 
     });
 

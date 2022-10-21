@@ -83,6 +83,14 @@ class DailyProcessController extends Controller
     }
 
     public function createExpense(){
-        return view('daily_process.create-expense');
+        return view('daily_process.create-expense',[
+            'categories'=>ExpensestypeModel::where('status',1)->orderby('id','desc')->get(),
+            'categories'=> ExpensestypeModel::all(),
+
+        ]);
+    }
+
+    public function Expense(){
+        return view('daily_process.expense');
     }
 }
