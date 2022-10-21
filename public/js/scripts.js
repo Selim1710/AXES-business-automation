@@ -32,7 +32,7 @@ $(function(){
         var $this = $(this);
         // if the current path is like this link, make it active
         if($this.attr('href') == current){
-            $this.css({"background-color": "#393939"});
+            $this.css({"background-color": "#164384"});
             $this.parent('.nav').parent('.collapse').addClass('show');
 
         }

@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="alert alert-danger" id="password_error" style="display: none"></div>
 
-                                      <div class="create-user-with-role">
+ 
                                         <h6>Roles</h6>
                                         
                                             <div class="grid grid-cols-3 gap-4">
