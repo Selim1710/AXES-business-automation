@@ -37,4 +37,42 @@ $(function(){
 
         }
     })
+
+    var theTotal = 0;
+
+    $('#addexp').click(function(e){
+        $('#totalitemfoot').css('opacity','1');
+        var amount = $.trim($('#amount').val());
+        if(amount != '' ){
+            if(!isNaN(amount)){
+
+                theTotal = Number(theTotal) + Number(amount);
+                $('#itemdata').append(`<tr><td style="width:40px; text-align:center"></td><td>Expenses Head</td><td class ="thisamount">${amount}</td><td>Ref</td><td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a></td></tr>`);
+                $('#amount').val("");
+                $('#totalamount').text( theTotal);
+
+                updateSerial();
+            }
+        }
+    });
+
+    $('#itemdata').on('click','.removedata',function(){
+        var currentamount = $(this).closest('tr').find('.thisamount').html();
+        theTotal = Number(theTotal) - Number(currentamount);
+        $('#totalamount').text( theTotal);
+        $(this).closest('tr').remove();
+
+         
+        updateSerial()
+    });
+    
+    //update the serial no
+    function updateSerial(){
+        
+        var table = document.getElementById("create_expanse_table");
+        var rowcountAfterDelete = document.getElementById("create_expanse_table").rows.length -1; 
+        for(var i=1;i<rowcountAfterDelete;i++){    
+            table.rows[i].cells[0].innerHTML=i;
+        } 
+    }
 })
