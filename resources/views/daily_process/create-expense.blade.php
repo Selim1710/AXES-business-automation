@@ -76,7 +76,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Amount</label>
-                                            <input type="text" maxlength="6" class="form-control" name="amount" id="amount"  onkeypress="return isNumberKey(event)" placeholder="e.g. 500" autocomplete="off">
+                                            <input type="text" maxlength="6" class="form-control" name="amount" id="amount" placeholder="e.g. 500" autocomplete="off" required>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -90,8 +90,8 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table table-bordered table-striped"style="background-color: #babebf;">
-                                            <thead>
+                                        <table class="table table-bordered table-striped" id="create_expanse_table">
+                                            <thead style="background-color: #babebf;">
                                             <th style="width:40px; text-align:center">SN</th>
                                             <th>Expenses Head</th>
                                             <th>Amount</th>
@@ -99,10 +99,15 @@
                                             <th style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a></th>
                                             </thead>
                                             <tbody id="itemdata">
-
+              
                                             </tbody>
-                                            <tfoot id="itemfoot">
-
+                                            <tfoot id="totalitemfoot" style="opacity: 0">
+                                                    <td style="width:40px; text-align:center"></td>
+                                                    <td style="text-align: right;">Total</td>
+                                                    <td id="totalamount"></td>
+                                                    <input type="hidden" name="totalvalue" id="totalvalue">
+                                                    <td></td>
+                                                    <td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"></a></td> 
                                             </tfoot>
                                         </table>
                                     </div>
