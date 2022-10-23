@@ -38,14 +38,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
 
         // expenses
-
-         Route::get('/payments',[SalesController:: class,'Payments'])->name('payments');
-         Route::get('/expenses/page',[SalesController:: class,'Expenses'])->name('expenses/page');
-         Route::post('/expenses/save',[SalesController:: class,'saveRecord'])->name('expenses/save');
-         Route::post('/expenses/update',[SalesController:: class,'updateRecord'])->name('expenses/update');
-         Route::post('/expenses/delete',[SalesController:: class,'deleteRecord'])->name('expenses/delete');
-         Route::get('/expenses/search',[SalesController:: class,'searchRecord'])->name('expenses/search');
-
+            Route::post('/expense-voucher',[DailyProcessController:: class,'saveExpenseVoucher'])->name('expense-voucher');
 
     });
 
@@ -132,6 +125,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
         Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
         Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
+
 
     });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\ExpensestypeModel;
@@ -84,13 +85,29 @@ class DailyProcessController extends Controller
 
     public function createExpense(){
         return view('daily_process.create-expense',[
-            'categories'=>ExpensestypeModel::where('status',1)->orderby('id','desc')->get(),
-            'categories'=> ExpensestypeModel::all(),
+
+            'categories'=> Expenseshead::all(),
+
 
         ]);
     }
 
     public function Expense(){
         return view('daily_process.expense');
+    }
+    //Expense Voucher
+    public function saveExpenseVoucher (Request $request){
+        return $request;
+        $invoice =new Invoice();
+        $invoice->invno=$request->invno;
+        $invoice->totalamount=$request->totalamount;
+        $invoice->note=$request->note;
+        $invoice->expense=$request->expense;
+        return $request;
+
+
+        $invoice->save();
+        return redirect()->back();
+
     }
 }

@@ -19,7 +19,6 @@
                         <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
                         <a class="nav-link" href="{{ route("create-expense") }}">Create Expenses</a>
 
-                        <a class="nav-link" href="{{ route("expenses/page") }}">Expenses</a>
 
                         <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
 
@@ -104,7 +103,7 @@
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>  
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
                     </nav>
                 </div>
 
