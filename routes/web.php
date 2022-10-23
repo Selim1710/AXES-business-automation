@@ -35,9 +35,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
         Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
+        Route::get('/edit-expenses-record/{id}',[DailyProcessController:: class,'editExpenseRecord'])->name('edit-expenses-record');
+        Route::post('/update-expenses-record/{id}',[DailyProcessController:: class,'updateExpenseRecord'])->name('update-expenses-record');
+        Route::post('/delete-expenses-record',[DailyProcessController:: class,'deleteExpenseRecord'])->name('delete-expenses-record');
 
-
-        // expenses
+        // expense
             Route::post('/expense-voucher',[DailyProcessController:: class,'saveExpenseVoucher'])->name('expense-voucher');
 
     });

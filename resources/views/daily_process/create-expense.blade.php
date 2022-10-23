@@ -22,6 +22,11 @@
                                         <h3 id="exp"  class="page-title">EXPENSES VOUCHER</h3><br><br>
                                     </center>
                                 </div>
+                                @if(session()->has('message'))
+                                    <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+                                @elseif(session()->has('error'))
+                                    <p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+                                @endif
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -56,9 +61,9 @@
                                         <div class="form-group" >
                                             <label>Expenses Head</label>
                                             <div class="input-group">
-                                                <select class="form-control" name="expense" id="expense">
-                                                    <option value="">-Select-</option>
+                                                <select class="form-control" id="expense">
                                                     @foreach($categories as $category)
+                                                        <option value="">-Select-</option>
                                                         <option  value="{{$category->name}}">{{$category->name}}</option>
                                                     @endforeach
 
@@ -108,7 +113,6 @@
                                                     <td style="text-align: right;">Total</td>
                                                     <td id="totalamount"></td>
                                                     <input type="hidden" name="ref" id="ref">
-                                                    <input type="hidden" name="expenses_type" id="expense">
 
                                                     <input type="hidden" name="totalamount" id="totalvalue">
                                                     <td></td>

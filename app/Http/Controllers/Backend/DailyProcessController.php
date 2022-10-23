@@ -15,7 +15,9 @@ class DailyProcessController extends Controller
         return view('daily_process.price');
     }
     public function expenseRecord(){
-        return view('daily_process.expense-record');
+        return view('daily_process.expense-record',[
+            'invoices'=>Invoice::all()
+        ]);
     }
     public function expensesHead(){
         $expenseshead=DB::table('expensesheads')
@@ -97,17 +99,38 @@ class DailyProcessController extends Controller
     }
     //Expense Voucher
     public function saveExpenseVoucher (Request $request){
-        return $request;
+//           dd($request);
         $invoice =new Invoice();
         $invoice->invno=$request->invno;
+        $invoice->date=$request->date;
         $invoice->totalamount=$request->totalamount;
         $invoice->note=$request->note;
-        $invoice->expense=$request->expense;
-        return $request;
-
-
         $invoice->save();
-        return redirect()->back();
+        return back()->with('message', 'Create Expense Successfully');
+
+    }
+    public function editExpenseRecord($id){
+        return view('daily_process.edit-expenses-record',[
+            'invoice' => Invoice::find($id),
+
+
+        ]);
+    }
+    public function updateExpenseRecord(Request $request,$id){
+        $invoice = Invoice::find($id);
+        $invoice ->update([
+            'invno' => $request->invno,
+            'date' => $request->date,
+            'totalamount' => $request->totalamount,
+            'note' => $request->note,
+        ]);
+
+        return redirect()->back()->with('message', 'Update Successfully');
+    }
+    public function deleteExpenseRecord(Request $request){
+        $invoice=Invoice::find($request->invoice_id);
+        $invoice->delete();
+        return back()->with('message','Deleted Successfully');
 
     }
 }
