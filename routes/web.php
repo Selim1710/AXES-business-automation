@@ -129,6 +129,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
         Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
         Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
+        
+        // journal
+        Route::get('/manage/journal', [AccountSetupController::class, 'manageJournal'])->name('admin.manage.journal');
+        Route::post('/store/journal', [AccountSetupController::class, 'storeJournal'])->name('admin.store.journal');
+        Route::get('/edit/journal/{id}', [AccountSetupController::class, 'editJournal'])->name('admin.edit.journal');
+        Route::post('/update/journal/{id}', [AccountSetupController::class, 'updateJournal'])->name('admin.update.journal');
+        Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
 
 
     });

@@ -46,7 +46,7 @@
                 <!-- inventory -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    inventory
+                    Inventory
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
@@ -59,7 +59,7 @@
                 <!-- product setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#productSetup" aria-expanded="false" aria-controls="productSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Product-setup
+                    Products Setup
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
@@ -75,7 +75,7 @@
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Account-setup
+                    Accounts Setup
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
@@ -85,6 +85,7 @@
                         <a class="nav-link" href="{{ route('admin.manage.group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Group</a>
                         <a class="nav-link" href="{{ route('admin.manage.sub-group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sub-Group</a>
                         <a class="nav-link" href="{{ route('admin.manage.ledger') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Ledger</a>
+                        <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
                     </nav>
                 </div>
 
