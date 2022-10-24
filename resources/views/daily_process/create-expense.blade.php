@@ -22,11 +22,6 @@
                                         <h3 id="exp"  class="page-title">EXPENSES VOUCHER</h3><br><br>
                                     </center>
                                 </div>
-                                @if(session()->has('message'))
-                                    <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
-                                @elseif(session()->has('error'))
-                                    <p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
-                                @endif
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -45,6 +40,9 @@
                                                 <input type="text" class="form-control" maxlength="15" name="invno" id="invno"  placeholder="e.g. AXE121119101" autocomplete="off">
                                             </div>
                                         </div>
+                                        @error('invno')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <br>
                                         <div class="form-group" >
                                             <div class="input-group">
@@ -54,6 +52,9 @@
                                             </div>
                                         </div>
                                         <br>
+                                        @error('date')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
@@ -66,7 +67,6 @@
                                                         <option value="">-Select-</option>
                                                         <option  value="{{$category->name}}">{{$category->name}}</option>
                                                     @endforeach
-
                                                 </select>
 
 
@@ -85,7 +85,11 @@
                                             <label>Amount</label>
                                             <input type="text" maxlength="6" class="form-control" name="totalamount" id="amount" placeholder="e.g. 500" autocomplete="off" >
                                         </div>
+
                                     </div>
+                                    @error('totalamount')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
