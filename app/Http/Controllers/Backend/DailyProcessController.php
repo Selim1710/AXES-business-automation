@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend\make;
-use App\Models\Invoice;
 use DB;
 use Validator;
 use Illuminate\Http\Request;
-use App\Models\ExpensestypeModel;
-use App\Models\Expenseshead;
+use App\Models\DailyProcess\ExpensestypeModel;
+use App\Models\DailyProcess\Expenseshead;
+use App\Models\DailyProcess\Invoice;
 
 class DailyProcessController extends Controller
 {

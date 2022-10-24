@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\DailyProcess;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Invoice;
+
 
 class Invoice extends Model
 {
