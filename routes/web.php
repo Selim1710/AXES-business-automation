@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Backend\AccountSetupController;
+use App\Http\Controllers\Backend\Bank\BankAccountController;
 use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
+use App\Http\Controllers\Backend\Bank\BankController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
-
 
 Route::get('/', function () {
     return view('auth.login');
@@ -130,6 +131,12 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Roles
     Route::resource('roles', RoleController::class);
+
+    //Banks
+    Route::resource('banks', BankController::class);
+
+    //Bank Account
+    Route::resource('bank-account', BankAccountController::class);
 
 
 });

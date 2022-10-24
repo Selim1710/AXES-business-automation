@@ -94,10 +94,10 @@
                 </a>
                 <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingNine" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Bank List</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Bank</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Account List</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Account</a>
+                        <a class="nav-link" href="{{route('banks.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Bank List</a>
+                        <a class="nav-link" href="{{route('banks.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Bank</a>
+                        <a class="nav-link" href="{{route('bank-account.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Account List</a>
+                        <a class="nav-link" href="{{route('bank-account.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Account</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>

@@ -1,19 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
-@if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
-
-<div class="card" style="position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%)">
+<div class="card" style="width:500px; position: absolute; top: 50%; left:50%; transform:translate(-50%, -50%)">
     <div class="card-header">
         <h5 class="text-center">AXES Business Automation</h5>
     </div>
     <div class="card-body">
+      @if ($errors->any())
+          <ul style="list-style: none; padding:0; margin: 0">
+              @foreach ($errors->all() as $error)
+                  <li class="alert alert-danger mb-3" role="alert">{{ $error }}</li>
+              @endforeach
+          </ul>
+      @endif
       <div class="border p-3 rounded">
       <h6 class="mb-0 text-uppercase">Login form</h6>
        <hr>
