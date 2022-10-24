@@ -58,7 +58,7 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 1rem;
+  --bs-body-font-size: .9rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
@@ -12541,9 +12541,9 @@ body {
 .sb-topnav {
   background: #41295a;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #0093d0, #00305d);
+  background: -webkit-linear-gradient(to bottom, #0a1418, #00305d);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #0093d0, #00305d);
+  background: linear-gradient(to bottom, #0a1418, #00305d);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   padding-left: 0;
