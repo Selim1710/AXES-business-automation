@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Stock;
-use App\Models\SubCategory;
+use App\Models\ProductSetup\Category;
+use App\Models\ProductSetup\Product;
+use App\Models\ProductSetup\Stock;
+use App\Models\ProductSetup\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductSetupController extends Controller
