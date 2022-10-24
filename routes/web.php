@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
+use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
@@ -45,6 +46,22 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
             Route::post('/expense-voucher',[DailyProcessController:: class,'saveExpenseVoucher'])->name('expense-voucher');
 
     });
+
+
+
+
+    // service
+    Route::group(['prefix' => 'service'], function () {
+        // Service Received Create
+        Route::get('/service-received-create', [ServiceController::class, 'storeReceivedCreate'])->name('service-received-create');
+
+    });
+
+
+
+
+
+
 
     // inventory
     Route::group(['prefix' => 'inventory'], function () {
