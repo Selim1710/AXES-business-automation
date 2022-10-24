@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('tittle')
-Expenses List
+Expenses Record List
 @endsection
 
 @section('content')
-<div class="card mb-4">
+<div class="card mb-4" style="margin-top: 22px;">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Expenses List
+        Expenses Record List
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -15,35 +15,36 @@ Expenses List
 
             <tr>
                 <th>SN</th>
-                <th>NAME</th>
-                <th>TYPE</th>
-                <th>DESCRIPTION</th>
-                <th>Action</th>
+                <th>DATE</th>
+                <th>EXPENSES NO</th>
+                <th>AMOUNT</th>
+                <th>NOTE</th>
+                <th>ACTION</th>
             </tr>
             </thead>
             <tbody>
-
+            @php $i=1 @endphp
+            @foreach($invoices as $invoice)
                 <tr>
-                    <td>ggf</td>
-                    <td>fg</td>
-                    <td>fgf</td>
-                    <td>fgf</td>
-
-
+                    <td>{{ $i++ }} </td>
+                    <td>{{ $invoice->date }} </td>
+                    <td>{{ $invoice->invno }} </td>
+                    <td>{{ $invoice->totalamount }} </td>
+                    <td>{{ $invoice->note }} </td>
 
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                            <form action="" method="post"style="display:inline">
-
-                                <input type="hidden" name="expenseshead_id" value="" >
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('edit-expenses-record',['id'=>$invoice->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('delete-expenses-record')}}" method="post"style="display:inline">
+                                @csrf
+                                <input type="hidden" name="invoice_id" value="{{$invoice->id}}" >
                                 <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
 
                     </td>
                 </tr>
-
+            @endforeach
 
             </tbody>
 

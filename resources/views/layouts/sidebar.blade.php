@@ -14,11 +14,13 @@
                 </a>
                 <div class="collapse" id="collapseLayoutDailyProcess" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route("price-list") }}">Price List</a>
+                        <a class="nav-link" href="{{ route("price-list") }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
 
-                        <a class="nav-link" href="{{ route("expense-record") }}">Expenses Record</a>
-                        <a class="nav-link" href="{{ route("create-expense") }}">Create Expenses</a>
-                        <a class="nav-link" href="{{route("expenses-head")}}"> Expenses Head</a>
+                        <a class="nav-link" href="{{ route("expense-record") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
+                        <a class="nav-link" href="{{ route("create-expense") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
+
+
+                        <a class="nav-link" href="{{route("expenses-head")}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
 
                     </nav>
                 </div>
@@ -30,12 +32,12 @@
 
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#">Purchase Order</a>
-                        <a class="nav-link" href="#">Purchase Order Create</a>
-                        <a class="nav-link" href="#">Purchase Invoice</a>
-                        <a class="nav-link" href="#">Purchase Invoice Create</a>
-                        <a class="nav-link" href="#"> Purchase Return</a>
-                        <a class="nav-link" href="#">Purchase Return Create</a>
+                        <a class="nav-link" href="#"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order Create</a>
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice</a>
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Purchase Return</a>
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return Create</a>
                     </nav>
                 </div>
 
@@ -69,7 +71,7 @@
                         <a class="nav-link" href="{{ route('admin.manage.stock') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Stock</a>
                     </nav>
                 </div>
-                
+
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -101,7 +103,7 @@
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
                         <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>  
+                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
                     </nav>
                 </div>
 
@@ -115,8 +117,8 @@
                         <a class="nav-link" href="{{route('roles.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Role List</a>
                         <a class="nav-link" href="{{route('roles.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Role</a>
                         <a class="nav-link" href="{{route('users.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Users</a>
-                        
-                        
+
+
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">

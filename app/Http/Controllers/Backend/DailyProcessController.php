@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\ExpensestypeModel;
@@ -14,7 +15,9 @@ class DailyProcessController extends Controller
         return view('daily_process.price');
     }
     public function expenseRecord(){
-        return view('daily_process.expense-record');
+        return view('daily_process.expense-record',[
+            'invoices'=>Invoice::all()
+        ]);
     }
     public function expensesHead(){
         $expenseshead=DB::table('expensesheads')
@@ -83,6 +86,51 @@ class DailyProcessController extends Controller
     }
 
     public function createExpense(){
-        return view('daily_process.create-expense');
+        return view('daily_process.create-expense',[
+
+            'categories'=> Expenseshead::all(),
+
+
+        ]);
+    }
+
+    public function Expense(){
+        return view('daily_process.expense');
+    }
+    //Expense Voucher
+    public function saveExpenseVoucher (Request $request){
+//           dd($request);
+        $invoice =new Invoice();
+        $invoice->invno=$request->invno;
+        $invoice->date=$request->date;
+        $invoice->totalamount=$request->totalamount;
+        $invoice->note=$request->note;
+        $invoice->save();
+        return back()->with('message', 'Create Expense Successfully');
+
+    }
+    public function editExpenseRecord($id){
+        return view('daily_process.edit-expenses-record',[
+            'invoice' => Invoice::find($id),
+
+
+        ]);
+    }
+    public function updateExpenseRecord(Request $request,$id){
+        $invoice = Invoice::find($id);
+        $invoice ->update([
+            'invno' => $request->invno,
+            'date' => $request->date,
+            'totalamount' => $request->totalamount,
+            'note' => $request->note,
+        ]);
+
+        return redirect()->back()->with('message', 'Update Successfully');
+    }
+    public function deleteExpenseRecord(Request $request){
+        $invoice=Invoice::find($request->invoice_id);
+        $invoice->delete();
+        return back()->with('message','Deleted Successfully');
+
     }
 }

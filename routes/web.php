@@ -37,6 +37,12 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
         Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
+        Route::get('/edit-expenses-record/{id}',[DailyProcessController:: class,'editExpenseRecord'])->name('edit-expenses-record');
+        Route::post('/update-expenses-record/{id}',[DailyProcessController:: class,'updateExpenseRecord'])->name('update-expenses-record');
+        Route::post('/delete-expenses-record',[DailyProcessController:: class,'deleteExpenseRecord'])->name('delete-expenses-record');
+
+        // expense
+            Route::post('/expense-voucher',[DailyProcessController:: class,'saveExpenseVoucher'])->name('expense-voucher');
 
     });
 
@@ -116,14 +122,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/sub-group/{id}', [AccountSetupController::class, 'editSubGroup'])->name('admin.edit.sub-group');
         Route::post('/update/sub-group/{id}', [AccountSetupController::class, 'updateSubGroup'])->name('admin.update.sub-group');
         Route::get('/delete/sub-group/{id}', [AccountSetupController::class, 'deleteSubGroup'])->name('admin.delete.sub-group');
-        
+
         // ledger
         Route::get('/manage/ledger', [AccountSetupController::class, 'manageLedger'])->name('admin.manage.ledger');
         Route::post('/store/ledger', [AccountSetupController::class, 'storeLedger'])->name('admin.store.ledger');
         Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
         Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
         Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
-        
+
+
     });
 
     //user

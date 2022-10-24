@@ -14,13 +14,19 @@
                     <div class="box-body">
                         <div class="card">
                             <div class="card-body">
-                        <form action="dai_expensescreate.php" onsubmit="return validate()" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                        <form action="{{route('expense-voucher')}}" onsubmit="return validate()" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                            @csrf
                             <div class="col-md-12 popup_details_div">
                                 <div class="row">
                                     <center>
-                                        <h3 class="page-title">EXPENSES VOUCHER</h3><br><br>
+                                        <h3 id="exp"  class="page-title">EXPENSES VOUCHER</h3><br><br>
                                     </center>
                                 </div>
+                                @if(session()->has('message'))
+                                    <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+                                @elseif(session()->has('error'))
+                                    <p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+                                @endif
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -36,14 +42,15 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><b>Expenses No:</b></span>
-                                                <input type="text" class="form-control" maxlength="15" name="invno" id="invno" value="EXP181022102" placeholder="e.g. AXE121119101" autocomplete="off">
+                                                <input type="text" class="form-control" maxlength="15" name="invno" id="invno"  placeholder="e.g. AXE121119101" autocomplete="off">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-group" >
                                             <div class="input-group">
-                                                <span class="input-group-addon"><b>Date:</b></span>
-                                                <input class="form-control" id="inputEmail" type="date" name="date"/>
+                                                <span  class="input-group-addon"><b>Date:</b></span>
+
+                                                <input class="form-control"   id="currentDate"  type="date" name="date">
                                             </div>
                                         </div>
                                         <br>
@@ -54,22 +61,11 @@
                                         <div class="form-group" >
                                             <label>Expenses Head</label>
                                             <div class="input-group">
-                                                <select class="form-control" name="expid" id="expid">
-                                                    <option value="">-Select-</option>
-                                                    <option value="15">900032 - Telephones &amp; Mobile Bill</option>
-                                                    <option value="16">900022 - Electricity Bills</option>
-                                                    <option value="19">900019 - Conveyances</option>
-                                                    <option value="20">900027 - Office Stationeries</option>
-                                                    <option value="21">900020 - Internet &amp; IT Expenses</option>
-                                                    <option value="22">900034 - Sundry Expenses</option>
-                                                    <option value="23">900025 - Licences &amp; Renewals</option>
-                                                    <option value="24">900029 - Sales Commission</option>
-                                                    <option value="25">900056 - VAT On Purchase</option>
-                                                    <option value="26">900055 - Tax On Purchase</option>
-                                                    <option value="28">900033 - Tips &amp; Donations</option>
-                                                    <option value="31">900026 - Office Rent</option>
-                                                    <option value="35">900031 - Water Bill</option>
-                                                    <option value="53">900037 - Vehicle  Bill</option>
+                                                <select class="form-control" id="expense">
+                                                    @foreach($categories as $category)
+                                                        <option value="">-Select-</option>
+                                                        <option  value="{{$category->name}}">{{$category->name}}</option>
+                                                    @endforeach
 
                                                 </select>
 
@@ -87,7 +83,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Amount</label>
-                                            <input type="text" maxlength="6" class="form-control" name="amount" id="amount" placeholder="e.g. 500" autocomplete="off" required>
+                                            <input type="text" maxlength="6" class="form-control" name="totalamount" id="amount" placeholder="e.g. 500" autocomplete="off" >
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -110,15 +106,17 @@
                                             <th style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a></th>
                                             </thead>
                                             <tbody id="itemdata">
-              
+
                                             </tbody>
                                             <tfoot id="totalitemfoot" style="opacity: 0">
                                                     <td style="width:40px; text-align:center"></td>
                                                     <td style="text-align: right;">Total</td>
                                                     <td id="totalamount"></td>
-                                                    <input type="hidden" name="totalvalue" id="totalvalue">
+                                                    <input type="hidden" name="ref" id="ref">
+
+                                                    <input type="hidden" name="totalamount" id="totalvalue">
                                                     <td></td>
-                                                    <td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"></a></td> 
+                                                    <td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"></a></td>
                                             </tfoot>
                                         </table>
                                     </div>
@@ -137,12 +135,10 @@
                             <div class="col-md-12 nopadding widgets_area"></div>
                             <div class="row"style="margin-top: 15px" >
                                 <div class="col-md-8"></div>
-                                <div class="col-md-4 text-right" >
-                                    <input type="button" id="expreset" class="btn btn-flat bg-red btn-sm " style="background-color: red;
-                                              color: white;" value="Reset"/>
-                                    <input type="submit" name="save_expenses" id="submit" class="btn btn-flat bg-purple btn-sm" value="Save"/>
-                                    <a href="dai_expenlist.php" class="btn btn-flat bg-gray  " style="background-color: #babebf;
-                                              color: white;">Close</a>
+
+                                <div class="modal-footer">
+
+                                    <input type="submit" class="btn btn-primary" value="submit">
                                 </div>
                             </div>
                         </form>
@@ -151,4 +147,11 @@
                     </div>
                 </div>
             </div>
+            <script>
+                var date = new Date();
+                var currentDate = date.toISOString().slice(0,10);
+
+                document.getElementById('currentDate').value = currentDate;
+            </script>
+
 @endsection
