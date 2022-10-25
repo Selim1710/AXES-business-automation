@@ -6,9 +6,10 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
+use App\Http\Controllers\Backend\Bank\MobileAccountController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\UserAndRoles\UserController;
+use App\Http\Controllers\Backend\UserAndRoles\RoleController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -146,4 +147,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::resource('bank-account', BankAccountController::class);
 
 
+    //Mobile Account
+    Route::resource('mobile-account', MobileAccountController::class);
 });

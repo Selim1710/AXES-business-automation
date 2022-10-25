@@ -15,6 +15,6 @@ class Bank extends Model
     ];
 
     public function bank_account(){
-       return $this->hasMany(BankAccounts::class);
+        return $this->hasMany(BankAccounts::class);
     }
 }
