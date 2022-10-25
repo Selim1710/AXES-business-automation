@@ -51,7 +51,7 @@
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="#"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service List</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
+                        <a class="nav-link" href="{{route('service-received-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
                         <a class="nav-link" href="{{route('service-received-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received Create</a>
                     </nav>
                 </div>
