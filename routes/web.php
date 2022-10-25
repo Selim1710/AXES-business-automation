@@ -50,10 +50,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
 
 
-    // service
-    Route::group(['prefix' => 'service'], function () {
+    // Service
+    Route::group(['prefix' => 'Service'], function () {
         // Service Received Create
-        Route::get('/service-received-create', [ServiceController::class, 'storeReceivedCreate'])->name('service-received-create');
+        Route::get('/service-received-create', [ServiceController::class, 'CustomerReceivedCreate'])->name('service-received-create');
+        Route::post('/service-received-store', [ServiceController::class, 'CustomerReceivedstore'])->name('service-received-store');
+        Route::get('/service-received-show', [ServiceController::class, 'CustomerReceivedshow'])->name('service-received-show');
+        Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
+        Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
+        Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
 
     });
 
@@ -146,7 +151,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/ledger/{id}', [AccountSetupController::class, 'editLedger'])->name('admin.edit.ledger');
         Route::post('/update/ledger/{id}', [AccountSetupController::class, 'updateLedger'])->name('admin.update.ledger');
         Route::get('/delete/ledger/{id}', [AccountSetupController::class, 'deleteLedger'])->name('admin.delete.ledger');
-        
+
         // journal
         Route::get('/manage/journal', [AccountSetupController::class, 'manageJournal'])->name('admin.manage.journal');
         Route::post('/store/journal', [AccountSetupController::class, 'storeJournal'])->name('admin.store.journal');
