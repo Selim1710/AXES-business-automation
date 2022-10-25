@@ -8,6 +8,7 @@ use App\Models\AccountSetup\Group;
 use App\Models\AccountSetup\Ledger;
 use App\Models\AccountSetup\SubGroup;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AccountSetupController extends Controller
 {
@@ -193,11 +194,13 @@ class AccountSetupController extends Controller
     ///////////////// Journal entry ///////////////
     public function manageJournal()
     {
+        // return ( Carbon::now() ); 
+
         dd('here');
-        $classes = AllClass::with('group')->orderBy('id', 'desc')->get();
-        // dd($classes);
+        $Journal = AllClass::with('group')->orderBy('id', 'desc')->get();
+        // dd($Journal);
         $groups = Group::with('allClass')->orderBy('id', 'desc')->get();
-        return view('account_setup.journal.journal_table', compact('groups', 'classes'));
+        return view('account_setup.journal.journal_table', compact('groups', 'Journal'));
     }
 
     public function storeJournal(Request $request)
