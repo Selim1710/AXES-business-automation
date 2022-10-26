@@ -12541,9 +12541,9 @@ body {
 .sb-topnav {
   background: #41295a;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #0a1418, #00305d);
+  background: -webkit-linear-gradient(to bottom, #40407a, #00305d);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #0a1418, #00305d);
+  background: linear-gradient(to bottom, #40407a, #00305d);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   padding-left: 0;

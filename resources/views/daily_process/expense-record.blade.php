@@ -9,6 +9,12 @@ Expenses Record List
         <i class="fas fa-table me-1"></i>
         Expenses Record List
     </div>
+    <!-- message -->
+    @if(session()->has('message'))
+        <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+    @elseif(session()->has('error'))
+        <p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+    @endif
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>

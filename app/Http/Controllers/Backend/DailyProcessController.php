@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Invoice;
+use App\Http\Controllers\Backend\make;
 use DB;
+use Validator;
 use Illuminate\Http\Request;
-use App\Models\ExpensestypeModel;
-use App\Models\Expenseshead;
+use App\Models\DailyProcess\ExpensestypeModel;
+use App\Models\DailyProcess\Expenseshead;
+use App\Models\DailyProcess\Invoice;
 
 class DailyProcessController extends Controller
 {
@@ -75,6 +77,7 @@ class DailyProcessController extends Controller
         ]);
     }
     public function updateExpensesHead(Request $request,$id){
+
         $expenseshead = Expenseshead::find($id);
         $expenseshead ->update([
             'name' => $request->name,
@@ -98,17 +101,28 @@ class DailyProcessController extends Controller
         return view('daily_process.expense');
     }
     //Expense Voucher
-    public function saveExpenseVoucher (Request $request){
-//           dd($request);
-        $invoice =new Invoice();
-        $invoice->invno=$request->invno;
-        $invoice->date=$request->date;
-        $invoice->totalamount=$request->totalamount;
-        $invoice->note=$request->note;
-        $invoice->save();
-        return back()->with('message', 'Create Expense Successfully');
+    public function saveExpenseVoucher (Request $request)
+    {
+
+        $this->validate($request,[
+            'invno' => 'unique:invoices,invno|required',
+            'date' => 'required',
+            'totalamount' => 'required',
+            'note' => 'nullable',
+        ]);
+
+        $invoice = new Invoice();
+            $invoice->invno = $request->invno;
+            $invoice->date = $request->date;
+            $invoice->totalamount = $request->totalamount;
+            $invoice->note = $request->note;
+            $invoice->save();
+            return redirect()->back()->withSuccess('Expense Create Successfully');
+
 
     }
+
+
     public function editExpenseRecord($id){
         return view('daily_process.edit-expenses-record',[
             'invoice' => Invoice::find($id),

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Stock;
-use App\Models\SubCategory;
+use App\Models\ProductSetup\Category;
+use App\Models\ProductSetup\Product;
+use App\Models\ProductSetup\Stock;
+use App\Models\ProductSetup\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductSetupController extends Controller
@@ -15,7 +15,7 @@ class ProductSetupController extends Controller
     public function manageCategory()
     {
         $categories = Category::all()->sortByDesc('id')->values();
-        return view('product_setup.category.category_table', compact('categories'));
+        return view('product_setup.category.table', compact('categories'));
     }
 
     public function storeCategory(Request $request)
@@ -34,7 +34,7 @@ class ProductSetupController extends Controller
     public function editCategory($id)
     {
         $category = Category::find($id);
-        return view('product_setup.category.edit_category', compact('category'));
+        return view('product_setup.category.edit', compact('category'));
     }
     public function updateCategory(Request $request, $id)
     {
@@ -49,7 +49,7 @@ class ProductSetupController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('admin.manage.category')->with('error', 'no image found! Category deleted');
+        return redirect()->route('admin.manage.category')->with('error', 'Category deleted');
     }
 
     /////////////// sub-Cagegory ///////////////
@@ -57,7 +57,7 @@ class ProductSetupController extends Controller
     {
         $categories = Category::with('subCategories')->orderBy('id', 'desc')->get();
         $subCategories = SubCategory::with('category')->orderBy('id', 'desc')->get();
-        return view('product_setup.subCategory.subCategory_table', compact('categories', 'subCategories'));
+        return view('product_setup.subCategory.table', compact('categories', 'subCategories'));
     }
 
     public function storeSubCategory(Request $request)
@@ -78,7 +78,7 @@ class ProductSetupController extends Controller
     public function editSubCategory($id)
     {
         $subCategory = SubCategory::find($id);
-        return view('product_setup.subCategory.edit_subCategory', compact('subCategory'));
+        return view('product_setup.subCategory.edit', compact('subCategory'));
     }
     public function updateSubCategory(Request $request, $id)
     {
@@ -102,7 +102,7 @@ class ProductSetupController extends Controller
         // dd('here');
         $subCategories = SubCategory::with('product')->orderBy('id', 'desc')->get();
         $products = Product::with('subCategory')->orderBy('id', 'desc')->get();
-        return view('product_setup.product.product_table', compact('subCategories', 'products'));
+        return view('product_setup.product.table', compact('subCategories', 'products'));
     }
 
     public function storeProduct(Request $request)
@@ -137,7 +137,7 @@ class ProductSetupController extends Controller
     public function editProduct($id)
     {
         $product = Product::find($id);
-        return view('product_setup.product.edit_product', compact('product'));
+        return view('product_setup.product.edit', compact('product'));
     }
     public function updateProduct(Request $request, $id)
     {
@@ -167,7 +167,7 @@ class ProductSetupController extends Controller
     public function viewProduct($id)
     {
         $product = Product::find($id);
-        return view('product_setup.product.view_product', compact('product'));
+        return view('product_setup.product.view', compact('product'));
     }
     public function changeProduct(Request $request, $id)
     {
@@ -189,7 +189,7 @@ class ProductSetupController extends Controller
     {
         $products = Product::with('stock')->orderBy('id', 'desc')->get();
         $stocks = Stock::with('product')->orderBy('id', 'desc')->get();
-        return view('product_setup.stock.stock_table', compact('products','stocks'));
+        return view('product_setup.stock.table', compact('products','stocks'));
     }
 
     public function storeStock(Request $request)
@@ -207,7 +207,7 @@ class ProductSetupController extends Controller
     public function editStock($id)
     {
         $stock = Stock::find($id);
-        return view('product_setup.stock.edit_stock', compact('stock'));
+        return view('product_setup.stock.edit', compact('stock'));
     }
     public function updateStock(Request $request, $id)
     {

@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\ProductSetup;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ledger extends Model
+class Category extends Model
 {
     use HasFactory;
-
     protected $guarded=[];
 
-    public function subGroup(){
-        return $this ->belongsTo(SubGroup::class);
+    public function subCategories(){
+        return $this->hasMany(Subcategory::class);
     }
 }

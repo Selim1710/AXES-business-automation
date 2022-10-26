@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\AllClass;
-use App\Models\Group;
-use App\Models\Ledger;
-use App\Models\SubGroup;
+use App\Models\AccountSetup\AllClass;
+use App\Models\AccountSetup\Group;
+use App\Models\AccountSetup\Ledger;
+use App\Models\AccountSetup\SubGroup;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AccountSetupController extends Controller
 {
@@ -191,6 +192,56 @@ class AccountSetupController extends Controller
     }
 
     ///////////////// Journal entry ///////////////
+    public function manageJournal()
+    {
+        // return ( Carbon::now() ); 
 
+        dd('here');
+        $Journal = AllClass::with('group')->orderBy('id', 'desc')->get();
+        // dd($Journal);
+        $groups = Group::with('allClass')->orderBy('id', 'desc')->get();
+        return view('account_setup.journal.journal_table', compact('groups', 'Journal'));
+    }
+
+    public function storeJournal(Request $request)
+    {
+        dd('here');
+        $request->validate([
+            'name' => 'required|unique:groups|max:20',
+            'description' => 'required',
+            'class_id' => 'required',
+        ]);
+        Group::create([
+            'name' => $request->name,
+            'description' => $request->description,
+
+            'all_class_id' => $request->class_id,
+        ]);
+        return redirect()->route('admin.manage.group')->with('message', 'group added successfully');
+    }
+
+    public function editJournal($id)
+    {
+        dd('here');
+        $group = Group::find($id);
+        return view('account_setup.journal.edit_journal', compact('group'));
+    }
+    public function updateJournal(Request $request, $id)
+    {
+        dd('here');
+        $group = Group::find($id);
+        $group->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('admin.manage.journal')->with('message', 'journal Updated Successfully');
+    }
+    public function deleteJournal($id)
+    {
+        dd('here');
+        $group = Group::find($id);
+        $group->delete();
+        return redirect()->route('admin.manage.journal')->with('error', 'journal Deleted');
+    }
     
 }
