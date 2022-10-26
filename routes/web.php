@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
+use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
@@ -19,32 +20,31 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
-        // daily process
-        Route::group(['prefix' => 'daily-process'], function () {
+    // daily process
+    Route::group(['prefix' => 'daily-process'], function () {
         Route::get('/price-list', [DailyProcessController::class, 'PriceList'])->name('price-list');
         Route::get('/expense-record', [DailyProcessController::class, 'expenseRecord'])->name('expense-record');
         Route::get('/expenses-head', [DailyProcessController::class, 'expensesHead'])->name('expenses-head');
         Route::get('/add-expenses-head', [DailyProcessController::class, 'AddExpensesHead'])->name('add-expenses-head');
         Route::get('/priceblade', [DailyProcessController::class, 'PriceList'])->name('priceblade');
 
-        Route::get('/add-expenses-category',[DailyProcessController::class,'addExpensesCategory'])->name('add-expenses-category');
-        Route::get('/new-category',[DailyProcessController::class,'saveCategory'])->name('new-category');
-        Route::post('/add-expenses',[DailyProcessController::class,'saveExpenses'])->name('add-expenses');
-        Route::post('/delete-expenses-head',[DailyProcessController:: class,'deleteExpensesHead'])->name('delete-expenses-head');
-        Route::get('/edit-expenses-head/{id}',[DailyProcessController:: class,'editExpensesHead'])->name('edit-expenses-head');
-        Route::post('/update-expenses-head/{id}',[DailyProcessController:: class,'updateExpensesHead'])->name('update-expenses-head');
-        Route::get('/create-expense',[DailyProcessController:: class,'createExpense'])->name('create-expense');
-        Route::get('/edit-expenses-record/{id}',[DailyProcessController:: class,'editExpenseRecord'])->name('edit-expenses-record');
-        Route::post('/update-expenses-record/{id}',[DailyProcessController:: class,'updateExpenseRecord'])->name('update-expenses-record');
-        Route::post('/delete-expenses-record',[DailyProcessController:: class,'deleteExpenseRecord'])->name('delete-expenses-record');
+        Route::get('/add-expenses-category', [DailyProcessController::class, 'addExpensesCategory'])->name('add-expenses-category');
+        Route::get('/new-category', [DailyProcessController::class, 'saveCategory'])->name('new-category');
+        Route::post('/add-expenses', [DailyProcessController::class, 'saveExpenses'])->name('add-expenses');
+        Route::post('/delete-expenses-head', [DailyProcessController::class, 'deleteExpensesHead'])->name('delete-expenses-head');
+        Route::get('/edit-expenses-head/{id}', [DailyProcessController::class, 'editExpensesHead'])->name('edit-expenses-head');
+        Route::post('/update-expenses-head/{id}', [DailyProcessController::class, 'updateExpensesHead'])->name('update-expenses-head');
+        Route::get('/create-expense', [DailyProcessController::class, 'createExpense'])->name('create-expense');
+        Route::get('/edit-expenses-record/{id}', [DailyProcessController::class, 'editExpenseRecord'])->name('edit-expenses-record');
+        Route::post('/update-expenses-record/{id}', [DailyProcessController::class, 'updateExpenseRecord'])->name('update-expenses-record');
+        Route::post('/delete-expenses-record', [DailyProcessController::class, 'deleteExpenseRecord'])->name('delete-expenses-record');
 
         // expense
-            Route::post('/expense-voucher',[DailyProcessController:: class,'saveExpenseVoucher'])->name('expense-voucher');
-
+        Route::post('/expense-voucher', [DailyProcessController::class, 'saveExpenseVoucher'])->name('expense-voucher');
     });
 
 
@@ -65,11 +65,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     });
 
 
-
-
-
-
-
     // inventory
     Route::group(['prefix' => 'inventory'], function () {
         // branch
@@ -85,7 +80,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse/edit/{id}', [InventoryController::class, 'editWarehouse'])->name('inventory.warehouse.edit');
         Route::post('/warehouse/update/{id}', [InventoryController::class, 'updateWarehouse'])->name('inventory.warehouse.update');
         Route::get('/warehouse/delete/{id}', [InventoryController::class, 'destroyWarehouse'])->name('inventory.warehouse.delete');
+    });
 
+
+    // client-setup
+    Route::group(['prefix' => 'client_setup'], function () {
+        // group
+        Route::resource('all_group', ClientAllGroupController::class);
+        Route::get('/all_group/delete/{id}', [ClientAllGroupController::class, 'destroy'])->name('client_setup.group.delete');
+    
     });
 
     // product setup
@@ -120,7 +123,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/stock/{id}', [ProductSetupController::class, 'editStock'])->name('admin.edit.stock');
         Route::post('/update/stock/{id}', [ProductSetupController::class, 'updateStock'])->name('admin.update.stock');
         Route::get('/delete/stock/{id}', [ProductSetupController::class, 'deleteStock'])->name('admin.delete.stock');
-
     });
 
     // account setup
@@ -160,8 +162,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/journal/{id}', [AccountSetupController::class, 'editJournal'])->name('admin.edit.journal');
         Route::post('/update/journal/{id}', [AccountSetupController::class, 'updateJournal'])->name('admin.update.journal');
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
-
-
     });
 
     //user
@@ -175,6 +175,4 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Bank Account
     Route::resource('bank-account', BankAccountController::class);
-
-
 });

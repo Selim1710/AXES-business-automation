@@ -70,6 +70,20 @@
                         <a class="nav-link" href="{{ route('inventory.warehouse.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warehouse</a>
                     </nav>
                 </div>
+
+                <!-- client setup -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#clientSetup" aria-expanded="false" aria-controls="clientSetup">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Client Setup
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="clientSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('all_group.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> All-Group </a>
+                        
+                    </nav>
+                </div>
                 <!-- product setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#productSetup" aria-expanded="false" aria-controls="productSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -106,7 +120,7 @@
                 <hr>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
-                        Bank
+                    Bank
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingNine" data-bs-parent="#sidenavAccordion">
@@ -169,12 +183,12 @@
                 </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                <a class="nav-link collapsed" onclick="event.preventDefault(); this.closest('form').submit();" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutLogOut" aria-expanded="false" aria-controls="collapseLayoutLogOut">
-                    <div class="sb-nav-link-icon"><i class="fa fa-sign-out" aria-hidden="true"></i>
-                      &nbsp; Log Out
-                    <div class="sb-sidenav-collapse-arrow"> </div>
-                </a>
-            </form>
+                    <a class="nav-link collapsed" onclick="event.preventDefault(); this.closest('form').submit();" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutLogOut" aria-expanded="false" aria-controls="collapseLayoutLogOut">
+                        <div class="sb-nav-link-icon"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                            &nbsp; Log Out
+                            <div class="sb-sidenav-collapse-arrow"> </div>
+                    </a>
+                </form>
             </div>
         </div>
     </nav>
