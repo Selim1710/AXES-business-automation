@@ -59,7 +59,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
-
+       // Service list
+        Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
+        Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
     });
 
 

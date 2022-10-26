@@ -36,7 +36,7 @@
                 @foreach($servicestore as $servicestoredata)
 
                     <tr>
-                        < <td>{{ $i++ }} </td>
+                         <td>{{ $i++ }} </td>
                         <td>{{ $servicestoredata->cname }} </td>
                         <td>{{ $servicestoredata->deli_date }} </td>
                         <td>{{ $servicestoredata->invoice_no }} </td>
