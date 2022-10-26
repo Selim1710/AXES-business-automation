@@ -24,6 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('access')->nullable();;
             $table->string('status')->nullable();;
             $table->rememberToken();
+
+            $table->unsignedBigInteger('client_groups_id')->nullable();
+            $table->foreign('client_groups_id')
+                    ->references('id')
+                    ->on('client_groups')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

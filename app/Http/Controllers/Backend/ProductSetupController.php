@@ -49,7 +49,7 @@ class ProductSetupController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('admin.manage.category')->with('error', 'no image found! Category deleted');
+        return redirect()->route('admin.manage.category')->with('error', 'Category deleted');
     }
 
     /////////////// sub-Cagegory ///////////////
