@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
-use App\Models\Service\ServiceCreate;
 
+use App\Models\Service\ServiceCreate;
+use App\Models\Service\ServiceList;
 
 use Illuminate\Http\Request;
 
@@ -67,7 +68,24 @@ class ServiceController extends Controller
         return back()->with('message','Deleted Successfully');
 
     }
+    public function serviceListShow(){
+        return view('service.service-list.service-list',[
+            'liststores'=>ServiceList::all()
+        ]);
 
+    }
+    public function serviceListStore(Request $request){
+;
+        $liststores= new ServiceList();
+        $liststores->name = $request->name;
+        $liststores->category = $request->category;
+        $liststores->cost = $request->cost;
+        $liststores->price = $request->price;
+        $liststores->description = $request->description;
+        $liststores->save();
+
+        return redirect()->route('service-list-show')->with('message', 'Create Successfully');
+    }
 }
 
 
