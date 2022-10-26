@@ -19,4 +19,20 @@
         }
 
     })
-})
+});
+
+$('#deposit-form').on('change', function() {
+    $.ajax({
+        url: "/backend/balance",
+        data:{id:$('#deposit-form').val()},
+        type: 'get',
+        success: function(result){
+           $('#account-balance').text(result);
+        },
+        error: function(resutl){
+            console.log('Error'+resutl);
+        }
+
+    });
+
+  });

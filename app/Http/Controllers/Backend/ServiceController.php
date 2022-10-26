@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Service\ServiceCreate;
 use App\Models\Service\ServiceList;
-
+use Validator;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -75,6 +75,14 @@ class ServiceController extends Controller
 
     }
     public function serviceListStore(Request $request){
+        $this->validate($request,[
+            'name' => 'required',
+            'category' => 'required',
+            'cost' => 'required',
+            'price' => 'required',
+            'description' => 'nullable',
+
+        ]);
 ;
         $liststores= new ServiceList();
         $liststores->name = $request->name;
@@ -84,7 +92,33 @@ class ServiceController extends Controller
         $liststores->description = $request->description;
         $liststores->save();
 
-        return redirect()->route('service-list-show')->with('message', 'Create Successfully');
+      return redirect()->route('service-list-show')->with('message', 'Create Successfully');
+    }
+    public function serviceListEdit($id){
+        return view('service.service-list.service-edit',[
+            'liststores' => ServiceList::find($id),
+        ]);
+
+    }
+    public function serviceListUpdate(Request $request,$id){
+
+        $liststores = ServiceList::find($id);
+        $liststores ->update([
+            'name' => $request->name,
+            'category' => $request->category,
+            'cost' => $request->cost,
+            'price' => $request->price,
+            'description' => $request->description,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+
+    }
+    public function serviceListDelete(Request $request){
+        $liststores = ServiceList::find($request->liststore_id);
+        $liststores->delete();
+        return back()->with('message','Deleted Successfully');
+
     }
 }
 

@@ -6,13 +6,15 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
+use App\Http\Controllers\Backend\Bank\MobileAccountController;
+use App\Http\Controllers\Backend\Bank\TransanctionController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
 use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\UserAndRoles\UserController;
+use App\Http\Controllers\Backend\UserAndRoles\RoleController;
 
 
 
@@ -71,6 +73,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
+        Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
+        Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
+        Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
 
     /* 
@@ -205,4 +210,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Bank Account
     Route::resource('bank-account', BankAccountController::class);
+
+
+    //Mobile Account
+    Route::resource('mobile-account', MobileAccountController::class);
+
+
+    //Transanction
+    Route::resource('transanction', TransanctionController::class);
+    Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
+
 });

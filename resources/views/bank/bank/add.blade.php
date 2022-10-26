@@ -9,7 +9,7 @@
 
 <div class="d-flex justify-content-center mt-4">
 <div class="card" style="width: 500px">
-    <div class="card-header d-flex justify-content-center">
+    <div class="card-header d-flex justify-content-center bg-primary text-white">
       <h5 class="modal-title" id="bankCreateModelLabel">Create New Bank</h5>
     </div>
     <div class="card-body">

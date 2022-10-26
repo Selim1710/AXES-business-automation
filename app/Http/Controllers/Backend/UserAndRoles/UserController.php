@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\UserAndRoles;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +11,14 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:User create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:User edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:User delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

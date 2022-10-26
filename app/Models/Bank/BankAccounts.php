@@ -9,7 +9,20 @@ class BankAccounts extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'account_no',
+        'title',
+        'bank_id',
+        'account_type',
+        'branch',
+        'branch_code',
+        'location',
+        'debit',
+        'credit',
+        'balance',
+    ];
+
     public function bank(){
-        return $this->belongsTo(BankAccounts::class);
+        return $this->belongsTo(Bank::class);
     }
 }

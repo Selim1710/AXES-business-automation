@@ -7,11 +7,13 @@
 @endif
     <h2 class="mt-4 mb-4">All Roles</h2>
     <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between">
-            <span>
-            </span>
-            <a href="{{route('roles.create')}}" class="btn btn-primary">Create New Role</a>
-        </div>
+        @can('Role create')
+            <div class="card-header d-flex justify-content-between">
+                <span>
+                </span>
+                <a href="{{route('roles.create')}}" class="btn btn-primary">Create New Role</a>
+            </div>
+        @endcan
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>

@@ -55,8 +55,6 @@
                     </div>
 
                     <div class="modal-footer">
-
-
                         <input type="submit" class="btn btn-primary" value="save">
                     </div>
 
