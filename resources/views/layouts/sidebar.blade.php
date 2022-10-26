@@ -81,6 +81,7 @@
                 <div class="collapse" id="clientSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('all_group.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> All-Group </a>
+                        <a class="nav-link" href="{{ route('customer.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Customer </a>
                         
                     </nav>
                 </div>
