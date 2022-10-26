@@ -77,6 +77,7 @@ class DailyProcessController extends Controller
         ]);
     }
     public function updateExpensesHead(Request $request,$id){
+
         $expenseshead = Expenseshead::find($id);
         $expenseshead ->update([
             'name' => $request->name,

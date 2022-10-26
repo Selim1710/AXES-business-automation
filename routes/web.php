@@ -62,6 +62,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
        // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
+        Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
+        Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
+        Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
 
 
@@ -88,7 +91,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // group
         Route::resource('all_group', ClientAllGroupController::class);
         Route::get('/all_group/delete/{id}', [ClientAllGroupController::class, 'destroy'])->name('client_setup.group.delete');
-    
+
     });
 
     // product setup

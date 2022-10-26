@@ -29,23 +29,35 @@
                                         <label class="form-label"><b>Name</b></label>
                                         <input type="text" class="form-control" name="name" placeholder="e.g Windows Installation" required>
                                     </div>
-                                    <br>
+
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="col-12">
                                         <label class="form-label"><b>Category</b></label>
-                                        <input type="text" class="form-control" name="category" placeholder="e.g hp i5 laptop"required>
+                                        <input type="text" class="form-control" name="category" placeholder="e.g hp i5 laptop" required>
                                     </div>
-                                    <br>
+
+                                    @error('category')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
                                     <div class="col-12">
                                         <label class="form-label"><b>Cost</b></label>
-                                        <input type="text" class="form-control" name="cost" placeholder="e.g 500"required>
+                                        <input type="text" class="form-control" name="cost" placeholder="e.g 500">
                                     </div>
-                                    <br>
+
+                                    @error('cost')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="col-12">
                                         <label class="form-label"><b>Price</b></label>
-                                        <input type="text" class="form-control" name="price" placeholder="e.g 1000"required>
+                                        <input type="text" class="form-control" name="price" placeholder="e.g 1000">
                                     </div>
-                                    <br>
 
+                                    @error('price')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="col-12">
                                         <label class="form-label"><b>Description</b></label>
                                         <textarea class="form-control" maxlength="250" rows="6" name="description" placeholder="Description"></textarea>
@@ -54,6 +66,7 @@
 
                                 </div>
                             </div>
+
                             <div class="modal-footer">
 
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -86,7 +99,7 @@
 
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$liststore->nname}} </td>
+                        <td>{{$liststore->name}} </td>
                         <td>{{$liststore->category}}</td>
                         <td>{{$liststore->cost}}</td>
                         <td>{{$liststore->price}}</td>
@@ -94,10 +107,10 @@
 
                         <td>
                             <div style="min-width: 10rem;">
-                                <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                <form action="" method="post"style="display:inline">
+                                <a class="btn btn-success" style="font-size:13px" href="{{route('service-list-edit',['id'=>$liststore->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                <form action="{{route('service-list-delete')}}" method="post"style="display:inline">
                                     @csrf
-                                    <input type="hidden" name="expenseshead_id" value="" >
+                                    <input type="hidden" name="liststore_id" value="{{$liststore->id}}" >
                                     <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>
