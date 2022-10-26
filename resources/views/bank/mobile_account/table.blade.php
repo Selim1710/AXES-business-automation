@@ -11,13 +11,13 @@
         <div class="card-header d-flex justify-content-between">
             <span>
             </span>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bankAccountCreateModel">Create New Bank Account</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bankAccountCreateModel">Create Mobile Account</button>
                             <!-- Modal -->
                 <div class="modal fade" id="bankAccountCreateModel" tabindex="-1" aria-labelledby="bankAccountCreateModelLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="bankAccountCreateModelLabel">Create New Bank Account</h5>
+                                <h5 class="modal-title" id="bankAccountCreateModelLabel">Create Mobile Account</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form id="create-bank" method="POST" action="{{route('mobile-account.store')}}" >
@@ -50,7 +50,7 @@
                             <div class="modal-footer">
                                 @csrf
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create Bank</button>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
                             </div>
                         </form>
                     </div>

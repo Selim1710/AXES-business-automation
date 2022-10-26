@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
+use App\Http\Controllers\Backend\Bank\TransanctionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
@@ -149,4 +150,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Mobile Account
     Route::resource('mobile-account', MobileAccountController::class);
+
+
+    //Transanction
+    Route::resource('transanction', TransanctionController::class);
+    Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
+
 });
