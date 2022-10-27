@@ -88,6 +88,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         Route::get('/service-center-show', [WarrantyController::class, 'serviceCenterShow'])->name('service-center-show');
         Route::post('/service-center-store', [WarrantyController::class, 'serviceCenterStore'])->name('service-center-store');
+        Route::get('/warranty-show', [WarrantyController::class, 'warrantyShow'])->name('warranty-show');
+        Route::post('/warranty-show-store', [WarrantyController::class, 'warrantyStore'])->name('warranty-show-store');
 
     });
 
