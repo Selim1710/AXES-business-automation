@@ -29,12 +29,12 @@
         <div class="border p-3 rounded">
             <div class="col-12">
                 <label class="form-label">Total Product</label>
-                <input type="number" class="form-control" name="total_qty"  value="{{ $stock->total_qty }}" required>
+                <input type="number" class="form-control" name="total_qty" value="{{ $stock->total_qty }}" required>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="{{ URL::previous() }}" class="btn btn-secondary">Close</a>
         <button type="submit" class="btn btn-info">Update now</button>
     </div>
 </form>

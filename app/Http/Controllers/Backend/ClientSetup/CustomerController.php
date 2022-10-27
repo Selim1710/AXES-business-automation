@@ -71,18 +71,46 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        //
+        $customer = User::find($id);
+        return view('client_setup.customer.edit', compact('customer'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "status" => "required",
+            "father_name" => "required",
+            "mother_name" => "required",
+            "NID" => "required",
+            "contact" => "required",
+            "email" => "required",
+            "address" => "required",
+            "shipping_address" => "required",
+        ]);
+        // dd($request->all());
+        // dd($request->client_group_id);
+        $customer = User::find($id);
+        $customer->update([
+            "name" => $request->name,
+            "status" => $request->status,
+            "father_name" => $request->father_name,
+            "mother_name" => $request->mother_name,
+            "NID" => $request->NID,
+            "contact" => $request->contact,
+            "email" => $request->email,
+            "address" => $request->address,
+            "shipping_address" => $request->shipping_address,
+        ]);
+        return back()->with('message', 'Customer updated');
     }
 
 
     public function destroy($id)
     {
-        //
+        $customer = User::find($id);
+        $customer->delete();
+        return back()->with('error', 'customer deleted');
     }
 }
