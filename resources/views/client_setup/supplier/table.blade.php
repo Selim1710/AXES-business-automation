@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All product</h2>
+<h2 class="mt-4 mb-4">All supplier</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,17 +14,17 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#product">Create New product</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#supplier">Create New supplier</button>
         <!-- Modal -->
-        <div class="modal fade" id="product" tabindex="-1" aria-labelledby="productLabel" aria-hidden="true">
+        <div class="modal fade" id="supplier" tabindex="-1" aria-labelledby="supplierLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="productLabel">Create New product</h5>
+                        <h5 class="modal-title" id="supplierLabel">Create New supplier</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="{{ route('admin.store.product') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('supplier.store') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -40,41 +40,72 @@
                             </div>
 
                             <div class="border p-3 rounded">
-                                <div class="col-12">
-                                    <label class="form-label">Sub-Category Name</label>
-                                    <select name="sub_category_id" class="form-control">
-                                        <option value="">-- SELECT --</option>
-                                        @foreach ($subCategories as $subCategory)
-                                        <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="form-label">Group Name</label>
+                                        <select name="client_group_id" class="form-control">
+                                            <option value=""> -- SELECT -- </option>
+                                            @foreach ($groups as $group)
+                                            <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-label">supplier Name</label>
+                                        <input type="text" class="form-control" name="name" required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-label">Status</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" required>
+                                <div class="my-3"></div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="form-label">Father name</label>
+                                        <input type="text" name="father_name" class="form-control" required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-label">Mother name</label>
+                                        <input type="text" name="mother_name" class="form-control" required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-label">National ID(NID)</label>
+                                        <input type="number" name="NID" class="form-control" required>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">image</label>
-                                    <input type="file" accept="image/*"  class="form-control" name="image" required>
+                                <div class="my-3"></div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Contact</label>
+                                        <input type="number" name="contact" class="form-control" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" name="email" class="form-control" required>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">price</label>
-                                    <input type="text" class="form-control" name="price" required>
+                                <div class="my-3"></div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Address</label>
+                                        <textarea class="form-control" name="address" cols="30" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Shipping Address</label>
+                                        <textarea class="form-control" name="shipping_address" cols="30" rows="4" required></textarea>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">offer</label>
-                                    <input type="text" class="form-control" name="offer" required>
+                                <div class="my-3"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label class="form-label">Role</label>
+                                        <input type="text" name="role" value="supplier" class="form-control" name="supplier" readonly>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">description</label>
-                                    <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
-                                </div>
-
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -90,36 +121,49 @@
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
-                <tr>
+                <tr class="text-capitalize"> 
                     <th>SN</th>
+
+                    <th>group</th>
                     <th>Name</th>
-                    <th>image</th>
-                    <th>price</th>
-                    <th>offer</th>
-                    <th>description</th>
+                    <th>email</th>
+                    <th>contact</th>
+                    <th>address</th>
+                    <th>shipping address</th>
+                    <th>father name</th>
+                    <th>mother name</th>
+                    <th>NID</th>
+                    <th>role</th>
+                    <th>status</th>
 
                     <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($products as $key=>$product)
+                @forelse ($suppliers as $key=>$supplier)
                 <tr>
                     <td>{{ $key+1 }} </td>
-                    <td>{{ $product->name }}</td>
-                    <td><img src=" {{ asset('/uploads/products/'.$product->image) }}" alt="" style="height:80px;width:80px;"></td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->offer }}</td>
-                    <td>{{ $product->description }}</td>
+
+                    <td>{{ $supplier->client_group_id }}</td>
+                    <td>{{ $supplier->name }}</td>
+                    <td>{{ $supplier->email }}</td>
+                    <td>{{ $supplier->contact }}</td>
+                    <td>{{ $supplier->address }}</td>
+                    <td>{{ $supplier->shipping_address }}</td>
+                    <td>{{ $supplier->father_name }}</td>
+                    <td>{{ $supplier->mother_name }}</td>
+                    <td>{{ $supplier->NID }}</td>
+                    <td>{{ $supplier->role }}</td>
+                    <td>{{ $supplier->status }}</td>
 
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.view.product', $product->id) }}" style="font-size:13px"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        <a class="btn btn-success" href="{{ route('admin.edit.product', $product->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.product', $product->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('supplier.edit', $supplier->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('client_setup.supplier.delete', $supplier->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
-                <p class="text-danger text-center">No product available</p>
+                <p class="text-danger text-center">No supplier available</p>
                 @endforelse
             </tbody>
         </table>

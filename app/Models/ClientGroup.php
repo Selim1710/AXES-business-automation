@@ -13,4 +13,7 @@ class ClientGroup extends Model
     public function customer(){
         return $this->hasMany(User::class);
     }
+    public function supplier(){
+        return $this->hasMany(User::class);
+    }
 }

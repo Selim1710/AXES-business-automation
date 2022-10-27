@@ -3,83 +3,109 @@
 namespace App\Http\Controllers\Backend\ClientSetup;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClientGroup;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $groups = ClientGroup::with('supplier')->orderBy('id', 'desc')->get();
+        $suppliers = User::where('role', 'supplier')->orderBy('id', 'desc')->get();
+        return view('client_setup.supplier.table', compact('groups', 'suppliers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            "client_group_id" => "required",
+            "name" => "required",
+            "status" => "required",
+            "father_name" => "required",
+            "mother_name" => "required",
+            "NID" => "required",
+            "contact" => "required",
+            "email" => "required",
+            "address" => "required",
+            "shipping_address" => "required",
+            "role" => "required",
+        ]);
+        // dd($request->all());
+        // dd($request->client_group_id);
+        User::create([
+            "client_group_id" => $request->client_group_id,
+            "name" => $request->name,
+            "status" => $request->status,
+            "father_name" => $request->father_name,
+            "mother_name" => $request->mother_name,
+            "NID" => $request->NID,
+            "contact" => $request->contact,
+            "email" => $request->email,
+            "address" => $request->address,
+            "shipping_address" => $request->shipping_address,
+            "role" => $request->role,
+        ]);
+        return back()->with('message', 'supplier Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $supplier = User::find($id);
+        return view('client_setup.supplier.edit', compact('supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "status" => "required",
+            "father_name" => "required",
+            "mother_name" => "required",
+            "NID" => "required",
+            "contact" => "required",
+            "email" => "required",
+            "address" => "required",
+            "shipping_address" => "required",
+        ]);
+        // dd($request->all());
+        // dd($request->client_group_id);
+        $supplier = User::find($id);
+        $supplier->update([
+            "name" => $request->name,
+            "status" => $request->status,
+            "father_name" => $request->father_name,
+            "mother_name" => $request->mother_name,
+            "NID" => $request->NID,
+            "contact" => $request->contact,
+            "email" => $request->email,
+            "address" => $request->address,
+            "shipping_address" => $request->shipping_address,
+        ]);
+        return back()->with('message', 'supplier updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $supplier = User::find($id);
+        $supplier->delete();
+        return back()->with('error', 'supplier deleted');
     }
 }
