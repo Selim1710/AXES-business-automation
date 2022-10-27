@@ -4,21 +4,25 @@ use App\Http\Controllers\Backend\AccountSetupController;
 use App\Http\Controllers\Backend\Bank\BankAccountController;
 use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
+
 use App\Http\Controllers\Backend\DailyProcessController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\WarrantyController;
+
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
 use App\Http\Controllers\Backend\Bank\TransanctionController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
-use App\Http\Controllers\Backend\ServiceController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
 
 
 
-/* 
+/*
 |--------------------------------------------------------------------------
 |                    Md.Saniatul Haque
 |--------------------------------------------------------------------------
@@ -78,7 +82,16 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
 
-    /* 
+    // Warranty management
+    Route::group(['prefix' => 'Warranty'], function () {
+        // Service Center
+
+        Route::get('/service-center-show', [WarrantyController::class, 'serviceCenterShow'])->name('service-center-show');
+        Route::post('/service-center-store', [WarrantyController::class, 'serviceCenterStore'])->name('service-center-store');
+
+    });
+
+    /*
     |--------------------------------------------------------------------------
     |                    Md.Selim Hossain Suhag
     |--------------------------------------------------------------------------
@@ -193,7 +206,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
 
 
-    /* 
+    /*
     |--------------------------------------------------------------------------
     |                    Md.Jahid hasan
     |--------------------------------------------------------------------------
