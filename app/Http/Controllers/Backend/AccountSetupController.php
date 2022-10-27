@@ -10,6 +10,7 @@ use App\Models\AccountSetup\SubGroup;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
+
 class AccountSetupController extends Controller
 {
     /////////////// class ///////////////
@@ -194,7 +195,7 @@ class AccountSetupController extends Controller
     ///////////////// Journal entry ///////////////
     public function manageJournal()
     {
-        // return ( Carbon::now() ); 
+        // return ( Carbon::now() );
 
         dd('here');
         $Journal = AllClass::with('group')->orderBy('id', 'desc')->get();
@@ -243,5 +244,5 @@ class AccountSetupController extends Controller
         $group->delete();
         return redirect()->route('admin.manage.journal')->with('error', 'journal Deleted');
     }
-    
+
 }
