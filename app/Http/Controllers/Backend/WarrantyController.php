@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Warranty\ServiceCenter;
+
+use App\Models\ServiceOffice;
+use Validator;
 use Illuminate\Http\Request;
 
 class WarrantyController extends Controller
 {
     public function serviceCenterShow(){
-        return view('warranty-management.service-center-show');
+        return view('warranty-management.service-center-show',[
+            'servicecenter'=>ServiceOffice::all()
+        ]);
 
     }
 
@@ -23,7 +27,7 @@ class WarrantyController extends Controller
 
         ]);
         ;
-        $servicecenter= new ServiceCenter();
+        $servicecenter= new ServiceOffice();
         $servicecenter->name = $request->name;
         $servicecenter->contact = $request->contact;
         $servicecenter->address = $request->address;

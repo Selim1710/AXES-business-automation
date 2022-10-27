@@ -88,12 +88,15 @@
                 <tbody>
 
 
+                @php $i=1 @endphp
+                @foreach($servicecenter as $servicecenters)
                     <tr>
-                        <td>yy</td>
-                        <td>yy</td>
-                        <td>yy</td>
-                        <td>yy</td>
-                        <td>yy</td>
+                        <td>{{ $i++ }} </td>
+                        <td>{{ $servicecenters->name }} </td>
+                        <td>{{ $servicecenters->contact }} </td>
+                        <td>{{ $servicecenters->address }} </td>
+                        <td>{{ $servicecenters->description }} </td>
+
 
 
                         <td>
@@ -108,7 +111,7 @@
 
                         </td>
                     </tr>
-
+                @endforeach
 
                 </tbody>
 

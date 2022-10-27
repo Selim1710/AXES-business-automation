@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->date('date');
             $table->string('inv_no');
-            $table->int('amount');
+            $table->integer('amount');
             $table->string('note')->nullable();
             $table->timestamps();
         });
