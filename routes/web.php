@@ -6,11 +6,24 @@ use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\Bank\BankController;
+use App\Http\Controllers\Backend\Bank\MobileAccountController;
+use App\Http\Controllers\Backend\Bank\TransanctionController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
+use App\Http\Controllers\Backend\ClientSetup\CustomerController;
+use App\Http\Controllers\Backend\ClientSetup\SupplierController;
 use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\UserAndRoles\UserController;
+use App\Http\Controllers\Backend\UserAndRoles\RoleController;
+
+
+
+/* 
+|--------------------------------------------------------------------------
+|                    Md.Saniatul Haque
+|--------------------------------------------------------------------------
+| */
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -48,8 +61,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     });
 
 
-
-
     // Service
     Route::group(['prefix' => 'Service'], function () {
         // Service Received Create
@@ -59,13 +70,19 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
-       // Service list
+        // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
         Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
         Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
         Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
+
+    /* 
+    |--------------------------------------------------------------------------
+    |                    Md.Selim Hossain Suhag
+    |--------------------------------------------------------------------------
+    | */
 
 
     // inventory
@@ -87,11 +104,18 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
 
     // client-setup
-    Route::group(['prefix' => 'client_setup'], function () {
+    Route::group(['prefix' => 'client-setup'], function () {
         // group
         Route::resource('all_group', ClientAllGroupController::class);
         Route::get('/all_group/delete/{id}', [ClientAllGroupController::class, 'destroy'])->name('client_setup.group.delete');
 
+        // customer
+        Route::resource('customer', CustomerController::class);
+        Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('client_setup.customer.delete');
+
+        // supplier
+        Route::resource('supplier', SupplierController::class);
+        Route::get('/supplier/delete/{id}', [SupplierController::class, 'destroy'])->name('client_setup.supplier.delete');
     });
 
     // product setup
@@ -167,6 +191,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
+
+
+    /* 
+    |--------------------------------------------------------------------------
+    |                    Md.Jahid hasan
+    |--------------------------------------------------------------------------
+    | */
+
     //user
     Route::resource('users', UserController::class);
 
@@ -178,4 +210,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Bank Account
     Route::resource('bank-account', BankAccountController::class);
+
+
+    //Mobile Account
+    Route::resource('mobile-account', MobileAccountController::class);
+
+
+    //Transanction
+    Route::resource('transanction', TransanctionController::class);
+    Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
+
 });

@@ -7,6 +7,7 @@
 @endif
     <h2 class="mt-4 mb-4">All User</h2>
     <div class="card mb-4">
+        @can('User create')
         <div class="card-header d-flex justify-content-between">
             <span>
             </span>
@@ -75,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+                @endcan
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>

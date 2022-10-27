@@ -8,7 +8,7 @@ use App\Models\Bank\BankAccounts;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class BankAccountController extends Controller
+class MobileAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,10 @@ class BankAccountController extends Controller
      */
     public function index()
     {
-        $bankaccounts= BankAccounts::with('bank')->where('account_type', '=', 'bank')->latest()->get();
-        $banks = Bank::latest()->get();
+        $bankaccounts= BankAccounts::where('account_type', '=', 'mobile')->latest()->get();
         $roles = Role::get();
         
-        return view('bank.bank_account.table',['bankaccounts'=>$bankaccounts, 'banks'=>$banks, 'roles'=> $roles]);
+        return view('bank.mobile_account.table',['bankaccounts'=>$bankaccounts, 'roles'=> $roles]);
     }
 
     /**
@@ -31,9 +30,8 @@ class BankAccountController extends Controller
      */
     public function create()
     {
-        $banks = Bank::where('account_type', '=', 'bank')->latest()->get();
         $roles = Role::get();
-        return view('bank.bank_account.add',[ 'roles'=> $roles, 'banks' => $banks]);
+        return view('bank.mobile_account.add',[ 'roles'=> $roles]);
     }
 
     /**
@@ -44,30 +42,25 @@ class BankAccountController extends Controller
      */
     public function store(Request $request)
     {
-
-        //dd($request);
         $request->validate([
             'account_no'=>'required',
             'account_title' => 'required',
-            'selected_bank'=>'required',
-            'branch_name' => 'required',
-            'branch_code'=>'required',
-            'branch_location' => 'required',
+            'account_type'  => 'required',
         ]);
+
+        if($request->account_type == 'mobile'){
         
         BankAccounts::create([
-            'account_no'    =>  $request->account_no,
             'title'         =>  $request->account_title,
-            'bank_id'       =>  $request->selected_bank,
-            'branch'        =>  $request->branch_name,
-            'branch_code'   =>  $request->branch_code,
-            'location'      =>  $request->branch_location,
-            'account_type'  =>  'bank',
+            'account_type'  => $request->account_type,
+            'account_no'    =>  $request->account_no,
             'debit'         =>  0,
             'credit'        =>  0,
             'balance'       =>  0,
         ]);
-        return redirect()->route('bank-account.index')->withSuccess('Account Created Successfully!');
+        }
+        
+        return redirect()->route('mobile-account.index')->withSuccess('Account Created Successfully!');
     }
 
     /**
@@ -87,12 +80,11 @@ class BankAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         $bankaccount= BankAccounts::with('bank')->where('id','=', $id)->first();
         $banks = Bank::latest()->get();
-        $roles = Role::get();
-        return view('bank.bank_account.edit',[ 'roles'=> $roles, 'banks' => $banks, 'bankaccount' => $bankaccount]);
+        return view('bank.mobile_account.edit',['banks' => $banks, 'bankaccount' => $bankaccount]);
     }
 
     /**
@@ -108,24 +100,21 @@ class BankAccountController extends Controller
         $request->validate([
             'account_no'=>'required',
             'account_title' => 'required',
-            'selected_bank'=>'required',
-            'branch_name' => 'required',
-            'branch_code'=>'required',
-            'branch_location' => 'required',
+            'account_type'  => 'required',
         ]);
         
-        $bankaccount->update([
-            'account_no'    =>  $request->account_no,
-            'title'         =>  $request->account_title,
-            'bank_id'       =>  $request->selected_bank,
-            'branch'        =>  $request->branch_name,
-            'branch_code'   =>  12345,
-            'location'      =>  $request->branch_location,
-            'debit'         =>  0,
-            'credit'        =>  0,
-            'balance'       =>  0,
-        ]);
-        return redirect()->route('bank-account.index')->withSuccess('Account Updated Successfully!');
+        if($request->account_type == 'mobile'){
+        
+            $bankaccount->update([
+                'title'         =>  $request->account_title,
+                'account_type'  => $request->account_type,
+                'account_no'    =>  $request->account_no,
+                'debit'         =>  0,
+                'credit'        =>  0,
+                'balance'       =>  0,
+            ]);
+            }
+        return redirect()->route('mobile-account.index')->withSuccess('Account Updated Successfully!');
     }
 
     /**

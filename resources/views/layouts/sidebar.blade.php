@@ -14,13 +14,13 @@
                 </a>
                 <div class="collapse" id="collapseLayoutDailyProcess" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class='nav-link" href="{{ route("price-list") }}'><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
+                        <a class="nav-link" href="{{ route("price-list") }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
 
-                        <a class='nav-link" href="{{ route("expense-record") }}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
-                        <a class='nav-link" href="{{ route("create-expense") }}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
+                        <a class="nav-link" href="{{ route("expense-record") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
+                        <a class="nav-link" href="{{ route("create-expense") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
 
 
-                        <a class='nav-link" href="{{route("expenses-head")}}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
+                        <a class="nav-link" href="{{route("expenses-head")}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
 
                     </nav>
                 </div>

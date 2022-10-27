@@ -36,10 +36,10 @@ $(function(){
             $this.parent('.nav').parent('.collapse').addClass('show');
 
         }
-    })
+    });
+
 
     var theTotal = 0;
-
     $('#addexp').click(function(e){
 
 

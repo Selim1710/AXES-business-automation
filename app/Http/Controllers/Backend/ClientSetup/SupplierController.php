@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\ClientSetup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PermissionController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.

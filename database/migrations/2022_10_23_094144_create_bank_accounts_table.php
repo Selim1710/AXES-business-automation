@@ -22,8 +22,10 @@ class CreateBankAccountsTable extends Migration
                 ->onDelete('cascade');
             $table->text('account_no');
             $table->text('title');
-            $table->text('branch');
-            $table->text('location');
+            $table->text('account_type');
+            $table->text('branch')->nullable();
+            $table->text('branch_code')->nullable();
+            $table->text('location')->nullable();
             $table->integer('debit');
             $table->integer('credit');
             $table->integer('balance');
