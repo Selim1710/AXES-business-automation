@@ -14,34 +14,17 @@
                 </a>
                 <div class="collapse" id="collapseLayoutDailyProcess" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route("price-list") }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
+                        <a class='nav-link" href="{{ route("price-list") }}'><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
 
-                        <a class="nav-link" href="{{ route("expense-record") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
-                        <a class="nav-link" href="{{ route("create-expense") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
+                        <a class='nav-link" href="{{ route("expense-record") }}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
+                        <a class='nav-link" href="{{ route("create-expense") }}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
 
 
-                        <a class="nav-link" href="{{route("expenses-head")}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
+                        <a class='nav-link" href="{{route("expenses-head")}}'> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
 
                     </nav>
                 </div>
-                <!--
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Purchase
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
 
-                <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order Create</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Purchase Return</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return Create</a>
-                    </nav>
-                </div>
-/                            /-->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Service
@@ -81,7 +64,7 @@
                 <div class="collapse" id="clientSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('all_group.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> All-Group </a>
-                        
+
                     </nav>
                 </div>
                 <!-- product setup -->
