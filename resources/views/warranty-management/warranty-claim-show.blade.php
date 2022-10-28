@@ -26,7 +26,7 @@
 
                                     <div class="col-12">
                                         <label class="form-label"><b>Name</b></label>
-                                        <input type="text" class="form-control" name="name" placeholder="e.g  Bashundhara" required>
+                                        <input type="text" class="form-control" name="name" placeholder="e.g  Bashundhara"  required>
                                     </div>
 
                                     @error('name')
@@ -35,7 +35,7 @@
 
                                     <div class="col-12">
                                         <label class="form-label"><b>Contact</b></label>
-                                        <input type="text" class="form-control" name="contact" placeholder="e.g 01934000000" required>
+                                        <input type="text" class="form-control" name="contact" placeholder="e.g 01934000000" required >
                                     </div>
 
                                     @error('contact')
@@ -52,7 +52,7 @@
                                     @enderror
                                     <div class="col-12">
                                         <label class="form-label"><b>Sales Date</b></label>
-                                        <input type="text" class="form-control" name="s_date" placeholder="e.g 10/11/2022" required>
+                                        <input type="text" class="form-control" name="s_date" placeholder="e.g 10/11/2022"required >
                                     </div>
 
                                     @error('s_date')
@@ -60,7 +60,7 @@
                                     @enderror
                                     <div class="col-12">
                                         <label class="form-label"><b>Warranty Expired</b></label>
-                                        <input type="text" class="form-control" name="w_date" placeholder="e.g 10/11/2024" required>
+                                        <input type="text" class="form-control" name="w_date" placeholder="e.g 10/11/2024"required >
                                     </div>
 
                                     @error('w_date')
@@ -73,10 +73,10 @@
                             </div>
 
                             <div class="modal-footer">
-
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="save">
+                                <input type="submit" class="btn btn-primary" value="save" required>
                             </div>
+
                         </form>
                     </div>
 
@@ -115,10 +115,10 @@
 
                         <td>
                             <div style="min-width: 10rem;">
-                                <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                <form action="" method="post"style="display:inline">
+                                <a class="btn btn-success" style="font-size:13px" href="{{route('warranty-show-edit',['id'=>$warrantyStores->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                <form action="{{route('warranty-show-delete')}}" method="post"style="display:inline">
                                     @csrf
-                                    <input type="hidden" name="liststore_id" value="" >
+                                    <input type="hidden" name="warranty_delete" value="{{$warrantyStores->id}}" >
                                     <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>

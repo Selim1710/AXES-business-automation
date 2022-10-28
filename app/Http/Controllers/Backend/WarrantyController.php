@@ -38,6 +38,34 @@ class WarrantyController extends Controller
 
         return back()->with('message', 'Create Successfully');
     }
+    public function serviceCenterEdit($id){
+        return view('warranty-management.service-center-edit',[
+            'serviceCenterEdit' => ServiceOffice::find($id),
+        ]);
+
+    }
+    public function serviceCenterUpdate(Request $request,$id){
+
+        $serviceCenteredit = ServiceOffice::find($id);
+        $serviceCenteredit ->update([
+            'name' => $request->name,
+            'contact' => $request->contact,
+            'address' => $request->address,
+            'description' => $request->description,
+
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+
+    }
+    public function serviceCenterDelete(Request $request){
+        $serviceCenterdelete = ServiceOffice::find($request->service_delete_id);
+        $serviceCenterdelete->delete();
+        return back()->with('message','Deleted Successfully');
+
+    }
+
+
 //warranty
     public function warrantyShow(){
         return view('warranty-management.warranty-claim-show',[
@@ -71,7 +99,33 @@ class WarrantyController extends Controller
 
         $warrantyStore->save();
 
-        return back()->with('message', 'Create Successfully');
+        return redirect()->back()->with('message', 'Create Successfully');
+    }
+    public function warrantyShowEdit($id){
+        return view('warranty-management.warranty-show-edit',[
+            'warrantyshowedit' => WarrantyDetails::find($id),
+        ]);
+
+    }
+    public function warrantyShowUpdate(Request $request,$id){
+
+        $warrantyshowedit = WarrantyDetails::find($id);
+        $warrantyshowedit ->update([
+            'name' => $request->name,
+            'contact' => $request->contact,
+            'product' => $request->product,
+            's_date' => $request->s_date,
+            'w_date' => $request->w_date,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+
+    }
+    public function warrantyShowDelete(Request $request){
+        $warrantyshowedelete = WarrantyDetails::find($request->warranty_delete);
+        $warrantyshowedelete->delete();
+        return back()->with('message','Deleted Successfully');
+
     }
 
 }
