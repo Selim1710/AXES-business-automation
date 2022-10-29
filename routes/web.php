@@ -89,6 +89,16 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         Route::get('/service-center-show', [WarrantyController::class, 'serviceCenterShow'])->name('service-center-show');
         Route::post('/service-center-store', [WarrantyController::class, 'serviceCenterStore'])->name('service-center-store');
+        Route::get('/service-center-edit/{id}', [WarrantyController::class, 'serviceCenterEdit'])->name('service-center-edit');
+        Route::post('/service-center-update/{id}', [WarrantyController::class, 'serviceCenterUpdate'])->name('service-center-update');
+        Route::post('/service-center-delete', [WarrantyController::class, 'serviceCenterDelete'])->name('service-center-delete');
+
+        // warranty claim
+        Route::get('/warranty-show', [WarrantyController::class, 'warrantyShow'])->name('warranty-show');
+        Route::post('/warranty-show-store', [WarrantyController::class, 'warrantyStore'])->name('warranty-show-store');
+        Route::get('/warranty-show-edit/{id}', [WarrantyController::class, 'warrantyShowEdit'])->name('warranty-show-edit');
+        Route::post('/warranty-show-update/{id}', [WarrantyController::class, 'warrantyShowUpdate'])->name('warranty-show-update');
+        Route::post('/warranty-show-delete', [WarrantyController::class, 'warrantyShowDelete'])->name('warranty-show-delete');
 
     });
 

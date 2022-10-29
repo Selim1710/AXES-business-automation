@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <h2 class="mt-4 mb-4">Service Center</h2>
+    <h2 class="mt-4 mb-4">Warranty Details</h2>
     <!-- message -->
     @if(session()->has('message'))
         <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
@@ -19,15 +19,14 @@
                     <div class="modal-content">
 
 
-
-                        <form action="{{route('service-center-store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('warranty-show-store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
                                 <div class="border p-3 rounded">
 
                                     <div class="col-12">
                                         <label class="form-label"><b>Name</b></label>
-                                        <input type="text" class="form-control" name="name" placeholder="e.g  Bashundhara" required>
+                                        <input type="text" class="form-control" name="name" placeholder="e.g  Bashundhara"  required>
                                     </div>
 
                                     @error('name')
@@ -36,36 +35,48 @@
 
                                     <div class="col-12">
                                         <label class="form-label"><b>Contact</b></label>
-                                        <input type="text" class="form-control" name="contact" placeholder="e.g 01934000000" required>
+                                        <input type="text" class="form-control" name="contact" placeholder="e.g 01934000000" required >
                                     </div>
 
-                                    @error('name')
+                                    @error('contact')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
 
                                     <div class="col-12">
-                                        <label class="form-label"><b>Address</b></label>
-                                        <input type="text" class="form-control" name="address" placeholder="e.g Panthapath, Dhaka 1215" required>
+                                        <label class="form-label"><b>Product</b></label>
+                                        <input type="text" class="form-control" name="product" placeholder="e.g HP i5" required>
                                     </div>
 
-                                    @error('name')
+                                    @error('product')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="col-12">
+                                        <label class="form-label"><b>Sales Date</b></label>
+                                        <input type="text" class="form-control" name="s_date" placeholder="e.g 10/11/2022"required >
+                                    </div>
+
+                                    @error('s_date')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="col-12">
+                                        <label class="form-label"><b>Warranty Expired</b></label>
+                                        <input type="text" class="form-control" name="w_date" placeholder="e.g 10/11/2024"required >
+                                    </div>
+
+                                    @error('w_date')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
 
-                                       <div class="col-12">
-                                        <label class="form-label"><b>Description</b></label>
-                                        <textarea class="form-control" maxlength="250" rows="6" name="description" placeholder="Description"></textarea>
-                                    </div>
-                                    <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
 
+                                    <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
-
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="save">
+                                <input type="submit" class="btn btn-primary" value="save" required>
                             </div>
+
                         </form>
                     </div>
 
@@ -80,8 +91,9 @@
                     <th>SN</th>
                     <th>Name</th>
                     <th>Contact</th>
-                    <th>Address</th>
-                    <th>Description</th>
+                    <th>Product</th>
+                    <th>Sales Date</th>
+                    <th>Warranty Expired</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -89,22 +101,24 @@
 
 
                 @php $i=1 @endphp
-                @foreach($servicecenter as $servicecenters)
+                @foreach($warrantyStore as $warrantyStores)
                     <tr>
                         <td>{{ $i++ }} </td>
-                        <td>{{ $servicecenters->name }} </td>
-                        <td>{{ $servicecenters->contact }} </td>
-                        <td>{{ $servicecenters->address }} </td>
-                        <td>{{ $servicecenters->description }} </td>
+                        <td>{{ $warrantyStores->name }} </td>
+                        <td>{{ $warrantyStores->contact }} </td>
+                        <td>{{ $warrantyStores->product }} </td>
+                        <td>{{ $warrantyStores->s_date }} </td>
+                        <td>{{ $warrantyStores->w_date }} </td>
+
 
 
 
                         <td>
                             <div style="min-width: 10rem;">
-                                <a class="btn btn-success" style="font-size:13px" href="{{route('service-center-edit',['id'=>$servicecenters->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                <form action="{{route('service-center-delete')}}" method="post"style="display:inline">
+                                <a class="btn btn-success" style="font-size:13px" href="{{route('warranty-show-edit',['id'=>$warrantyStores->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                <form action="{{route('warranty-show-delete')}}" method="post"style="display:inline">
                                     @csrf
-                                    <input type="hidden" name="service_delete_id" value="{{$servicecenters->id}}" >
+                                    <input type="hidden" name="warranty_delete" value="{{$warrantyStores->id}}" >
                                     <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>
