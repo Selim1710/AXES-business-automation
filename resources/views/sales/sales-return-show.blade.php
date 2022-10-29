@@ -30,16 +30,16 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label"><b>Product</b></label>
-                                        <input type="text" class="form-control" name="product" placeholder="e.g  hp-12012"  required>
+                                        <label class="form-label"><b>Customer</b></label>
+                                        <input type="text" class="form-control" name="customer" placeholder="e.g Md. Sohel"  required>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label"><b>Serial</b></label>
-                                        <input type="text" class="form-control" name="serial" placeholder="e.g 520"  required>
+                                        <label class="form-label"><b>Invoice</b></label>
+                                        <input type="text" class="form-control" name="invoice" placeholder="e.g 2100"  required>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label"><b> Note</b></label>
-                                        <input type="text" class="form-control" name="note" placeholder="e.g waiting"  required>
+                                        <label class="form-label"><b>Total</b></label>
+                                        <input type="text" class="form-control" name="Total" placeholder="e.g 2500"  required>
                                     </div>
 
 
@@ -64,10 +64,10 @@
 
                 <tr>
                     <th>SN</th>
-                    <th>Image</th>
                     <th>Date</th>
-                    <th>Product</th>
-                    <th>Serial</th>
+                    <th>Customer</th>
+                    <th>Invoice</th>
+                    <th>Total</th>
                     <th>Note</th>
                     <th>Action</th>
 
@@ -79,10 +79,10 @@
 
                 <tr>
                     <td>1</td>
-                    <td>image</td>
                     <td>10/12/2022</td>
-                    <td>h5 i5</td>
+                    <td>Sohel</td>
                     <td>121</td>
+                    <td>3300</td>
                     <td>Complete</td>
 
 
