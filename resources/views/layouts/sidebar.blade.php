@@ -71,7 +71,23 @@
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
 
-                        <a class="nav-link" href="{{url('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+                        <a class="nav-link" href="{{route('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+
+                    </nav>
+                </div>
+
+                {{--Sales--}}
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSales" aria-expanded="false" aria-controls="collapseLayoutSales">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Sales
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseLayoutSales" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+
+                        <a class="nav-link" href="{{route('sales-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
 
                     </nav>
                 </div>

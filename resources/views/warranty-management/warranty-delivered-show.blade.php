@@ -68,6 +68,7 @@
                     <th>Product</th>
                     <th>Serial</th>
                     <th>Note</th>
+                    <th>Action</th>
 
                 </tr>
                 </thead>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\WarrantyController;
 use App\Http\Controllers\Backend\PurchaseController;
+use App\Http\Controllers\Backend\SalesController;
 
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
@@ -126,6 +127,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
     });
 
+    // Sales
+    Route::group(['prefix' => 'Sales'], function () {
+
+        // Sales Return
+        Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
+    });
+
+
     /*
     |--------------------------------------------------------------------------
     |                    Md.Selim Hossain Suhag
@@ -148,7 +157,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse/edit/{id}', [InventoryController::class, 'editWarehouse'])->name('inventory.warehouse.edit');
         Route::post('/warehouse/update/{id}', [InventoryController::class, 'updateWarehouse'])->name('inventory.warehouse.update');
         Route::get('/warehouse/delete/{id}', [InventoryController::class, 'destroyWarehouse'])->name('inventory.warehouse.delete');
-    
+
         // branch stock
         Route::resource('branch_stock', BranchStockController::class);
         Route::get('/branch_stock/delete/{id}', [BranchStockController::class, 'destroy'])->name('inventory.branch_stock.delete');
