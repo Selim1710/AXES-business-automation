@@ -71,7 +71,7 @@
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
 
-                        <a class="nav-link" href="{{url('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+                        <a class="nav-link" href="{{route('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
 
                     </nav>
                 </div>

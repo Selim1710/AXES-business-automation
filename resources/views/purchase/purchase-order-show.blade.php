@@ -64,10 +64,12 @@
 
                 <tr>
                     <th>SN</th>
+                    <th>Image</th>
                     <th>Date</th>
                     <th>Product</th>
                     <th>Serial</th>
                     <th>Note</th>
+                    <th>Action</th>
 
                 </tr>
                 </thead>
@@ -76,13 +78,13 @@
 
 
                 <tr>
+                    <td>1</td>
                     <td>image</td>
-                    <td>Date</td>
-                    <td>Contact</td>
-                    <td>Product</td>
-                    <td>Serial</td>
-                    <td>Delivery Note</td>
-                    <td>8</td>
+                    <td>10/12/2022</td>
+                    <td>h5 i5</td>
+                    <td>121</td>
+                    <td>Complete</td>
+
 
 
 

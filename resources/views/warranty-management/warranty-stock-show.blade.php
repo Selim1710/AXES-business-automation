@@ -69,6 +69,7 @@
                     <th>IN</th>
                     <th>Out</th>
                     <th>Available</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
