@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Backend\AccountSetupController;
 use App\Http\Controllers\Backend\Bank\BankAccountController;
-use App\Http\Controllers\Backend\InventoryController;
+use App\Http\Controllers\Backend\Inventory\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
 
 use App\Http\Controllers\Backend\DailyProcessController;
@@ -16,7 +16,8 @@ use App\Http\Controllers\Backend\Bank\TransanctionController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
-
+use App\Http\Controllers\Backend\Inventory\BranchStockController;
+use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
@@ -145,6 +146,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse/edit/{id}', [InventoryController::class, 'editWarehouse'])->name('inventory.warehouse.edit');
         Route::post('/warehouse/update/{id}', [InventoryController::class, 'updateWarehouse'])->name('inventory.warehouse.update');
         Route::get('/warehouse/delete/{id}', [InventoryController::class, 'destroyWarehouse'])->name('inventory.warehouse.delete');
+    
+        // branch stock
+        Route::resource('branch_stock', BranchStockController::class);
+        Route::get('/branch_stock/delete/{id}', [BranchStockController::class, 'destroy'])->name('inventory.branch_stock.delete');
+
+        // warehouse stock
+        Route::resource('warehouse_stock', WarehouseStockController::class);
+        Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
+
     });
 
 

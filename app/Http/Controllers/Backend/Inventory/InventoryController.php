@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Inventory;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\Warehouse;
-use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-
     //////////////// branch ////////////////
     public function branchTable()
     {
@@ -110,7 +109,4 @@ class InventoryController extends Controller
         $warehouse->delete();
         return back()->with('error', 'warehouse deleted');
     }
-
-    ////////////////// product delivery ////////////////
-
 }
