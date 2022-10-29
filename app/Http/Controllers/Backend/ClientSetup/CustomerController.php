@@ -12,12 +12,8 @@ class CustomerController extends Controller
 
     public function index()
     {
-
         $groups = ClientGroup::with('customer')->orderBy('id', 'desc')->get();
-        // dd($groups);
         $customers = User::where('role', 'customer')->orderBy('id', 'desc')->get();
-        // dd($customers);
-
         return view('client_setup.customer.table', compact('groups', 'customers'));
     }
 
@@ -105,7 +101,6 @@ class CustomerController extends Controller
         ]);
         return back()->with('message', 'Customer updated');
     }
-
 
     public function destroy($id)
     {
