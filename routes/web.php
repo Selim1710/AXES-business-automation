@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
 use App\Http\Controllers\Backend\Inventory\BranchStockController;
+use App\Http\Controllers\Backend\Inventory\TransferBranchController;
+use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
 use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
@@ -163,6 +165,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // warehouse stock
         Route::resource('warehouse_stock', WarehouseStockController::class);
         Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
+        
+        // Transfer from branch
+        Route::resource('transfer_branch', TransferBranchController::class);
+        Route::get('/transfer_branch/delete/{id}', [TransferBranchController::class, 'destroy'])->name('inventory.transfer_branch.delete');
+        
+        // Transfer from warehouse
+        Route::resource('transfer_warehouse', TransferWarehouseController::class);
+        Route::get('/transfer_warehouse/delete/{id}', [TransferWarehouseController::class, 'destroy'])->name('inventory.transfer_warehouse.delete');
 
     });
 
