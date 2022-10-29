@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <h2 class="mt-4 mb-4">Warranty Details</h2>
+    <h2 class="mt-4 mb-4">Warranty Claim Details</h2>
     <!-- message -->
     @if(session()->has('message'))
         <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>

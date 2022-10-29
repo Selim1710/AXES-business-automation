@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <h2 class="mt-4 mb-4">Manage Product Show</h2>
+    <h2 class="mt-4 mb-4">Manage Product</h2>
     <!-- message -->
     @if(session()->has('message'))
         <p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
