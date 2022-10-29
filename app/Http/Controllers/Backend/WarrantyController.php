@@ -127,5 +127,45 @@ class WarrantyController extends Controller
         return back()->with('message','Deleted Successfully');
 
     }
+    //Claim Supplier
+    public function ClaimSupplierShow(){
+        return view('warranty-management.claim-supplier-show',[
+           // 'servicecenter'=>ServiceOffice::all()
+        ]);
+
+    }
+//    public function ClaimSupplierStore(Request $request){
+//
+//
+//        $warrantyStore= new WarrantyDetails();
+//
+//        $warrantyStore->name = $request->name;
+//        $warrantyStore->contact = $request->contact;
+//        $warrantyStore->product = $request->product;
+//        $warrantyStore->s_date = $request->s_date;
+//        $warrantyStore->w_date = $request->w_date;
+//
+//        $warrantyStore->save();
+//
+//        return redirect()->back()->with('message', 'Create Successfully');
+//    }
+
+    //warranty
+    public function WarrantyStockShow(){
+       return view('warranty-management.warranty-stock-show');
+
+    }
+    //manage product
+    public function manageProductShow(){
+        return view('warranty-management.manage-product-show');
+
+    }
+    //Warranty Delivered
+    public function warrantyDeliveredShow(){
+        return view('warranty-management.warranty-delivered-show');
+
+    }
+
+
 
 }

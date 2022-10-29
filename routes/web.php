@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\WarrantyController;
+use App\Http\Controllers\Backend\PurchaseController;
 
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
@@ -99,6 +100,27 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/warranty-show-update/{id}', [WarrantyController::class, 'warrantyShowUpdate'])->name('warranty-show-update');
         Route::post('/warranty-show-delete', [WarrantyController::class, 'warrantyShowDelete'])->name('warranty-show-delete');
 
+        // Claim to Supplier
+        Route::get('/claim-supplier-show', [WarrantyController::class, 'ClaimSupplierShow'])->name('claim-supplier-show');
+       // Route::post('/claim-supplier-store', [WarrantyController::class, 'ClaimSupplierStore'])->name('claim-supplier-store');
+
+        // Warranty Stock
+        Route::get('/warranty-stock-show', [WarrantyController::class, 'WarrantyStockShow'])->name('warranty-stock-show');
+
+        // Manage Product
+        Route::get('/manage-product-show', [WarrantyController::class, 'manageProductShow'])->name('manage-product-show');
+
+        // Warranty Delivered
+        Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
+
+
+    });
+
+    // Purchase
+    Route::group(['prefix' => 'Purchase'], function () {
+
+        // Purchase Order
+        Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
     });
 
     /*

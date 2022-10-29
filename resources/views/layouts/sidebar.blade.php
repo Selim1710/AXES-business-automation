@@ -26,13 +26,13 @@
                     </nav>
                 </div>
                         {{--service--}}
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutÌservice" aria-expanded="false" aria-controls="collapseLayoutÌservice">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Service
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
-                <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayoutÌservice" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('service-list-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service List</a>
                         <a class="nav-link" href="{{route('service-received-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
@@ -42,7 +42,7 @@
 
                 {{--Warranty management--}}
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWarenty" aria-expanded="false" aria-controls="collapseLayoutPurchase">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWarenty" aria-expanded="false" aria-controls="collapseLayoutWarenty">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Warranty Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -53,6 +53,26 @@
 
                         <a class="nav-link" href="{{route('warranty-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Claim</a>
                         <a class="nav-link" href="{{route('service-center-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Center</a>
+                        <a class="nav-link" href="{{route('claim-supplier-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Claim to Supplier</a>
+                        <a class="nav-link" href="{{route('warranty-stock-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Stock</a>
+                        <a class="nav-link" href="{{route('manage-product-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Manage Product</a>
+                        <a class="nav-link" href="{{route('warranty-delivered-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Delivered</a>
+                    </nav>
+                </div>
+
+                {{--Purchase--}}
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Purchase
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+
+                        <a class="nav-link" href="{{url('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+
                     </nav>
                 </div>
                 <hr>
