@@ -16,9 +16,27 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('inv_no');
-            $table->int('amount');
+            $table->string('tran_no');
+            $table->integer('total_amount');
             $table->string('note')->nullable();
+
+            $table->unsignedBigInteger('source')->nullable();
+            $table->foreign('source')
+                ->references('id')
+                ->on('bank_accounts')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('payto')->nullable();
+            $table->foreign('payto')
+                ->references('id')
+                ->on('bank_accounts')
+                ->onDelete('cascade');
+            
+            $table->integer('amount');
+            $table->string('cheque_no')->nullable();
+            $table->string('cq_date')->nullable();
+            $table->string('refference');
+            
+            
             $table->timestamps();
         });
     }

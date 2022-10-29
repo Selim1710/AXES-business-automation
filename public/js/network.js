@@ -28,9 +28,6 @@ $('#deposit-form').on('change', function() {
         type: 'get',
         success: function(result){
            $('#account-balance').text(result);
-        },
-        error: function(resutl){
-            console.log('Error'+resutl);
         }
 
     });
