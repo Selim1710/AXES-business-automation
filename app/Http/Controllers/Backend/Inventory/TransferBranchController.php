@@ -11,8 +11,8 @@ class TransferBranchController extends Controller
     
     public function index()
     {
-        $branches = Branch::all();
-        return view('inventory.transfer_branch_table', compact('branches'));
+        $branchProducts = Branch::all();
+        return view('inventory.transfer_branch_table', compact('branchProducts'));
     }
 
     
