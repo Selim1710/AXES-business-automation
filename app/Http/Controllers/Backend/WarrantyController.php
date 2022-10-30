@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Warranty\ManageProduct;
 use App\Models\Warranty\ServiceOffice;
 use App\Models\Warranty\ClaimSupplier;
+use App\Models\Warranty\WarrantyDeliver;
 use App\Models\Warranty\WarrantyStock;
 use App\Models\Warranty\WarrantyDetails;
 use Validator;
@@ -253,11 +255,91 @@ class WarrantyController extends Controller
     //manage product
     public function manageProductShow()
     {
-        return view('warranty-management.manage-product-show');
+        return view('warranty-management.manage-product-show',[
+            'ManageProduct' => ManageProduct::all()
+        ]);
+    }
+    public function manageProductStore(Request $request)
+    {
+        ManageProduct::create([
+            'date' => $request->date,
+            'product' => $request->product,
+            'serial' => $request->serial,
+            'note' => $request->note,
+
+        ]);
+
+        return redirect()->back()->with('message', 'Create Successfully');
+    }
+    public function manageProductEdit($id)
+    {
+        return view('warranty-management.manage-product-edit', [
+            'ManageProduct' => ManageProduct::find($id),
+        ]);
+    }
+    public function manageProductUpdate(Request $request, $id)
+    {
+
+        $ManageProduct = ManageProduct::find($id);
+        $ManageProduct->update([
+            'date' => $request->date,
+            'product' => $request->product,
+            'serial' => $request->serial,
+            'note' => $request->note,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+    }
+
+    public function manageProductDelete(Request $request)
+    {
+        $ManageProduct = ManageProduct::find($request->manage_product_delete);
+        $ManageProduct->delete();
+        return back()->with('message', 'Deleted Successfully');
     }
     //Warranty Delivered
     public function warrantyDeliveredShow()
     {
-        return view('warranty-management.warranty-delivered-show');
+        return view('warranty-management.warranty-delivered-show',[
+            'WarrantyDeliver' => WarrantyDeliver::all()
+        ]);
     }
+    public function warrantyDeliveredStore (Request $request)
+    {
+        WarrantyDeliver::create([
+            'date' => $request->date,
+            'product' => $request->product,
+            'serial' => $request->serial,
+            'note' => $request->note,
+
+        ]);
+
+        return redirect()->back()->with('message', 'Create Successfully');
+    }
+    public function warrantyDeliveredEdit($id)
+    {
+        return view('warranty-management.warranty-delivered-edit', [
+            'WarrantyDeliver' => WarrantyDeliver::find($id),
+        ]);
+    }
+    public function warrantyDeliveredUpdate(Request $request, $id)
+    {
+
+        $WarrantyDeliver = WarrantyDeliver::find($id);
+        $WarrantyDeliver->update([
+            'date' => $request->date,
+            'product' => $request->product,
+            'serial' => $request->serial,
+            'note' => $request->note,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+    }
+    public function warrantyDeliveredDelete(Request $request)
+    {
+        $WarrantyDeliver = WarrantyDeliver::find($request->warranty_delivered_delete);
+        $WarrantyDeliver->delete();
+        return back()->with('message', 'Deleted Successfully');
+    }
+
 }

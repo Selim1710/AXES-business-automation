@@ -19,7 +19,7 @@
                 <div class="modal-content">
 
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{route('warranty-delivered-store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="border p-3 rounded">
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" >
                                 </div>
 
 
@@ -76,26 +76,21 @@
 
 
 
+
+            @php $i=1 @endphp
+            @foreach($WarrantyDeliver as $WarrantyDelivers)
                 <tr>
-                    <td>image</td>
-                    <td>Date</td>
-                    <td>Contact</td>
-                    <td>Product</td>
-                    <td>Serial</td>
-                    <td>Delivery Note</td>
-                    <td>8</td>
-
-
-
-
-
-
+                    <td>{{ $i++ }} </td>
+                    <td>{{ $WarrantyDelivers->date }} </td>
+                    <td>{{ $WarrantyDelivers->product }} </td>
+                    <td>{{ $WarrantyDelivers->serial }} </td>
+                    <td>{{ $WarrantyDelivers->note }} </td>
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                            <form action="" method="post" style="display:inline">
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('warranty-delivered-edit',['id'=>$WarrantyDelivers->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('warranty-delivered-delete')}}" method="post" style="display:inline">
                                 @csrf
-                                <input type="hidden" name="warranty_delete" value="">
+                                <input type="hidden" name="warranty_delivered_delete" value="{{$WarrantyDelivers->id}}">
                                 <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
@@ -103,7 +98,7 @@
                     </td>
                 </tr>
 
-
+            @endforeach
             </tbody>
 
         </table>

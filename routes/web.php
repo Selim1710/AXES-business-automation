@@ -120,10 +120,16 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Manage Product
         Route::get('/manage-product-show', [WarrantyController::class, 'manageProductShow'])->name('manage-product-show');
-
+        Route::post('/manage-product-store', [WarrantyController::class, 'manageProductStore'])->name('manage-product-store');
+        Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
+        Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
+        Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
-
+        Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
+        Route::get('/warranty-delivered-edit/{id}', [WarrantyController::class, 'warrantyDeliveredEdit'])->name('warranty-delivered-edit');
+        Route::post('/warranty-delivered-update/{id}', [WarrantyController::class, 'warrantyDeliveredUpdate'])->name('warranty-delivered-update');
+        Route::post('/warranty-delivered-delete', [WarrantyController::class, 'warrantyDeliveredDelete'])->name('warranty-delivered-delete');
 
     });
 
