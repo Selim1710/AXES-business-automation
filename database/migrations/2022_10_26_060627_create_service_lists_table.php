@@ -20,7 +20,7 @@ class CreateServiceListsTable extends Migration
             $table->string('category');
             $table->string('cost');
             $table->string('price');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

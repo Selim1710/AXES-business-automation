@@ -20,10 +20,22 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'address',
+        'shipping_address',
+        'father_name',
+        'mother_name',
+        'NID',
         'image',
-        'phone_number',
+        'contact',
         'password',
+        'status',
+        'role',
+        'client_group_id',
     ];
+
+    public function group(){
+        return $this->belongsTo(ClientGroup::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,4 +55,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

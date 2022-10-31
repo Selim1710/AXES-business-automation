@@ -1,36 +1,36 @@
 @extends('layouts.app')
 @section('tittle')
-    Expenses
+Expenses
 @endsection
 
 @section('content')
-    {{-- message --}}
-    {!! Toastr::message() !!}
-    <!-- Page Wrapper -->
-    <div class="page-wrapper">
+{{-- message --}}
+{!! Toastr::message() !!}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
 
-        <!-- Page Content -->
-        <div class="content container-fluid">
+    <!-- Page Content -->
+    <div class="content container-fluid">
 
-            <!-- Page Header -->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="page-title">Payments</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Payments</li>
-                        </ul>
-                    </div>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Payments</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Payments</li>
+                    </ul>
                 </div>
             </div>
-            <!-- /Page Header -->
+        </div>
+        <!-- /Page Header -->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped custom-table datatable mb-0">
-                            <thead>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped custom-table datatable mb-0">
+                        <thead>
                             <tr>
                                 <th>Invoice ID</th>
                                 <th>Client</th>
@@ -38,8 +38,8 @@
                                 <th>Paid Date</th>
                                 <th>Paid Amount</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <td><a href="invoice-view.html">#INV-0001</a></td>
                                 <td>
@@ -67,15 +67,15 @@
                                 <td>8 Feb 2019</td>
                                 <td>$500</td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <!-- /Page Content -->
     </div>
-    <!-- /Page Wrapper -->
+    <!-- /Page Content -->
+</div>
+<!-- /Page Wrapper -->
 
 @section('script')
 @endsection

@@ -19,13 +19,15 @@ class UserTableSeeder extends Seeder
         $admistrator = User::create([
             'name'=> 'Administrator',
             'email'=> 'administrator@gmail.com',
-            'password'=>bcrypt(1111)
+            'password'=>bcrypt(1111),
+            'role'=> 'admin',
         ]);
         
         $super_admin = User::create([
             'name'=> 'Super Admin',
             'email'=> 'superadmin@gmail.com',
-            'password'=>bcrypt(1111)
+            'password'=>bcrypt(1111),
+            'role'=> 'superadmin',
         ]);
 
 

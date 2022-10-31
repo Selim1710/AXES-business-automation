@@ -2,17 +2,38 @@
 
 use App\Http\Controllers\Backend\AccountSetupController;
 use App\Http\Controllers\Backend\Bank\BankAccountController;
-use App\Http\Controllers\Backend\InventoryController;
+use App\Http\Controllers\Backend\Inventory\InventoryController;
 use App\Http\Controllers\Backend\ProductSetupController;
+
 use App\Http\Controllers\Backend\DailyProcessController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\WarrantyController;
+use App\Http\Controllers\Backend\PurchaseController;
+use App\Http\Controllers\Backend\SalesController;
+
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
 use App\Http\Controllers\Backend\Bank\TransanctionController;
+use App\Http\Controllers\Backend\Bank\ChequeManagementController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
-use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ClientSetup\CustomerController;
+use App\Http\Controllers\Backend\ClientSetup\SupplierController;
+use App\Http\Controllers\Backend\Inventory\BranchStockController;
+use App\Http\Controllers\Backend\Inventory\TransferBranchController;
+use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
+use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
+
+
+
+/*
+|--------------------------------------------------------------------------
+|                    Md.Saniatul Haque
+|--------------------------------------------------------------------------
+| */
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -50,8 +71,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     });
 
 
-
-
     // Service
     Route::group(['prefix' => 'Service'], function () {
         // Service Received Create
@@ -61,13 +80,88 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
-       // Service list
+        // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
         Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
         Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
-        Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
+        Route::get('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
+
+    // Warranty management
+    Route::group(['prefix' => 'Warranty'], function () {
+        // Service Center
+
+        Route::get('/service-center-show', [WarrantyController::class, 'serviceCenterShow'])->name('service-center-show');
+        Route::post('/service-center-store', [WarrantyController::class, 'serviceCenterStore'])->name('service-center-store');
+        Route::get('/service-center-edit/{id}', [WarrantyController::class, 'serviceCenterEdit'])->name('service-center-edit');
+        Route::post('/service-center-update/{id}', [WarrantyController::class, 'serviceCenterUpdate'])->name('service-center-update');
+        Route::post('/service-center-delete', [WarrantyController::class, 'serviceCenterDelete'])->name('service-center-delete');
+
+        // warranty claim
+        Route::get('/warranty-show', [WarrantyController::class, 'warrantyShow'])->name('warranty-show');
+        Route::post('/warranty-show-store', [WarrantyController::class, 'warrantyStore'])->name('warranty-show-store');
+        Route::get('/warranty-show-edit/{id}', [WarrantyController::class, 'warrantyShowEdit'])->name('warranty-show-edit');
+        Route::post('/warranty-show-update/{id}', [WarrantyController::class, 'warrantyShowUpdate'])->name('warranty-show-update');
+        Route::post('/warranty-show-delete', [WarrantyController::class, 'warrantyShowDelete'])->name('warranty-show-delete');
+
+        // Claim to Supplier
+        Route::get('/claim-supplier-show', [WarrantyController::class, 'ClaimSupplierShow'])->name('claim-supplier-show');
+        Route::post('/claim-supplier-store', [WarrantyController::class, 'ClaimSupplierStore'])->name('claim-supplier-store');
+        Route::get('/claim-supplier-edit/{id}', [WarrantyController::class, 'ClaimSupplierEdit'])->name('claim-supplier-edit');
+        Route::post('/claim-supplier-update/{id}', [WarrantyController::class, 'ClaimSupplierUpdate'])->name('claim-supplier-update');
+        Route::post('/claim-supplier-delete', [WarrantyController::class, 'ClaimSupplierDelete'])->name('claim-supplier-delete');
+
+        // Warranty Stock
+        Route::get('/warranty-stock-show', [WarrantyController::class, 'WarrantyStockShow'])->name('warranty-stock-show');
+        Route::post('/warranty-stock-store', [WarrantyController::class, 'warrantyStockStore'])->name('warranty-stock-store');
+        Route::get('/warranty-stock-edit/{id}', [WarrantyController::class, 'warrantyStockEdit'])->name('warranty-stock-edit');
+        Route::post('/warranty-stock-update/{id}', [WarrantyController::class, 'warrantyStockUpdate'])->name('warranty-stock-update');
+        Route::post('/warranty-stock-delete', [WarrantyController::class, 'warrantyStockDelete'])->name('warranty-stock-delete');
+
+        // Manage Product
+        Route::get('/manage-product-show', [WarrantyController::class, 'manageProductShow'])->name('manage-product-show');
+        Route::post('/manage-product-store', [WarrantyController::class, 'manageProductStore'])->name('manage-product-store');
+        Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
+        Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
+        Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
+        // Warranty Delivered
+        Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
+        Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
+        Route::get('/warranty-delivered-edit/{id}', [WarrantyController::class, 'warrantyDeliveredEdit'])->name('warranty-delivered-edit');
+        Route::post('/warranty-delivered-update/{id}', [WarrantyController::class, 'warrantyDeliveredUpdate'])->name('warranty-delivered-update');
+        Route::post('/warranty-delivered-delete', [WarrantyController::class, 'warrantyDeliveredDelete'])->name('warranty-delivered-delete');
+
+    });
+
+    // Purchase
+    Route::group(['prefix' => 'Purchase'], function () {
+
+        // Purchase Order
+        Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
+    });
+
+    // Sales
+    Route::group(['prefix' => 'Sales'], function () {
+
+        // Sales Return
+        Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
+    });
+
+
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |                    Md.Selim Hossain Suhag
+    |--------------------------------------------------------------------------
+    | */
 
 
     // inventory
@@ -85,15 +179,39 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse/edit/{id}', [InventoryController::class, 'editWarehouse'])->name('inventory.warehouse.edit');
         Route::post('/warehouse/update/{id}', [InventoryController::class, 'updateWarehouse'])->name('inventory.warehouse.update');
         Route::get('/warehouse/delete/{id}', [InventoryController::class, 'destroyWarehouse'])->name('inventory.warehouse.delete');
+
+        // branch stock
+        Route::resource('branch_stock', BranchStockController::class);
+        Route::get('/branch_stock/delete/{id}', [BranchStockController::class, 'destroy'])->name('inventory.branch_stock.delete');
+
+        // warehouse stock
+        Route::resource('warehouse_stock', WarehouseStockController::class);
+        Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
+
+        // Transfer from branch
+        Route::resource('transfer_branch', TransferBranchController::class);
+        Route::get('/transfer_branch/delete/{id}', [TransferBranchController::class, 'destroy'])->name('inventory.transfer_branch.delete');
+
+        // Transfer from warehouse
+        Route::resource('transfer_warehouse', TransferWarehouseController::class);
+        Route::get('/transfer_warehouse/delete/{id}', [TransferWarehouseController::class, 'destroy'])->name('inventory.transfer_warehouse.delete');
+
     });
 
 
     // client-setup
-    Route::group(['prefix' => 'client_setup'], function () {
+    Route::group(['prefix' => 'client-setup'], function () {
         // group
         Route::resource('all_group', ClientAllGroupController::class);
         Route::get('/all_group/delete/{id}', [ClientAllGroupController::class, 'destroy'])->name('client_setup.group.delete');
 
+        // customer
+        Route::resource('customer', CustomerController::class);
+        Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('client_setup.customer.delete');
+
+        // supplier
+        Route::resource('supplier', SupplierController::class);
+        Route::get('/supplier/delete/{id}', [SupplierController::class, 'destroy'])->name('client_setup.supplier.delete');
     });
 
     // product setup
@@ -169,6 +287,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |                    Md.Jahid hasan
+    |--------------------------------------------------------------------------
+    | */
+
     //user
     Route::resource('users', UserController::class);
 
@@ -190,4 +316,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::resource('transanction', TransanctionController::class);
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
+    //Manage Cheque
+    Route::resource('manage-cheque', ChequeManagementController::class);
 });

@@ -7,9 +7,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-                <div>
+                {{--daily process--}}
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutDailyProcess" aria-expanded="false" aria-controls="collapseLayoutDailyProcess">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa fa-edit ani_icon"></i></div>
                     Daily Process
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
@@ -25,43 +25,74 @@
 
                     </nav>
                 </div>
-            </div>
-            <div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
+                {{--service--}}
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutÌservice" aria-expanded="false" aria-controls="collapseLayoutÌservice">
+                    <div class="sb-nav-link-icon"><i class="fa fa-wrench  ani_icon"></i></div>
+                    Service
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseLayoutÌservice" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{route('service-list-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service List</a>
+                        <a class="nav-link" href="{{route('service-received-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
+                        <a class="nav-link" href="{{route('service-received-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received Create</a>
+                    </nav>
+                </div>
+
+                {{--Warranty management--}}
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWarenty" aria-expanded="false" aria-controls="collapseLayoutWarenty">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Warranty Management
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseLayoutWarenty" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+
+                        <a class="nav-link" href="{{route('warranty-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Claim</a>
+                        <a class="nav-link" href="{{route('service-center-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Center</a>
+                        <a class="nav-link" href="{{route('claim-supplier-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Claim to Supplier</a>
+                        <a class="nav-link" href="{{route('warranty-stock-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Stock</a>
+                        <a class="nav-link" href="{{route('manage-product-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Manage Product</a>
+                        <a class="nav-link" href="{{route('warranty-delivered-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Delivered</a>
+                    </nav>
+                </div>
+
+                {{--Purchase--}}
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
+                    <div class="sb-nav-link-icon"><i class="fa fa-shopping-basket ani_icon"></i></div>
                     Purchase
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order Create</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Purchase Return</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return Create</a>
+
+                        <a class="nav-link" href="{{route('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+
                     </nav>
                 </div>
-            </div>
-            <div>
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Service
+                {{--Sales--}}
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSales" aria-expanded="false" aria-controls="collapseLayoutSales">
+                    <div class="sb-nav-link-icon"><i class="fa fa-shopping-bag ani_icon"></i></div>
+                    Sales
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
-                <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayoutSales" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('service-list-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service List</a>
-                        <a class="nav-link" href="{{route('service-received-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
-                        <a class="nav-link" href="{{route('service-received-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received Create</a>
+
+                        <a class="nav-link" href="{{route('sales-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
+
                     </nav>
-                </div> 
                 </div>
                 <hr>
-                <div>
+
                 <!-- inventory -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -71,12 +102,15 @@
 
                 <div class="collapse" id="inventory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('inventory.branch.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Branch</a>
-                        <a class="nav-link" href="{{ route('inventory.warehouse.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warehouse</a>
+                        <a class="nav-link" href="{{ route('inventory.branch.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch </a>
+                        <a class="nav-link" href="{{ route('inventory.warehouse.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse </a>
+                        <a class="nav-link" href="{{ route('branch_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch stock </a>
+                        <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse stock </a>
+                        <a class="nav-link" href="{{ route('transfer_branch.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
+                        <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer warehouse </a>
                     </nav>
                 </div>
-            </div>
-                <div>
+
                 <!-- client setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#clientSetup" aria-expanded="false" aria-controls="clientSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -87,12 +121,11 @@
                 <div class="collapse" id="clientSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('all_group.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> All-Group </a>
-                        
+                        <a class="nav-link" href="{{ route('customer.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Customer </a>
+                        <a class="nav-link" href="{{ route('supplier.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Supplier </a>
                     </nav>
                 </div>
-                </div>
                 <!-- product setup -->
-                <div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#productSetup" aria-expanded="false" aria-controls="productSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Products Setup
@@ -107,27 +140,14 @@
                         <a class="nav-link" href="{{ route('admin.manage.stock') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Stock</a>
                     </nav>
                 </div>
-            </div>
-            <div>
+
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Accounts Setup
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-
-                <div class="collapse" id="accountSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('admin.manage.class') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Class</a>
-                        <a class="nav-link" href="{{ route('admin.manage.group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Group</a>
-                        <a class="nav-link" href="{{ route('admin.manage.sub-group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sub-Group</a>
-                        <a class="nav-link" href="{{ route('admin.manage.ledger') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Ledger</a>
-                        <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
-                    </nav>
-                </div>
-            </div>
                 <hr>
-                <div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
                     Bank
@@ -139,14 +159,13 @@
                         <a class="nav-link" href="{{route('banks.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Bank</a>
                         <a class="nav-link" href="{{route('bank-account.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Account List</a>
                         <a class="nav-link" href="{{route('bank-account.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Account</a>
-                        <a class="nav-link" href="{{route('mobile-account.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
+                        <a class="nav-link" href="{{route('mobile-account.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
                         <a class="nav-link" href="{{route('transanction.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
                         <a class="nav-link" href="{{route('transanction.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
-                        <a class="nav-link" href="#"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
+                        <a class="nav-link" href="{{route('manage-cheque.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
                     </nav>
                 </div>
-            </div>
-            <div>
+
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutUser" aria-expanded="false" aria-controls="collapseLayoutUser">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user"></i></div>
                     Users & Roles
@@ -161,8 +180,6 @@
 
                     </nav>
                 </div>
-            </div>
-            <div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     Pages
@@ -194,16 +211,14 @@
                         </div>
                     </nav>
                 </div>
-            </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link collapsed" onclick="event.preventDefault(); this.closest('form').submit();" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutLogOut" aria-expanded="false" aria-controls="collapseLayoutLogOut">
                         <div class="sb-nav-link-icon"><i class="fa fa-sign-out" aria-hidden="true"></i>
                             &nbsp; Log Out
-                            <div class="sb-sidenav-collapse-arrow"> </div>
+                            <div class="sb-sidenav-collapse-arrow"> </div> 
+                        </div>
                     </a>
-                </form>
+                </form>             
+                </nav>
             </div>
-        </div>
-    </nav>
-</div>

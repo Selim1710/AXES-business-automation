@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\ClientSetup;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClientSetup\ClientGroup;
+use App\Models\ClientGroup;
 use Illuminate\Http\Request;
 
 class ClientAllGroupController extends Controller
@@ -25,7 +25,7 @@ class ClientAllGroupController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories',
+            'name' => 'required|unique:client_groups',
             'description' => 'required',
         ]);
 
@@ -42,7 +42,6 @@ class ClientAllGroupController extends Controller
         //
     }
 
-
     public function edit($id)
     {
         $group = ClientGroup::find($id);
@@ -52,6 +51,10 @@ class ClientAllGroupController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|unique:client_groups',
+            'description' => 'required',
+        ]);
         $group = ClientGroup::find($id);
         $group->update([
             'name' => $request->name,
