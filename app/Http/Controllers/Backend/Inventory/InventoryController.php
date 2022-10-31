@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend\Inventory;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Branch;
-use App\Models\Warehouse;
+use App\Models\Inventory\Branch;
+use App\Models\Inventory\Warehouse;
 
 class InventoryController extends Controller
 {
@@ -63,20 +63,23 @@ class InventoryController extends Controller
     ////////////////// warehouse ////////////////
     public function warehouseTable()
     {
-        $warehouses = Warehouse::all();
-        return view('inventory.warehouse_table', compact('warehouses'));
+        $branches = Branch::with('warehouse')->get();
+        $warehouses = Warehouse::with('branch')->get();
+        return view('inventory.warehouse_table', compact('branches','warehouses'));
     }
 
     public function addWarehouse(Request $request)
     {
         // dd($request->all());
         $request->validate([
+            'branch_id' => 'nullable',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
         ]);
         Warehouse::create([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'email'  => $request->email,
             'phone' => $request->phone,
