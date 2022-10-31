@@ -38,40 +38,72 @@
                                 </div>
                                 @endif
                             </div>
-
+                            <!-- category & sub-category -->
                             <div class="border p-3 rounded">
-                                <div class="col-12">
-                                    <label class="form-label">Sub-Category Name</label>
-                                    <select name="sub_category_id" class="form-control">
-                                        <option value="">-- SELECT --</option>
-                                        @foreach ($subCategories as $subCategory)
-                                        <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <label class="form-label">Category Name</label>
+                                        <select name="category_id" id="categoryID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" onchange="">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Sub-Category Name</label>
+                                        <select name="sub_category_id" id="subCategoryID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($subCategories as $subCategory)
+                                            <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Name</label>
+                                <!-- branch & warehouse -->
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <label class="form-label">Branch</label>
+                                        <select name="branch_id" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Warehouse</label>
+                                        <select name="warehouse_id" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($subCategories as $subCategory)
+                                            <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Product -->
+                                <div class="form-group mb-2">
+                                    <label class="form-label">Product Name</label>
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
 
-                                <div class="col-12">
-                                    <label class="form-label">image</label>
-                                    <input type="file" accept="image/*"  class="form-control" name="image" required>
+                                <div class="form-group mb-2">
+                                    <label class="form-label">Image</label>
+                                    <input type="file" accept="image/*" class="form-control" name="image" required>
                                 </div>
 
-                                <div class="col-12">
-                                    <label class="form-label">price</label>
+                                <div class="form-group mb-2">
+                                    <label class="form-label">Price</label>
                                     <input type="text" class="form-control" name="price" required>
                                 </div>
 
-                                <div class="col-12">
-                                    <label class="form-label">offer</label>
+                                <div class="form-group mb-2">
+                                    <label class="form-label">Offer</label>
                                     <input type="text" class="form-control" name="offer" required>
                                 </div>
 
-                                <div class="col-12">
-                                    <label class="form-label">description</label>
+                                <div class="form-group mb-2">
+                                    <label class="form-label">Description</label>
                                     <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
                                 </div>
 
@@ -92,6 +124,9 @@
             <thead>
                 <tr>
                     <th>SN</th>
+                    <th>Category Name</th>
+                    <th>Sub-Category Name</th>
+
                     <th>Name</th>
                     <th>image</th>
                     <th>price</th>
@@ -106,6 +141,9 @@
                 @forelse ($products as $key=>$product)
                 <tr>
                     <td>{{ $key+1 }} </td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->name }}</td>
+
                     <td>{{ $product->name }}</td>
                     <td><img src=" {{ asset('/uploads/products/'.$product->image) }}" alt="" style="height:80px;width:80px;"></td>
                     <td>{{ $product->price }}</td>
@@ -127,3 +165,34 @@
 </div>
 
 @endsection
+
+<!-- ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#categoryID').change(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var id = $(this).val();
+
+            $.ajax({
+                type:"GET",
+                url:"/backend/product-setup/get/category/wise/sub-cat/"+id,
+                dataType: "json",
+                success: function (response){
+                    $('#subCategoryID').html(response);
+                },
+                error: function (error){
+                    alert('ajax error');
+                }
+            });
+
+        });
+    });
+</script>

@@ -21,11 +21,17 @@ class CreateProductsTable extends Migration
             $table->string('offer');
             $table->text('description');
 
+            $table->unsignedBigInteger('category_id')->nullable();
+
             $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->foreign('sub_category_id')
                 ->references('id')
                 ->on('sub_categories')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->unsignedBigInteger('warehouse_id')->nullable();
+
 
             $table->timestamps();
         });
