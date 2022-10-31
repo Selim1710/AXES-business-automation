@@ -56,7 +56,10 @@ class ProductSetupController extends Controller
     public function manageSubCategory()
     {
         $categories = Category::with('subCategories')->orderBy('id', 'desc')->get();
+
         $subCategories = SubCategory::with('category')->orderBy('id', 'desc')->get();
+        // dd($subCategories);
+
         return view('product_setup.subCategory.table', compact('categories', 'subCategories'));
     }
 
@@ -100,9 +103,28 @@ class ProductSetupController extends Controller
     public function manageProduct()
     {
         // dd('here');
+        $categories = Category::with('subCategories')->OrderBy('id', 'desc')->get();
+        // dd($categories);
+
         $subCategories = SubCategory::with('product')->orderBy('id', 'desc')->get();
+        // dd($subCategories);
+
         $products = Product::with('subCategory')->orderBy('id', 'desc')->get();
-        return view('product_setup.product.table', compact('subCategories', 'products'));
+
+        return view('product_setup.product.table', compact('categories', 'subCategories', 'products'));
+    }
+
+    // json
+    public function getCatWiseSubCat($id)
+    {
+        $html = '';
+        $subCategories = SubCategory::where('category_id',$id)->get();
+        
+        foreach($subCategories as $subCategory){
+            $html .= '<option value="'.$subCategory->id.'"> '.$subCategory->name.' </option> ';
+
+        }
+        return response()->json($html);
     }
 
     public function storeProduct(Request $request)
@@ -189,7 +211,7 @@ class ProductSetupController extends Controller
     {
         $products = Product::with('stock')->orderBy('id', 'desc')->get();
         $stocks = Stock::with('product')->orderBy('id', 'desc')->get();
-        return view('product_setup.stock.table', compact('products','stocks'));
+        return view('product_setup.stock.table', compact('products', 'stocks'));
     }
 
     public function storeStock(Request $request)

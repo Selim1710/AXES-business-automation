@@ -32,15 +32,15 @@
 
 <body class="sb-nav-fixed">
     @if (Route::has('login'))
-        @auth
-            @include('layouts.navbar')
-        @endauth
+    @auth
+    @include('layouts.navbar')
+    @endauth
     @endif
     <div id="layoutSidenav">
         @if (Route::has('login'))
-            @auth
-                @include('layouts.sidebar');
-            @endauth
+        @auth
+        @include('layouts.sidebar');
+        @endauth
         @endif
         <div id="layoutSidenav_content">
             <main>
@@ -50,10 +50,10 @@
             </main>
             @if (Route::has('login'))
             @auth
-                @include('layouts.footer')
+            @include('layouts.footer')
             @endauth
-        @endif
-            
+            @endif
+
         </div>
     </div>
 

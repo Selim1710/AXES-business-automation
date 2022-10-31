@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All subCategory</h2>
+<h2 class="mt-4 mb-4">All Sub-Category</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,13 +14,13 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subCategory">Create New Sub class</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subCategory">Create New Sub-Category</button>
         <!-- Modal -->
         <div class="modal fade" id="subCategory" tabindex="-1" aria-labelledby="subCategoryLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="subCategoryLabel">Create New Sub class</h5>
+                        <h5 class="modal-title" id="subCategoryLabel">Create New Sub-Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
@@ -77,7 +77,8 @@
             <thead>
                 <tr>
                     <th>SN</th>
-                    <th>Name</th>
+                    <th>Category Name</th>
+                    <th>Sub-Category Name</th>
                     <th>description</th>
 
                     <th>Action</th>
@@ -88,6 +89,7 @@
                 @forelse ($subCategories as $key=>$subCategory)
                 <tr>
                     <td>{{ $key+1 }} </td>
+                    <td>{{ $subCategory->category->name }}</td>
                     <td>{{ $subCategory->name }}</td>
                     <td>{{ $subCategory->description }}</td>
 
