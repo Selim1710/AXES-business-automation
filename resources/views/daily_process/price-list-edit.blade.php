@@ -23,24 +23,17 @@
     <div class="card" style="width: 500px">
         <div class="card-body">
             <div class="border p-3 rounded">
-                <form action="{{ route ('claim-supplier-update',$claimsupplieredit->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route ('price-list-update',$PriceListEdit->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
-                        <label class="form-label"><b>Product</b> </label>
-                        <input type="text" class="form-control" name="product" value="{{$claimsupplieredit->product}}">
+                        <label class="form-label"><b>Name</b> </label>
+                        <input type="text" class="form-control" name="name" value="{{$PriceListEdit->name}}">
                     </div>
                     <div class="col-12">
-                        <label class="form-label"><b>Code</b> </label>
-                        <input type="text" class="form-control" name="code" value="{{$claimsupplieredit->code}}">
+                        <label class="form-label"><b>Update price</b> </label>
+                        <input type="text" class="form-control" name="c_price" value="{{$PriceListEdit->c_price}}">
                     </div>
-                    <div class="col-12">
-                        <label class="form-label"><b>Serial</b> </label>
-                        <input type="text" class="form-control" name="serial" value="{{$claimsupplieredit->serial}}">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label"><b>Note</b> </label>
-                        <input type="text" class="form-control" name="note" value="{{$claimsupplieredit->note}}">
-                    </div>
+
 
                     <div class="col-12">
                         <div class="d-grid">

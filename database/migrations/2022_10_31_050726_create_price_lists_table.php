@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWarrantyDeliversTable extends Migration
+class CreatePriceListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateWarrantyDeliversTable extends Migration
      */
     public function up()
     {
-        Schema::create('warranty_delivers', function (Blueprint $table) {
+        Schema::create('price_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
-            $table->string('contact');
-            $table->string('product');
-            $table->string('serial');
-            $table->string('note')->nullable();
+            $table->string('name');
+            $table->string('date')->nullable();
+            $table->string('code')->nullable();
+            $table->string('o_price')->nullable();
+            $table->string('c_price');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateWarrantyDeliversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warranty_delivers');
+        Schema::dropIfExists('price_lists');
     }
 }
