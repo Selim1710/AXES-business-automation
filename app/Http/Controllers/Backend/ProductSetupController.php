@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inventory\Branch;
+use App\Models\Inventory\Warehouse;
 use App\Models\ProductSetup\Category;
 use App\Models\ProductSetup\Product;
 use App\Models\ProductSetup\Stock;
@@ -109,20 +111,24 @@ class ProductSetupController extends Controller
         $subCategories = SubCategory::with('product')->orderBy('id', 'desc')->get();
         // dd($subCategories);
 
+        $branches = Branch::with('product')->orderBy('id', 'desc')->get();
+        // dd($branches);
+        $warehouses = Warehouse::with('product')->orderBy('id', 'desc')->get();
+        // dd($warehouses);
+
         $products = Product::with('subCategory')->orderBy('id', 'desc')->get();
 
-        return view('product_setup.product.table', compact('categories', 'subCategories', 'products'));
+        return view('product_setup.product.table', compact('branches','warehouses','categories', 'subCategories', 'products'));
     }
 
-    // json
+    // json = get cat wise sub-cat
     public function getCatWiseSubCat($id)
     {
         $html = '';
-        $subCategories = SubCategory::where('category_id',$id)->get();
-        
-        foreach($subCategories as $subCategory){
-            $html .= '<option value="'.$subCategory->id.'"> '.$subCategory->name.' </option> ';
+        $subCategories = SubCategory::where('category_id', $id)->get();
 
+        foreach ($subCategories as $subCategory) {
+            $html .= '<option value="' . $subCategory->id . '"> ' . $subCategory->name . ' </option> ';
         }
         return response()->json($html);
     }
@@ -134,9 +140,13 @@ class ProductSetupController extends Controller
             'price' => 'required',
             'image' => 'required',
             'offer' => 'required',
+            'warranty' => 'required',
             'description' => 'required',
 
+            'category_id' => 'required',
             'sub_category_id' => 'required',
+            'branch_id' => 'nullable',
+            'warehouse_id' => 'nullable',
         ]);
         $filename = '';
         if ($request->hasfile('image')) {
@@ -150,9 +160,13 @@ class ProductSetupController extends Controller
             'price' => $request->price,
             'image' => $filename,
             'offer' => $request->offer,
+            'warranty' => $request->warranty,
             'description' => $request->description,
 
+            'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
+            'branch_id' => $request->branch_id,
+            'warehouse_id' => $request->warehouse_id,
         ]);
         return redirect()->route('admin.manage.product')->with('message', 'Product added successfully');
     }
@@ -169,6 +183,7 @@ class ProductSetupController extends Controller
             'price' => $request->price,
             'offer' => $request->offer,
             'description' => $request->description,
+            'warranty' => $request->warranty,
         ]);
         return redirect()->route('admin.manage.product')->with('message', 'Product updated');
     }

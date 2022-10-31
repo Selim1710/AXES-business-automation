@@ -2,6 +2,8 @@
 
 namespace App\Models\ProductSetup;
 
+use App\Models\Inventory\Branch;
+use App\Models\Inventory\Warehouse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,4 +22,13 @@ class Product extends Model
     public function stock(){
         return $this ->belongsTo(Stock::class);
     }
+
+    public function branch(){
+        return $this ->belongsTo(Branch::class);
+    }
+
+    public function warehouse(){
+        return $this ->belongsTo(Warehouse::class);
+    }
+
 }
