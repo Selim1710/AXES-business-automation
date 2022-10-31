@@ -19,7 +19,13 @@ class CreateWarehousesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('address');
-            
+
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->foreign('branch_id')
+                ->references('id')
+                ->on('branches')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -52,7 +52,7 @@
                                 @enderror
                                 <div class="col-12">
                                     <label class="form-label"><b>Sales Date</b></label>
-                                    <input type="text" class="form-control" name="s_date" placeholder="e.g 10/11/2022" required>
+                                    <input type="date" class="form-control" name="s_date" placeholder="e.g 10/11/2022" required>
                                 </div>
 
                                 @error('s_date')
@@ -60,7 +60,7 @@
                                 @enderror
                                 <div class="col-12">
                                     <label class="form-label"><b>Warranty Expired</b></label>
-                                    <input type="text" class="form-control" name="w_date" placeholder="e.g 10/11/2024" required>
+                                    <input type="date" class="form-control" name="w_date" placeholder="e.g 10/11/2024" required>
                                 </div>
 
                                 @error('w_date')

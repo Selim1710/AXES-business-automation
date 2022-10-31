@@ -19,13 +19,13 @@
                 <div class="modal-content">
 
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     @endif
 
                     <form action="{{route('claim-supplier-store')}}" method="post" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g 520" >
+                                    <input type="text" class="form-control" name="note" placeholder="e.g 520">
                                 </div>
 
 
@@ -90,8 +90,8 @@
             </thead>
             <tbody>
 
-            @php $i=1; @endphp
-            @foreach($claimsupplier as $claimsuppliers)
+                @php $i=1; @endphp
+                @foreach($claimsupplier as $claimsuppliers)
 
                 <tr>
                     <td>{{$i++}}</td>
@@ -114,7 +114,7 @@
                     </td>
                 </tr>
 
-            @endforeach
+                @endforeach
             </tbody>
 
         </table>

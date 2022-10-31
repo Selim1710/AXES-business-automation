@@ -41,6 +41,15 @@
 
                             <div class="border p-3 rounded">
                                 <div class="col-12">
+                                    <label class="form-label">Branch Name</label>
+                                    <select name="branch_id" id="branchID" class="form-control">
+                                        <option value="">-- SELECT --</option>
+                                        @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12">
                                     <label class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
@@ -76,6 +85,7 @@
             <thead>
                 <tr>
                     <th>SN</th>
+                    <th>Branch Name</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -89,6 +99,12 @@
                 @forelse ($warehouses as $key=>$warehouse)
                 <tr>
                     <td>{{ $key+1 }} </td>
+                    @if (empty($warehouse->branch))
+                    <td class="text-danger">No branch</td>
+                    @else
+                    <td>{{ $warehouse->branch->name }}</td>
+
+                    @endif
                     <td>{{ $warehouse->name }}</td>
                     <td>{{ $warehouse->email }}</td>
                     <td>{{ $warehouse->phone }}</td>

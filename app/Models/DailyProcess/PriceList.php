@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\DailyProcess;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Branch extends Model
+class PriceList extends Model
 {
     use HasFactory;
-
-    protected $guarded=[];
+    protected $guarded = [];
 }

@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav" id="sidebar-main">
                 <div class="sb-sidenav-menu-heading">Business Automation</div>
-                <a class="nav-link" href="{{ route("dashboard") }}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -15,13 +15,13 @@
                 </a>
                 <div class="collapse" id="collapseLayoutDailyProcess" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route("price-list") }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
+                        <a class="nav-link" href="{{ route('price-list') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Price List</a>
 
-                        <a class="nav-link" href="{{ route("expense-record") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
-                        <a class="nav-link" href="{{ route("create-expense") }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
+                        <a class="nav-link" href="{{ route('expense-record') }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Record</a>
+                        <a class="nav-link" href="{{ route('create-expense') }}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Create Expenses</a>
 
 
-                        <a class="nav-link" href="{{route("expenses-head")}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
+                        <a class="nav-link" href="{{route('expenses-head')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Expenses Head</a>
 
                     </nav>
                 </div>
@@ -147,6 +147,15 @@
                     Accounts Setup
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
+                <div class="collapse" id="accountSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('admin.manage.class') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Class</a>
+                        <a class="nav-link" href="{{ route('admin.manage.group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Group</a>
+                        <a class="nav-link" href="{{ route('admin.manage.sub-group') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sub-Group</a>
+                        <a class="nav-link" href="{{ route('admin.manage.ledger') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Ledger</a>
+                        <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
+                    </nav>
+                </div>
                 <hr>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
@@ -216,9 +225,10 @@
                     <a class="nav-link collapsed" onclick="event.preventDefault(); this.closest('form').submit();" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutLogOut" aria-expanded="false" aria-controls="collapseLayoutLogOut">
                         <div class="sb-nav-link-icon"><i class="fa fa-sign-out" aria-hidden="true"></i>
                             &nbsp; Log Out
-                            <div class="sb-sidenav-collapse-arrow"> </div> 
                         </div>
                     </a>
-                </form>             
-                </nav>
+                </form>
             </div>
+        </div>
+    </nav>
+</div>
