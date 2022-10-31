@@ -19,13 +19,29 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->string('image');
             $table->string('offer');
+            $table->string('warranty');
             $table->text('description');
+
+            $table->unsignedBigInteger('category_id')->nullable();
 
             $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->foreign('sub_category_id')
                 ->references('id')
                 ->on('sub_categories')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->foreign('branch_id')
+                ->references('id')
+                ->on('branches')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('warehouse_id')->nullable();
+            $table->foreign('warehouse_id')
+                ->references('id')
+                ->on('warehouses')
+                ->onDelete('cascade');
+
 
             $table->timestamps();
         });

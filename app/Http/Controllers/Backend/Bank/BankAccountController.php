@@ -31,9 +31,8 @@ class BankAccountController extends Controller
      */
     public function create()
     {
-        $banks = Bank::where('account_type', '=', 'bank')->latest()->get();
-        $roles = Role::get();
-        return view('bank.bank_account.add',[ 'roles'=> $roles, 'banks' => $banks]);
+        $banks = Bank::get();
+        return view('bank.bank_account.add',['banks' => $banks]);
     }
 
     /**
@@ -45,7 +44,6 @@ class BankAccountController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request);
         $request->validate([
             'account_no'=>'required',
             'account_title' => 'required',

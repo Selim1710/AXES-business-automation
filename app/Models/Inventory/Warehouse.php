@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Models\ProductSetup;
+namespace App\Models\Inventory;
+
+use App\Models\ProductSetup\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Warehouse extends Model
 {
     use HasFactory;
+
     protected $guarded=[];
 
-    public function subCategories(){
-        return $this->hasMany(Subcategory::class);
+    public function branch(){
+        return $this->belongsTo(Branch::class);
     }
 
     public function product(){

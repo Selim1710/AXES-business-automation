@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\SalesController;
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
 use App\Http\Controllers\Backend\Bank\TransanctionController;
+use App\Http\Controllers\Backend\Bank\ChequeManagementController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
@@ -237,6 +238,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Product
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
+        // json
+        Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
+        
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
         Route::post('/update/product/{id}', [ProductSetupController::class, 'updateProduct'])->name('admin.update.product');
