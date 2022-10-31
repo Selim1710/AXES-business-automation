@@ -84,7 +84,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
         Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
         Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
-        Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
+        Route::get('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
     });
 
     // Warranty management
@@ -106,17 +106,30 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Claim to Supplier
         Route::get('/claim-supplier-show', [WarrantyController::class, 'ClaimSupplierShow'])->name('claim-supplier-show');
-       // Route::post('/claim-supplier-store', [WarrantyController::class, 'ClaimSupplierStore'])->name('claim-supplier-store');
+        Route::post('/claim-supplier-store', [WarrantyController::class, 'ClaimSupplierStore'])->name('claim-supplier-store');
+        Route::get('/claim-supplier-edit/{id}', [WarrantyController::class, 'ClaimSupplierEdit'])->name('claim-supplier-edit');
+        Route::post('/claim-supplier-update/{id}', [WarrantyController::class, 'ClaimSupplierUpdate'])->name('claim-supplier-update');
+        Route::post('/claim-supplier-delete', [WarrantyController::class, 'ClaimSupplierDelete'])->name('claim-supplier-delete');
 
         // Warranty Stock
         Route::get('/warranty-stock-show', [WarrantyController::class, 'WarrantyStockShow'])->name('warranty-stock-show');
+        Route::post('/warranty-stock-store', [WarrantyController::class, 'warrantyStockStore'])->name('warranty-stock-store');
+        Route::get('/warranty-stock-edit/{id}', [WarrantyController::class, 'warrantyStockEdit'])->name('warranty-stock-edit');
+        Route::post('/warranty-stock-update/{id}', [WarrantyController::class, 'warrantyStockUpdate'])->name('warranty-stock-update');
+        Route::post('/warranty-stock-delete', [WarrantyController::class, 'warrantyStockDelete'])->name('warranty-stock-delete');
 
         // Manage Product
         Route::get('/manage-product-show', [WarrantyController::class, 'manageProductShow'])->name('manage-product-show');
-
+        Route::post('/manage-product-store', [WarrantyController::class, 'manageProductStore'])->name('manage-product-store');
+        Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
+        Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
+        Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
-
+        Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
+        Route::get('/warranty-delivered-edit/{id}', [WarrantyController::class, 'warrantyDeliveredEdit'])->name('warranty-delivered-edit');
+        Route::post('/warranty-delivered-update/{id}', [WarrantyController::class, 'warrantyDeliveredUpdate'])->name('warranty-delivered-update');
+        Route::post('/warranty-delivered-delete', [WarrantyController::class, 'warrantyDeliveredDelete'])->name('warranty-delivered-delete');
 
     });
 
@@ -133,6 +146,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Sales Return
         Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
     });
+
+
+
+
+
+
+
+
 
 
     /*
@@ -165,11 +186,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // warehouse stock
         Route::resource('warehouse_stock', WarehouseStockController::class);
         Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
-        
+
         // Transfer from branch
         Route::resource('transfer_branch', TransferBranchController::class);
         Route::get('/transfer_branch/delete/{id}', [TransferBranchController::class, 'destroy'])->name('inventory.transfer_branch.delete');
-        
+
         // Transfer from warehouse
         Route::resource('transfer_warehouse', TransferWarehouseController::class);
         Route::get('/transfer_warehouse/delete/{id}', [TransferWarehouseController::class, 'destroy'])->name('inventory.transfer_warehouse.delete');
