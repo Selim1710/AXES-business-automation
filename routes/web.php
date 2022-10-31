@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\SalesController;
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
 use App\Http\Controllers\Backend\Bank\TransanctionController;
+use App\Http\Controllers\Backend\Bank\ChequeManagementController;
 use App\Http\Controllers\Backend\ClientSetup\ClientAllGroupController;
 use App\Http\Controllers\Backend\ClientSetup\CustomerController;
 use App\Http\Controllers\Backend\ClientSetup\SupplierController;
@@ -318,4 +319,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::resource('transanction', TransanctionController::class);
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
+    //Manage Cheque
+    Route::resource('manage-cheque', ChequeManagementController::class);
 });
