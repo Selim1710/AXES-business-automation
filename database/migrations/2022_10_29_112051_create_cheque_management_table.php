@@ -15,6 +15,17 @@ class CreateChequeManagementTable extends Migration
     {
         Schema::create('cheque_management', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->date('date');
+            $table->string('tran_no');
+            $table->integer('ac_number');
+            $table->string('note')->nullable();
+            $table->integer('amount');
+            $table->string('cheque_no')->nullable();
+            $table->string('cq_date')->nullable();
+            $table->string('refference');
+            $table->string('client');
+            $table->string('cheque_bank');
             $table->timestamps();
         });
     }

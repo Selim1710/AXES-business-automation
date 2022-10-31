@@ -320,5 +320,5 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
     //Manage Cheque
-    Route::resource('manage-cheque', ChequeManagementController::class);
+    Route::resource('manage-cheque', ChequeManagementController::class); 
 });
