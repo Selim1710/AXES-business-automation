@@ -26,7 +26,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="text" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
                                 </div>
 
                                 <div class="col-12">
@@ -35,11 +35,11 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Serial</b></label>
-                                    <input type="text" class="form-control" name="serial" placeholder="e.g 520" >
+                                    <input type="text" class="form-control" name="serial" placeholder="e.g 520">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" >
+                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting">
                                 </div>
 
 
@@ -76,8 +76,8 @@
 
 
 
-            @php $i=1 @endphp
-            @foreach($ManageProduct as $ManageProducts)
+                @php $i=1 @endphp
+                @foreach($ManageProduct as $ManageProducts)
                 <tr>
                     <td>{{ $i++ }} </td>
                     <td>{{ $ManageProducts->date }} </td>
@@ -98,7 +98,7 @@
                     </td>
                 </tr>
 
-            @endforeach
+                @endforeach
             </tbody>
 
         </table>

@@ -8,6 +8,7 @@ use DB;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\DailyProcess\ExpensestypeModel;
+use App\Models\DailyProcess\PriceList;
 use App\Models\DailyProcess\Expenseshead;
 use App\Models\DailyProcess\Invoice;
 
@@ -15,7 +16,47 @@ class DailyProcessController extends Controller
 {
     public function PriceList()
     {
-        return view('daily_process.price');
+        return view('daily_process.price',[
+            'PriceList' => PriceList::all()
+        ]);
+    }
+    public function PriceListStore(Request $request)
+
+    {
+        PriceList::create([
+            'name' => $request->name,
+            'date' => $request->date,
+            'code' => $request->code,
+            'o_price' => $request->o_price,
+            'c_price' => $request->c_price,
+        ]);
+
+        return redirect()->back()->with('message', 'Create Successfully');
+    }
+    public function priceListUpdate(Request $request, $id)
+    {
+
+        $PriceListUpdate = PriceList::find($id);
+        $PriceListUpdate->update([
+            'name' => $request->name,
+            'c_price' => $request->c_price,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+    }
+
+    public function priceListDelete(Request $request)
+    {
+        $PriceListdelete = PriceList::find($request->price_list_delete);
+        $PriceListdelete->delete();
+        return back()->with('message', 'Deleted Successfully');
+    }
+
+    public function priceListEdit($id)
+    {
+        return view('daily_process.price-list-edit', [
+            'PriceListEdit' => PriceList::find($id),
+        ]);
     }
     public function expenseRecord()
     {

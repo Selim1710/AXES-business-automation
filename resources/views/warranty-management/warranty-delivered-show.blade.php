@@ -26,7 +26,12 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="text" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label"><b>Contact</b></label>
+                                    <input type="text" class="form-control" name="contact" placeholder="e.g  Sohel" required>
                                 </div>
 
                                 <div class="col-12">
@@ -39,7 +44,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" >
+                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting">
                                 </div>
 
 
@@ -65,6 +70,7 @@
                 <tr>
                     <th>SN</th>
                     <th>Date</th>
+                    <th>Contact</th>
                     <th>Product</th>
                     <th>Serial</th>
                     <th>Note</th>
@@ -77,11 +83,12 @@
 
 
 
-            @php $i=1 @endphp
-            @foreach($WarrantyDeliver as $WarrantyDelivers)
+                @php $i=1 @endphp
+                @foreach($WarrantyDeliver as $WarrantyDelivers)
                 <tr>
                     <td>{{ $i++ }} </td>
                     <td>{{ $WarrantyDelivers->date }} </td>
+                    <td>{{ $WarrantyDelivers->contact }} </td>
                     <td>{{ $WarrantyDelivers->product }} </td>
                     <td>{{ $WarrantyDelivers->serial }} </td>
                     <td>{{ $WarrantyDelivers->note }} </td>
@@ -98,7 +105,7 @@
                     </td>
                 </tr>
 
-            @endforeach
+                @endforeach
             </tbody>
 
         </table>

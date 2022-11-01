@@ -308,6 +308,7 @@ class WarrantyController extends Controller
     {
         WarrantyDeliver::create([
             'date' => $request->date,
+            'contact' => $request->contact,
             'product' => $request->product,
             'serial' => $request->serial,
             'note' => $request->note,
@@ -328,6 +329,7 @@ class WarrantyController extends Controller
         $WarrantyDeliver = WarrantyDeliver::find($id);
         $WarrantyDeliver->update([
             'date' => $request->date,
+            'contact' => $request->contact,
             'product' => $request->product,
             'serial' => $request->serial,
             'note' => $request->note,

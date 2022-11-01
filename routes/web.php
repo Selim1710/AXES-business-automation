@@ -49,7 +49,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     // daily process
     Route::group(['prefix' => 'daily-process'], function () {
+        //price list
         Route::get('/price-list', [DailyProcessController::class, 'PriceList'])->name('price-list');
+        Route::post('/price-list-store', [DailyProcessController::class, 'PriceListStore'])->name('price-list-store');
+        Route::get('/price-list-edit/{id}', [DailyProcessController::class, 'priceListEdit'])->name('price-list-edit');
+        Route::post('/price-list-update/{id}', [DailyProcessController::class, 'priceListUpdate'])->name('price-list-update');
+        Route::post('/price-list-delete', [DailyProcessController::class, 'priceListDelete'])->name('price-list-delete');
+
+
         Route::get('/expense-record', [DailyProcessController::class, 'expenseRecord'])->name('expense-record');
         Route::get('/expenses-head', [DailyProcessController::class, 'expensesHead'])->name('expenses-head');
         Route::get('/add-expenses-head', [DailyProcessController::class, 'AddExpensesHead'])->name('add-expenses-head');
@@ -131,7 +138,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warranty-delivered-edit/{id}', [WarrantyController::class, 'warrantyDeliveredEdit'])->name('warranty-delivered-edit');
         Route::post('/warranty-delivered-update/{id}', [WarrantyController::class, 'warrantyDeliveredUpdate'])->name('warranty-delivered-update');
         Route::post('/warranty-delivered-delete', [WarrantyController::class, 'warrantyDeliveredDelete'])->name('warranty-delivered-delete');
-
     });
 
     // Purchase
@@ -195,7 +201,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Transfer from warehouse
         Route::resource('transfer_warehouse', TransferWarehouseController::class);
         Route::get('/transfer_warehouse/delete/{id}', [TransferWarehouseController::class, 'destroy'])->name('inventory.transfer_warehouse.delete');
-
     });
 
 
@@ -326,5 +331,5 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
     //Manage Cheque
-    Route::resource('manage-cheque', ChequeManagementController::class);
+    Route::resource('manage-cheque', ChequeManagementController::class); 
 });

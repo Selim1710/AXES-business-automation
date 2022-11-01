@@ -10,8 +10,11 @@
     <h2 class="mt-4 mb-4">All Transaction</h2>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
+            Transaction
             <span>
+                <a type="button" class="btn btn-primary" href="{{route('transanction.create')}}">Create Transanction</a>
             </span>
+        </div>
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
