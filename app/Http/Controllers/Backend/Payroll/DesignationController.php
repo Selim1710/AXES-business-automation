@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Bank;
+namespace App\Http\Controllers\Backend\Payroll;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bank\Bank;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-
-class BankController extends Controller
+use App\Models\Payroll\Designation;
+class DesignationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        $banks= Bank::latest()->get();
-        return view('bank.bank.table',['banks'=>$banks]);
+        $designation= Designation::latest()->get();
+        return view('payroll.designation.table',['designation'=>$designation]);
     }
 
     /**
@@ -28,7 +25,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        return view('bank.bank.add');
+        return view('payroll.designation.add');
     }
 
     /**
@@ -41,15 +38,15 @@ class BankController extends Controller
     {
 
         $request->validate([
-            'bank_name'=>'required',
-            'short_name' => 'required',
+            'name'=>'required',
+            'description' => 'required',
         ]);
         
-        Bank::create([
-            'name'=>$request->bank_name,
-            'short_name'=>$request->short_name,
+        Designation::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
         ]);
-        return redirect()->route('banks.index')->withSuccess('Bank Created Successfully!');
+        return redirect()->route('designation.index')->withSuccess('Designation Created Successfully!');
     }
 
     /**
@@ -69,10 +66,9 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bank $bank)
+    public function edit(Designation $designation)
     {
-        $role = Role::get();
-       return view('bank.bank.edit',['bank'=>$bank,'roles' => $role]);
+       return view('payroll.designation.edit',['designation'=>$designation,]);
     }
 
     /**
@@ -82,19 +78,19 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Bank $bank)
+    public function update(Request $request,Designation $designation)
     {
 
         $request->validate([
-            'bank_name'=>'required',
-            'short_name' => 'required',
+            'name'=>'required',
+            'description' => 'required',
         ]);
 
-        $bank->update([
-            'name' => $request->bank_name,
-            'short_name' => $request->short_name
+        $designation->update([
+            'name' => $request->name,
+            'description' => $request->description
         ]);
-        return redirect()->route('banks.index')->withSuccess('Bank updated Successfully!');
+        return redirect()->route('designation.index')->withSuccess('Designation updated Successfully!');
     }
 
     /**
@@ -103,10 +99,10 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy(Designation $designation)
     {
-        $bank->delete();
+        $designation->delete();
 
-        return redirect()->back()->withSuccess('Bank Deleted Successfully');
+        return redirect()->back()->withSuccess('Designation Deleted Successfully');
     }
 }

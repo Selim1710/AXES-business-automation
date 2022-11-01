@@ -22,11 +22,12 @@ use App\Http\Controllers\Backend\Inventory\BranchStockController;
 use App\Http\Controllers\Backend\Inventory\TransferBranchController;
 use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
 use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
+use App\Http\Controllers\Backend\Payroll\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
-
-
+use App\Http\Controllers\Backend\Payroll\DesignationController;
+use App\Http\Controllers\Backend\Payroll\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -332,4 +333,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Manage Cheque
     Route::resource('manage-cheque', ChequeManagementController::class); 
+
+    //Department Controller
+    Route::resource('department', DepartmentController::class);
+
+    //Designation Controller
+    Route::resource('designation', DesignationController::class);
+
+    //Employee Controller
+    Route::resource('employee', EmployeeController::class);
 });

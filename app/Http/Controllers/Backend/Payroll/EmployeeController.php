@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Bank;
+namespace App\Http\Controllers\Backend\Payroll;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bank\Bank;
+use App\Models\Payroll\Employee;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
-class BankController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        $banks= Bank::latest()->get();
-        return view('bank.bank.table',['banks'=>$banks]);
+        $employee= Employee::latest()->get();
+        return view('payroll.employee.table',['employee'=>$employee]);
     }
 
     /**
@@ -28,7 +26,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        return view('bank.bank.add');
+        return view('payroll.employee.add');
     }
 
     /**
@@ -41,15 +39,15 @@ class BankController extends Controller
     {
 
         $request->validate([
-            'bank_name'=>'required',
-            'short_name' => 'required',
+            'name'=>'required',
+            'description' => 'required',
         ]);
         
-        Bank::create([
-            'name'=>$request->bank_name,
-            'short_name'=>$request->short_name,
+        Employee::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
         ]);
-        return redirect()->route('banks.index')->withSuccess('Bank Created Successfully!');
+        return redirect()->route('employee.index')->withSuccess('Employee Created Successfully!');
     }
 
     /**
@@ -69,10 +67,9 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bank $bank)
+    public function edit(Employee $employee)
     {
-        $role = Role::get();
-       return view('bank.bank.edit',['bank'=>$bank,'roles' => $role]);
+       return view('payroll.employee.edit',['employee'=>$employee,]);
     }
 
     /**
@@ -82,19 +79,19 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Bank $bank)
+    public function update(Request $request,Employee $employee)
     {
 
         $request->validate([
-            'bank_name'=>'required',
-            'short_name' => 'required',
+            'name'=>'required',
+            'description' => 'required',
         ]);
 
-        $bank->update([
-            'name' => $request->bank_name,
-            'short_name' => $request->short_name
+        $employee->update([
+            'name' => $request->name,
+            'description' => $request->description
         ]);
-        return redirect()->route('banks.index')->withSuccess('Bank updated Successfully!');
+        return redirect()->route('employee.index')->withSuccess('Employee updated Successfully!');
     }
 
     /**
@@ -103,10 +100,10 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy(Employee $employee)
     {
-        $bank->delete();
+        $employee->delete();
 
-        return redirect()->back()->withSuccess('Bank Deleted Successfully');
+        return redirect()->back()->withSuccess('Employee Deleted Successfully');
     }
 }
