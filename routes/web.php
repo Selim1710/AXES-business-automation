@@ -233,8 +233,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Product
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
-        // json
+        /////////// json = cat wise sub-cat  ///////////
         Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
+        
+        /////////// json = branch wise warehouse  ///////////
+        Route::get('get/branch/wise/warehouse/{id}', [ProductSetupController::class, 'branchWarhouse']);
+        
+        /////////// json = warehouse wise product  ///////////
+        Route::get('/get/warehouse/wise/product/{id}', [ProductSetupController::class, 'warehouseProduct']);
         
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
