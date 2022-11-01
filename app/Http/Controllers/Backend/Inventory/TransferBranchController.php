@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Inventory;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
+use App\Models\Inventory\Branch;
 use Illuminate\Http\Request;
 
 class TransferBranchController extends Controller
@@ -11,14 +11,15 @@ class TransferBranchController extends Controller
     
     public function index()
     {
-        $branchProducts = Branch::all();
-        return view('inventory.transfer_branch_table', compact('branchProducts'));
+        $transBranchProducts = Branch::all();
+        return view('inventory.transfer_branch_table', compact('transBranchProducts'));
     }
 
     
     public function create()
     {
-        //
+        $branchProducts = Branch::all();
+        return view('inventory.create_branch_transfer', compact('branchProducts'));
     }
 
    

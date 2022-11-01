@@ -77,7 +77,7 @@
                         <td>{{ $cheque->cheque_bank }}</td>
                         <td>{{ $cheque->note }}</td>
                         <td style="text-align: right;">
-                            <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$transaction->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$cheque->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                             
                             <form action="{{ route('manage-cheque.destroy', $cheque->id) }}" method="POST" style="display:inline">
                                 @csrf
@@ -157,7 +157,7 @@
                     <td>{{ $cheque->cheque_bank }}</td>
                     <td>{{ $cheque->note }}</td>
                     <td style="text-align: right;">
-                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$transaction->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$cheque->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         
                         <form action="{{ route('manage-cheque.destroy', $cheque->id) }}" method="POST" style="display:inline">
                             @csrf
@@ -238,7 +238,7 @@
                     <td>{{ $cheque->cheque_bank }}</td>
                     <td>{{ $cheque->note }}</td>
                     <td style="text-align: right;">
-                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$transaction->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$cheque->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         
                         <form action="{{ route('manage-cheque.destroy', $cheque->id) }}" method="POST" style="display:inline">
                             @csrf
@@ -320,7 +320,7 @@
                     <td>{{ $cheque->cheque_bank }}</td>
                     <td>{{ $cheque->note }}</td>
                     <td style="text-align: right;">
-                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$transaction->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$cheque->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         
                         <form action="{{ route('manage-cheque.destroy', $cheque->id) }}" method="POST" style="display:inline">
                             @csrf
@@ -401,7 +401,7 @@
                     <td>{{ $cheque->cheque_bank }}</td>
                     <td>{{ $cheque->note }}</td>
                     <td style="text-align: right;">
-                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$transaction->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <a class="btn btn-success" style="font-size:13px" href="{{route('manage-cheque.edit',$cheque->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         
                         <form action="{{ route('manage-cheque.destroy', $cheque->id) }}" method="POST" style="display:inline">
                             @csrf

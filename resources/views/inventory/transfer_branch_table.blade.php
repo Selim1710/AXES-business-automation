@@ -12,32 +12,34 @@
 <!-- end-message -->
 
 <div class="card mb-4">
-    
+    <div class="card-header d-flex justify-content-between">
+        <span>
+        </span>
+        <a href="{{ route('transfer_branch.create') }}" class="btn btn-primary">Create Transfer</a>
+    </div>
+
+
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
                     <th>SN</th>
-                    <th>image</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-
-                    <th><i class="fa fa-paper-plane"></i></th>
+                    <th>Transfer ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Total</th>
+                    <th>Description</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($branchProducts as $key=>$branch)
+                @forelse ($transBranchProducts as $key=>$branch)
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $branch->name }}</td>
                     <td>{{ $branch->email }}</td>
                     <td>{{ $branch->phone }}</td>
                     <td>{{ $branch->address }}</td>
-
-                    <td>
-                        <a class="btn btn-success" href="{{ route('inventory.branch.edit', $branch->id) }}" style="font-size:13px"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                    </td>
                 </tr>
                 @empty
                 <p class="text-danger text-center">No data available</p>

@@ -107,7 +107,6 @@
                         <a class="nav-link" href="{{ route('branch_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch stock </a>
                         <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse stock </a>
                         <a class="nav-link" href="{{ route('transfer_branch.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
-                        <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer warehouse </a>
                     </nav>
                 </div>
 

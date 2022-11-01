@@ -3,19 +3,26 @@
 namespace App\Http\Controllers\Backend\Inventory;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
+use App\Models\Inventory\Branch;
+use App\Models\Inventory\Warehouse;
+use App\Models\ProductSetup\Stock;
 use Illuminate\Http\Request;
 
 class BranchStockController extends Controller
 {
-    
+
     public function index()
     {
-        $branches = Branch::all();
+        // take all branch from barnch table
+        $branches = Branch::with('warehouse')->get();
+        // then stock table find total stock 
+        foreach ($branches as $branch) {
+            $branch->total_stock_product = Stock::where('branch_id', $branch->id)->sum('total_qty');
+        }
         return view('inventory.branch_stock_table', compact('branches'));
     }
 
-    
+
     public function create()
     {
         //
@@ -44,7 +51,7 @@ class BranchStockController extends Controller
         //
     }
 
-  
+
     public function destroy($id)
     {
         //
