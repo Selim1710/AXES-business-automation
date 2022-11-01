@@ -27,7 +27,7 @@
             </thead>
 
             <tbody>
-                @forelse ($branchProducts as $key=>$branch)
+                @forelse ($transBranchProducts as $key=>$branch)
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $branch->name }}</td>
