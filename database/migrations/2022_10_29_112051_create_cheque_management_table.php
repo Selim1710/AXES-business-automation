@@ -18,14 +18,14 @@ class CreateChequeManagementTable extends Migration
             $table->string('type');
             $table->date('date');
             $table->string('tran_no');
-            $table->integer('ac_number');
+            $table->string('ac_number');
             $table->string('note')->nullable();
             $table->integer('amount');
             $table->string('cheque_no')->nullable();
             $table->string('cq_date')->nullable();
-            $table->string('refference');
-            $table->string('client');
-            $table->string('cheque_bank');
+            $table->string('client')->nullable();
+            $table->string('cheque_bank')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }
