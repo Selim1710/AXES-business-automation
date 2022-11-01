@@ -195,12 +195,31 @@
                 </div>
 
                 <hr>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPayroll" aria-expanded="false" aria-controls="collapseLayoutPayroll">
+                    <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
+                    Payroll
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayoutPayroll" aria-labelledby="headingPayroll" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{route('department.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Department List</a>
+                        <a class="nav-link" href="{{route('department.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Department</a>
+                        <a class="nav-link" href="{{route('designation.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Designation List</a>
+                        <a class="nav-link" href="{{route('designation.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Designation</a>
+                        <a class="nav-link" href="{{route('employee.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Employee List</a>
+                        <a class="nav-link" href="{{route('employee.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Employee</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
+                    </nav>
+                </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
                     Bank
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingNine" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingBank" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('banks.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Bank List</a>
                         <a class="nav-link" href="{{route('banks.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Bank</a>

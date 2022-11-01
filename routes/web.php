@@ -27,10 +27,13 @@ use App\Http\Controllers\Backend\MasterSetup\CountryController;
 use App\Http\Controllers\Backend\MasterSetup\CurrencyController;
 use App\Http\Controllers\Backend\MasterSetup\ManufacturerController;
 use App\Http\Controllers\Backend\MasterSetup\UnitController;
+use App\Http\Controllers\FinanceRecord\ChartOfAccount;
+use App\Http\Controllers\Backend\Payroll\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
-use App\Http\Controllers\FinanceRecord\ChartOfAccount;
+use App\Http\Controllers\Backend\Payroll\DesignationController;
+use App\Http\Controllers\Backend\Payroll\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -387,4 +390,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Manage Cheque
     Route::resource('manage-cheque', ChequeManagementController::class); 
+
+    //Department Controller
+    Route::resource('department', DepartmentController::class);
+
+    //Designation Controller
+    Route::resource('designation', DesignationController::class);
+
+    //Employee Controller
+    Route::resource('employee', EmployeeController::class);
 });
