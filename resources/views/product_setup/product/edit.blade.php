@@ -41,6 +41,10 @@
                 <label class="form-label">offer</label>
                 <input type="text" class="form-control" name="offer" value="{{ $product->offer }}" required>
             </div>
+            <div class="col-12">
+                <label class="form-label">offer</label>
+                <input type="text" class="form-control" name="warranty" value="{{ $product->warranty }}" required>
+            </div>
 
             <div class="col-12">
                 <label class="form-label">description</label>

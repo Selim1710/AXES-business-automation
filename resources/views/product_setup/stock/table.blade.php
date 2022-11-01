@@ -40,16 +40,43 @@
                             </div>
 
                             <div class="border p-3 rounded">
-                                <div class="col-12">
-                                    <label class="form-label">Product Name</label>
-                                    <select name="product_id" class="form-control">
-                                        <option value="">-- SELECT --</option>
-                                        @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <!-- branch & warehouse -->
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="form-label">Branch Name</label>
+                                        <select name="branch_id" id="branchID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @forelse ($branches as $branch)
+                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                            @empty
+                                            <option value="">-- SELECT --</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-label">warehouses Name</label>
+                                        <select name="warehouse_id" id="warehouseID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @forelse ($warehouses as $warehouse)
+                                            <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                            @empty
+                                            <option value="">-- SELECT --</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    <!-- product -->
+                                    <div class="col-4">
+                                        <label class="form-label">Product Name</label>
+                                        <select name="product_id" id="productID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @forelse ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @empty
+                                            <option value="">-- SELECT --</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
                                 </div>
-
                                 <div class="col-12">
                                     <label class="form-label">Total Product</label>
                                     <input type="number" class="form-control" name="total_qty" required>
@@ -105,3 +132,54 @@
 </div>
 
 @endsection
+
+<!-- ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Branch & warehouse 
+        $('#branchID').change(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var id = $(this).val();
+            $('#productID').empty();
+
+            // ajax call for warehouse
+            $.ajax({
+                type: "GET",
+                url: "/backend/product-setup/get/branch/wise/warehouse/" + id,
+                dataType: "json",
+                success: function(response) {
+                    $('#warehouseID').html(response);
+                },
+                error: function(error) {
+                    alert('ajax error');
+                },
+            });
+        });
+
+        // ajax call for product 
+        $('#warehouseID').click(function() {
+            var wid = $(this).val();
+            // alert(wid);
+
+            $.ajax({
+                type: "GET",
+                url: "/backend/product-setup/get/warehouse/wise/product/" + wid,
+                dataType: "json",
+                success: function(response) {
+                    $('#productID').html(response);
+                },
+                error: function(error) {
+                    alert('ajax error');
+                },
+            });
+        });
+    });
+</script>
