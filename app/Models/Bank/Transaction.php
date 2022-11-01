@@ -9,9 +9,19 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'tran_no',
         'date',
-        'inv_no',
-        'amount',
+        'total_amount',
         'note',
+        'source',
+        'payto',
+        'amount',
+        'cheque_no',
+        'cq_date',
+        'refference',
     ];
+
+    public function bank_account(){
+        return $this->belongsTo(BankAccounts::class);
+    }
 }

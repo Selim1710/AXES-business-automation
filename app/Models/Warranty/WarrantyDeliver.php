@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Warranty;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Warehouse extends Model
+class WarrantyDeliver extends Model
 {
     use HasFactory;
-
-    protected $guarded=[];
+    protected $guarded = [];
 }

@@ -4,7 +4,7 @@
     <section class="content">
 
         <div class="row ">
-            <div class="col-md-8 mt-4">
+            <div class="col-md-10 mt-4">
                 <div class="box box-solid">
                     <div class="box-header with-border mt-4">
                         <h3 class="box-title" >Transanction Record</h3>
@@ -12,7 +12,7 @@
                     <div class="box-body">
                         <div class="card">
                             <div class="card-body">
-                        <form action="{{route('expense-voucher')}}" onsubmit="return validate()" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                        <form id="create-transanction" action="{{route('transanction.store')}}"  method="post">
                             @csrf
                             <div class="col-md-12 popup_details_div">
                                 <div class="row">
@@ -36,7 +36,8 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon d-flex align-items-center" style="margin-right: 10px"><b>Tra. No: </b></span>
-                                                <input type="text" class="form-control" maxlength="15" name="tran_id" value="{{$tran_id}}" id="invno"  placeholder="e.g. AXE121119101" disabled>
+                                                <input type="text" class="form-control" value="{{$tran_id}}" id="invno" disabled>
+                                                <input type="hidden" name="tran_id" value="{{$tran_id}}">
                                             </div>
                                         </div>
                                         <br>
@@ -59,10 +60,12 @@
                                                     <option value="">-Select-</option>
 
                                                     @foreach($bankaccounts as $bankaccount)
-                                                         @if ($bankaccount->account_type === 'bank')
-                                                            <option  value="{{$bankaccount->id}}">{{$bankaccount->bank->short_name.'- '.$bankaccount->account_no}}</option>
-                                                         @else
-                                                            <option  value="{{$bankaccount->id}}">{{$bankaccount->title.'- '.$bankaccount->account_no}}</option>
+                                                         @if ($bankaccount->account_type == 'bank')
+                                                            <option  value="{{$bankaccount->id}}" type="{{$bankaccount->account_type}}">{{$bankaccount->bank->short_name.'- '.$bankaccount->account_no}}</option>
+                                                        @elseif( $bankaccount->account_type == 'cash')
+                                                            <option  value="{{$bankaccount->id}}" type="{{$bankaccount->account_type}}">{{$bankaccount->title}}</option>
+                                                        @elseif($bankaccount->account_type == 'mobile')
+                                                            <option  value="{{$bankaccount->id}}" type="{{$bankaccount->account_type}}">{{$bankaccount->title.'- '.$bankaccount->account_no}}</option>
                                                          @endif
                                                     @endforeach
 
@@ -76,13 +79,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group" >
                                             <label>Cheque No</label>
-                                            <input type="text" maxlength="25" class="form-control" name="ref" id="ref" placeholder="e.g. Sumon" autocomplete="off">
+                                            <input type="text" maxlength="25" class="form-control" id="cheque_no" disabled placeholder="e.g. CQ2433" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" >
                                             <label>Cheque Date</label>
-                                            <input type="text" maxlength="25" class="form-control" name="ref" id="ref" placeholder="e.g. Sumon" autocomplete="off">
+                                            <input  type="date" class="form-control" id="cheque_date" disabled>
                                         </div>
                                     </div>
                                     
@@ -92,13 +95,16 @@
                                         <div class="form-group" >
                                             <label>Deposit To</label>
                                             <div class="input-group">
-                                                <select class="form-control" id="expense">
+                                                <select class="form-control" disabled id="deposit-to">
                                                     <option value="">-Select-</option>
 
                                                     @foreach($bankaccounts as $bankaccount)
-                                                         @if ($bankaccount->account_type === 'bank')
+
+                                                         @if ($bankaccount->account_type == 'bank')
                                                             <option  value="{{$bankaccount->id}}">{{$bankaccount->bank->short_name.'- '.$bankaccount->account_no}}</option>
-                                                         @else
+                                                        @elseif( $bankaccount->account_type == 'cash')
+                                                            <option  value="{{$bankaccount->id}}">{{$bankaccount->title}}</option>
+                                                        @elseif($bankaccount->account_type == 'mobile')
                                                             <option  value="{{$bankaccount->id}}">{{$bankaccount->title.'- '.$bankaccount->account_no}}</option>
                                                          @endif
                                                     @endforeach
@@ -113,19 +119,19 @@
                                     <div class="col-md-3">
                                         <div class="form-group" >
                                             <label>Ref</label>
-                                            <input type="text" maxlength="25" class="form-control" name="ref" id="ref" placeholder="e.g. Sumon" autocomplete="off">
+                                            <input type="text" maxlength="25" class="form-control" id="trnref" placeholder="e.g. Sumon" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Amount</label>
-                                            <input type="text" maxlength="6" class="form-control" name="totalamount" id="amount" placeholder="e.g. 500" autocomplete="off" >
+                                            <input type="text" maxlength="6" class="form-control" id="trnamount" placeholder="e.g. 500" autocomplete="off" >
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <input type="button" id="addexp" class="btn btn-flat bg-red" style="background-color: red;
+                                            <input type="button" id="addtranction" class="btn btn-flat bg-red" style="background-color: red;
                                               color: white;" value="Add"/>
                                         </div>
                                     </div>
@@ -136,7 +142,7 @@
                                         <table class="table table-bordered table-striped" id="create_expanse_table">
                                             <thead style="background-color: #babebf;">
                                             <th style="width:40px; text-align:center">SN</th>
-                                            <th>Sourch</th>
+                                            <th>Source</th>
                                             <th>Pay To</th>
                                             <th>Amount</th>
                                             <th>Cheque</th>
@@ -144,16 +150,15 @@
                                             <th>Ref</th>
                                             <th style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a></th>
                                             </thead>
-                                            <tbody id="itemdata">
+                                            <tbody id="trnitemdata">
 
                                             </tbody>
-                                            <tfoot id="totalitemfoot" style="opacity: 0">
+                                            <tfoot id="totaltranfoot" style="opacity: 0">
                                                     <td style="width:40px; text-align:center"></td>
+                                                    <td></td>
                                                     <td style="text-align: right;">Total</td>
                                                     <td id="totalamount"></td>
-                                                    <input type="hidden" name="ref" id="ref">
-
-                                                    <input type="hidden" name="totalamount" id="totalvalue">
+                                                    <input type="hidden" name="totalamount" id="trntotalamount" value="0">
                                                     <td></td>
                                                     <td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"></a></td>
                                             </tfoot>
@@ -189,7 +194,6 @@
             <script>
                 var date = new Date();
                 var currentDate = date.toISOString().slice(0,10);
-
                 document.getElementById('currentDate').value = currentDate;
             </script>
 

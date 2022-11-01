@@ -82,7 +82,7 @@
                             <div class="modal-footer">
                                 @csrf
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create Bank</button>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
                             </div>
                         </form>
                     </div>
