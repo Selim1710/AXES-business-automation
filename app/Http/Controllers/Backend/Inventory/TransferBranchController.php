@@ -18,7 +18,8 @@ class TransferBranchController extends Controller
     
     public function create()
     {
-        //
+        $branchProducts = Branch::all();
+        return view('inventory.create_branch_transfer', compact('branchProducts'));
     }
 
    

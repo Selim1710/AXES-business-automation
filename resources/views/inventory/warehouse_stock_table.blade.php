@@ -37,8 +37,6 @@
                 @empty
                 <p class="text-danger text-center">No warehouse available</p>
                 @endforelse
-
-
             </tbody>
         </table>
     </div>
