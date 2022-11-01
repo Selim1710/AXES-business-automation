@@ -19,8 +19,7 @@ use App\Http\Controllers\Backend\ClientSetup\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
-
-
+use App\Http\Controllers\FinanceRecord\ChartOfAccount;
 
 /*
 |--------------------------------------------------------------------------
@@ -214,7 +213,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
-
+   // finanaceRecord
+    Route::group(['prefix' => 'chart_account'], function () {
+        Route::get('/chartAccount',[ChartOfAccount::class,'chartAccount'])->name('admin.chart_account');
+        Route::get('/profit_loss',[ChartOfAccount::class,'profitLoss'])->name('admin.profit_Loss');
+        Route::get('/trial_balance',[ChartOfAccount::class,'trialBalance'])->name('admin.trial.balance');
+        Route::get('/balance_sheet',[ChartOfAccount::class,'balanceSheet'])->name('admin.balance_sheet');
+        Route::get('/finance_analysis',[ChartOfAccount::class,'financeAnalysis'])->name('admin.finance.analysis');
+    });
 
     /*
     |--------------------------------------------------------------------------

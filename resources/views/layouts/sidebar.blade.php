@@ -116,6 +116,22 @@
                         <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
                     </nav>
                 </div>
+                <!-- finance record -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#financeRecord" aria-expanded="false" aria-controls="financeRecord">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Finance Record
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="financeRecord" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('admin.chart_account') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Chart of Account</a>
+                        <a class="nav-link" href="{{ route('admin.profit_Loss') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Profit And Loss</a>
+                        <a class="nav-link" href="{{ route('admin.trial.balance') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Trial Balance</a>
+                        <a class="nav-link" href="{{ route('admin.balance_sheet') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Balance Sheet</a>
+                        <a class="nav-link" href="{{ route('admin.finance.analysis') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Finance Analysis</a>
+                    </nav>
+                </div>
 
                 <hr>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
