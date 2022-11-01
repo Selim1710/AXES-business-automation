@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Inventory;
 
 use App\Http\Controllers\Controller;
 use App\Models\Inventory\Warehouse;
+use App\Models\ProductSetup\Stock;
 use Illuminate\Http\Request;
 
 class WarehouseStockController extends Controller
@@ -11,8 +12,11 @@ class WarehouseStockController extends Controller
   
     public function index()
     {
-        $branches = Warehouse::all();
-        return view('inventory.warehouse_stock_table', compact('branches'));
+        $warehouses = Warehouse::with('branch')->get();
+        foreach ($warehouses as $warehouse) {
+            $warehouse->total_stock_product = Stock::where('warehouse_id', $warehouse->id)->sum('total_qty');
+        }
+        return view('inventory.warehouse_stock_table', compact('warehouses'));
     }
 
    
