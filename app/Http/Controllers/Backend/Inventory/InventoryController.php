@@ -12,7 +12,7 @@ class InventoryController extends Controller
     //////////////// branch ////////////////
     public function branchTable()
     {
-        $branches = Branch::all();
+        $branches = Branch::with('warehouse')->get();
         return view('inventory.branch_table', compact('branches'));
     }
 

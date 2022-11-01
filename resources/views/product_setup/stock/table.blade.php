@@ -105,7 +105,10 @@
                 <tr>
                     <th>SN</th>
                     <th>Product Code</th>
+                    <th>branch Code</th>
+                    <th>warehouse Code</th>
                     <th>Total product</th>
+                    <th>description</th>
 
                     <th>Action</th>
                 </tr>
@@ -116,7 +119,10 @@
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $stock->product_id }}</td>
+                    <td>{{ $stock->branch_id }}</td>
+                    <td>{{ $stock->warehouse_id }}</td>
                     <td>{{ $stock->total_qty }}</td>
+                    <td>{{ $stock->description }}</td>
 
                     <td>
                         <a class="btn btn-success" href="{{ route('admin.edit.stock', $stock->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>

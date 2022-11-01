@@ -236,9 +236,7 @@ class ProductSetupController extends Controller
         $branches = Branch::with('product')->orderBy('id', 'desc')->get();
         // dd($branches);
         $warehouses = Warehouse::with('product')->orderBy('id', 'desc')->get();
-        // dd($warehouses);
         $products = Product::with('stock')->orderBy('id', 'desc')->get();
-
         $stocks = Stock::with('product')->orderBy('id', 'desc')->get();
         return view('product_setup.stock.table', compact('branches', 'warehouses', 'products', 'stocks'));
     }
@@ -257,14 +255,19 @@ class ProductSetupController extends Controller
     public function storeStock(Request $request)
     {
         $request->validate([
-            "product_id" => "required",
+            "branch_id" => "required",
+            "warehouse_id" => "required",
+            "product_id" => "required|unique:stocks",
             "total_qty" => "required",
+            "description" => "required",
         ]);
 
-        dd($request->all());
         Stock::create([
+            "branch_id" => $request->branch_id,
+            "warehouse_id" => $request->warehouse_id,
             "product_id" => $request->product_id,
             "total_qty" => $request->total_qty,
+            "description" => $request->description,
         ]);
         return redirect()->route('admin.manage.stock')->with('message', 'Stock added succefully');
     }
