@@ -22,11 +22,18 @@ use App\Http\Controllers\Backend\Inventory\BranchStockController;
 use App\Http\Controllers\Backend\Inventory\TransferBranchController;
 use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
 use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
+use App\Http\Controllers\Backend\MasterSetup\BrandController;
+use App\Http\Controllers\Backend\MasterSetup\CountryController;
+use App\Http\Controllers\Backend\MasterSetup\CurrencyController;
+use App\Http\Controllers\Backend\MasterSetup\ManufacturerController;
+use App\Http\Controllers\Backend\MasterSetup\UnitController;
+use App\Http\Controllers\FinanceRecord\ChartOfAccount;
+use App\Http\Controllers\Backend\Payroll\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
-
-
+use App\Http\Controllers\Backend\Payroll\DesignationController;
+use App\Http\Controllers\Backend\Payroll\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -301,6 +308,57 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
+   // finanaceRecord
+    Route::group(['prefix' => 'chart_account'], function () {
+        Route::get('/chartAccount',[ChartOfAccount::class,'chartAccount'])->name('admin.chart_account');
+        Route::get('/profit_loss',[ChartOfAccount::class,'profitLoss'])->name('admin.profit_Loss');
+        Route::get('/trial_balance',[ChartOfAccount::class,'trialBalance'])->name('admin.trial.balance');
+        Route::get('/balance_sheet',[ChartOfAccount::class,'balanceSheet'])->name('admin.balance_sheet');
+        Route::get('/finance_analysis',[ChartOfAccount::class,'financeAnalysis'])->name('admin.finance.analysis');
+    });
+    /*
+    |--------------------------------------------------------------------------
+    |                    Sohel Rana
+    |--------------------------------------------------------------------------
+    | */
+    //master_setup
+    Route::group(['prefix' => 'master_setup'], function () {
+
+        //brand
+        Route::get('/manage/brand', [BrandController::class, 'manageBrand'])->name('admin.manage.brand');
+        Route::post('/store/brand', [BrandController::class, 'storeBrand'])->name('admin.store.brand');
+        Route::get('/edit/brand/{id}', [BrandController::class, 'editBrand'])->name('admin.edit.brand');
+        Route::post('/update/brand/{id}', [BrandController::class, 'updateBrand'])->name('admin.update.brand');
+        Route::get('/delete/brand/{id}', [BrandController::class, 'deleteBrand'])->name('admin.delete.brand');
+
+        //manufacturer
+        Route::get('/manage/manufacturer', [ManufacturerController::class, 'manageManufacturer'])->name('admin.manage.manufacturer');
+        Route::post('/store/manufacturer', [ManufacturerController::class, 'storeManufacturer'])->name('admin.store.manufacturer');
+        Route::get('/edit/manufacturer/{id}', [ManufacturerController::class, 'editManufacturer'])->name('admin.edit.manufacturer');
+        Route::post('/update/manufacturer/{id}', [ManufacturerController::class, 'updateManufacturer'])->name('admin.update.manufacturer');
+        Route::get('/delete/manufacturer/{id}', [ManufacturerController::class, 'deleteManufacturer'])->name('admin.delete.manufacturer');
+
+        //unit
+        Route::get('/manage/unit', [UnitController::class, 'manageUnit'])->name('admin.manage.unit');
+        Route::post('/store/unit', [UnitController::class, 'storeUnit'])->name('admin.store.unit');
+        Route::get('/edit/unit/{id}', [UnitController::class, 'editUnit'])->name('admin.edit.unit');
+        Route::post('/update/unit/{id}', [UnitController::class, 'updateUnit'])->name('admin.update.unit');
+        Route::get('/delete/unit/{id}', [UnitController::class, 'deleteUnit'])->name('admin.delete.unit');
+
+        //currency
+        Route::get('/manage/currency', [CurrencyController::class, 'manageCurrency'])->name('admin.manage.currency');
+        Route::post('/store/currency', [CurrencyController::class, 'storeCurrency'])->name('admin.store.currency');
+        Route::get('/edit/currency/{id}', [CurrencyController::class, 'editCurrency'])->name('admin.edit.currency');
+        Route::post('/update/currency/{id}', [CurrencyController::class, 'updateCurrency'])->name('admin.update.currency');
+        Route::get('/delete/currency/{id}', [CurrencyController::class, 'deleteCurrency'])->name('admin.delete.currency');
+
+        //country
+        Route::get('/manage/country', [CountryController::class, 'manageCountry'])->name('admin.manage.country');
+        Route::post('/store/country', [CountryController::class, 'storeCountry'])->name('admin.store.country');
+        Route::get('/edit/country/{id}', [CountryController::class, 'editCountry'])->name('admin.edit.country');
+        Route::post('/update/country/{id}', [CountryController::class, 'updateCountry'])->name('admin.update.country');
+        Route::get('/delete/country/{id}', [CountryController::class, 'deleteCountry'])->name('admin.delete.country');
+    });
 
 
     /*
@@ -332,4 +390,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Manage Cheque
     Route::resource('manage-cheque', ChequeManagementController::class); 
+
+    //Department Controller
+    Route::resource('department', DepartmentController::class);
+
+    //Designation Controller
+    Route::resource('designation', DesignationController::class);
+
+    //Employee Controller
+    Route::resource('employee', EmployeeController::class);
 });
