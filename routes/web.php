@@ -23,10 +23,15 @@ use App\Http\Controllers\Backend\Inventory\TransferBranchController;
 use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
 use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
 use App\Http\Controllers\Backend\MasterSetup\BrandController;
+use App\Http\Controllers\Backend\MasterSetup\ColorController;
 use App\Http\Controllers\Backend\MasterSetup\CountryController;
 use App\Http\Controllers\Backend\MasterSetup\CurrencyController;
+use App\Http\Controllers\Backend\MasterSetup\DistrictController;
 use App\Http\Controllers\Backend\MasterSetup\ManufacturerController;
+use App\Http\Controllers\Backend\MasterSetup\SizeController;
+use App\Http\Controllers\Backend\MasterSetup\TransportController;
 use App\Http\Controllers\Backend\MasterSetup\UnitController;
+use App\Http\Controllers\Backend\MasterSetup\ZoneController;
 use App\Http\Controllers\FinanceRecord\ChartOfAccount;
 use App\Http\Controllers\Backend\Payroll\DepartmentController;
 use Illuminate\Support\Facades\Route;
@@ -358,6 +363,41 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/country/{id}', [CountryController::class, 'editCountry'])->name('admin.edit.country');
         Route::post('/update/country/{id}', [CountryController::class, 'updateCountry'])->name('admin.update.country');
         Route::get('/delete/country/{id}', [CountryController::class, 'deleteCountry'])->name('admin.delete.country');
+
+        //transport
+        Route::get('/manage/transport', [TransportController::class, 'manageTransport'])->name('admin.manage.transport');
+        Route::post('/store/transport', [TransportController::class, 'storeTransport'])->name('admin.store.transport');
+        Route::get('/edit/transport/{id}', [TransportController::class, 'editTransport'])->name('admin.edit.transport');
+        Route::post('/update/transport/{id}', [TransportController::class, 'updateTransport'])->name('admin.update.transport');
+        Route::get('/delete/transport/{id}', [TransportController::class, 'deleteTransport'])->name('admin.delete.transport');
+
+        //color
+        Route::get('/manage/color', [ColorController::class, 'manageColor'])->name('admin.manage.color');
+        Route::post('/store/color', [ColorController::class, 'storeColor'])->name('admin.store.color');
+        Route::get('/edit/color/{id}', [ColorController::class, 'editColor'])->name('admin.edit.color');
+        Route::post('/update/color/{id}', [ColorController::class, 'updateColor'])->name('admin.update.color');
+        Route::get('/delete/color/{id}', [ColorController::class, 'deleteColor'])->name('admin.delete.color');
+
+        //size
+        Route::get('/manage/size', [SizeController::class, 'manageSize'])->name('admin.manage.size');
+        Route::post('/store/size', [SizeController::class, 'storeSize'])->name('admin.store.size');
+        Route::get('/edit/size/{id}', [SizeController::class, 'editSize'])->name('admin.edit.size');
+        Route::post('/update/size/{id}', [SizeController::class, 'updateSize'])->name('admin.update.size');
+        Route::get('/delete/size/{id}', [SizeController::class, 'deleteSize'])->name('admin.delete.size');
+
+        //district
+        Route::get('/manage/district', [DistrictController::class, 'manageDistrict'])->name('admin.manage.district');
+        Route::post('/store/district', [DistrictController::class, 'storeDistrict'])->name('admin.store.district');
+        Route::get('/edit/district/{id}', [DistrictController::class, 'editDistrict'])->name('admin.edit.district');
+        Route::post('/update/district/{id}', [DistrictController::class, 'updateDistrict'])->name('admin.update.district');
+        Route::get('/delete/district/{id}', [DistrictController::class, 'deleteDistrict'])->name('admin.delete.district');
+
+        //zone
+        Route::get('/manage/zone', [ZoneController::class, 'manageZone'])->name('admin.manage.zone');
+        Route::post('/store/zone', [ZoneController::class, 'storeZone'])->name('admin.store.zone');
+        Route::get('/edit/zone/{id}', [ZoneController::class, 'editZone'])->name('admin.edit.zone');
+        Route::post('/update/zone/{id}', [ZoneController::class, 'updateZone'])->name('admin.update.zone');
+        Route::get('/delete/zone/{id}', [ZoneController::class, 'deleteZone'])->name('admin.delete.zone');
     });
 
 
