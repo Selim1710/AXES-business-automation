@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All Brand</h2>
+<h2 class="mt-4 mb-4">All Zone</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,17 +14,17 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brand">Create New Brand</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#zone">Create New Zone</button>
         <!-- Modal -->
-        <div class="modal fade" id="brand" tabindex="-1" aria-labelledby="brandLabel" aria-hidden="true">
+        <div class="modal fade" id="zone" tabindex="-1" aria-labelledby="zoneLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="brandLabel">Create New Brand</h5>
+                        <h5 class="modal-title" id="zoneLabel">Create New Zone</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="{{ route('admin.store.brand') }}" method="POST">
+                    <form action="{{ route('admin.store.zone') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -41,13 +41,13 @@
 
                             <div class="border p-3 rounded">
                                 <div class="col-12">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" required>
+                                    <label class="form-label">District</label>
+                                    <input type="text" class="form-control" name="district" required>
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
+                                    <label class="form-label">Zone</label>
+                                    <textarea class="form-control" name="zone" cols="30" rows="4" required></textarea>
                                 </div>
 
                             </div>
@@ -67,27 +67,27 @@
             <thead>
                 <tr>
                     <th>SN</th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>District</th>
+                    <th>Zone</th>
 
                     <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($brands as $key=>$brand)
+                @forelse ($zones as $key=>$zone)
                 <tr>
                     <td>{{ $key+1 }} </td>
-                    <td>{{ $brand->name }}</td>
-                    <td>{{ $brand->description }}</td>
+                    <td>{{ $zone->district }}</td>
+                    <td>{{ $zone->zone }}</td>
 
                     <td>
-                        <a class="btn btn-success" href="{{ route('admin.edit.brand', $brand->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.brand', $brand->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="btn btn-success" href="{{ route('admin.edit.zone', $zone->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.zone', $zone->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty
-                <p class="text-danger text-center">No brand available</p>
+                <p class="text-danger text-center">No zone available</p>
                 @endforelse
             </tbody>
         </table>

@@ -152,13 +152,13 @@
                         <a class="nav-link" href="{{ route('admin.manage.brand') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Brand</a>
                         <a class="nav-link" href="{{ route('admin.manage.manufacturer') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Manufacturer</a>
                         <a class="nav-link" href="{{ route('admin.manage.unit') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Unit</a>
-                        <a class="nav-link" href="{{ route('admin.manage.currency') }}""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
+                        <a class="nav-link" href="{{ route('admin.manage.currency') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
                         <a class="nav-link" href="{{ route('admin.manage.country') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Country</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Size</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>District</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
+                        <a class="nav-link" href="{{ route('admin.manage.transport') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
+                        <a class="nav-link" href="{{ route('admin.manage.color') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
+                        <a class="nav-link" href="{{ route('admin.manage.size') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Size</a>
+                        <a class="nav-link" href="{{ route('admin.manage.district') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>District</a>
+                        <a class="nav-link" href="{{ route('admin.manage.zone') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
                     </nav>
                 </div>
 

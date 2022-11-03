@@ -15,7 +15,40 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <a href="{{ route('transfer_branch.create') }}" class="btn btn-primary">Create Transfer</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#branch">Create Transfer</button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="branch" tabindex="-1" aria-labelledby="branchLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="branchLabel">Select a Branch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Branch form -->
+                <form action="{{ route('transfer_branch.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="border p-3 rounded">
+                            <div class="col-12">
+                                <label class="form-label">Select a Branch Name</label>
+                                <select name="branch_id" id="" class="form-control" required>
+                                    @forelse ($branches as $branch)
+                                    <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @empty
+                                        <p>No branch</p>
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 
@@ -33,7 +66,7 @@
             </thead>
 
             <tbody>
-                @forelse ($transBranchProducts as $key=>$branch)
+                @forelse ($transferedBranches as $key=>$branch)
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $branch->name }}</td>
