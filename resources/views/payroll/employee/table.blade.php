@@ -11,62 +11,37 @@
         <div class="card-header d-flex justify-content-between">
             <span>
             </span>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeCreateModel">Create New Employee</button>
-                            <!-- Modal -->
-                <div class="modal fade" id="employeeCreateModel" tabindex="-1" aria-labelledby="employeeCreateModelLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="employeeCreateModelLabel">Create New Employee</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form id="create-employee" method="POST" action="{{route('employee.store')}}" >
-                                    <div class="modal-body">
-                                      <div class="border p-3 rounded">
-                                       
-                                        <div class="col-12">
-                                          <label class="form-label">Employee Name</label>
-                                          <input type="text" class="form-control" name="name" required>
-                                        </div>
-                                        <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Employee Description</label>
-                                                    <textarea class="form-control" name="description" id="note" maxlength="250" rows="3" placeholder="e.g. Employee"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                          <div class="alert alert-danger mt-2" id="short_name_error" style="display: none"></div>
-                                        </div>
-                                    </div>
-                           
-
-                            <div class="modal-footer">
-                                @csrf
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create Employee</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                    </div>
+            <a href="{{route('employee.create')}}" type="button" class="btn btn-primary" >Create New Employee</a>
                 </div>
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>Employee Name</th>
-                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Id No</th>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Department</th>
+                        <th>Work Place</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Salary</th>
                         <th style="text-align: right;">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>SN</th>
-                        <th>Employee Name</th>
-                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Id No</th>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Department</th>
+                        <th>Work Place</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Salary</th>
                         <th style="text-align: right;">Action</th>
                     </tr>
                 </tfoot>
@@ -83,9 +58,15 @@
         
                     <tr>
                         <td>{{ $serial }}</td>
+                        <td><img src="{{asset('images/employee/'.$employee->profile_image)}}" width="55px" height="55px"></td>
+                        <td>{{ $employee->id }}</td>
                         <td>{{ $employee->name }}</td>
-                        <td>{{ $employee->description }}</td>
-
+                        <td>{{ $employee->designation->name }}</td>
+                        <td>{{ $employee->department->name }}</td>
+                        <td>{{ $employee->branch }}</td>
+                        <td>{{ $employee->phone }}</td>
+                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->salary }}</td>
                         <td style="text-align: right;">
                             <a class="btn btn-success" style="font-size:13px" href="{{route('employee.edit',$employee->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                             
