@@ -39,6 +39,7 @@ use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
 use App\Http\Controllers\Backend\Payroll\DesignationController;
 use App\Http\Controllers\Backend\Payroll\EmployeeController;
+use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
 use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
 
 /*
@@ -443,4 +444,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //LeaveType Controller
     Route::resource('leavetypes', LeaveTypeController::class);
+
+     //LeaveApplication Controller
+     Route::resource('leave-application', LeaveApplicationController::class);
 });

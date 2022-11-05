@@ -210,8 +210,8 @@
                         <a class="nav-link" href="{{route('employee.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Employee</a>
                         <a class="nav-link" href="{{route('leavetypes.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Type</a>
                         <a class="nav-link" href="{{route('leavetypes.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Type</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
+                        <a class="nav-link" href="{{route('leave-application.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
+                        <a class="nav-link" href="{{route('leave-application.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
                         <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Attendence Record</a>
                         <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Salary Sheet & Payslip</a>
                     </nav>

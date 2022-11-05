@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Backend\Payroll;
 
 use App\Http\Controllers\Controller;
-use App\Models\Payroll\LeaveType;
+use App\Models\Payroll\LeaveApplication;
 use Illuminate\Http\Request;
 
-class LeaveTypeController extends Controller
+class LeaveApplicationController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $leave_type= LeaveType::latest()->get();
+        $leave_type= LeaveApplication::latest()->get();
         return view('payroll.leave_type.table',['leave_types'=>$leave_type]);
     }
 
@@ -45,13 +45,13 @@ class LeaveTypeController extends Controller
             'description' => 'nullable',
         ]);
         
-        LeaveType::create([
+        LeaveApplication::create([
             'name'=>$request->name,
             'days'=>$request->days,
             'status'=>$request->status,
             'description'=>$request->description,
         ]);
-        return redirect()->route('leavetypes.index')->withSuccess('LeaveType Created Successfully!');
+        return redirect()->route('leavetypes.index')->withSuccess('LeaveApplication Created Successfully!');
     }
 
     /**
@@ -73,7 +73,7 @@ class LeaveTypeController extends Controller
      */
     public function edit( $id)
     {
-        $leave_type = LeaveType::where('id','=', $id)->first();
+        $leave_type = LeaveApplication::where('id','=', $id)->first();
         
        return view('payroll.leave_type.edit',['leave_type'=>$leave_type,]);
     }
@@ -88,7 +88,7 @@ class LeaveTypeController extends Controller
     public function update(Request $request, $id)
     {
 
-        $leave_type = LeaveType::where('id','=', $id)->first();
+        $leave_type = LeaveApplication::where('id','=', $id)->first();
 
         $request->validate([
             'name'=>'required',
@@ -103,7 +103,7 @@ class LeaveTypeController extends Controller
             'status'=>$request->status,
             'description'=>$request->description,
         ]);
-        return redirect()->route('leavetypes.index')->withSuccess('LeaveType updated Successfully!');
+        return redirect()->route('leavetypes.index')->withSuccess('LeaveApplication updated Successfully!');
     }
 
     /**
@@ -114,9 +114,9 @@ class LeaveTypeController extends Controller
      */
     public function destroy( $id)
     {
-        $leave_type = LeaveType::where('id','=', $id)->first();
+        $leave_type = LeaveApplication::where('id','=', $id)->first();
         $leave_type->delete();
 
-        return redirect()->back()->withSuccess('LeaveType Deleted Successfully');
+        return redirect()->back()->withSuccess('LeaveApplication Deleted Successfully');
     }
 }
