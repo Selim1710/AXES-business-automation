@@ -79,18 +79,22 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>LeaveType Name</th>
-                        <th>Days</th>
-                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Employee</th>
+                        <th>Leave</th>
+                        <th>Details</th>
+                        <th>Status</th>
                         <th style="text-align: right;">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>SN</th>
-                        <th>LeaveType Name</th>
-                        <th>Days</th>
-                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Employee</th>
+                        <th>Leave</th>
+                        <th>Details</th>
+                        <th>Status</th>
                         <th style="text-align: right;">Action</th>
                     </tr>
                 </tfoot>
@@ -100,21 +104,23 @@
                     @endphp
                         
                     
-                @foreach($leave_types as $leave_type)
+                @foreach($leave_applications as $leave_application)
                     @php
                         $serial++;
                     @endphp
         
                     <tr>
                         <td>{{ $serial }}</td>
-                        <td>{{ $leave_type->name }}</td>
-                        <td>{{ $leave_type->days }}</td>
-                        <td>{{ $leave_type->description }}</td>
+                        <td>{{ $leave_application->date }}</td>
+                        <td>{{ $leave_application->employee }}</td>
+                        <td>{{ $leave_application->leave }}</td>
 
+                        <td>{{ $leave_application->details }}</td>
+                        <td>{{ $leave_application->description }}</td>
                         <td style="text-align: right;">
-                            <a class="btn btn-success" style="font-size:13px" href="{{route('leavetypes.edit',$leave_type->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('leavetypes.edit',$leave_application->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                             
-                            <form action="{{ route('leavetypes.destroy', $leave_type->id) }}" method="POST" style="display:inline">
+                            <form action="{{ route('leavetypes.destroy', $leave_application->id) }}" method="POST" style="display:inline">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

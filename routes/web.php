@@ -445,6 +445,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     //LeaveType Controller
     Route::resource('leavetypes', LeaveTypeController::class);
 
-     //LeaveApplication Controller
-     Route::resource('leave-application', LeaveApplicationController::class);
+    //LeaveApplication Controller
+    Route::resource('leave-application', LeaveApplicationController::class);
 });
