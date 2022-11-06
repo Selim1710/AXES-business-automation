@@ -66,9 +66,7 @@
                                       <label class="form-check-label" for="invalidCheck2">I input the field Carefully.</label>
                                   </div>
                               </div>
-                             
-                          
-                      </d iv>
+                      </div>
                  
  
 

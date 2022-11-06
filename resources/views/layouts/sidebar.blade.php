@@ -154,11 +154,11 @@
                         <a class="nav-link" href="{{ route('admin.manage.unit') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Unit</a>
                         <a class="nav-link" href="{{ route('admin.manage.currency') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
                         <a class="nav-link" href="{{ route('admin.manage.country') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Country</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Size</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>District</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
+                        <a class="nav-link" href="{{ route('admin.manage.transport') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
+                        <a class="nav-link" href="{{ route('admin.manage.color') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
+                        <a class="nav-link" href="{{ route('admin.manage.size') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Size</a>
+                        <a class="nav-link" href="{{ route('admin.manage.district') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>District</a>
+                        <a class="nav-link" href="{{ route('admin.manage.zone') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
                     </nav>
                 </div>
 
@@ -208,10 +208,12 @@
                         <a class="nav-link" href="{{route('designation.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Designation</a>
                         <a class="nav-link" href="{{route('employee.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Employee List</a>
                         <a class="nav-link" href="{{route('employee.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Employee</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
+                        <a class="nav-link" href="{{route('leavetypes.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Type</a>
+                        <a class="nav-link" href="{{route('leavetypes.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Type</a>
+                        <a class="nav-link" href="{{route('leave-application.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
+                        <a class="nav-link" href="{{route('leave-application.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Attendence Record</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Salary Sheet & Payslip</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
