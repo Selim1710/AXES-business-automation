@@ -151,6 +151,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'Sales'], function () {
 
         // Sales Return
+        Route::get('/sales-estimate-show', [SalesController::class, 'salesEstimateShow'])->name('sales-estimate-show');
+
+        Route::get('/sales-estimate-create-show', [SalesController::class, 'salesEstimateCreateShow'])->name('sales-estimate-create-show');
+
+
         Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
     });
 
@@ -240,7 +245,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
         // json
         Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
-        
+
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
         Route::post('/update/product/{id}', [ProductSetupController::class, 'updateProduct'])->name('admin.update.product');
@@ -323,4 +328,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     //Transanction
     Route::resource('transanction', TransanctionController::class);
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
+
+    //Manage Cheque
+    Route::resource('manage-cheque', ChequeManagementController::class);
 });

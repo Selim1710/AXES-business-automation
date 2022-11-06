@@ -87,6 +87,8 @@
                 <div class="collapse" id="collapseLayoutSales" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
 
+                        <a class="nav-link" href="{{route('sales-estimate-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate</a>
+                        <a class="nav-link" href="{{route('sales-estimate-create-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create</a>
                         <a class="nav-link" href="{{route('sales-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
 
                     </nav>
