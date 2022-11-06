@@ -202,7 +202,16 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
 
         // Transfer from branch
-        Route::resource('transfer_branch', TransferBranchController::class);
+        Route::get('/transfer_branch/table', [TransferBranchController::class, 'table'])->name('inventory.transfer_branch.table');
+        Route::get('/transfer_branch/create', [TransferBranchController::class, 'createBranch'])->name('create.branch.transfer');
+        Route::get('/transfer_branch/branch/product/{id}', [TransferBranchController::class, 'branchProduct'])->name('inventory.B.P');
+        Route::get('/B/P/transfer/{id}', [TransferBranchController::class, 'addProduct'])->name('inventory.B.P.transfer');
+        
+        Route::get('/B/P/transfer/view', [TransferBranchController::class, 'viewProduct'])->name('view.product.transfered');
+        Route::get('/branch/product/transfered', [TransferBranchController::class, 'view'])->name('branch.product.transfered');
+        Route::get('/branch/product/transfered/delete/{id}', [TransferBranchController::class, 'delete'])->name('branch.product.transfered.delete');
+        
+        Route::get('/transfer_branch/clear', [TransferBranchController::class, 'clear'])->name('inventory.transfer_branch.clear');
         Route::get('/transfer_branch/delete/{id}', [TransferBranchController::class, 'destroy'])->name('inventory.transfer_branch.delete');
 
         // Transfer from warehouse

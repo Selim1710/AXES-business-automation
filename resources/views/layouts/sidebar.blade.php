@@ -106,7 +106,7 @@
                         <a class="nav-link" href="{{ route('inventory.warehouse.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse </a>
                         <a class="nav-link" href="{{ route('branch_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch stock </a>
                         <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse stock </a>
-                        <a class="nav-link" href="{{ route('transfer_branch.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
+                        <a class="nav-link" href="{{ route('inventory.transfer_branch.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
                     </nav>
                 </div>
 
@@ -152,7 +152,7 @@
                         <a class="nav-link" href="{{ route('admin.manage.brand') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Brand</a>
                         <a class="nav-link" href="{{ route('admin.manage.manufacturer') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Manufacturer</a>
                         <a class="nav-link" href="{{ route('admin.manage.unit') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Unit</a>
-                        <a class="nav-link" href="{{ route('admin.manage.currency') }}""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
+                        <a class="nav-link" href="{{ route('admin.manage.currency') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
                         <a class="nav-link" href="{{ route('admin.manage.country') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Country</a>
                         <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
                         <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
