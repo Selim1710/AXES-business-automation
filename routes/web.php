@@ -8,8 +8,7 @@ use App\Http\Controllers\Backend\ProductSetupController;
 use App\Http\Controllers\Backend\DailyProcessController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\WarrantyController;
-use App\Http\Controllers\Backend\PurchaseController;
-use App\Http\Controllers\Backend\SalesController;
+use App\Http\Controllers\Backend\Sales\SalesController;
 
 use App\Http\Controllers\Backend\Bank\BankController;
 use App\Http\Controllers\Backend\Bank\MobileAccountController;
@@ -39,6 +38,11 @@ use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
 use App\Http\Controllers\Backend\Payroll\DesignationController;
 use App\Http\Controllers\Backend\Payroll\EmployeeController;
+use App\Http\Controllers\Backend\Purchase\PurchaseInvoiceController;
+use App\Http\Controllers\Backend\Purchase\PurchaseOrderController;
+use App\Http\Controllers\Backend\Purchase\PurchaseReturnController;
+use App\Http\Controllers\Backend\Sales\SalesInvoiceController;
+use App\Http\Controllers\Backend\Sales\SalesReturnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,14 +160,35 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'Purchase'], function () {
 
         // Purchase Order
-        Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
+        Route::get('/purchase-order', [PurchaseOrderController::class, 'purchaseOrder'])->name('admin.purchase-order');
+        Route::get('/purchase/order/create', [PurchaseOrderController::class, 'purchaseOrderCreate'])->name('admin.purchase-order.create');
+
+        // Purchase Invoice
+        Route::get('/purchase-invoice', [PurchaseInvoiceController::class, 'purchaseInvoice'])->name('admin.purchase-invoice');
+        Route::get('/purchase/invoice/create', [PurchaseInvoiceController::class, 'purchaseInvoiceCreate'])->name('admin.purchase-invoice.create');
+
+        // Purchase Return
+        Route::get('/purchase-return', [PurchaseReturnController::class, 'purchaseReturn'])->name('admin.purchase-return');
+        Route::get('/purchase/return/create', [PurchaseReturnController::class, 'purchaseReturnCreate'])->name('admin.purchase-return.create');
     });
 
     // Sales
     Route::group(['prefix' => 'Sales'], function () {
 
-        // Sales Return
-        Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
+       
+        //sales estimate
+        Route::get('/manage/sales', [SalesController::class, 'SalesEstimate'])->name('admin-sales-manage');
+        Route::get('/sales-estimate-create', [SalesController::class, 'salesEstimateCreate'])->name('sales-estimate-create');
+
+        //sales invoice
+        Route::get('/manage/sales/invoice', [SalesInvoiceController::class, 'SalesInvoice'])->name('admin-sales-invoice-manage');
+        Route::get('/sales-invoice-create', [SalesInvoiceController::class, 'salesInvoiceCreate'])->name('admin-sales-invoice-create');
+
+         // Sales Return
+        Route::get('/sales-return-show', [SalesReturnController::class, 'salesReturnShow'])->name('sales-return-show');
+        
+
+
     });
 
 
