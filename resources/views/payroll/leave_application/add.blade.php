@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="designation" class="form-label">Leave Types</label>
-                  <select class="form-select" name="leave_type" id="designation" required>
+                  <select class="form-select" name="leave_types_id" id="designation" required>
                       <option selected disabled value>Choose...</option>
                       @foreach ($leave_types as $leave_type)
                           <option value="{{$leave_type->id}}">{{$leave_type ->name}}</option>

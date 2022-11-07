@@ -20,7 +20,13 @@ class CreateLeaveApplicationsTable extends Migration
                 ->references('id')
                 ->on('employees')
                 ->onDelete('cascade');
-            $table->string('leave_type');
+
+            $table->unsignedBigInteger('leave_types_id')->nullable();
+            $table->foreign('leave_types_id')
+                ->references('id')
+                ->on('leave_types')
+                ->onDelete('cascade');
+
             $table->date('apply_date');
             $table->string('leave_form');
             $table->string('leave_to');

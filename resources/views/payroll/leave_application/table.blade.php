@@ -11,92 +11,35 @@
         <div class="card-header d-flex justify-content-between">
             <span>
             </span>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#designationCreateModel">Create New LeaveType</button>
+            <a href="{{route('leave-application.create')}}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#designationCreateModel">Create New LeaveApplication</a>
                             <!-- Modal -->
-                <div class="modal fade" id="designationCreateModel" tabindex="-1" aria-labelledby="designationCreateModelLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="designationCreateModelLabel">Create New LeaveType</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form id="create-designation" method="POST" action="{{route('leavetypes.store')}}" >
-                                    <div class="modal-body">
-                                        <div class="border p-3 rounded">
-                                              <div class="col-12">
-                                                <label class="form-label">LeaveType Name</label>
-                                                <input type="text" class="form-control" name="name" required>
-                                              </div>
-                                              @error('name')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                              @enderror
-                                              <div class="row">
-                                                  <div class="col-md-6">
-                                                  <label class="form-label">Days</label>
-                                                  <input type="number" class="form-control" name="days" required>
-                                                 @error('days')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                              @enderror
-                                            </div>
-                                               
-                                                <div class="col-md-6">
-                                                  <label for="designation" class="form-label">Status</label>
-                                                  <select class="form-select" name="status" id="designation" required>
-                                                      <option selected disabled="" value="">Choose...</option>
-                                                      <option selected value="1">Active</option>
-                                                      <option selected value="0">De-Active</option>
-                                                  </select>
-                                                    @error('status')
-                                                     <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                              </div>
-                                              </div>
-                                              <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
-                                              <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>LeaveType Description</label>
-                                                        <textarea required class="form-control" name="description" id="note" maxlength="250" rows="3" placeholder="e.g. Note"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                              <div class="alert alert-danger mt-2" id="description_error" style="display: none"></div>
-                                                  
-                                </div>
-                                    </div>
-                            <div class="modal-footer">
-                                @csrf
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create LeaveType</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                    </div>
+
                 </div>
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-                        <th>SN</th>
-                        <th>Date</th>
-                        <th>Employee</th>
-                        <th>Leave</th>
-                        <th>Details</th>
-                        <th>Status</th>
-                        <th style="text-align: right;">Action</th>
+                        <th rowspan="2">SN</th>
+                        <th rowspan="2">Date</th>
+                        <th rowspan="2">Employee</th>
+                        <th rowspan="2">Leave</th>
+                        <th colspan="3">Details</th>
+                        <th rowspan="2">Status</th>
+                        <th style="text-align: right;" rowspan="2">Action</th>
                     </tr>
+                    <tr><th>From</th><th>To</th><th>Days</th></tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>SN</th>
-                        <th>Date</th>
-                        <th>Employee</th>
-                        <th>Leave</th>
-                        <th>Details</th>
-                        <th>Status</th>
-                        <th style="text-align: right;">Action</th>
+                        <th rowspan="2">SN</th>
+                        <th rowspan="2">Date</th>
+                        <th rowspan="2">Employee</th>
+                        <th rowspan="2">Leave</th>
+                        <th colspan="3">Details</th>
+                        <th rowspan="2">Status</th>
+                        <th style="text-align: right;" rowspan="2">Action</th>
                     </tr>
+                    <tr><th>From</th><th>To</th><th>Days</th></tr>
                 </tfoot>
                 <tbody>
                     @php
@@ -111,16 +54,23 @@
         
                     <tr>
                         <td>{{ $serial }}</td>
-                        <td>{{ $leave_application->date }}</td>
-                        <td>{{ $leave_application->employee }}</td>
-                        <td>{{ $leave_application->leave }}</td>
+                        <td>{{ $leave_application->apply_date }}</td>
+                        <td>{{ $leave_application->employee->name }}</td>
+                        <td>{{ $leave_application->leave_type->name }}</td>
+                        <td>{{ $leave_application->leave_form }}</td>
+                        <td>{{ $leave_application->leave_to }}</td>
+                        @php
+                            $start  = new Carbon\Carbon($leave_application->leave_form);
+                            $end    = new Carbon\Carbon( $leave_application->leave_to);
 
-                        <td>{{ $leave_application->details }}</td>
-                        <td>{{ $leave_application->description }}</td>
+                            $diff = $start->diff($end);
+                        @endphp
+                        <td>{{ $diff->d  }}</td>
+                        <td>{{ $leave_application->status }}</td>
                         <td style="text-align: right;">
-                            <a class="btn btn-success" style="font-size:13px" href="{{route('leavetypes.edit',$leave_application->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('leave-application.edit',$leave_application->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                             
-                            <form action="{{ route('leavetypes.destroy', $leave_application->id) }}" method="POST" style="display:inline">
+                            <form action="{{ route('leave-application.destroy', $leave_application->id) }}" method="POST" style="display:inline">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

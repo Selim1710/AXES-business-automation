@@ -17,7 +17,7 @@ class LeaveApplicationController extends Controller
      */
     public function index()
     {
-        $leave_application= LeaveApplication::with('')->latest()->get();
+        $leave_application= LeaveApplication::with(['employee', 'leave_type'])->latest()->get();
         return view('payroll.leave_application.table',['leave_applications'=>$leave_application]);
     }
 
@@ -45,7 +45,7 @@ class LeaveApplicationController extends Controller
 
         $request->validate([
             'employee_id'=>'required',
-            'leave_type'=>'required',
+            'leave_types_id'=>'required',
             'apply_date'=>'required',
             'leave_form' => 'required',
             'leave_to'=>'required',
@@ -78,8 +78,9 @@ class LeaveApplicationController extends Controller
     public function edit( $id)
     {
         $leave_application = LeaveApplication::where('id','=', $id)->first();
-        
-       return view('payroll.leave_application.edit',['leave_application'=>$leave_application,]);
+        $employees = Employee::get();
+        $leave_types = LeaveType::get();
+       return view('payroll.leave_application.edit',['leave_application'=>$leave_application, 'employees' => $employees, 'leave_types' => $leave_types]);
     }
 
     /**
@@ -95,19 +96,18 @@ class LeaveApplicationController extends Controller
         $leave_application = LeaveApplication::where('id','=', $id)->first();
 
         $request->validate([
-            'name'=>'required',
-            'days'=>'required',
+            'employee_id'=>'required',
+            'leave_types_id'=>'required',
+            'apply_date'=>'required',
+            'leave_form' => 'required',
+            'leave_to'=>'required',
             'status'=>'required',
-            'description' => 'nullable',
+            'reason'=>'required',
+            'note'=>'nullable',
         ]);
-        
-        $leave_application->update([
-            'name'=>$request->name,
-            'days'=>$request->days,
-            'status'=>$request->status,
-            'description'=>$request->description,
-        ]);
-        return redirect()->route('leave-application.index')->withSuccess('LeaveApplication updated Successfully!');
+                
+        $leave_application->update( $request->all());
+        return redirect()->route('leave-application.index')->withSuccess('Leave Record updated Successfully!');
     }
 
     /**

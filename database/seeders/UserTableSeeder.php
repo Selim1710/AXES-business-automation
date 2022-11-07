@@ -59,6 +59,12 @@ class UserTableSeeder extends Seeder
         $permission = Permission::create(['name' => 'Expense delete','group_id'=>'2', 'group_name'=>'Daily Process']);
         $permission = Permission::create(['name' => 'Expense print','group_id'=>'2', 'group_name'=>'Daily Process']);
 
+        $permission = Permission::create(['name' => 'Product Setup access','group_id'=>'3', 'group_name'=>'Product Setup']);
+        $permission = Permission::create(['name' => 'Product Setup edit','group_id'=>'3', 'group_name'=>'Product Setup']);
+        $permission = Permission::create(['name' => 'Product Setup create','group_id'=>'3', 'group_name'=>'Product Setup']);
+        $permission = Permission::create(['name' => 'Product Setup delete','group_id'=>'3', 'group_name'=>'Product Setup']);
+        $permission = Permission::create(['name' => 'Product Setup print','group_id'=>'3', 'group_name'=>'Product Setup']);
+
 
         // $permission = Permission::create(['name' => 'Permission access']);
         // $permission = Permission::create(['name' => 'Permission edit']);
