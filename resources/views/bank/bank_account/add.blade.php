@@ -52,7 +52,7 @@
                                   <div class="input-group"> <span class="input-group-text" id="inputGroupPrepend2">BC</span>
                                       <input type="text" name="branch_code" class="form-control" placeholder="Branch Code" id="validationDefault05" required="">
                                   </div>
-                              </div>
+                              </div>  
                               <div class="col-md-6">
                                   <label for="validationDefaultUsername" class="form-label">Branch Location</label>
                                   <div class="input-group"> <span class="input-group-text" id="inputGroupPrepend2">BL</span>
@@ -66,8 +66,6 @@
                                       <label class="form-check-label" for="invalidCheck2">I input the field Carefully.</label>
                                   </div>
                               </div>
-                             
-                          
                       </div>
                  
  

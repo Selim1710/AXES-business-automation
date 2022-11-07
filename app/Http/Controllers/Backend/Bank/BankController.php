@@ -18,8 +18,7 @@ class BankController extends Controller
     public function index()
     {
         $banks= Bank::latest()->get();
-        $roles = Role::get();
-        return view('bank.bank.table',['banks'=>$banks, 'roles'=> $roles]);
+        return view('bank.bank.table',['banks'=>$banks]);
     }
 
     /**
@@ -29,8 +28,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
-        return view('bank.bank.add',['roles'=>$roles]);
+        return view('bank.bank.add');
     }
 
     /**

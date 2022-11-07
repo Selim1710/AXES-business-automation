@@ -76,7 +76,7 @@
                                 <div class="form-group">
                                     <label>Estimate Date <span class="text-danger">*</span></label>
                                     <div class="cal-icon">
-                                        <input class="form-control datetimepicker" type="text" id="estimate_date" name="estimate_date">
+                                        <input class="form-control datetimepicker" type="date" id="estimate_date" name="estimate_date">
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <label>Expiry Date <span class="text-danger">*</span></label>
                                     <div class="cal-icon">
-                                        <input class="form-control datetimepicker" type="text" id="expiry_date" name="expiry_date">
+                                        <input class="form-control datetimepicker" type="date" id="expiry_date" name="expiry_date">
                                     </div>
                                 </div>
                             </div>

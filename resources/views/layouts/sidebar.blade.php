@@ -72,6 +72,7 @@
                     <nav class="sb-sidenav-menu-nested nav">
 
                         <a class="nav-link" href="{{route('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+                        <a class="nav-link" href="{{route('purchase-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return</a>
 
                     </nav>
                 </div>
@@ -109,7 +110,6 @@
                         <a class="nav-link" href="{{ route('branch_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch stock </a>
                         <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse stock </a>
                         <a class="nav-link" href="{{ route('transfer_branch.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
-                        <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer warehouse </a>
                     </nav>
                 </div>
 
@@ -143,6 +143,28 @@
                     </nav>
                 </div>
 
+                <!-- master setup -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#masterSetup" aria-expanded="false" aria-controls="masterSetup">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Masters Setup
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="masterSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('admin.manage.brand') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Brand</a>
+                        <a class="nav-link" href="{{ route('admin.manage.manufacturer') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Manufacturer</a>
+                        <a class="nav-link" href="{{ route('admin.manage.unit') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Unit</a>
+                        <a class="nav-link" href="{{ route('admin.manage.currency') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Currency</a>
+                        <a class="nav-link" href="{{ route('admin.manage.country') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Country</a>
+                        <a class="nav-link" href="{{ route('admin.manage.transport') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Transport</a>
+                        <a class="nav-link" href="{{ route('admin.manage.color') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Color</a>
+                        <a class="nav-link" href="{{ route('admin.manage.size') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Size</a>
+                        <a class="nav-link" href="{{ route('admin.manage.district') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>District</a>
+                        <a class="nav-link" href="{{ route('admin.manage.zone') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
+                    </nav>
+                </div>
+
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -158,13 +180,51 @@
                         <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
                     </nav>
                 </div>
+                <!-- finance record -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#financeRecord" aria-expanded="false" aria-controls="financeRecord">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Finance Record
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="financeRecord" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('admin.chart_account') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Chart of Account</a>
+                        <a class="nav-link" href="{{ route('admin.profit_Loss') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Profit And Loss</a>
+                        <a class="nav-link" href="{{ route('admin.trial.balance') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Trial Balance</a>
+                        <a class="nav-link" href="{{ route('admin.balance_sheet') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Balance Sheet</a>
+                        <a class="nav-link" href="{{ route('admin.finance.analysis') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Finance Analysis</a>
+                    </nav>
+                </div>
+
                 <hr>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPayroll" aria-expanded="false" aria-controls="collapseLayoutPayroll">
+                    <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
+                    Payroll
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayoutPayroll" aria-labelledby="headingPayroll" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{route('department.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Department List</a>
+                        <a class="nav-link" href="{{route('department.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Department</a>
+                        <a class="nav-link" href="{{route('designation.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Designation List</a>
+                        <a class="nav-link" href="{{route('designation.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Designation</a>
+                        <a class="nav-link" href="{{route('employee.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Employee List</a>
+                        <a class="nav-link" href="{{route('employee.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Employee</a>
+                        <a class="nav-link" href="{{route('leavetypes.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Type</a>
+                        <a class="nav-link" href="{{route('leavetypes.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Type</a>
+                        <a class="nav-link" href="{{route('leave-application.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
+                        <a class="nav-link" href="{{route('leave-application.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Attendence Record</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Salary Sheet & Payslip</a>
+                    </nav>
+                </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
                     Bank
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingNine" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayoutBank" aria-labelledby="headingBank" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('banks.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Bank List</a>
                         <a class="nav-link" href="{{route('banks.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Bank</a>

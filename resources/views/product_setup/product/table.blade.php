@@ -64,7 +64,7 @@
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <label class="form-label">Branch Name</label>
-                                        <select name="branch_id" class="form-control">
+                                        <select name="branch_id" id="branchID" class="form-control">
                                             <option value="">-- SELECT --</option>
                                             @foreach ($branches as $branch)
                                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Warehouse Name</label>
-                                        <select name="warehouse_id" class="form-control">
+                                        <select name="warehouse_id" id="warehouseID" class="form-control">
                                             <option value="">-- SELECT --</option>
                                             @foreach ($warehouses as $warehouse)
                                             <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
@@ -158,7 +158,7 @@
                     <td>{{ $product->branch->name }}</td>
                     @endif
 
-                    @if(empty( $product->warehouse->name  ))
+                    @if(empty( $product->warehouse->name ))
                     <td class="text-danger"> no warehouse </td>
                     @else
                     <td>{{ $product->warehouse->name }}</td>
@@ -187,11 +187,12 @@
 
 @endsection
 
-<!-- ajax -->
+ajax
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
+        // category & sub-category
         $('#categoryID').change(function() {
 
             $.ajaxSetup({
@@ -215,5 +216,30 @@
             });
 
         });
+
+        // Branch & warehouse 
+        $('#branchID').change(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var id = $(this).val();
+            // alert(id);
+            $.ajax({
+                type: "GET",
+                url: "/backend/product-setup/get/branch/wise/warehouse/" + id,
+                dataType: "json",
+                success: function(response) {
+                    $('#warehouseID').html(response);
+                },
+                error: function(error) {
+                    alert('ajax error');
+                }
+            });
+        });
+
     });
 </script>

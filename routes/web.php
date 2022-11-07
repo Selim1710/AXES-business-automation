@@ -22,11 +22,25 @@ use App\Http\Controllers\Backend\Inventory\BranchStockController;
 use App\Http\Controllers\Backend\Inventory\TransferBranchController;
 use App\Http\Controllers\Backend\Inventory\TransferWarehouseController;
 use App\Http\Controllers\Backend\Inventory\WarehouseStockController;
+use App\Http\Controllers\Backend\MasterSetup\BrandController;
+use App\Http\Controllers\Backend\MasterSetup\ColorController;
+use App\Http\Controllers\Backend\MasterSetup\CountryController;
+use App\Http\Controllers\Backend\MasterSetup\CurrencyController;
+use App\Http\Controllers\Backend\MasterSetup\DistrictController;
+use App\Http\Controllers\Backend\MasterSetup\ManufacturerController;
+use App\Http\Controllers\Backend\MasterSetup\SizeController;
+use App\Http\Controllers\Backend\MasterSetup\TransportController;
+use App\Http\Controllers\Backend\MasterSetup\UnitController;
+use App\Http\Controllers\Backend\MasterSetup\ZoneController;
+use App\Http\Controllers\FinanceRecord\ChartOfAccount;
+use App\Http\Controllers\Backend\Payroll\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserAndRoles\UserController;
 use App\Http\Controllers\Backend\UserAndRoles\RoleController;
-
-
+use App\Http\Controllers\Backend\Payroll\DesignationController;
+use App\Http\Controllers\Backend\Payroll\EmployeeController;
+use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
+use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +101,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
+
         // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
@@ -132,6 +147,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
         Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
         Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
+
+
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
         Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
@@ -145,18 +162,35 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Purchase Order
         Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
+        Route::post('/purchase-order-store', [PurchaseController::class, 'purchaseOrderStore'])->name('purchase-order-store');
+        Route::get('/purchase-order-edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase-order-edit');
+        Route::post('/purchase-order-update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase-order-update');
+        Route::post('/purchase-order-delete', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase-order-delete');
+
+      //Purchase Return
+        Route::get('/purchase-return-show', [PurchaseController::class, 'purchaseReturnShow'])->name('purchase-return-show');
+        Route::post('/purchase-return-store', [PurchaseController::class, 'purchaseReturnStore'])->name('purchase-return-store');
+        Route::get('/purchase-return-edit/{id}', [PurchaseController::class, 'purchaseReturnEdit'])->name('purchase-return-edit');
+        Route::post('/purchase-return-update/{id}', [PurchaseController::class, 'purchaseReturnUpdate'])->name('purchase-return-update');
+        Route::post('/purchase-return-delete', [PurchaseController::class, 'purchaseReturnDelete'])->name('purchase-return-delete');
+
+
     });
 
     // Sales
     Route::group(['prefix' => 'Sales'], function () {
 
-        // Sales Return
+        // Sales estimate
         Route::get('/sales-estimate-show', [SalesController::class, 'salesEstimateShow'])->name('sales-estimate-show');
 
         Route::get('/sales-estimate-create-show', [SalesController::class, 'salesEstimateCreateShow'])->name('sales-estimate-create-show');
 
-
+         //Sales Return
         Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
+        Route::post('/sales-return-store', [SalesController::class, 'salesReturnStore'])->name('sales-return-store');
+        Route::get('/sales-return-edit/{id}', [SalesController::class, 'salesReturnEdit'])->name('sales-return-edit');
+        Route::post('/sales-return-update/{id}', [SalesController::class, 'salesReturnUpdate'])->name('sales-return-update');
+        Route::post('/sales-return-delete', [SalesController::class, 'salesReturnDelete'])->name('sales-return-delete');
     });
 
 
@@ -243,8 +277,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Product
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
-        // json
+        /////////// json = cat wise sub-cat  ///////////
         Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
+
+
+        /////////// json = branch wise warehouse  ///////////
+        Route::get('get/branch/wise/warehouse/{id}', [ProductSetupController::class, 'branchWarhouse']);
+
+        /////////// json = warehouse wise product  ///////////
+        Route::get('/get/warehouse/wise/product/{id}', [ProductSetupController::class, 'warehouseProduct']);
 
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
@@ -300,6 +341,92 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
+   // finanaceRecord
+    Route::group(['prefix' => 'chart_account'], function () {
+        Route::get('/chartAccount',[ChartOfAccount::class,'chartAccount'])->name('admin.chart_account');
+        Route::get('/profit_loss',[ChartOfAccount::class,'profitLoss'])->name('admin.profit_Loss');
+        Route::get('/trial_balance',[ChartOfAccount::class,'trialBalance'])->name('admin.trial.balance');
+        Route::get('/balance_sheet',[ChartOfAccount::class,'balanceSheet'])->name('admin.balance_sheet');
+        Route::get('/finance_analysis',[ChartOfAccount::class,'financeAnalysis'])->name('admin.finance.analysis');
+    });
+    /*
+    |--------------------------------------------------------------------------
+    |                    Sohel Rana
+    |--------------------------------------------------------------------------
+    | */
+    //master_setup
+    Route::group(['prefix' => 'master_setup'], function () {
+
+        //brand
+        Route::get('/manage/brand', [BrandController::class, 'manageBrand'])->name('admin.manage.brand');
+        Route::post('/store/brand', [BrandController::class, 'storeBrand'])->name('admin.store.brand');
+        Route::get('/edit/brand/{id}', [BrandController::class, 'editBrand'])->name('admin.edit.brand');
+        Route::post('/update/brand/{id}', [BrandController::class, 'updateBrand'])->name('admin.update.brand');
+        Route::get('/delete/brand/{id}', [BrandController::class, 'deleteBrand'])->name('admin.delete.brand');
+
+        //manufacturer
+        Route::get('/manage/manufacturer', [ManufacturerController::class, 'manageManufacturer'])->name('admin.manage.manufacturer');
+        Route::post('/store/manufacturer', [ManufacturerController::class, 'storeManufacturer'])->name('admin.store.manufacturer');
+        Route::get('/edit/manufacturer/{id}', [ManufacturerController::class, 'editManufacturer'])->name('admin.edit.manufacturer');
+        Route::post('/update/manufacturer/{id}', [ManufacturerController::class, 'updateManufacturer'])->name('admin.update.manufacturer');
+        Route::get('/delete/manufacturer/{id}', [ManufacturerController::class, 'deleteManufacturer'])->name('admin.delete.manufacturer');
+
+        //unit
+        Route::get('/manage/unit', [UnitController::class, 'manageUnit'])->name('admin.manage.unit');
+        Route::post('/store/unit', [UnitController::class, 'storeUnit'])->name('admin.store.unit');
+        Route::get('/edit/unit/{id}', [UnitController::class, 'editUnit'])->name('admin.edit.unit');
+        Route::post('/update/unit/{id}', [UnitController::class, 'updateUnit'])->name('admin.update.unit');
+        Route::get('/delete/unit/{id}', [UnitController::class, 'deleteUnit'])->name('admin.delete.unit');
+
+        //currency
+        Route::get('/manage/currency', [CurrencyController::class, 'manageCurrency'])->name('admin.manage.currency');
+        Route::post('/store/currency', [CurrencyController::class, 'storeCurrency'])->name('admin.store.currency');
+        Route::get('/edit/currency/{id}', [CurrencyController::class, 'editCurrency'])->name('admin.edit.currency');
+        Route::post('/update/currency/{id}', [CurrencyController::class, 'updateCurrency'])->name('admin.update.currency');
+        Route::get('/delete/currency/{id}', [CurrencyController::class, 'deleteCurrency'])->name('admin.delete.currency');
+
+        //country
+        Route::get('/manage/country', [CountryController::class, 'manageCountry'])->name('admin.manage.country');
+        Route::post('/store/country', [CountryController::class, 'storeCountry'])->name('admin.store.country');
+        Route::get('/edit/country/{id}', [CountryController::class, 'editCountry'])->name('admin.edit.country');
+        Route::post('/update/country/{id}', [CountryController::class, 'updateCountry'])->name('admin.update.country');
+        Route::get('/delete/country/{id}', [CountryController::class, 'deleteCountry'])->name('admin.delete.country');
+
+        //transport
+        Route::get('/manage/transport', [TransportController::class, 'manageTransport'])->name('admin.manage.transport');
+        Route::post('/store/transport', [TransportController::class, 'storeTransport'])->name('admin.store.transport');
+        Route::get('/edit/transport/{id}', [TransportController::class, 'editTransport'])->name('admin.edit.transport');
+        Route::post('/update/transport/{id}', [TransportController::class, 'updateTransport'])->name('admin.update.transport');
+        Route::get('/delete/transport/{id}', [TransportController::class, 'deleteTransport'])->name('admin.delete.transport');
+
+        //color
+        Route::get('/manage/color', [ColorController::class, 'manageColor'])->name('admin.manage.color');
+        Route::post('/store/color', [ColorController::class, 'storeColor'])->name('admin.store.color');
+        Route::get('/edit/color/{id}', [ColorController::class, 'editColor'])->name('admin.edit.color');
+        Route::post('/update/color/{id}', [ColorController::class, 'updateColor'])->name('admin.update.color');
+        Route::get('/delete/color/{id}', [ColorController::class, 'deleteColor'])->name('admin.delete.color');
+
+        //size
+        Route::get('/manage/size', [SizeController::class, 'manageSize'])->name('admin.manage.size');
+        Route::post('/store/size', [SizeController::class, 'storeSize'])->name('admin.store.size');
+        Route::get('/edit/size/{id}', [SizeController::class, 'editSize'])->name('admin.edit.size');
+        Route::post('/update/size/{id}', [SizeController::class, 'updateSize'])->name('admin.update.size');
+        Route::get('/delete/size/{id}', [SizeController::class, 'deleteSize'])->name('admin.delete.size');
+
+        //district
+        Route::get('/manage/district', [DistrictController::class, 'manageDistrict'])->name('admin.manage.district');
+        Route::post('/store/district', [DistrictController::class, 'storeDistrict'])->name('admin.store.district');
+        Route::get('/edit/district/{id}', [DistrictController::class, 'editDistrict'])->name('admin.edit.district');
+        Route::post('/update/district/{id}', [DistrictController::class, 'updateDistrict'])->name('admin.update.district');
+        Route::get('/delete/district/{id}', [DistrictController::class, 'deleteDistrict'])->name('admin.delete.district');
+
+        //zone
+        Route::get('/manage/zone', [ZoneController::class, 'manageZone'])->name('admin.manage.zone');
+        Route::post('/store/zone', [ZoneController::class, 'storeZone'])->name('admin.store.zone');
+        Route::get('/edit/zone/{id}', [ZoneController::class, 'editZone'])->name('admin.edit.zone');
+        Route::post('/update/zone/{id}', [ZoneController::class, 'updateZone'])->name('admin.update.zone');
+        Route::get('/delete/zone/{id}', [ZoneController::class, 'deleteZone'])->name('admin.delete.zone');
+    });
 
 
     /*
@@ -331,4 +458,20 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Manage Cheque
     Route::resource('manage-cheque', ChequeManagementController::class);
+    Route::resource('manage-cheque', ChequeManagementController::class);
+
+    //Department Controller
+    Route::resource('department', DepartmentController::class);
+
+    //Designation Controller
+    Route::resource('designation', DesignationController::class);
+
+    //Employee Controller
+    Route::resource('employee', EmployeeController::class);
+
+    //LeaveType Controller
+    Route::resource('leavetypes', LeaveTypeController::class);
+
+     //LeaveApplication Controller
+     Route::resource('leave-application', LeaveApplicationController::class);
 });
