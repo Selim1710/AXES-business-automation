@@ -12,21 +12,21 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">New Create</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel"> Create Order</button>
         <!-- Modal -->
         <div class="modal fade" id="userCreateModel" tabindex="-1" aria-labelledby="userCreateModelLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{route('purchase-order-store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="border p-3 rounded">
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" >
                                 </div>
 
                                 <div class="col-12">
@@ -35,11 +35,15 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Serial</b></label>
-                                    <input type="text" class="form-control" name="serial" placeholder="e.g 520" required>
+                                    <input type="text" class="form-control" name="serial" placeholder="e.g 520" >
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>Total</b></label>
+                                    <input type="text" class="form-control" name="total" placeholder="e.g 5520" >
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" >
                                 </div>
 
 
@@ -64,7 +68,6 @@
 
                 <tr>
                     <th>SN</th>
-                    <th>Image</th>
                     <th>Date</th>
                     <th>Product</th>
                     <th>Serial</th>
@@ -77,26 +80,23 @@
 
 
 
+            @php $i=1 @endphp
+            @foreach($PurchaseOrder as $PurchaseOrders)
                 <tr>
-                    <td>1</td>
-                    <td>image</td>
-                    <td>10/12/2022</td>
-                    <td>h5 i5</td>
-                    <td>121</td>
-                    <td>Complete</td>
-
-
-
-
-
+                    <td>{{ $i++ }} </td>
+                    <td>{{ $PurchaseOrders->date }} </td>
+                    <td>{{ $PurchaseOrders->product }} </td>
+                    <td>{{ $PurchaseOrders->serial }} </td>
+                    <td>{{ $PurchaseOrders->total }} </td>
+                    <td>{{ $PurchaseOrders->note }} </td>
 
 
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                            <form action="" method="post" style="display:inline">
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('purchase-order-edit',['id'=>$PurchaseOrders->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('purchase-order-delete')}}" method="post" style="display:inline">
                                 @csrf
-                                <input type="hidden" name="warranty_delete" value="">
+                                <input type="hidden" name="purchase_order_delete" value="{{$PurchaseOrders->id}}">
                                 <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
@@ -104,7 +104,7 @@
                     </td>
                 </tr>
 
-
+            @endforeach
             </tbody>
 
         </table>

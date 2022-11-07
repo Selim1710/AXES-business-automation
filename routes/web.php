@@ -101,6 +101,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
+
         // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
@@ -146,6 +147,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
         Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
         Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
+
+
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
         Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
@@ -159,13 +162,35 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Purchase Order
         Route::get('/purchase-order-show', [PurchaseController::class, 'purchaseOrderShow'])->name('purchase-order-show');
+        Route::post('/purchase-order-store', [PurchaseController::class, 'purchaseOrderStore'])->name('purchase-order-store');
+        Route::get('/purchase-order-edit/{id}', [PurchaseController::class, 'purchaseOrderEdit'])->name('purchase-order-edit');
+        Route::post('/purchase-order-update/{id}', [PurchaseController::class, 'purchaseOrderUpdate'])->name('purchase-order-update');
+        Route::post('/purchase-order-delete', [PurchaseController::class, 'purchaseOrderDelete'])->name('purchase-order-delete');
+
+      //Purchase Return
+        Route::get('/purchase-return-show', [PurchaseController::class, 'purchaseReturnShow'])->name('purchase-return-show');
+        Route::post('/purchase-return-store', [PurchaseController::class, 'purchaseReturnStore'])->name('purchase-return-store');
+        Route::get('/purchase-return-edit/{id}', [PurchaseController::class, 'purchaseReturnEdit'])->name('purchase-return-edit');
+        Route::post('/purchase-return-update/{id}', [PurchaseController::class, 'purchaseReturnUpdate'])->name('purchase-return-update');
+        Route::post('/purchase-return-delete', [PurchaseController::class, 'purchaseReturnDelete'])->name('purchase-return-delete');
+
+
     });
 
     // Sales
     Route::group(['prefix' => 'Sales'], function () {
 
-        // Sales Return
+        // Sales estimate
+        Route::get('/sales-estimate-show', [SalesController::class, 'salesEstimateShow'])->name('sales-estimate-show');
+
+        Route::get('/sales-estimate-create-show', [SalesController::class, 'salesEstimateCreateShow'])->name('sales-estimate-create-show');
+
+         //Sales Return
         Route::get('/sales-return-show', [SalesController::class, 'salesReturnShow'])->name('sales-return-show');
+        Route::post('/sales-return-store', [SalesController::class, 'salesReturnStore'])->name('sales-return-store');
+        Route::get('/sales-return-edit/{id}', [SalesController::class, 'salesReturnEdit'])->name('sales-return-edit');
+        Route::post('/sales-return-update/{id}', [SalesController::class, 'salesReturnUpdate'])->name('sales-return-update');
+        Route::post('/sales-return-delete', [SalesController::class, 'salesReturnDelete'])->name('sales-return-delete');
     });
 
 
@@ -264,13 +289,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
         /////////// json = cat wise sub-cat  ///////////
         Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
-        
+
+
         /////////// json = branch wise warehouse  ///////////
         Route::get('get/branch/wise/warehouse/{id}', [ProductSetupController::class, 'branchWarhouse']);
-        
+
         /////////// json = warehouse wise product  ///////////
         Route::get('/get/warehouse/wise/product/{id}', [ProductSetupController::class, 'warehouseProduct']);
-        
+
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
         Route::post('/update/product/{id}', [ProductSetupController::class, 'updateProduct'])->name('admin.update.product');
@@ -441,7 +467,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
     //Manage Cheque
-    Route::resource('manage-cheque', ChequeManagementController::class); 
+    Route::resource('manage-cheque', ChequeManagementController::class);
+    Route::resource('manage-cheque', ChequeManagementController::class);
 
     //Department Controller
     Route::resource('department', DepartmentController::class);
@@ -455,6 +482,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     //LeaveType Controller
     Route::resource('leavetypes', LeaveTypeController::class);
 
-     //LeaveApplication Controller
-     Route::resource('leave-application', LeaveApplicationController::class);
+    //LeaveApplication Controller
+    Route::resource('leave-application', LeaveApplicationController::class);
 });
