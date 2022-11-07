@@ -26,8 +26,8 @@ class CreateEmployeesTable extends Migration
             $table->date('joindate');
             $table->integer('salary');
             $table->integer('status');
-            $table->string('gender'); 
-            $table->string('profile_image'); 
+            $table->string('gender');
+            $table->string('profile_image');
             $table->string('branch');
             $table->string('residensial_address');
             $table->string('parmanent_address');

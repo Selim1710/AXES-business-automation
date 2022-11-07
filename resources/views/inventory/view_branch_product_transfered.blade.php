@@ -11,9 +11,10 @@
     <p class="alert alert-danger text-center">{{ session()->get('error') }}</p>
     @endif
     <div class="mt-4">
+        @if ($previewDeliveries)
         <div class="container">
             <div class="row">
-                <!-- select item -->
+                <!-- selected item -->
                 <div class="col-12">
                     <table id="datatablesSimple">
                         <thead>
@@ -48,6 +49,13 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('inventory.transfer_branch.clear') }}" class="btn btn-danger">Clear all Transfer</a>
+            <a href="{{ route('save.branch.product.transfer') }}" class="btn btn-success">Save Transfer</a>
+        </div>
+        @else
+        <p class="text-center text-danger font-weight-bold"> No data available </p>
+        @endif
     </div>
 </section>
 @endsection

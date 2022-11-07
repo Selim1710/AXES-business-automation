@@ -12,14 +12,14 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">New Create</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">Return Create</button>
         <!-- Modal -->
         <div class="modal fade" id="userCreateModel" tabindex="-1" aria-labelledby="userCreateModelLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{route('sales-return-store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="border p-3 rounded">
@@ -35,11 +35,15 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Invoice</b></label>
-                                    <input type="text" class="form-control" name="invoice" placeholder="e.g 2100" required>
+                                    <input type="text" class="form-control" name="invoice" placeholder="e.g 2100" >
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="Total" placeholder="e.g 2500" required>
+                                    <input type="text" class="form-control" name="total" placeholder="e.g 2500" >
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>Note</b></label>
+                                    <input type="text" class="form-control" name="note" >
                                 </div>
 
 
@@ -76,22 +80,23 @@
             <tbody>
 
 
-
+            @php $i=1 @endphp
+            @foreach($SalesReturn as $SalesReturns)
                 <tr>
-                    <td>1</td>
-                    <td>10/12/2022</td>
-                    <td>Sohel</td>
-                    <td>121</td>
-                    <td>3300</td>
-                    <td>Complete</td>
+                    <td>{{ $i++ }} </td>
+                    <td>{{ $SalesReturns->date }} </td>
+                    <td>{{ $SalesReturns->customer }} </td>
+                    <td>{{ $SalesReturns->invoice }} </td>
+                    <td>{{ $SalesReturns->total }} </td>
+                    <td>{{ $SalesReturns->note }} </td>
 
 
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                            <form action="" method="post" style="display:inline">
+                            <a class="btn btn-success" style="font-size:13px" href="{{route('sales-return-edit',['id'=>$SalesReturns->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <form action="{{route('sales-return-delete')}}" method="post" style="display:inline">
                                 @csrf
-                                <input type="hidden" name="warranty_delete" value="">
+                                <input type="hidden" name="sales_return_delete" value="{{$SalesReturns->id}}">
                                 <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
@@ -99,7 +104,7 @@
                     </td>
                 </tr>
 
-
+            @endforeach
             </tbody>
 
 
