@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class LeaveApplication extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function employee(){
+        return $this->hasOne(Employee::class);
+    }
+
+    public function leave_type(){
+        return $this->hasOne(LeaveType::class);
+    }
 }

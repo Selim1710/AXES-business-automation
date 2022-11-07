@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend\Payroll;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payroll\Employee;
 use App\Models\Payroll\LeaveApplication;
+use App\Models\Payroll\LeaveType;
 use Illuminate\Http\Request;
 
 class LeaveApplicationController extends Controller
@@ -15,8 +17,8 @@ class LeaveApplicationController extends Controller
      */
     public function index()
     {
-        $leave_type= LeaveApplication::latest()->get();
-        return view('payroll.leave_type.table',['leave_types'=>$leave_type]);
+        $leave_application= LeaveApplication::with('')->latest()->get();
+        return view('payroll.leave_application.table',['leave_applications'=>$leave_application]);
     }
 
     /**
@@ -26,7 +28,10 @@ class LeaveApplicationController extends Controller
      */
     public function create()
     {
-        return view('payroll.leave_type.add');
+
+        $employees = Employee::get();
+        $leave_types = LeaveType::get();
+        return view('payroll.leave_application.add',['employees' => $employees, 'leave_types' => $leave_types]);
     }
 
     /**
@@ -39,19 +44,18 @@ class LeaveApplicationController extends Controller
     {
 
         $request->validate([
-            'name'=>'required',
-            'days'=>'required',
+            'employee_id'=>'required',
+            'leave_type'=>'required',
+            'apply_date'=>'required',
+            'leave_form' => 'required',
+            'leave_to'=>'required',
             'status'=>'required',
-            'description' => 'nullable',
+            'reason'=>'required',
+            'note'=>'nullable',
         ]);
         
-        LeaveApplication::create([
-            'name'=>$request->name,
-            'days'=>$request->days,
-            'status'=>$request->status,
-            'description'=>$request->description,
-        ]);
-        return redirect()->route('leavetypes.index')->withSuccess('LeaveApplication Created Successfully!');
+        LeaveApplication::create($request->all());
+        return redirect()->route('leave-application.index')->withSuccess('LeaveApplication Created Successfully!');
     }
 
     /**
@@ -62,7 +66,7 @@ class LeaveApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -73,9 +77,9 @@ class LeaveApplicationController extends Controller
      */
     public function edit( $id)
     {
-        $leave_type = LeaveApplication::where('id','=', $id)->first();
+        $leave_application = LeaveApplication::where('id','=', $id)->first();
         
-       return view('payroll.leave_type.edit',['leave_type'=>$leave_type,]);
+       return view('payroll.leave_application.edit',['leave_application'=>$leave_application,]);
     }
 
     /**
@@ -88,7 +92,7 @@ class LeaveApplicationController extends Controller
     public function update(Request $request, $id)
     {
 
-        $leave_type = LeaveApplication::where('id','=', $id)->first();
+        $leave_application = LeaveApplication::where('id','=', $id)->first();
 
         $request->validate([
             'name'=>'required',
@@ -97,13 +101,13 @@ class LeaveApplicationController extends Controller
             'description' => 'nullable',
         ]);
         
-        $leave_type->update([
+        $leave_application->update([
             'name'=>$request->name,
             'days'=>$request->days,
             'status'=>$request->status,
             'description'=>$request->description,
         ]);
-        return redirect()->route('leavetypes.index')->withSuccess('LeaveApplication updated Successfully!');
+        return redirect()->route('leave-application.index')->withSuccess('LeaveApplication updated Successfully!');
     }
 
     /**
@@ -114,8 +118,8 @@ class LeaveApplicationController extends Controller
      */
     public function destroy( $id)
     {
-        $leave_type = LeaveApplication::where('id','=', $id)->first();
-        $leave_type->delete();
+        $leave_application = LeaveApplication::where('id','=', $id)->first();
+        $leave_application->delete();
 
         return redirect()->back()->withSuccess('LeaveApplication Deleted Successfully');
     }
