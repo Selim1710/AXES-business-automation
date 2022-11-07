@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Inventory;
 use App\Http\Controllers\Controller;
 use App\Models\Inventory\Branch;
 use App\Models\ProductSetup\Product;
+use App\Models\ProductSetup\Stock;
 use Illuminate\Http\Request;
 
 class TransferBranchController extends Controller
@@ -16,16 +17,16 @@ class TransferBranchController extends Controller
         return view('inventory.transfer_branch_table', compact('transferedBranches'));
     }
 
-    public function createBranch()
+    public function createTransfer()
     {
-        $branchProducts = Product::with('branch')->get();
+        $branchProducts = Product::with('stock')->get();
         $branches = Branch::with('product')->get();
         return view('inventory.create_branch_transfer', compact('branchProducts', 'branches'));
     }
 
     public function branchProduct($id)
     {
-        $branchProducts = Product::with('branch')->where('branch_id', $id)->get();
+        $branchProducts = Product::with('stock')->where('branch_id', $id)->get();
         $branches = Branch::with('product')->get();
         return view('inventory.create_branch_transfer', compact('branchProducts', 'branches'));
     }
@@ -33,16 +34,34 @@ class TransferBranchController extends Controller
     public function view()
     {
         $previewDeliveries = session()->get('transBrData');
-        // dd($previewDeliveries);
-        return view('inventory.branch_product_transfered', compact('previewDeliveries'));
+        return view('inventory.view_branch_product_transfered', compact('previewDeliveries'));
     }
+    public function save()
+    {
+        $branchProducts = session()->get('transBrData');
+        if ($branchProducts) {
+            foreach ($branchProducts as $product) {
+                $productStockQty = Stock::where('product_id', $product['product_id'])->get();
+                foreach ($productStockQty as $qty) {
+                    $newStockQty = $qty['total_qty'] - $product['qty'];
+                    // update stock
+                    $qty->update([
+                        'total_qty' => $newStockQty,
+                    ]);
+                    session()->forget('transBrData');
+                    return back()->with('message', 'product transfered');
+                }
+            }
+        }
+    }
+
     public function delete($id)
     {
         $cart = session()->get('transBrData');
         unset($cart[$id]);
-        session()->put('transBrData',$cart);
+        session()->put('transBrData', $cart);
 
-        return back()->with('error','product removed');
+        return back()->with('error', 'product removed');
     }
 
 

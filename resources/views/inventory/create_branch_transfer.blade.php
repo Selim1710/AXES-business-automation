@@ -34,7 +34,8 @@
                         <thead>
                             <tr>
                                 <th>image</th>
-                                <th>Product</th>
+                                <th>Product code</th>
+                                <th>Product name</th>
                                 <th>Quantity</th>
                                 <th>&nbsp;&nbsp; Action&nbsp;<i class="fa fa-paper-plane"></i></th>
                             </tr>
@@ -44,8 +45,9 @@
                             @forelse ($branchProducts as $product)
                             <tr class="text-center">
                                 <td><img src="{{ asset('/uploads/products/'.$product->image) }}" style="height:50px;width:50px;"> </td>
+                                <td> {{ $product->id }} </td>
                                 <td> {{ $product->name }} </td>
-                                <td>{{ $product->id }}</td>
+                                <td>{{ !empty($product->stock->total_qty) ? $product->stock->total_qty : 'null' }}</td>
                                 <!-- add -->
                                 <td>
                                     <a class="btn btn-success" href="{{ route('inventory.B.P.transfer',$product->id) }}" style="font-size:13px"><i class="fa fa-plus" aria-hidden="true"></i></a>
@@ -60,7 +62,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <a href="{{ route('branch.product.transfered') }}" class="btn btn-primary">View Delivery</a>
+            <a href="{{ route('branch.product.transfered') }}" class="btn btn-primary">View Transfer</a>
         </div>
     </div>
 </section>

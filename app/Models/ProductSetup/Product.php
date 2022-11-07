@@ -20,7 +20,7 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
     public function stock(){
-        return $this ->belongsTo(Stock::class);
+        return $this ->hasOne(Stock::class);
     }
 
     public function branch(){
