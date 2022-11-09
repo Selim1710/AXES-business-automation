@@ -130,13 +130,17 @@
                              @endforeach    
                         </td>
                         <td>
+                            @can('User edit')
                             <a class="btn btn-success" style="font-size:13px" href="{{route('users.edit',$user->id)}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                            @endcan
                             
+                            @can('User delete')
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger" style="font-size:13px " role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                             </form>
+                            @endcan
                         </td>
                     </tr>
                 

@@ -47,26 +47,58 @@ class UserTableSeeder extends Seeder
         $permission = Permission::create(['name' => 'User delete','group_id'=>'1', 'group_name'=>'Users And Role']);
         $permission = Permission::create(['name' => 'User print','group_id'=>'1', 'group_name'=>'Users And Role']);
 
-        $permission = Permission::create(['name' => 'Expenses Head access','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expenses Head edit','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expenses Head create','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expenses Head delete','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expenses Head print','group_id'=>'2', 'group_name'=>'Daily Process']);
+        $permission = [
+            'Daily Process' => [
+                    'Daily Process',
+                    'Price List',
+                    'Expenses Record',
+                    'Create Expenses',
+                    'Expenses Head',
+            ],
+            'Service' => [
+                'Service',
+                'Service List',
+                'Service Received List',
+                'Service Received Create',
+            ],
+            'Warranty Management' => [
+                'Warranty Management',
+                'Warranty Clam',
+                'Service Center',
+                'Claim To Supplier',
+                'Warranty Stock',
+                'Manage Product',
+                'Warranty Delivered',
+            ],
+            'Purchase' => [
+                'Purchase',
+                'Purchase Order',
+                'Purchase Return',
+            ],
+            'Sales' => [
+                'Sales',
+                'Sales Estimate',
+                'Sales Estimate Create',
+                'Sales Return',
+            ],
+        ];
 
-        $permission = Permission::create(['name' => 'Expense access','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expense edit','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expense create','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expense delete','group_id'=>'2', 'group_name'=>'Daily Process']);
-        $permission = Permission::create(['name' => 'Expense print','group_id'=>'2', 'group_name'=>'Daily Process']);
+function create_permission( $permission_array ){
+        $i = 0 ;
+        foreach ( $permission_array as $key => $group_name) {
+            $i++;
+            foreach ($group_name as $permission_name) {
+                Permission::create(['name' => $permission_name,'group_id'=>$i, 'group_name'=>$key]);
+            }
+            
+        }
+}
+        create_permission($permission);
 
 
-        // $permission = Permission::create(['name' => 'Permission access']);
-        // $permission = Permission::create(['name' => 'Permission edit']);
-        // $permission = Permission::create(['name' => 'Permission create']);
-        // $permission = Permission::create(['name' => 'Permission delete']);
+        
 
-        // $permission = Permission::create(['name' => 'Mail access']);
-        // $permission = Permission::create(['name' => 'Mail edit']);
+        
 
 
 

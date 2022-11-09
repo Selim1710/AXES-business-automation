@@ -12,10 +12,10 @@ class LeaveApplication extends Model
     protected $guarded = [];
 
     public function employee(){
-        return $this->hasOne(Employee::class);
+        return $this->belongsTo(Employee::class);
     }
 
     public function leave_type(){
-        return $this->hasOne(LeaveType::class);
+        return $this->belongsTo(LeaveType::class, 'leave_types_id');
     }
 }

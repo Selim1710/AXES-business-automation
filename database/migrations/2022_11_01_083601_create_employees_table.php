@@ -14,7 +14,7 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id();
+            $table->id()->start_from(10001);
             $table->string('name');
             $table->string('father_name');
             $table->string('mother_name');
@@ -29,8 +29,8 @@ class CreateEmployeesTable extends Migration
             $table->string('gender');
             $table->string('profile_image');
             $table->string('branch');
-            $table->string('residensial-address');
-            $table->string('parmanent-address');
+            $table->string('residensial_address');
+            $table->string('parmanent_address');
 
             $table->unsignedBigInteger('designation_id')->nullable();
             $table->foreign('designation_id')
