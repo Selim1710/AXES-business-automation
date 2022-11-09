@@ -19,7 +19,7 @@
                 <div class="modal-content">
 
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.store.sales-return') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="border p-3 rounded">
@@ -31,15 +31,23 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Customer</b></label>
-                                    <input type="text" class="form-control" name="customer" placeholder="e.g Md. Sohel" required>
+                                    <input type="text" class="form-control" name="customer" placeholder="e.g  hp-12012" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Invoice</b></label>
-                                    <input type="text" class="form-control" name="invoice" placeholder="e.g 2100" required>
+                                    <input type="text" class="form-control" name="invoice" placeholder="e.g 520" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>Against</b></label>
+                                    <input type="text" class="form-control" name="against" placeholder="e.g waiting" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="Total" placeholder="e.g 2500" required>
+                                    <input type="text" class="form-control" name="total" placeholder="e.g waiting" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>Note</b></label>
+                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" required>
                                 </div>
 
 
@@ -67,44 +75,34 @@
                     <th>Date</th>
                     <th>Customer</th>
                     <th>Invoice</th>
+                    <th>Against</th>
                     <th>Total</th>
                     <th>Note</th>
                     <th>Action</th>
 
                 </tr>
             </thead>
-            <tbody>
-
-
-
+            @forelse ($salesreturns as $key=>$salesreturn)
                 <tr>
-                    <td>1</td>
-                    <td>10/12/2022</td>
-                    <td>Sohel</td>
-                    <td>121</td>
-                    <td>3300</td>
-                    <td>Complete</td>
-
+                    <td>{{ $key+1 }} </td>
+                    <td>{{ $salesreturn->date }}</td>
+                    <td>{{ $salesreturn->customer }}</td>
+                    <td>{{ $salesreturn->invoice }}</td>
+                    <td>{{ $salesreturn->against }}</td>
+                    <td>{{ $salesreturn->total }}</td>
+                    <td>{{ $salesreturn->note }}</td>
 
                     <td>
-                        <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                            <form action="" method="post" style="display:inline">
-                                @csrf
-                                <input type="hidden" name="warranty_delete" value="">
-                                <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </form>
-                        </div>
-
+                        <a class="btn btn-success" href="{{ route('admin.edit.sales-return', $salesreturn->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.sales-return', $salesreturn->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
-
-
+                @empty
+                <p class="text-danger text-center">No return available</p>
+                @endforelse
             </tbody>
 
-
         </table>
-
     </div>
 
 

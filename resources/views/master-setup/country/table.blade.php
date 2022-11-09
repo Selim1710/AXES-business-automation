@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label">description</label>
+                                    <label class="form-label">Description</label>
                                     <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
                                 </div>
 
@@ -68,7 +68,7 @@
                 <tr>
                     <th>SN</th>
                     <th>Name</th>
-                    <th>description</th>
+                    <th>Description</th>
 
                     <th>Action</th>
                 </tr>

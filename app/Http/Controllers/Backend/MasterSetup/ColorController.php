@@ -37,7 +37,7 @@ class ColorController extends Controller
         $color = Color::find($id);
         $color->update([
             'name' => $request->name,
-            'color' => $request->color,
+            'color_code' => $request->color_code,
         ]);
         return redirect()->route('admin.manage.color')->with('message', 'Color Updated');
     }

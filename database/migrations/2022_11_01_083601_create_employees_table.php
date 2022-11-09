@@ -15,8 +15,23 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number');
             $table->string('name');
+            $table->string('father_name');
+            $table->string('mother_name');
+            $table->string('mobile');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('nid');
+            $table->date('dateofbirth');
+            $table->date('joindate');
+            $table->integer('salary');
+            $table->integer('status');
+            $table->string('gender');
+            $table->string('profile_image');
+            $table->string('branch');
+            $table->string('residensial-address');
+            $table->string('parmanent-address');
+
             $table->unsignedBigInteger('designation_id')->nullable();
             $table->foreign('designation_id')
                 ->references('id')
@@ -29,10 +44,7 @@ class CreateEmployeesTable extends Migration
                 ->on('departments')
                 ->onDelete('cascade');
 
-            $table->string('workplace');
-            $table->string('mobile');
-            $table->string('email');
-            $table->integer('salary');
+            $table->string('workplace')->nullable();
             $table->timestamps();
         });
     }

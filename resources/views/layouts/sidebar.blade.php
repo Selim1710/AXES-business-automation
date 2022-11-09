@@ -102,7 +102,8 @@
                         <a class="nav-link" href="{{route('admin-sales-invoice-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice Create</a>
 
                         {{-- sales return --}}
-                        <a class="nav-link" href="{{route('sales-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
+                        <a class="nav-link" href="{{route('admin.sales-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
+                        <a class="nav-link" href="{{route('admin.sales-return-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return Create</a>
 
                     </nav>
                 </div>
@@ -121,7 +122,7 @@
                         <a class="nav-link" href="{{ route('inventory.warehouse.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse </a>
                         <a class="nav-link" href="{{ route('branch_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Branch stock </a>
                         <a class="nav-link" href="{{ route('warehouse_stock.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Warehouse stock </a>
-                        <a class="nav-link" href="{{ route('transfer_branch.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
+                        <a class="nav-link" href="{{ route('inventory.transfer_branch.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
                     </nav>
                 </div>
 
@@ -154,7 +155,7 @@
                         <a class="nav-link" href="{{ route('admin.manage.stock') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Stock</a>
                     </nav>
                 </div>
-                
+
                 <!-- master setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#masterSetup" aria-expanded="false" aria-controls="masterSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -223,10 +224,12 @@
                         <a class="nav-link" href="{{route('designation.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Designation</a>
                         <a class="nav-link" href="{{route('employee.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Employee List</a>
                         <a class="nav-link" href="{{route('employee.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Employee</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Mobile Account</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Transaction</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Transaction</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
+                        <a class="nav-link" href="{{route('leavetypes.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Type</a>
+                        <a class="nav-link" href="{{route('leavetypes.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Type</a>
+                        <a class="nav-link" href="{{route('leave-application.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
+                        <a class="nav-link" href="{{route('leave-application.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Attendence Record</a>
+                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Salary Sheet & Payslip</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">

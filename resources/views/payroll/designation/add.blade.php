@@ -24,7 +24,7 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <label>Designation Description</label>
-                          <textarea class="form-control" name="description" id="note" maxlength="250" rows="3" placeholder="e.g. Note"></textarea>
+                          <textarea required class="form-control" name="description" id="note" maxlength="250" rows="3" placeholder="e.g. Note"></textarea>
                       </div>
                   </div>
               </div>

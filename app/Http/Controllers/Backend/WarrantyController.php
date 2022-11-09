@@ -32,7 +32,7 @@ class WarrantyController extends Controller
             'address' => 'required',
             'description' => 'nullable',
 
-        ]);;
+        ]);
         $servicecenter = new ServiceOffice();
         $servicecenter->name = $request->name;
         $servicecenter->contact = $request->contact;

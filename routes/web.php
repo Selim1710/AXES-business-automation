@@ -43,6 +43,8 @@ use App\Http\Controllers\Backend\Purchase\PurchaseOrderController;
 use App\Http\Controllers\Backend\Purchase\PurchaseReturnController;
 use App\Http\Controllers\Backend\Sales\SalesInvoiceController;
 use App\Http\Controllers\Backend\Sales\SalesReturnController;
+use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
+use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +105,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/service-received-edit/{id}', [ServiceController::class, 'CustomerReceivedEdit'])->name('service-received-edit');
         Route::post('/service-received-update/{id}', [ServiceController::class, 'CustomerReceivedUpdate'])->name('service-received-update');
         Route::post('/service-received-delete', [ServiceController::class, 'CustomerReceivedDelete'])->name('service-received-delete');
+
         // Service list
         Route::get('/service-list-show', [ServiceController::class, 'serviceListShow'])->name('service-list-show');
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
@@ -148,6 +151,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage-product-edit/{id}', [WarrantyController::class, 'manageProductEdit'])->name('manage-product-edit');
         Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
         Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
+
+
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
         Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
@@ -160,6 +165,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'Purchase'], function () {
 
         // Purchase Order
+
         Route::get('/purchase-order', [PurchaseOrderController::class, 'purchaseOrder'])->name('admin.purchase-order');
         Route::get('/purchase/order/create', [PurchaseOrderController::class, 'purchaseOrderCreate'])->name('admin.purchase-order.create');
 
@@ -170,12 +176,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Purchase Return
         Route::get('/purchase-return', [PurchaseReturnController::class, 'purchaseReturn'])->name('admin.purchase-return');
         Route::get('/purchase/return/create', [PurchaseReturnController::class, 'purchaseReturnCreate'])->name('admin.purchase-return.create');
+        Route::post('/store/purchase-return', [PurchaseReturnController::class, 'storepurchaseReturn'])->name('admin.store.purchase-return');
+        Route::get('/edit/purchase-return/{id}', [PurchaseReturnController::class, 'editpurchaseReturn'])->name('admin.edit.purchase-return');
+        Route::post('/update/purchase-return/{id}', [PurchaseReturnController::class, 'updatepurchaseReturn'])->name('admin.update.purchase-return');
+        Route::get('/delete/purchase-return/{id}', [PurchaseReturnController::class, 'deletepurchaseReturn'])->name('admin.delete.purchase-return');
     });
 
     // Sales
     Route::group(['prefix' => 'Sales'], function () {
 
-       
         //sales estimate
         Route::get('/manage/sales', [SalesController::class, 'SalesEstimate'])->name('admin-sales-manage');
         Route::get('/sales-estimate-create', [SalesController::class, 'salesEstimateCreate'])->name('sales-estimate-create');
@@ -184,11 +193,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage/sales/invoice', [SalesInvoiceController::class, 'SalesInvoice'])->name('admin-sales-invoice-manage');
         Route::get('/sales-invoice-create', [SalesInvoiceController::class, 'salesInvoiceCreate'])->name('admin-sales-invoice-create');
 
-         // Sales Return
-        Route::get('/sales-return-show', [SalesReturnController::class, 'salesReturnShow'])->name('sales-return-show');
-        
-
-
+        // Sales Return
+        Route::get('/sales-return', [SalesReturnController::class, 'salesReturn'])->name('admin.sales-return');
+        Route::get('/sales-return-create', [SalesReturnController::class, 'salesReturnCreate'])->name('admin.sales-return-create');
+        Route::post('/store/sales-return', [SalesReturnController::class, 'storeSalesReturn'])->name('admin.store.sales-return');
+        Route::get('/edit/sales-return/{id}', [SalesReturnController::class, 'editSalesReturn'])->name('admin.edit.sales-return');
+        Route::post('/update/sales-return/{id}', [SalesReturnController::class, 'updateSalesReturn'])->name('admin.update.sales-return');
+        Route::get('/delete/sales-return/{id}', [SalesReturnController::class, 'deleteSalesReturn'])->name('admin.delete.sales-return');
     });
 
 
@@ -232,7 +243,17 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/warehouse_stock/delete/{id}', [CustomerController::class, 'destroy'])->name('inventory.warehouse_stock.delete');
 
         // Transfer from branch
-        Route::resource('transfer_branch', TransferBranchController::class);
+        Route::get('/transfer_branch/table', [TransferBranchController::class, 'table'])->name('inventory.transfer_branch.table');
+        Route::get('/transfer_branch/create', [TransferBranchController::class, 'createTransfer'])->name('create.branch.transfer');
+        Route::get('/transfer_branch/branch/product/{id}', [TransferBranchController::class, 'branchProduct'])->name('inventory.B.P');
+        Route::get('/B/P/transfer/{id}', [TransferBranchController::class, 'addProduct'])->name('inventory.B.P.transfer');
+
+        Route::get('/B/P/transfer/view', [TransferBranchController::class, 'viewProduct'])->name('view.product.transfered');
+        Route::get('/branch/product/transfered/view', [TransferBranchController::class, 'view'])->name('branch.product.transfered');
+        Route::get('/branch/product/transfered/save', [TransferBranchController::class, 'save'])->name('save.branch.product.transfer');
+        Route::get('/branch/product/transfered/delete/{id}', [TransferBranchController::class, 'delete'])->name('branch.product.transfered.delete');
+
+        Route::get('/transfer_branch/clear', [TransferBranchController::class, 'clear'])->name('inventory.transfer_branch.clear');
         Route::get('/transfer_branch/delete/{id}', [TransferBranchController::class, 'destroy'])->name('inventory.transfer_branch.delete');
 
         // Transfer from warehouse
@@ -277,13 +298,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/manage/product', [ProductSetupController::class, 'manageProduct'])->name('admin.manage.product');
         /////////// json = cat wise sub-cat  ///////////
         Route::get('/get/category/wise/sub-cat/{id}', [ProductSetupController::class, 'getCatWiseSubCat']);
-        
+
+
         /////////// json = branch wise warehouse  ///////////
         Route::get('get/branch/wise/warehouse/{id}', [ProductSetupController::class, 'branchWarhouse']);
-        
+
         /////////// json = warehouse wise product  ///////////
         Route::get('/get/warehouse/wise/product/{id}', [ProductSetupController::class, 'warehouseProduct']);
-        
+
         Route::post('/store/product', [ProductSetupController::class, 'storeProduct'])->name('admin.store.product');
         Route::get('/edit/product/{id}', [ProductSetupController::class, 'editProduct'])->name('admin.edit.product');
         Route::post('/update/product/{id}', [ProductSetupController::class, 'updateProduct'])->name('admin.update.product');
@@ -338,13 +360,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/journal/{id}', [AccountSetupController::class, 'deleteJournal'])->name('admin.delete.journal');
     });
 
-   // finanaceRecord
+    // finanaceRecord
     Route::group(['prefix' => 'chart_account'], function () {
-        Route::get('/chartAccount',[ChartOfAccount::class,'chartAccount'])->name('admin.chart_account');
-        Route::get('/profit_loss',[ChartOfAccount::class,'profitLoss'])->name('admin.profit_Loss');
-        Route::get('/trial_balance',[ChartOfAccount::class,'trialBalance'])->name('admin.trial.balance');
-        Route::get('/balance_sheet',[ChartOfAccount::class,'balanceSheet'])->name('admin.balance_sheet');
-        Route::get('/finance_analysis',[ChartOfAccount::class,'financeAnalysis'])->name('admin.finance.analysis');
+        Route::get('/chartAccount', [ChartOfAccount::class, 'chartAccount'])->name('admin.chart_account');
+        Route::get('/profit_loss', [ChartOfAccount::class, 'profitLoss'])->name('admin.profit_Loss');
+        Route::get('/trial_balance', [ChartOfAccount::class, 'trialBalance'])->name('admin.trial.balance');
+        Route::get('/balance_sheet', [ChartOfAccount::class, 'balanceSheet'])->name('admin.balance_sheet');
+        Route::get('/finance_analysis', [ChartOfAccount::class, 'financeAnalysis'])->name('admin.finance.analysis');
     });
     /*
     |--------------------------------------------------------------------------
@@ -454,7 +476,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
     Route::get('balance/', [TransanctionController::class, 'get_balance'])->name('accounts.get_balance');
 
     //Manage Cheque
-    Route::resource('manage-cheque', ChequeManagementController::class); 
+    Route::resource('manage-cheque', ChequeManagementController::class);
+    Route::resource('manage-cheque', ChequeManagementController::class);
 
     //Department Controller
     Route::resource('department', DepartmentController::class);
@@ -464,4 +487,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //Employee Controller
     Route::resource('employee', EmployeeController::class);
+
+    //LeaveType Controller
+    Route::resource('leavetypes', LeaveTypeController::class);
+
+    //LeaveApplication Controller
+    Route::resource('leave-application', LeaveApplicationController::class);
 });
