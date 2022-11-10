@@ -35,17 +35,6 @@ class UserTableSeeder extends Seeder
         $admistrator_role = Role::create(['name' => 'Administrator']);
         $super_admin_role = Role::create(['name' => 'Super Admin']);
 
-        $permission = Permission::create(['name' => 'Role access','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'Role edit','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'Role create','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'Role delete','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'Role print','group_id'=>'1', 'group_name'=>'Users And Role']);
-
-        $permission = Permission::create(['name' => 'User access','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'User edit','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'User create','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'User delete','group_id'=>'1', 'group_name'=>'Users And Role']);
-        $permission = Permission::create(['name' => 'User print','group_id'=>'1', 'group_name'=>'Users And Role']);
 
         $permission = [
             'Daily Process' => [
@@ -58,8 +47,7 @@ class UserTableSeeder extends Seeder
             'Service' => [
                 'Service',
                 'Service List',
-                'Service Received List',
-                'Service Received Create',
+                'Service Received',
             ],
             'Warranty Management' => [
                 'Warranty Management',
@@ -78,17 +66,96 @@ class UserTableSeeder extends Seeder
             'Sales' => [
                 'Sales',
                 'Sales Estimate',
-                'Sales Estimate Create',
                 'Sales Return',
+            ],
+            'Inventory' => [
+                'Inventory',
+                'Branch',
+                'Branch Stock',
+                'Warehouse Stock',
+                'Transfer Branch',
+            ],
+            'Client Setup' => [
+                'Client Setup',
+                'All-Group',
+                'Customer',
+                'Supplier',
+            ],
+            'Products Setup' => [
+                'Products Setup',
+                'Category',
+                'Sub Category',
+                'Product',
+                'Stock',
+            ],
+            'Masters Setup' => [
+                'Masters Setup',
+                'Brand',
+                'Manufacturer',
+                'Unit',
+                'Currency',
+                'Country',
+                'Transport',
+                'Color',
+                'Size',
+                'District',
+                'Zone',
+            ],
+            'Accounts Setup' => [
+                'Accounts Setup',
+                'Class',
+                'Group',
+                'Sub-Group',
+                'Ledger',
+                'Journal',
+            ],
+            'Finance Record' => [
+                'Finance Record',
+                'Chart of Account',
+                'profit And Loss',
+                'Trial Balance',
+                'Balance Sheet',
+                'Finance Analycis',
+            ],
+            'Payroll' => [
+                'Payroll',
+                'Department',
+                'Designation',
+                'Employee',
+                'Leave Type',
+                'Leave Application',
+            ],
+            'Bank' => [
+                'Bank',
+                'Account',
+                'Mobile Account',
+                'Transaction',
+                'Cheque Management',
+            ],
+            'Users And Role' => [
+                'Users And Role',
+                'Role',
+                'User',
             ],
         ];
 
 function create_permission( $permission_array ){
+       
         $i = 0 ;
-        foreach ( $permission_array as $key => $group_name) {
+        foreach ( $permission_array as $permission_group => $group_name) {
             $i++;
             foreach ($group_name as $permission_name) {
-                Permission::create(['name' => $permission_name,'group_id'=>$i, 'group_name'=>$key]);
+                $permissiontype = [
+                    'read',
+                    'edit',
+                    'create',
+                    'delete',
+                    'print',
+                ];
+                foreach ( $permissiontype as $key => $value) {
+                    Permission::create(['name' => $permission_name.' '.$value,'group_id'=>$i, 'group_name'=>$permission_group]);
+                }
+
             }
             
         }

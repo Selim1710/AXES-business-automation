@@ -24,6 +24,7 @@ class User extends Authenticatable
         'shipping_address',
         'father_name',
         'mother_name',
+        'phone_number',
         'NID',
         'image',
         'contact',
