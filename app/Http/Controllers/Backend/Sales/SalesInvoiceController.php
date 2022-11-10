@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Sales;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSetup\Product;
 use Illuminate\Http\Request;
 
 class SalesInvoiceController extends Controller
@@ -14,6 +15,7 @@ class SalesInvoiceController extends Controller
 
     public function salesInvoiceCreate()
     {
-        return view('sales.salesinvoice.sales-invoice-create');
+        $products = Product::with('stock')->get();
+        return view('sales.salesinvoice.sales-invoice-create',compact('products'));
     }
 }

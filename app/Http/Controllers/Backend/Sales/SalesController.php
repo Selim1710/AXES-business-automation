@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Backend\Sales;
 
 use App\Http\Controllers\Controller;
-
-
+use App\Models\ProductSetup\Product;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -16,6 +15,7 @@ class SalesController extends Controller
 
     public function salesEstimateCreate()
     {
-        return view('sales.salesestimate.sales-estimate-create');
+        $products = Product::with('stock')->get();
+        return view('sales.salesestimate.sales-estimate-create',compact('products'));
     }
 }
