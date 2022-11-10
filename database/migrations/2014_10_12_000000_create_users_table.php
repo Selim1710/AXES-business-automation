@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('shipping_address')->unique()->nullable();
             $table->string('father_name')->unique()->nullable();
             $table->string('mother_name')->unique()->nullable();
+            $table->string('phone_number')->unique()->nullable();
             $table->string('NID')->unique()->nullable();
             $table->string('contact')->unique()->nullable();
             $table->string('password')->nullable();

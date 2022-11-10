@@ -70,7 +70,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone_number = $request->phone_number;
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
                 
             // if ($request->file('image')) {
             //     $imagePath = $request->file('file');

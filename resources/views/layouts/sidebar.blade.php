@@ -8,6 +8,7 @@
                     Dashboard
                 </a>
                 {{--daily process--}}
+                @can('Daily Process read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutDailyProcess" aria-expanded="false" aria-controls="collapseLayoutDailyProcess">
                     <div class="sb-nav-link-icon"><i class="fa fa-edit ani_icon"></i></div>
                     Daily Process
@@ -25,6 +26,9 @@
 
                     </nav>
                 </div>
+                @endcan
+
+                @can('Service read')
                 {{--service--}}
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutÌservice" aria-expanded="false" aria-controls="collapseLayoutÌservice">
                     <div class="sb-nav-link-icon"><i class="fa fa-wrench  ani_icon"></i></div>
@@ -39,9 +43,10 @@
                         <a class="nav-link" href="{{route('service-received-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received Create</a>
                     </nav>
                 </div>
-
+                @endcan
                 {{--Warranty management--}}
 
+                @can('Warranty Management read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWarenty" aria-expanded="false" aria-controls="collapseLayoutWarenty">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Warranty Management
@@ -59,9 +64,10 @@
                         <a class="nav-link" href="{{route('warranty-delivered-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Warranty Delivered</a>
                     </nav>
                 </div>
-
+                @endcan
                 {{--Purchase--}}
 
+                @can('Purchase read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPurchase" aria-expanded="false" aria-controls="collapseLayoutPurchase">
                     <div class="sb-nav-link-icon"><i class="fa fa-shopping-basket ani_icon"></i></div>
                     Purchase
@@ -77,8 +83,10 @@
                     </nav>
                 </div>
 
+                @endcan
                 {{--Sales--}}
 
+                @can('Sales read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSales" aria-expanded="false" aria-controls="collapseLayoutSales">
                     <div class="sb-nav-link-icon"><i class="fa fa-shopping-bag ani_icon"></i></div>
                     Sales
@@ -95,7 +103,8 @@
                     </nav>
                 </div>
                 <hr>
-
+                @endcan
+                @can('Inventory read')
                 <!-- inventory -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -112,8 +121,9 @@
                         <a class="nav-link" href="{{ route('inventory.transfer_branch.table') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Transfer branch </a>
                     </nav>
                 </div>
-
+                @endcan
                 <!-- client setup -->
+                @can('Client Setup read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#clientSetup" aria-expanded="false" aria-controls="clientSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Client Setup
@@ -127,6 +137,8 @@
                         <a class="nav-link" href="{{ route('supplier.index') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i> Supplier </a>
                     </nav>
                 </div>
+                @endcan
+                @can('Products Setup read')
                 <!-- product setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#productSetup" aria-expanded="false" aria-controls="productSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -142,7 +154,8 @@
                         <a class="nav-link" href="{{ route('admin.manage.stock') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Stock</a>
                     </nav>
                 </div>
-
+                @endcan
+                @can('Masters Setup read')
                 <!-- master setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#masterSetup" aria-expanded="false" aria-controls="masterSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -164,7 +177,8 @@
                         <a class="nav-link" href="{{ route('admin.manage.zone') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Zone</a>
                     </nav>
                 </div>
-
+                @endcan
+                @can('Accounts Setup read')
                 <!-- account setup -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#accountSetup" aria-expanded="false" aria-controls="accountSetup">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -180,6 +194,8 @@
                         <a class="nav-link" href="{{ route('admin.manage.journal') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Journal</a>
                     </nav>
                 </div>
+                @endcan
+                @can('Finance Record read')
                 <!-- finance record -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#financeRecord" aria-expanded="false" aria-controls="financeRecord">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -196,7 +212,8 @@
                         <a class="nav-link" href="{{ route('admin.finance.analysis') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Finance Analysis</a>
                     </nav>
                 </div>
-
+                @endcan
+                @can('Payroll read')
                 <hr>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPayroll" aria-expanded="false" aria-controls="collapseLayoutPayroll">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
@@ -215,10 +232,10 @@
                         <a class="nav-link" href="{{route('leavetypes.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Type</a>
                         <a class="nav-link" href="{{route('leave-application.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Leave Record</a>
                         <a class="nav-link" href="{{route('leave-application.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Add Leave Application</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Attendence Record</a>
-                        <a class="nav-link" href=""><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Salary Sheet & Payslip</a>
                     </nav>
                 </div>
+                @endcan
+                @can('Bank read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutBank" aria-expanded="false" aria-controls="collapseLayoutBank">
                     <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
                     Bank
@@ -236,7 +253,8 @@
                         <a class="nav-link" href="{{route('manage-cheque.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
                     </nav>
                 </div>
-
+                @endcan
+                @can('Users And Role read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutUser" aria-expanded="false" aria-controls="collapseLayoutUser">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user"></i></div>
                     Users & Roles
@@ -251,37 +269,7 @@
 
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutPages" aria-expanded="false" aria-controls="collapseLayoutPages">
-                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                    Pages
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="collapseLayoutPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                            Authentication
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="login.html">Login</a>
-                                <a class="nav-link" href="register.html">Register</a>
-                                <a class="nav-link" href="password.html">Forgot Password</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                            Error
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingFive" data-bs-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="401.html">401 Page</a>
-                                <a class="nav-link" href="404.html">404 Page</a>
-                                <a class="nav-link" href="500.html">500 Page</a>
-                            </nav>
-                        </div>
-                    </nav>
-                </div>
+                @endcan
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link collapsed" onclick="event.preventDefault(); this.closest('form').submit();" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutLogOut" aria-expanded="false" aria-controls="collapseLayoutLogOut">

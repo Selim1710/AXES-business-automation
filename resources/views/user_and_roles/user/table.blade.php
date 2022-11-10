@@ -20,7 +20,7 @@
                                 <h5 class="modal-title" id="userCreateModelLabel">Create New User</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form id="create-user" method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
+                            <form id="create-user" method="POST" action="{{route('users.store')}}">
                             <div class="modal-body">
                                       <div class="border p-3 rounded">
                                        
@@ -66,12 +66,13 @@
                                             </div>
                                       </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        @csrf
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Create User</button>
+                                    </div>
                             </div>
-                            <div class="modal-footer">
-                                @csrf
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create User</button>
-                            </div>
+                            
                         </form>
                         </div>
                     </div>
