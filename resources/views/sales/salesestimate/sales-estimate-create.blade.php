@@ -88,12 +88,13 @@
                                                 <div class="quickbox">
                                                     <div class="quick">
                                                         @forelse ($products as $product)
-                                                            <div class="quickLink">
+                                                            <div class="quickLink estimated_product_list">
                                                                 <a href="#">
                                                                     <img src="{{ asset('/uploads/products/'.$product->image) }}"
                                                                         alt="Sales">
                                                                         <h6>{{ $product->name }}</h6>
                                                                         <p>{{ $product->stock->total_qty }}</p>
+                                                                        <input type="hidden" class="product_price" value="{{ $product->price }}">
                                                                     </a>
                                                             </div>
                                                         @empty
@@ -159,48 +160,6 @@
                                 </div>
                             </div>
 
-                            {{-- no product --}}
-
-
-                            {{-- <div class="row">
-                                <div class="cart cart-sm m-1">
-                                    <table class="table table-bordered table-striped" style="margin-bottom: 0;">
-                                        <thead>
-                                            <tr>
-                                                <th width="30px">SN</th>
-                                                <th width="214px">Item</th>
-                                                <th width="72px">Qty</th>
-                                                <th width="72px">Price</th>
-                                                <th width="35px">ASL</th>
-                                                <th width="77px">SubTotal</th>
-                                                <th width="25px"><a class="empty" style="cursor: pointer;"><i
-                                                            class="fa fa-trash"></i></a></th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    <div class="cart-msg style-3 item" style="padding:0px;">
-                                        <table class="table table-bordered table-striped" style="margin-bottom: 0;">
-                                            <tbody id="itemdata">
-                                                <tr>
-                                                    <td colspan="7" class="text-center">There are no Estimate Item!
-                                                    </td>
-                                                </tr>
-                                                <script>
-                                                    $('.accordian-body').on('show.bs.collapse', function() {
-                                                        $(this).closest('table').find('.collapse.in').not(this).collapse('toggle')
-                                                    })
-                                                </script>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <table class="table table-bordered table-striped" style="margin-bottom: 0;">
-                                        <tfoot id="itemfoot"></tfoot>
-                                    </table>
-                                </div>
-                            </div> --}}
-
-                            {{-- no product --}}
-
                             {{-- product --}}
                             <div class="cart cart-sm">     
                                 <table class="table table-bordered table-striped" style="margin-bottom: 0;">
@@ -209,72 +168,22 @@
                                             <th width="30px">SN</th>
                                             <th width="214px">Item</th>
                                             <th width="72px">Qty</th>
-                                            <th width="72px">Price</th>
-                                            <th width="35px">ASL</th>    
+                                            <th width="72px">Price</th>   
                                             <th width="77px">SubTotal</th>
                                             <th width="25px"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a>
                                             </th>    
                                         </tr>
                                     </thead>
                                 </table>
-                            <div class="cart-msg style-3 item" style="padding:0px;">    
-                                <table class="table table-bordered table-striped" style="margin-bottom: 0;">    
-                                    <tbody id="itemdata">
-                                        <tr>
-                                            <td class="text-center" width="30px">1</td>
-                                            <td data-toggle="collapse" data-target="#sitem0" class="accordion-toggle" style="cursor: pointer;" width="214px">     Purchase</td>
-                                            <td width="72px"><input type="text" min="1" onkeypress="return isNumberKey(event)" class="form-control quantity" id="qty_0" value="1" size="2" style="height: 24px;"></td>
-                                            <td width="72px"><input type="text" min="1" onkeypress="return isNumberKey(event)" class="form-control price" id="price_0" value="1300.00" size="2" style="height: 24px;"></td>
-                                            <td class="text-center" width="35px"><input type="checkbox" class="bscan" id="bscan_0" value="GP031022102" name="radio-group"></td>
-                                            <td width="77px" id="stotal_0" class="text-right">1300</td>
-                                            <td class="text-center" width="25px"><a id="0" class="remove"><span style="cursor: pointer;" class="fa fa-times"></span></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="7" class="hiddenRow">
-                                                <div class="accordian-body collapse" id="sitem0">
-                                                    <table class="table table-bordered table-striped" style="margin-bottom: 0;">
-                                                        <thead>
-                                                            <tr>
-                                                                <th colspan="3" rowspan="2" class="text-center" width="316px">Product Note</th>
-                                                                <th colspan="4" class="text-center" width="316px">Estimate Discount</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" width="72px">Percent(%)</th>
-                                                                <th class="text-center" width="72px">Fixed</th>
-                                                                <th colspan="2" class="text-center">Total</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="3"><input type="text" maxlength="45" class="form-control pnote" id="pnote_0" value="" size="2" style="height: 24px;"></td>
-                                                                <td><input type="text" min="0" onkeypress="return isNumberKey(event)" class="form-control disp" id="disp_0" value="0.00" size="2" style="height: 24px;"></td>
-                                                                <td><input type="text" min="0" onkeypress="return isNumberKey(event)" class="form-control disf" id="disf_0" value="0.00" size="2" style="height: 24px;"></td>
-                                                                <td id="disamo_0" class="text-right">0</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <script>$('.accordian-body').on('show.bs.collapse', function () {$(this).closest('table').find('.collapse.in').not(this).collapse('toggle')})</script>
-                                    </tbody>    
-                                </table>
-                            </div>
-                                <table class="table table-bordered table-striped" style="margin-bottom: 0;">
-                                    <tfoot id="itemfoot">
-                                        <tr>
-                                            <td width="30px"></td>
-                                            <td width="214px"></td>
-                                            <td width="72px"></td>
-                                            <td width="72px"></td>
-                                            <td width="35px"></td>
-                                            <td width="77px"></td>
-                                            <td width="25px"></td>
-                                        </tr>
+                            <div class="cart-msg style-3 item" style="padding:0px;" >    
+                                <table class="table table-bordered table-striped" id="product_foot_body" style="margin-bottom: 0; opacity: 0">    
+                                    <tbody id="product_body">
+                                    </tbody>   
+                                    <tfoot>
                                         <tr>
                                             <td colspan="2" class="text-center" width="244px"><strong>-Total-</strong></td>
-                                            <td width="72px"><strong>1</strong></td>
-                                            <td colspan="2" width="107px"></td>
+                                            <td width="72px"></td>
+                                            <td colspan="2" width="107px"><strong>1</strong></td>
                                             <td width="77px" class="text-right"><strong>1300</strong></td>
                                             <td></td>
                                         </tr>
@@ -328,8 +237,12 @@
                                             <td id="grtotal" class="text-right"><strong>1300</strong></td>
                                             <td></td>
                                         </tr>
-                                    </tfoot>
-                                </table>    
+                                    </tfoot> 
+                                </table>
+                            </div>
+                                {{-- <table class="table table-bordered table-striped" style="margin-bottom: 0;">
+
+                                </table>     --}}
                             </div>
                             {{-- product --}}
 

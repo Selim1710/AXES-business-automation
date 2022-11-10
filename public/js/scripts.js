@@ -170,5 +170,27 @@ $(function(){
     
     });
 
+
+    $(".estimated_product_list").click(function(click){
+        var product_name = $(this).find('h6').text();
+        var product_price = $(this).find('.product_price').val();
+        console.log(product_price);
+        $('#product_foot_body').css('opacity','1');
+        $('#product_body').append(`<tr>
+        <td width="30px" class="text-center">1</td>
+        <td width="214px" data-toggle="collapse" data-target="#sitem0" class="accordion-toggle" style="cursor: pointer; style="width: 70px;">${product_name}</td>
+        <td width="72px" ><input type="number" min="1" class="form-control product_quantity"  value="1" style="height: 24px; width: 30px; padding: 5px"></td>
+        <td width="72px"><input type="number" min="1" class="form-control single_product_price" value="${product_price}" style="height: 24px; width: 60px; padding: 5px"></td>
+        <td width="77px" id="stotal_0" class="text-right">1300</td>
+        <td width="25px" class="text-center remove_product"><a id="0" class="remove"><span style="cursor: pointer;" class="fa fa-times"></span></a></td>
+    </tr>`);
+    });
+
+
+    $('#product_body').on('click','.remove_product',function(){
+
+        $(this).closest('tr').remove();
+    });
+
     
 })

@@ -33,3 +33,4 @@ $('#deposit-form').on('change', function() {
     });
 
   });
+
