@@ -76,9 +76,15 @@
 
                 <div class="collapse" id="collapseLayoutPurchase" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-
-                        <a class="nav-link" href="{{route('purchase-order-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
-                        <a class="nav-link" href="{{route('purchase-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return</a>
+                        {{-- purchase order --}}
+                        <a class="nav-link" href="{{route('admin.purchase-order')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order</a>
+                        <a class="nav-link" href="{{route('admin.purchase-order.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order Create</a>
+                        {{-- purchase invoice --}}
+                        <a class="nav-link" href="{{route('admin.purchase-invoice')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice</a>
+                        <a class="nav-link" href="{{route('admin.purchase-invoice.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
+                        {{-- purchase invoice --}}
+                        <a class="nav-link" href="{{route('admin.purchase-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return</a>
+                        <a class="nav-link" href="{{ route('admin.purchase-return.create') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return Create</a>
 
                     </nav>
                 </div>
@@ -95,10 +101,17 @@
 
                 <div class="collapse" id="collapseLayoutSales" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
+                        {{-- sales estimate --}}
+                        <a class="nav-link" href="{{route('admin-sales-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate</a>
+                        <a class="nav-link" href="{{route('sales-estimate-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create</a>
+                        
+                        {{-- sales invoice --}}
+                        <a class="nav-link" href="{{route('admin-sales-invoice-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice</a>
+                        <a class="nav-link" href="{{route('admin-sales-invoice-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice Create</a>
 
-                        <a class="nav-link" href="{{route('sales-estimate-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate</a>
-                        <a class="nav-link" href="{{route('sales-estimate-create-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create</a>
-                        <a class="nav-link" href="{{route('sales-return-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
+                        {{-- sales return --}}
+                        <a class="nav-link" href="{{route('admin.sales-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
+                        <a class="nav-link" href="{{route('admin.sales-return-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return Create</a>
 
                     </nav>
                 </div>

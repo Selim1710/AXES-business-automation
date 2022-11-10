@@ -45,9 +45,9 @@
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
 
-                                <div class="col-12">
-                                    <label class="form-label">Color</label>
-                                    <input type="color"  name="color_code" value="#color">
+                                <div class="col-12 mt-4 d-flex align-items-center">
+                                    <label>Color</label>
+                                    <input class="ms-2" type="color"  name="color_code" value="#color" style="height: 40px; width:80px;" >
                                 </div>
 
                             </div>
@@ -79,7 +79,7 @@
                     <td>{{ $key+1 }} </td>
                     <td>{{ $color->name }}</td>
                     <td>
-                        <input type="color" value="#{{ $color->color_code }}">
+                        <input type="color" value="{{ $color->color_code }}">
                     </td>
 
                     <td>

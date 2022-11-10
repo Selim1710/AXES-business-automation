@@ -18,7 +18,8 @@ class CreatePurchaseReturnsTable extends Migration
             $table->string('date');
             $table->string('vendor');
             $table->string('invoice')->nullable();
-            $table->string('total')->nullable();
+            $table->string('against')->nullable();
+            $table->float('total')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
         });
