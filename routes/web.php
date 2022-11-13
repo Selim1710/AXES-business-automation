@@ -168,6 +168,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         Route::get('/purchase-order', [PurchaseOrderController::class, 'purchaseOrder'])->name('admin.purchase-order');
         Route::get('/purchase/order/create', [PurchaseOrderController::class, 'purchaseOrderCreate'])->name('admin.purchase-order.create');
+        Route::get('/purchase/order/product/add/{id}', [PurchaseOrderController::class, 'addProduct'])->name('add.pur.order.product');
+        Route::get('/purchase/order/product/view', [PurchaseOrderController::class, 'view'])->name('view.purchase.order.product');
+        Route::get('/purchase/order/product/clear', [PurchaseOrderController::class, 'clear'])->name('clear.purchase.order.product');
 
         // Purchase Invoice
         Route::get('/purchase-invoice', [PurchaseInvoiceController::class, 'purchaseInvoice'])->name('admin.purchase-invoice');
@@ -188,7 +191,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         //sales estimate
         Route::get('/manage/sales', [SalesController::class, 'SalesEstimate'])->name('admin-sales-manage');
         Route::get('/sales-estimate-create', [SalesController::class, 'salesEstimateCreate'])->name('sales-estimate-create');
-        Route::post('/sales-estimate-invoice-create', [SalesController::class, 'salesEstimateInvoiceCreate'])->name('sales.estimate.invoice.create');
+        Route::get('/sales-estimate-invoice-create', [SalesController::class, 'salesEstimateInvoiceCreate'])->name('sales.estimate.invoice.create');
 
         //sales invoice
         Route::get('/manage/sales/invoice', [SalesInvoiceController::class, 'SalesInvoice'])->name('admin-sales-invoice-manage');

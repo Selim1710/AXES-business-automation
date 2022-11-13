@@ -2,7 +2,7 @@
 @section('content')
 <section>
     <br><br>
-    <h2 class="my-4 text-center">Create Purchase order</h2>
+    <h2 class="my-4 text-center">View Purchase product data</h2>
     <br>
     <!-- message -->
     @if(session()->has('message'))
@@ -11,30 +11,34 @@
     <p class="alert alert-danger text-center">{{ session()->get('error') }}</p>
     @endif
     <div class="mt-4">
+        @if ($previewDeliveries)
         <div class="container">
             <div class="row">
-                <!-- select item -->
+                <!-- selected item -->
                 <div class="col-12">
                     <table id="datatablesSimple">
                         <thead>
                             <tr>
+                                <th>Branch code</th>
+                                <th>Branch name</th>
                                 <th>Product code</th>
                                 <th>Product name</th>
                                 <th>Quantity</th>
-                                <th>&nbsp;&nbsp; Action&nbsp;<i class="fa fa-paper-plane"></i></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @forelse ($products as $product)
+                            @forelse ($previewDeliveries as $key=>$data)
                             <tr class="text-center">
-                                <td> {{ $product->id }} </td>
-                                <td> {{ $product->name }} </td>
-                                <td> {{ !empty($product->stock->total_qty) ? $product->stock->total_qty : 0 }} </td>
-    
-                                <!-- add -->
+                                <td> {{ $data['branch_id'] }} </td>
+                                <td> {{ $data['branch_name'] }} </td>
+                                <td> {{ $data['product_id'] }} </td>
+                                <td> {{ $data['product_name'] }} </td>
+                                <td> {{ $data['qty'] }} </td>
+                                <!-- remove -->
                                 <td>
-                                    <a class="btn btn-success" href="{{ route('add.pur.order.product',$product->id) }}" style="font-size:13px"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    <a class="btn btn-danger" href="{{ route('branch.product.transfered.delete',$key) }}" style="font-size:13px"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @empty
@@ -45,9 +49,13 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-end">
-            <a href="{{ route('view.purchase.order.product') }}" class="btn btn-primary">View product</a>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('clear.purchase.order.product') }}" class="btn btn-danger">Clear all</a>
+            <a href="#" class="btn btn-success">Save</a>
         </div>
+        @else
+        <p class="text-center text-danger font-weight-bold"> No data available </p>
+        @endif
     </div>
 </section>
 @endsection
