@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Purchase;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSetup\Product;
 use Illuminate\Http\Request;
 
 class PurchaseOrderController extends Controller
@@ -14,6 +15,7 @@ class PurchaseOrderController extends Controller
 
     public function purchaseOrderCreate()
     {
-        return view('purchase.purchaseorder.purchase-order-create');
+        $products = Product::with('stock')->get();
+        return view('purchase.purchaseorder.purchase-order-create',compact('products'));
     }
 }

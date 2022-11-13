@@ -26,16 +26,20 @@
                         </thead>
 
                         <tbody>
+                            @forelse ($products as $product)
                             <tr class="text-center">
-                                <td>  </td>
-                                <td>  </td>
-                                <td></td>
+                                <td> {{ $product->id }} </td>
+                                <td> {{ $product->name }} </td>
+                                <td> {{ !empty($product->stock->total_qty) ? $product->stock->total_qty : 0 }} </td>
+                                
                                 <!-- add -->
                                 <td>
                                     <a class="btn btn-success" href="#" style="font-size:13px"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
+                            @empty
                             <p class="text-danger text-center">No data available</p>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
