@@ -10,7 +10,6 @@ class PurchaseOrderController extends Controller
     public function purchaseOrder()
     {
         return view('purchase.purchaseorder.purchase-order');
-
     }
 
     public function purchaseOrderCreate()

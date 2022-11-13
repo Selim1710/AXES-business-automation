@@ -18,4 +18,8 @@ class SalesController extends Controller
         $products = Product::with('stock')->get();
         return view('sales.salesestimate.sales-estimate-create',compact('products'));
     }
+    public function salesEstimateInvoiceCreate(Request $request)
+    {
+        dd($request->all());
+    }
 }
