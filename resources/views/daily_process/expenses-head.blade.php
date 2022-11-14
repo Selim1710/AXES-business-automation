@@ -41,13 +41,13 @@
                                     <select class="form-control" name="category_id" id="" required>
                                         <option value="">Select expenses type</option>
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
                                 <br>
-
+                                
                                 <div class="col-12">
                                     <label class="form-label">Description</label>
                                     <textarea class="form-control" maxlength="250" rows="6" name="description" placeholder="Description"></textarea>
@@ -81,19 +81,19 @@
             </thead>
             <tbody>
                 @php $i=1; @endphp
-                @foreach($expensesheads as $expenseshead)
+                @foreach($categories as $category)
                 <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$expenseshead->name}}</td>
-                    <td>{{$expenseshead->category_name}}</td>
-                    <td>{{$expenseshead->description}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->status}}</td>
+                    <td>{{$category->description}}</td>
 
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="{{route ('edit-expenses-head',['id'=>$expenseshead->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            <a class="btn btn-success" style="font-size:13px" href="{{route ('edit-expenses-head',['id'=>$category->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                             <form action="{{route('delete-expenses-head')}}" method="post" style="display:inline">
                                 @csrf
-                                <input type="hidden" name="expenseshead_id" value="{{$expenseshead->id}}">
+                                <input type="hidden" name="expenseshead_id" value="{{$category->id}}">
                                 <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>

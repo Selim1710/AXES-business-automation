@@ -82,7 +82,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         Route::get('/add-expenses-category', [DailyProcessController::class, 'addExpensesCategory'])->name('add-expenses-category');
         Route::get('/new-category', [DailyProcessController::class, 'saveCategory'])->name('new-category');
+
         Route::post('/add-expenses', [DailyProcessController::class, 'saveExpenses'])->name('add-expenses');
+        
         Route::post('/delete-expenses-head', [DailyProcessController::class, 'deleteExpensesHead'])->name('delete-expenses-head');
         Route::get('/edit-expenses-head/{id}', [DailyProcessController::class, 'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}', [DailyProcessController::class, 'updateExpensesHead'])->name('update-expenses-head');
