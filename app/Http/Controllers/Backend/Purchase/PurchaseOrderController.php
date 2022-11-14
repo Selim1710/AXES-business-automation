@@ -34,10 +34,9 @@ class PurchaseOrderController extends Controller
             if (!$purOrderCreateExist) {
                 // case-1: first time adding
                 $purOrderCreate = [$id => [
-                    'branch_id' => $product->branch_id,
-                    'branch_name' => $product->branch->name,
                     'product_id' => $product->id,
                     'product_name' => $product->name,
+                    'product_price' => $product->price,
                     'qty' => 1,
                 ]];
                 session()->put('purOrderCreate', $purOrderCreate);
@@ -48,10 +47,9 @@ class PurchaseOrderController extends Controller
 
                 // case-2: different product adding
                 $purOrderCreateExist[$id] = [
-                    'branch_id' => $product->branch_id,
-                    'branch_name' => $product->branch->name,
                     'product_id' => $product->id,
                     'product_name' => $product->name,
+                    'product_price' => $product->price,
                     'qty' => 1,
                 ];
                 session()->put('purOrderCreate', $purOrderCreateExist);
@@ -67,6 +65,11 @@ class PurchaseOrderController extends Controller
     public function clear()
     {
         session()->forget('purOrderCreate');
+        return redirect()->route('admin.purchase-order.create')->with('error', 'Transfer Cleared');
+    }
+    public function destroy()
+    {
+        dd('delete');
         return redirect()->route('admin.purchase-order.create')->with('error', 'Branch Transfer Cleared');
     }
 }

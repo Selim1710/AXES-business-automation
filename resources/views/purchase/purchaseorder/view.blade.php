@@ -19,10 +19,9 @@
                     <table id="datatablesSimple">
                         <thead>
                             <tr>
-                                <th>Branch code</th>
-                                <th>Branch name</th>
                                 <th>Product code</th>
                                 <th>Product name</th>
+                                <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Action</th>
                             </tr>
@@ -31,14 +30,13 @@
                         <tbody>
                             @forelse ($previewDeliveries as $key=>$data)
                             <tr class="text-center">
-                                <td> {{ $data['branch_id'] }} </td>
-                                <td> {{ $data['branch_name'] }} </td>
                                 <td> {{ $data['product_id'] }} </td>
                                 <td> {{ $data['product_name'] }} </td>
+                                <td> {{ $data['product_price'] }} </td>
                                 <td> {{ $data['qty'] }} </td>
                                 <!-- remove -->
                                 <td>
-                                    <a class="btn btn-danger" href="{{ route('branch.product.transfered.delete',$key) }}" style="font-size:13px"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-danger" href="{{ route('purchase.order.product.delete',$key) }}" style="font-size:13px"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @empty
