@@ -2,7 +2,7 @@
 @section('content')
 <section>
     <br><br>
-    <h2 class="my-4 text-center">Create Transfer From Branch product</h2>
+    <h2 class="my-4 text-center">Create purchase invoice</h2>
     <br>
     <!-- message -->
     @if(session()->has('message'))
