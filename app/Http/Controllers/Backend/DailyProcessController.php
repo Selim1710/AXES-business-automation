@@ -151,6 +151,7 @@ class DailyProcessController extends Controller
     {
         return view('daily_process.create-expense', [
             'categories' => Expenseshead::all(),
+            'totalInvoices' => count(Invoice::all()),
         ]);
     }
 

@@ -3,8 +3,8 @@
     create-expense
 @endsection
 @section('content')
-    <section class="content">
 
+    <section class="content">
         <div class="row ">
             <div class="col-md-12 ">
                 <div class="box box-solid">
@@ -171,14 +171,19 @@
                     </div>
                 </div>
             </div>
-            <script>
-                var i = 1;
-                var date = new Date();
-                var currentDate = date.toISOString().slice(0, 10);
-                document.getElementById('currentDate').value = currentDate;
+        </div>
+    </section>
+    <input type="hidden" id="total-invoices"  value="{{ $totalInvoices }}"/>
+    <script>
+        var i = 100 + parseInt(document.getElementById('total-invoices').value); 
+        // console.log(typeof i);
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0, 10);
+        document.getElementById('currentDate').value = currentDate;
 
-                var defaultExpense =
-                    `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${i++}`;
-                document.getElementById('invno').value = defaultExpense;
-            </script>
-        @endsection
+        var defaultExpense =
+            `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${++i}`;
+        document.getElementById('invno').value = defaultExpense;
+    </script>
+
+@endsection
