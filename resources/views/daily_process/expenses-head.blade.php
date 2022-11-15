@@ -48,6 +48,7 @@
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
                                 <br>
                                 
+                                
                                 <div class="col-12">
                                     <label class="form-label">Description</label>
                                     <textarea class="form-control" maxlength="250" rows="6" name="description" placeholder="Description"></textarea>
