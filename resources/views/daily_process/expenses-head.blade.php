@@ -81,12 +81,13 @@
                 </tr>
             </thead>
             <tbody>
+               
                 @php $i=1; @endphp
                 @foreach($categories as $category)
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
-                    <td>{{$category->status}}</td>
+                    <td>{{$category->category_id}}</td>
                     <td>{{$category->description}}</td>
 
                     <td>

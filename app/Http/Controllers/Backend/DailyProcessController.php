@@ -78,8 +78,8 @@ class DailyProcessController extends Controller
 
 
         return view('daily_process.expenses-head', [
-            'categories' => ExpensestypeModel::where('status', 1)->orderby('id', 'desc')->get(),
-            'categories' => $categories,
+            'categories' => Expenseshead::where('status', 1)->orderby('id', 'desc')->get(),
+            // 'categories' => $categories,
             'expensesheads' => $expenseshead
 
         ]);
@@ -103,6 +103,7 @@ class DailyProcessController extends Controller
     }
     public function saveExpenses(Request $request)
     {
+       
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
