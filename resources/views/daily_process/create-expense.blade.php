@@ -6,10 +6,13 @@
     <section class="content">
 
         <div class="row ">
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 <div class="box box-solid">
                     <div class="box-header with-border">
                         <h3 class="box-title" style="margin-top: 17px;">Add Expenses</h3>
+                    </div>
+                    <div>
+                        <a href="{{route('expense-record')}}" class="btn btn-success">Expensive Record</a>
                     </div>
                     <div class="box-body">
                         <div class="card">
@@ -40,10 +43,11 @@
                                             <div class="col-md-4"></div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
+                                                    @php $i=1 @endphp
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><b>Expenses No:</b></span>
-                                                        <input type="text" class="form-control" maxlength="15"
-                                                            name="invno" id="invno" placeholder="e.g. AXE121119101"
+                                                        <input type="text" class="form-control ms-2" maxlength="15"
+                                                            name="invno" id="invno" placeholder="e.g. AXE1211198"
                                                             autocomplete="off">
                                                     </div>
                                                 </div>
@@ -55,7 +59,7 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><b>Date:</b></span>
 
-                                                        <input class="form-control" id="currentDate" type="date"
+                                                        <input class="form-control ms-2" id="currentDate" type="date"
                                                             name="date">
                                                     </div>
                                                 </div>
@@ -158,7 +162,7 @@
 
                                         <div class="modal-footer">
 
-                                            <input type="submit" class="btn btn-primary" value="submit">
+                                            <input id="submitbtn" type="submit" class="btn btn-primary" value="submit">
                                         </div>
                                     </div>
                                 </form>
@@ -168,12 +172,13 @@
                 </div>
             </div>
             <script>
+                var i = 1;
                 var date = new Date();
                 var currentDate = date.toISOString().slice(0, 10);
                 document.getElementById('currentDate').value = currentDate;
 
                 var defaultExpense =
-                    `EXP: ${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}`;
+                    `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${i++}`;
                 document.getElementById('invno').value = defaultExpense;
             </script>
         @endsection

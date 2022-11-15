@@ -30,12 +30,16 @@
                                     <input type="text" class="form-control" name="name" placeholder="e.g  hp" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" name="date">
-                                </div>
-                                <div class="col-12">
                                     <label class="form-label"><b>Code</b></label>
                                     <input type="text" class="form-control" name="code" placeholder="e.g 520">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>BarCode</b></label>
+                                    <input type="text" id="barcode" class="form-control" name="barcode" placeholder="e.g barcode">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label"><b>Available Qty</b></label>
+                                    <input type="text" class="form-control" name="qty" placeholder="e.g 520">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Old Price</b></label>
@@ -54,7 +58,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="save" required>
+                            <input id="submitbutton" type="submit" class="btn btn-primary" value="save" required>
                         </div>
 
                     </form>
@@ -70,8 +74,9 @@
                 <tr>
                     <th>SN</th>
                     <th>Name</th>
-                    <th>Date</th>
                     <th>Code</th>
+                    <th>BarCode</th>
+                    <th>Available Qty</th>
                     <th>Old Price </th>
                     <th>Current Price </th>
                     <th>Action</th>
@@ -87,8 +92,9 @@
                 <tr>
                     <td>{{ $i++ }} </td>
                     <td>{{ $PriceLists->name }} </td>
-                    <td>{{ $PriceLists->date }} </td>
                     <td>{{ $PriceLists->code }} </td>
+                    <td>{{ $PriceLists->barcode }} </td>
+                    <td>{{ $PriceLists->qty }} </td>
                     <td>{{ $PriceLists->o_price }} </td>
                     <td>{{ $PriceLists->c_price }} </td>
 
@@ -111,6 +117,11 @@
         </table>
     </div>
 
-
+    <script src="JsBarcode.all.min.js"></script>
+    <script>
+        document.getElementById('submitbutton').addEventListener('click',function(){
+            var text = document.getElementById('barcode').value;
+        })
+    </script>
 
     @endsection

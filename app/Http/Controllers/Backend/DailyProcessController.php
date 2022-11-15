@@ -26,8 +26,9 @@ class DailyProcessController extends Controller
     {
         PriceList::create([
             'name' => $request->name,
-            'date' => $request->date,
             'code' => $request->code,
+            'barcode' => $request->barcode,
+            'qty' => $request->qty,
             'o_price' => $request->o_price,
             'c_price' => $request->c_price,
         ]);
