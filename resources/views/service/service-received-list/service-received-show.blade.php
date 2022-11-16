@@ -8,6 +8,7 @@ Expenses Record List
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Expenses Record List
+        <a href="{{route('service-received-create')}}" class="btn btn-success">Service Receive Create</a>
     </div>
     <!-- message -->
     @if(session()->has('message'))
@@ -26,6 +27,7 @@ Expenses Record List
                     <th>Invoice</th>
                     <th>Phone</th>
                     <th>Product</th>
+                    <th>Product Code</th>
                     <th>Description</th>
                     <th>Address</th>
                     <th>Action</th>
@@ -37,11 +39,12 @@ Expenses Record List
 
                 <tr>
                     <td>{{ $i++ }} </td>
-                    <td>{{ $servicestoredata->cname }} </td>
                     <td>{{ $servicestoredata->deli_date }} </td>
+                    <td>{{ $servicestoredata->cname }} </td>
                     <td>{{ $servicestoredata->invoice_no }} </td>
                     <td>{{ $servicestoredata->cphone }} </td>
-                    <td>{{ $servicestoredata->pmodel }} </td>
+                    <td>{{ $servicestoredata->p_name }} </td>
+                    <td>{{ $servicestoredata->p_code }} </td>
                     <td>{{ $servicestoredata->caddress }} </td>
                     <td>{{ $servicestoredata->pdescription }} </td>
 

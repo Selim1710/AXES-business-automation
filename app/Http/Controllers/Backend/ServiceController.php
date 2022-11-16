@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Service\ServiceCreate;
 use App\Models\Service\ServiceList;
 use Validator;
@@ -13,7 +12,10 @@ class ServiceController extends Controller
 {
     public function CustomerReceivedCreate()
     {
-        return view('Service.Service-received-create.Service-received-add');
+        return view('Service.Service-received-create.Service-received-add',[
+
+            'servecesInvoice' => count( ServiceCreate::all()),
+        ]);
     }
     public function CustomerReceivedstore(Request $request)
     {
@@ -23,7 +25,8 @@ class ServiceController extends Controller
             'cname' => 'required',
             'invoice_no' => 'unique:service_creates,invoice_no',
             'cphone' => 'required',
-            'pmodel' => 'nullable',
+            'p_name' => 'nullable',
+            'p_code' => 'nullable',
             'caddress' => 'nullable',
             'pdescription' => 'nullable',
         ]);
@@ -33,7 +36,8 @@ class ServiceController extends Controller
         $servicestore->deli_date = $request->deli_date;
         $servicestore->invoice_no = $request->invoice_no;
         $servicestore->cphone = $request->cphone;
-        $servicestore->pmodel = $request->pmodel;
+        $servicestore->p_name = $request->p_name;
+        $servicestore->p_code = $request->p_code;
         $servicestore->caddress = $request->caddress;
         $servicestore->pdescription = $request->pdescription;
         $servicestore->save();
@@ -58,7 +62,8 @@ class ServiceController extends Controller
         $servicestore->update([
             'cname' => $request->cname,
             'cphone' => $request->cphone,
-            'pmodel' => $request->pmodel,
+            'p_name' => $request->p_name,
+            'p_code' => $request->p_code,
             'pdescription' => $request->pdescription,
 
         ]);

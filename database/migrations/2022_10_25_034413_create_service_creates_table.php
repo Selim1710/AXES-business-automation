@@ -19,7 +19,8 @@ class CreateServiceCreatesTable extends Migration
             $table->string('invoice_no')->unique()->nullValue();
             $table->string('deli_date')->nullable();
             $table->string('cphone');
-            $table->string('pmodel')->nullable();
+            $table->string('p_name')->nullable();
+            $table->string('p_code')->nullable();
             $table->string('caddress')->nullable();
             $table->string('pdescription')->nullable();
             $table->timestamps();

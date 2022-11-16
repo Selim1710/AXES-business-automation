@@ -9,6 +9,7 @@ Service Received Create
             <div class="card-body">
                 <div class="border p-3 rounded">
                     <h6 class="mb-0 text-uppercase" style="text-align: center">Service Received Create</h6>
+                    <a href="{{route('service-received-show')}}" class="btn btn-success">Service Receive List</a>
                     <hr>
                     <!-- message -->
                     @if(session()->has('message'))
@@ -41,10 +42,18 @@ Service Received Create
                         @error('cphone')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="col-12">
-                            <label class="form-label"><b>Product Model</b></label>
-                            <input type="text" name="pmodel" maxlength="45" value="" id="pmodel" class="form-control" placeholder="e.g. SN487" />
+                        <div class="col-6">
+                            <label class="form-label"><b>Product Code</b></label>
+                            <input type="text" name="p_code" maxlength="45" value="" id="p_code" class="form-control" placeholder="e.g. Md.Sani" />
                         </div>
+                        @error('cname')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="col-6">
+                            <label class="form-label"><b>Product Name</b></label>
+                            <input type="text" name="p_name" maxlength="15" value="" id="p_name" class="form-control" placeholder="e.g. ABA/CU/001" />
+                        </div>
+                        
                         <div class="col-6">
                             <label class="form-label"><b>Address</b></label>
                             <textarea class="form-control" name="caddress" id="caddress" maxlength="200" rows="4" placeholder="Address"></textarea>
@@ -64,10 +73,17 @@ Service Received Create
         </div>
     </div>
 </div>
+<input type="hidden" id="sr-invoices"  value="{{ $servecesInvoice }}"/>
 <script>
+    // current date show
     var date = new Date();
     var currentDate = date.toISOString().slice(0, 10);
-
     document.getElementById('currentDate').value = currentDate;
+
+    // invoice number
+    var i = 101 + parseInt(document.getElementById('sr-invoices').value);
+    var defaultExpense =
+            `SR${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${i++}`;
+        document.getElementById('invoice_no').value = defaultExpense;
 </script>
 @endsection

@@ -38,7 +38,11 @@
                     <br>
                     <div class="col-12">
                         <label class="form-label"><b>Product </b> </label>
-                        <input type="text" class="form-control" name="pmodel" value="{{$servicestore->pmodel}}" placeholder="product">
+                        <input type="text" class="form-control" name="p_name" value="{{$servicestore->p_name}}" placeholder="product">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label"><b>Product Code </b> </label>
+                        <input type="text" class="form-control" name="p_code" value="{{$servicestore->p_code}}" placeholder="product code">
                     </div>
                     <br>
                     <div class="col-12">
