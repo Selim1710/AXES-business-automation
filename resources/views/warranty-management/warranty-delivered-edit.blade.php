@@ -35,7 +35,7 @@
                         <input type="text" class="form-control" name="product" value="{{$WarrantyDeliver->product}}">
                     </div>
                     <div class="col-12">
-                        <label class="form-label"><b>Serial</b> </label>
+                        <label class="form-label"><b>New Serial</b> </label>
                         <input type="text" class="form-control" name="serial" value="{{$WarrantyDeliver->serial}}">
                     </div>
                     <div class="col-12">

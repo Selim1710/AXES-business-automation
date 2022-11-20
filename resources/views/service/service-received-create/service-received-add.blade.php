@@ -7,9 +7,11 @@ Service Received Create
     <div class="col-xl-6 mx-auto">
         <div class="card">
             <div class="card-body">
+                <a href="{{route('service-received-show')}}" class="btn btn-success" style="margin-left: 326px;margin-bottom: 17px;">Service Receive List</a>
+
                 <div class="border p-3 rounded">
                     <h6 class="mb-0 text-uppercase" style="text-align: center">Service Received Create</h6>
-                    <a href="{{route('service-received-show')}}" class="btn btn-success">Service Receive List</a>
+
                     <hr>
                     <!-- message -->
                     @if(session()->has('message'))
@@ -53,7 +55,7 @@ Service Received Create
                             <label class="form-label"><b>Product Name</b></label>
                             <input type="text" name="p_name" maxlength="15" value="" id="p_name" class="form-control" placeholder="e.g. ABA/CU/001" />
                         </div>
-                        
+
                         <div class="col-6">
                             <label class="form-label"><b>Address</b></label>
                             <textarea class="form-control" name="caddress" id="caddress" maxlength="200" rows="4" placeholder="Address"></textarea>

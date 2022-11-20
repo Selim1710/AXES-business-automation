@@ -8,7 +8,7 @@ Expenses Record List
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Expenses Record List
-        <a href="{{route('create-expense')}}" class="btn btn-success">Create Expensive</a>
+        <a href="{{route('create-expense')}}" class="btn btn-success" style="margin-left: 723px;">Create Expensive</a>
     </div>
     <!-- message -->
     @if(session()->has('message'))

@@ -34,7 +34,7 @@
                                     <input type="text" class="form-control" name="product" placeholder="e.g  hp-12012" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label"><b>Serial</b></label>
+                                    <label class="form-label"><b>New Serial</b></label>
                                     <input type="text" class="form-control" name="serial" placeholder="e.g 520">
                                 </div>
                                 <div class="col-12">

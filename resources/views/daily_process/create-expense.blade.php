@@ -12,7 +12,7 @@
                         <h3 class="box-title" style="margin-top: 17px;">Add Expenses</h3>
                     </div>
                     <div>
-                        <a href="{{route('expense-record')}}" class="btn btn-success">Expensive Record</a>
+                        <a href="{{route('expense-record')}}" class="btn btn-success" style="margin-left: 900px;margin-bottom: 10px;">Expensive Record</a>
                     </div>
                     <div class="box-body">
                         <div class="card">
@@ -175,7 +175,7 @@
     </section>
     <input type="hidden" id="total-invoices"  value="{{ $totalInvoices }}"/>
     <script>
-        var i = 100 + parseInt(document.getElementById('total-invoices').value); 
+        var i = 100 + parseInt(document.getElementById('total-invoices').value);
         // console.log(typeof i);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
