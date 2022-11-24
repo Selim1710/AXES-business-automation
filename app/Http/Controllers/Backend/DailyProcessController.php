@@ -79,9 +79,11 @@ class DailyProcessController extends Controller
 
 
         return view('daily_process.expenses-head', [
-            'categories' => Expenseshead::where('status', 1)->orderby('id', 'desc')->get(),
-            // 'categories' => $categories,
+            'categories' => ExpensestypeModel::where('status', 1)->orderby('id', 'desc')->get(),
+            'categories' => ExpensestypeModel::all(),
             'expensesheads' => $expenseshead
+            // 'categories' => $categories,
+            // 'expensesheads' => $expenseshead
 
         ]);
     }

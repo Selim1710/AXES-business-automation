@@ -77,7 +77,7 @@
                                                         <select class="form-control" id="expense">
                                                             <option value="">-Select-</option>
                                                             @foreach ($categories as $category)
-                                                                <option value="{{ $category->name }}">{{ $category->name }}
+                                                                <option value="{{ $category->category_name }}">{{ $category->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

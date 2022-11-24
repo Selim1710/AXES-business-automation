@@ -39,11 +39,11 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Available Qty</b></label>
-                                    <input type="text" class="form-control" name="qty" placeholder="e.g 520">
+                                    <input type="text" class="form-control" name="qty" placeholder="e.g 300">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b> Old Price</b></label>
-                                    <input type="text" class="form-control" name="o_price" placeholder="e.g 100">
+                                    <input type="text" class="form-control" name="o_price" placeholder="e.g 200">
                                 </div>
 
                                 <div class="col-12">
