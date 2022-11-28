@@ -26,7 +26,9 @@ class CreateUsersTable extends Migration
             $table->string('NID')->unique()->nullable();
             $table->string('contact')->unique()->nullable();
             $table->string('password')->nullable();
-            $table->string('status')->nullable();
+ 
+
+            $table->tinyInteger('status')->default(1);
 
             $table->string('role')->default('user');
 

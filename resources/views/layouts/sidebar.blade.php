@@ -84,7 +84,6 @@
                         <a class="nav-link" href="{{route('admin.purchase-invoice.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
                         {{-- purchase invoice --}}
                         <a class="nav-link" href="{{route('admin.purchase-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return</a>
-                        <a class="nav-link" href="{{ route('admin.purchase-return.create') }}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return Create</a>
 
                     </nav>
                 </div>
@@ -104,14 +103,13 @@
                         {{-- sales estimate --}}
                         <a class="nav-link" href="{{route('admin-sales-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate</a>
                         <a class="nav-link" href="{{route('sales-estimate-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create</a>
-                        
+
                         {{-- sales invoice --}}
                         <a class="nav-link" href="{{route('admin-sales-invoice-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice</a>
                         <a class="nav-link" href="{{route('admin-sales-invoice-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice Create</a>
 
                         {{-- sales return --}}
                         <a class="nav-link" href="{{route('admin.sales-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return</a>
-                        <a class="nav-link" href="{{route('admin.sales-return-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Return Create</a>
 
                     </nav>
                 </div>

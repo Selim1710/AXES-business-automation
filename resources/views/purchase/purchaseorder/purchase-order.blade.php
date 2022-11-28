@@ -28,30 +28,34 @@
                                     <label class="form-label"><b>Date</b></label>
                                     <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
                                 </div>
+                                <br>
 
                                 <div class="col-12">
-                                    <label class="form-label"><b>Supplier</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g  hp-12012" required>
+                                    <select class="form-control" name="c_supplier_id" id="" type="text"required>
+                                        <option value=""><b>Select Supplier </b> </option>
+{{--                                        @foreach($categories as $category)--}}
+{{--                                            <option value="{{$category->id}}">{{$category->category_name}}</option>--}}
+{{--                                        @endforeach--}}
+                                    </select>
                                 </div>
+                                <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
+                                <br>
                                 <div class="col-12">
                                     <label class="form-label"><b>Order No</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g 520" required>
+                                    <input type="text" class="form-control" name="o_no"  required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="total" required>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label"><b>isInvoice</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
-                                </div>
+
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="note"  required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Approve</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="approve"  required>
                                 </div>
 
 
@@ -80,7 +84,6 @@
                     <th>Supplier</th>
                     <th>Order No</th>
                     <th>Total</th>
-                    <th>isInvoice</th>
                     <th>Note</th>
                     <th>Approve</th>
                     <th>Action</th>
@@ -92,7 +95,7 @@
 
 
                 <tr>
-                    
+
 
 
 

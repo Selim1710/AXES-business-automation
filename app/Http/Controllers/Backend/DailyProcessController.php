@@ -75,7 +75,7 @@ class DailyProcessController extends Controller
             //            ->where('blogs.status',1)
             ->orderby('id', 'desc')
             ->get();
-            $categories = Category::with('subCategories')->get();
+           // $categories = Category::with('subCategories')->get();
 
 
         return view('daily_process.expenses-head', [
@@ -88,7 +88,7 @@ class DailyProcessController extends Controller
         ]);
     }
     public function AddExpensesHead()
-    {    
+    {
         $categories = Category::all()->sortByDesc('id')->values();
         return view('daily_process.add-expenses-head',compact('categories'));
     }
@@ -106,13 +106,13 @@ class DailyProcessController extends Controller
     }
     public function saveExpenses(Request $request)
     {
-       
+
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
             'description' => 'required',
         ]);
-        
+
         $expenseshead  = new Expenseshead();
         $expenseshead->name = $request->name;
         $expenseshead->category_id = $request->category_id;

@@ -84,7 +84,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/new-category', [DailyProcessController::class, 'saveCategory'])->name('new-category');
 
         Route::post('/add-expenses', [DailyProcessController::class, 'saveExpenses'])->name('add-expenses');
-        
+
         Route::post('/delete-expenses-head', [DailyProcessController::class, 'deleteExpensesHead'])->name('delete-expenses-head');
         Route::get('/edit-expenses-head/{id}', [DailyProcessController::class, 'editExpensesHead'])->name('edit-expenses-head');
         Route::post('/update-expenses-head/{id}', [DailyProcessController::class, 'updateExpensesHead'])->name('update-expenses-head');
@@ -169,6 +169,12 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Purchase Order
 
         Route::get('/purchase-order', [PurchaseOrderController::class, 'purchaseOrder'])->name('admin.purchase-order');
+
+
+        Route::post('/purchase-order-store', [PurchaseOrderController::class, 'purchaseStore'])->name('purchase-order-store');
+
+
+
         Route::get('/purchase/order/create', [PurchaseOrderController::class, 'purchaseOrderCreate'])->name('admin.purchase-order.create');
         Route::post('/purchase/order/product/add/{id}', [PurchaseOrderController::class, 'addProduct'])->name('add.pur.order.product');
         Route::get('/purchase/order/product/view', [PurchaseOrderController::class, 'view'])->name('view.purchase.order.product');
@@ -181,7 +187,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Purchase Return
         Route::get('/purchase-return', [PurchaseReturnController::class, 'purchaseReturn'])->name('admin.purchase-return');
-        Route::get('/purchase/return/create', [PurchaseReturnController::class, 'purchaseReturnCreate'])->name('admin.purchase-return.create');
         Route::post('/store/purchase-return', [PurchaseReturnController::class, 'storepurchaseReturn'])->name('admin.store.purchase-return');
         Route::get('/edit/purchase-return/{id}', [PurchaseReturnController::class, 'editpurchaseReturn'])->name('admin.edit.purchase-return');
         Route::post('/update/purchase-return/{id}', [PurchaseReturnController::class, 'updatepurchaseReturn'])->name('admin.update.purchase-return');
@@ -206,7 +211,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         // Sales Return
         Route::get('/sales-return', [SalesReturnController::class, 'salesReturn'])->name('admin.sales-return');
-        Route::get('/sales-return-create', [SalesReturnController::class, 'salesReturnCreate'])->name('admin.sales-return-create');
         Route::post('/store/sales-return', [SalesReturnController::class, 'storeSalesReturn'])->name('admin.store.sales-return');
         Route::get('/edit/sales-return/{id}', [SalesReturnController::class, 'editSalesReturn'])->name('admin.edit.sales-return');
         Route::post('/update/sales-return/{id}', [SalesReturnController::class, 'updateSalesReturn'])->name('admin.update.sales-return');

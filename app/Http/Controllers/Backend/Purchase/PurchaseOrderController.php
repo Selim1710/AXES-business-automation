@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Purchase;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\Product;
+use App\Models\Purchase\PurchaseOrderNew;
 use Illuminate\Http\Request;
 
 class PurchaseOrderController extends Controller
@@ -13,7 +14,25 @@ class PurchaseOrderController extends Controller
         return view('purchase.purchaseorder.purchase-order');
     }
 
-    public function purchaseOrderCreate()
+
+    //hhhhhhhhhhh
+
+
+    public function purchaseStore(Request $request)
+    {
+        PurchaseOrderNew::create([
+            'date' => $request->date,
+            'c_supplier' => $request->c_supplier,
+            'o_no' => $request->o_no,
+            'total' => $request->total,
+            'note' => $request->note,
+            'approve' => $request->approve,
+
+        ]);
+
+    }
+
+        public function purchaseOrderCreate()
     {
         $products = Product::with('stock')->get();
         return view('purchase.purchaseorder.purchase-order-create',compact('products'));

@@ -10,7 +10,7 @@
 @endif
 <div class="card mb-4">
     <div class="card-header d-flex justify-content-between">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">New Create</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userCreateModel">Purchase Return Create</button>
         <!-- Modal -->
         <div class="modal fade" id="userCreateModel" tabindex="-1" aria-labelledby="userCreateModelLabel" aria-hidden="true">
             <div class="modal-dialog">
