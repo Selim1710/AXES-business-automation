@@ -53,6 +53,10 @@ class PurchaseController extends Controller
         $PurchaseOrderdelete->delete();
         return back()->with('message', 'Deleted Successfully');
     }
+    //Purchase Invoice
+    
+
+    
     //Purchase Return
     public function purchaseReturnShow(){
         return view('purchase.purchase-return-show',[
