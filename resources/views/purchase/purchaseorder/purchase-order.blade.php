@@ -26,7 +26,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" id="currentDate" placeholder="e.g  10/11/2022" required>
                                 </div>
                                 <br>
 
@@ -122,6 +122,10 @@
         </table>
     </div>
 
-
+    <script>
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0, 10);
+        document.getElementById('currentDate').value = currentDate;
+    </script>
 
     @endsection
