@@ -15,6 +15,12 @@ class CreatePurchaseInvoicesTable extends Migration
     {
         Schema::create('purchase_invoices', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('b_name')->nullable();
+            $table->string('s_name')->nullable();
+            $table->string('invoice');
+            $table->integer('total');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

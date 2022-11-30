@@ -45,6 +45,8 @@ use App\Http\Controllers\Backend\Sales\SalesInvoiceController;
 use App\Http\Controllers\Backend\Sales\SalesReturnController;
 use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
 use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
+use App\Http\Controllers\Backend\PurchaseController;
+use App\Models\Purchase\PurchaseInvoice;
 
 /*
 |--------------------------------------------------------------------------
@@ -170,10 +172,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
         Route::get('/purchase-order', [PurchaseOrderController::class, 'purchaseOrder'])->name('admin.purchase-order');
 
-
         Route::post('/purchase-order-store', [PurchaseOrderController::class, 'purchaseStore'])->name('purchase-order-store');
-
-
 
         Route::get('/purchase/order/create', [PurchaseOrderController::class, 'purchaseOrderCreate'])->name('admin.purchase-order.create');
         Route::post('/purchase/order/product/add/{id}', [PurchaseOrderController::class, 'addProduct'])->name('add.pur.order.product');
@@ -182,8 +181,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/purchase/order/product/delete', [PurchaseOrderController::class, 'destroy'])->name('purchase.order.product.delete');
 
         // Purchase Invoice
-        Route::get('/purchase-invoice', [PurchaseInvoiceController::class, 'purchaseInvoice'])->name('admin.purchase-invoice');
-        Route::get('/purchase/invoice/create', [PurchaseInvoiceController::class, 'purchaseInvoiceCreate'])->name('admin.purchase-invoice.create');
+        Route::get('/purchase/invoice', [PurchaseController::class, 'PurchaseInvoice'])->name('admin.purchase.invoice');
+        Route::post('/store/invoice', [PurchaseController::class, 'storePurchaseInvoice'])->name('admin.store.invoice');
+        Route::get('/edit/invoice/{id}', [PurchaseController::class, 'editPurchaseInvoice'])->name('admin.edit.invoice');
+        Route::post('/update/invoice/{id}', [PurchaseController::class, 'updatePurchaseInvoice'])->name('admin.update.invoice');
+        Route::get('/delete/invoice/{id}', [PurchaseController::class, 'deletePurchaseInvoice'])->name('admin.delete.invoice');
 
         // Purchase Return
         Route::get('/purchase-return', [PurchaseReturnController::class, 'purchaseReturn'])->name('admin.purchase-return');

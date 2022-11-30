@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Purchase\PurchaseInvoice;
 use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseReturn;
 use Illuminate\Http\Request;
@@ -54,8 +54,61 @@ class PurchaseController extends Controller
         return back()->with('message', 'Deleted Successfully');
     }
     //Purchase Invoice
-    
 
+    public function PurchaseInvoice()
+    {
+        $purchaseinvoices = PurchaseInvoice::all()->sortByDesc('id')->values();
+        return view('purchase.purchaseinvoice.table', compact('purchaseinvoices'));
+    }
+
+    public function storePurchaseInvoice(Request $request)
+    {
+        $request->validate([
+            'date' => 'required',
+            'b_name' => 'required',
+            's_name' => 'required',
+            'invoice' => 'required',
+            'total' => 'required',
+            'note' => 'required',
+        ]);
+
+        PurchaseInvoice::create([
+            'date' => $request->date,
+            'b_name' => $request->b_name,
+            's_name' => $request->s_name,
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'note' => $request->note,
+        ]);
+        return redirect()->route('admin.purchase.invoice')->with('message', 'PurchaseInvoice Added Successfully');
+    }
+    public function editPurchaseInvoice($id)
+    {
+        $PurchaseInvoice = PurchaseInvoice::find($id);
+        return view('purchase.purchaseinvoice.edit', compact('PurchaseInvoice'));
+    }
+    public function updatePurchaseInvoice(Request $request, $id)
+    {
+        $PurchaseInvoice = PurchaseInvoice::find($id);
+        $PurchaseInvoice->update([
+            'date' => $request->date,
+            'b_name' => $request->b_name,
+            's_name' => $request->s_name,
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'note' => $request->note,
+        ]);
+        return redirect()->route('admin.purchase.invoice')->with('message', 'PurchaseInvoice Updated');
+    }
+
+    public function deletePurchaseInvoice($id)
+    {
+        $PurchaseInvoice = PurchaseInvoice::find($id);
+        $PurchaseInvoice->delete();
+        return redirect()->route('admin.purchase.invoice')->with('error', 'PurchaseInvoice deleted');
+    }
+    
+    
     
     //Purchase Return
     public function purchaseReturnShow(){
