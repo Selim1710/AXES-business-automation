@@ -55,7 +55,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Exchange Rate</label>
-                                    <textarea class="form-control" name="ex_rate" cols="30" rows="4" required></textarea>
+                                    <input type="number" class="form-control" name="ex_rate" required>
                                 </div>
 
                             </div>

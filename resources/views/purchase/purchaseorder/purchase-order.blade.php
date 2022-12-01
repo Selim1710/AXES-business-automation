@@ -96,13 +96,6 @@
 
                 <tr>
 
-
-
-
-
-
-
-
                     <td>
                         <div style="min-width: 10rem;">
                             {{-- <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a> --}}

@@ -183,6 +183,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Purchase Invoice
         Route::get('/purchase/invoice', [PurchaseController::class, 'PurchaseInvoice'])->name('admin.purchase.invoice');
         Route::post('/store/invoice', [PurchaseController::class, 'storePurchaseInvoice'])->name('admin.store.invoice');
+        
+        Route::get('/purchase/invoice/create', [PurchaseInvoiceController::class, 'purchaseInvoiceCreate'])->name('admin.purchase-invoice.create');
+        
         Route::get('/edit/invoice/{id}', [PurchaseController::class, 'editPurchaseInvoice'])->name('admin.edit.invoice');
         Route::post('/update/invoice/{id}', [PurchaseController::class, 'updatePurchaseInvoice'])->name('admin.update.invoice');
         Route::get('/delete/invoice/{id}', [PurchaseController::class, 'deletePurchaseInvoice'])->name('admin.delete.invoice');

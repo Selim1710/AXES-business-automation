@@ -3,6 +3,7 @@
 namespace App\Models\Inventory;
 
 use App\Models\ProductSetup\Product;
+use App\Models\Purchase\PurchaseInvoice;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,4 +20,5 @@ class Branch extends Model
     public function product(){
         return $this->hasMany(Product::class);
     }
+
 }

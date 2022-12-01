@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Purchase;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\Product;
+use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseOrderNew;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,9 @@ class PurchaseOrderController extends Controller
     }
 
 
-    //hhhhhhhhhhh
-
-
     public function purchaseStore(Request $request)
     {
-        PurchaseOrderNew::create([
+        PurchaseOrder::create([
             'date' => $request->date,
             'c_supplier' => $request->c_supplier,
             'o_no' => $request->o_no,
@@ -88,7 +86,7 @@ class PurchaseOrderController extends Controller
     }
     public function destroy()
     {
-        dd('delete');
+        // dd('delete');
         return redirect()->route('admin.purchase-order.create')->with('error', 'Branch Transfer Cleared');
     }
 }

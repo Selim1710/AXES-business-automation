@@ -81,7 +81,7 @@
                         <a class="nav-link" href="{{route('admin.purchase-order.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Order Create</a>
                         {{-- purchase invoice --}}
                         <a class="nav-link" href="{{route('admin.purchase.invoice')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice</a>
-                        <a class="nav-link" href="{{route('admin.store.invoice')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
+                        <a class="nav-link" href="{{route('admin.purchase-invoice.create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Invoice Create</a>
                         {{-- purchase invoice --}}
                         <a class="nav-link" href="{{route('admin.purchase-return')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Purchase Return</a>
 

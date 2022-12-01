@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="mt-4 mb-4">All purchaseInvoice</h2>
+<h2 class="mt-4 mb-4">All purchase Invoice</h2>
 
 <!-- message -->
 @if(session()->has('message'))
@@ -14,7 +14,7 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#purchaseInvoice">Createpurchase Invoice</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#purchaseInvoice">Create Purchase Invoice</button>
         <!-- Modal -->
         <div class="modal fade" id="purchaseInvoice" tabindex="-1" aria-labelledby="purchaseInvoiceLabel" aria-hidden="true">
             <div class="modal-dialog">
