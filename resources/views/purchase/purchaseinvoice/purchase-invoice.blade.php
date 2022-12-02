@@ -26,28 +26,28 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" id="currentDate" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" name="date" id="currentDate" placeholder="e.g  10/11/2022" required>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Brunch</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g  hp-12012" required>
+                                    <input type="text" class="form-control" name="" placeholder="e.g  brunch" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Supplier</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g 520" required>
+                                    <input type="text" class="form-control" name="" placeholder="e.g Supplier" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>invoice</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="" placeholder="e.g invoice" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="" placeholder="e.g total" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
-                                    <input type="text" class="form-control" name="" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="" placeholder="e.g note" required>
                                 </div>
 
 
@@ -88,13 +88,6 @@
 
                 <tr>
                     
-
-
-
-
-
-
-
                     <td>
                         <div style="min-width: 10rem;">
                             {{-- <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a> --}}

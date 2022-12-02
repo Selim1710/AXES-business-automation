@@ -26,7 +26,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" id="currentDate" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" name="date" id="currentDate" placeholder="e.g  10/11/2022" required>
                                 </div>
                                 <br>
 
