@@ -14,7 +14,10 @@ class SalesReturnController extends Controller
         return view('sales.salesreturn.sales-return',compact('salesreturns'));
     }
     public function salesReturnCreate(){
-        return view('sales.salesreturn.sales-return-create');
+        return view('sales.salesreturn.sales-return-create',[
+            'salesreturns' => count(SalesReturn::all()),
+
+        ]);
     }
     public function storeSalesReturn(Request $request)
     {
@@ -26,7 +29,7 @@ class SalesReturnController extends Controller
             'total' => 'required',
             'note' => 'required',
         ]);
-        
+
         SalesReturn::create([
             'date' => $request->date,
             'customer' => $request->customer,

@@ -199,6 +199,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         //sales estimate
         Route::get('/manage/sales', [SalesController::class, 'SalesEstimate'])->name('admin-sales-manage');
         Route::get('/sales-estimate-create', [SalesController::class, 'salesEstimateCreate'])->name('sales-estimate-create');
+        Route::post('/sales-estimate-store', [SalesController::class, 'salesEstimateStore'])->name('sales-estimate-store');
+        Route::get('/sales-estimate-edit/{id}', [SalesController::class, 'salesEstimateEdit'])->name('sales-estimate-edit');
+        Route::post('/sales-estimate-update/{id}', [SalesController::class, 'salesEstimateUpdate'])->name('sales-estimate-update');
+        Route::post('/sales-estimate-delete', [SalesController::class, 'salesEstimateDelete'])->name('sales-estimate-delete');
+
         Route::get('/sales-estimate-create/product/{id}', [SalesController::class, 'addProduct'])->name('add.sales.estimate.product');
         Route::get('/sales-estimate-create/view', [SalesController::class, 'view'])->name('sales.estimate.product.view');
         Route::get('/sales-estimate-create/product/clear', [SalesController::class, 'clear'])->name('clear.sales.estimate.product');

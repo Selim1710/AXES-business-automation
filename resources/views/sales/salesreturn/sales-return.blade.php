@@ -26,16 +26,22 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Date</b></label>
-                                    <input type="date" class="form-control" name="date" placeholder="e.g  10/11/2022" required>
+                                    <input type="date" class="form-control" id="currentDate" name="date" placeholder="e.g  10/11/2022" required>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Customer</b></label>
                                     <input type="text" class="form-control" name="customer" placeholder="e.g  hp-12012" required>
                                 </div>
+                                <br>
                                 <div class="col-12">
-                                    <label class="form-label"><b>Invoice</b></label>
-                                    <input type="text" class="form-control" name="invoice" placeholder="e.g 520" required>
+                                    @php $i=1 @endphp
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><b>Invoice No:</b></span>
+                                        <input type="text" class="form-control ms-2" maxlength="15"
+                                               name="invoice" id="invno"
+                                               autocomplete="off">
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Against</b></label>
@@ -105,6 +111,17 @@
         </table>
     </div>
 
+    <input type="hidden" id="total-invoices"  value="{{ $salesreturns }}"/>
+    <script>
+        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        // console.log(typeof i);
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0, 10);
+        document.getElementById('currentDate').value = currentDate;
 
+        var defaultExpense =
+            `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,2)}${i++}`;
+        document.getElementById('invno').value = defaultExpense;
+    </script>
 
     @endsection

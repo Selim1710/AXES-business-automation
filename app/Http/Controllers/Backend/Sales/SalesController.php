@@ -4,19 +4,69 @@ namespace App\Http\Controllers\Backend\Sales;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\Product;
+use App\Models\SalesEstimate;
+use App\Models\Warranty\ManageProduct;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
     public function SalesEstimate()
     {
-        return view('sales.salesestimate.sales_table');
+        return view('sales.salesestimate.sales_table',[
+            'SalesEstimate' => SalesEstimate::all()
+        ]);
     }
 
     public function salesEstimateCreate()
     {
         $products = Product::with('stock')->get();
         return view('sales.salesestimate.sales-estimate-create',compact('products'));
+    }
+
+
+    public function salesEstimateStore(Request $request)
+
+    {
+        SalesEstimate::create([
+            'date' => $request->date,
+            'customer' => $request->customer,
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'note' => $request->note,
+
+        ]);
+
+        return redirect()->back()->with('message', 'Create Successfully');
+    }
+
+
+
+    public function salesEstimateEdit($id)
+    {
+        return view('sales.salesestimate.sales-estimate-edit', [
+            'SalesEstimateEdit' => SalesEstimate::find($id),
+        ]);
+    }
+
+    public function salesEstimateUpdate(Request $request, $id)
+    {
+
+        $SalesEstimateUpdate = SalesEstimate::find($id);
+        $SalesEstimateUpdate->update([
+            'date' => $request->date,
+            'customer' => $request->customer,
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'note' => $request->note,
+
+        ]);
+        return back()->with('message', 'Update Successfully');
+    }
+    public function salesEstimateDelete(Request $request)
+    {
+        $SalesEstimateDelete = SalesEstimate::find($request->sales_estimate_delete);
+        $SalesEstimateDelete->delete();
+        return back()->with('message', 'Deleted Successfully');
     }
     public function view()
     {
