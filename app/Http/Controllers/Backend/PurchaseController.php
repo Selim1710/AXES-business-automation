@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Http\Request;
+use App\Models\Inventory\Branch;
 use App\Http\Controllers\Controller;
-use App\Models\Purchase\PurchaseInvoice;
 use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseReturn;
-use Illuminate\Http\Request;
+use App\Models\Purchase\PurchaseInvoice;
 
 class PurchaseController extends Controller
 {
@@ -57,8 +58,9 @@ class PurchaseController extends Controller
 
     public function PurchaseInvoice()
     {
+        $branches = Branch::with('product')->orderBy('id', 'desc')->get();
         $purchaseinvoices = PurchaseInvoice::all()->sortByDesc('id')->values();
-        return view('purchase.purchaseinvoice.table', compact('purchaseinvoices'));
+        return view('purchase.purchaseinvoice.table', compact('purchaseinvoices','branches'));
     }
 
     public function storePurchaseInvoice(Request $request)

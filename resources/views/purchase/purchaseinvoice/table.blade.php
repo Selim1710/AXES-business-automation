@@ -45,8 +45,15 @@
                                     <input type="date" class="form-control" id="currentDate" name="date" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Branch Name</label>
-                                    <input type="text" class="form-control" name="b_name" required>
+                                        <label class="form-label">Branch Name</label>
+                                        <select name="b_name" id="branchID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    {{-- <label class="form-label">Branch Name</label>
+                                    <input type="text" class="form-control" name="b_name" required> --}}
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Suppliar Name</label>
