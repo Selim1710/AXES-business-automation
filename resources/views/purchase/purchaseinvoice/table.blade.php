@@ -42,7 +42,7 @@
                             <div class="border p-3 rounded">
                                 <div class="col-12">
                                     <label class="form-label">Date</label>
-                                    <input type="date" class="form-control" name="date" required>
+                                    <input type="date" class="form-control" id="currentDate" name="date" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Branch Name</label>
@@ -116,5 +116,10 @@
         </table>
     </div>
 </div>
+<script>
+    var date = new Date();
+    var currentDate = date.toISOString().slice(0, 10);
+    document.getElementById('currentDate').value = currentDate;
+</script>
 
 @endsection

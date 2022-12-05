@@ -104,7 +104,7 @@
     </div>
     {{-- <input type="hidden" id="totalInvoices"  value="{{ $invoice }}"/> --}}
     <script>
-         var i = 100 + parseInt(document.getElementById('totalInvoices').value);
+        var i = 100 + parseInt(document.getElementById('totalInvoices').value);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
         document.getElementById('currentDate').value = currentDate;
