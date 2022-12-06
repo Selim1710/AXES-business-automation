@@ -71,7 +71,7 @@
                                     <label class="form-label">Note</label>
                                     <input type="text" class="form-control" name="note" required>
                                 </div>
-                                
+
 
                             </div>
                         </div>
@@ -101,11 +101,11 @@
             </thead>
 
             <tbody>
-                @forelse ($purchaseinvoices as $key=>$purchaseInvoice)
+                @forelse ($PurchaseInvoicesss as $key=>$purchaseInvoice)
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $purchaseInvoice->date }}</td>
-                    <td>{{ $purchaseInvoice->b_name }}</td>
+                    <td>{{ $purchaseInvoice->name }}</td>
                     <td>{{ $purchaseInvoice->s_name }}</td>
                     <td>{{ $purchaseInvoice->invoice }}</td>
                     <td>{{ $purchaseInvoice->total }}</td>

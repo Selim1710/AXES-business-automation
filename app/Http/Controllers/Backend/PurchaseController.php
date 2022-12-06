@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseReturn;
 use App\Models\Purchase\PurchaseInvoice;
+use DB;
 
 class PurchaseController extends Controller
 {
@@ -58,9 +59,17 @@ class PurchaseController extends Controller
 
     public function PurchaseInvoice()
     {
+        $PurchaseInvoices=DB::table('purchase_invoices')
+            ->join('branches','purchase_invoices.b_name','branches.id')
+            ->select('purchase_invoices.*','branches.name')
+            ->orderby('id','desc')
+            ->get();
+
         $branches = Branch::with('product')->orderBy('id', 'desc')->get();
         $purchaseinvoices = PurchaseInvoice::all()->sortByDesc('id')->values();
-        return view('purchase.purchaseinvoice.table', compact('purchaseinvoices','branches'));
+        return view('purchase.purchaseinvoice.table', compact('purchaseinvoices','branches'),[
+            'PurchaseInvoicesss'=>$PurchaseInvoices
+        ]);
     }
 
     public function storePurchaseInvoice(Request $request)
@@ -109,9 +118,9 @@ class PurchaseController extends Controller
         $PurchaseInvoice->delete();
         return redirect()->route('admin.purchase.invoice')->with('error', 'PurchaseInvoice deleted');
     }
-    
-    
-    
+
+
+
     //Purchase Return
     public function purchaseReturnShow(){
         return view('purchase.purchase-return-show',[
