@@ -45,8 +45,15 @@
                                     <input type="date" class="form-control" name="" required>
                                 </div>
                                 <div class="col-12">
+
                                     <label class="form-label">Customer</label>
-                                    <input type="text" class="form-control" name="" required>
+                                    <select name="" class="form-control">
+                                        <option value=""> -- SELECT -- </option>
+                                        {{-- @foreach ($groups as $group)
+                                        <option value="{{ $group->id }}">{{ $group->name }} --}}
+                                        </option>
+                                        {{-- @endforeach --}}
+                                    </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Invoice</label>

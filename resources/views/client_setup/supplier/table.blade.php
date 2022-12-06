@@ -41,7 +41,7 @@
 
                             <div class="border p-3 rounded">
                                 <div class="row">
-                                    <div class="col-4">
+                                    {{-- <div class="col-4">
                                         <label class="form-label">Group Name</label>
                                         <select name="client_group_id" class="form-control">
                                             <option value=""> -- SELECT -- </option>
@@ -49,18 +49,18 @@
                                             <option value="{{ $group->id }}">{{ $group->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-4">
                                         <label class="form-label">supplier Name</label>
                                         <input type="text" class="form-control" name="name" required>
                                     </div>
-                                    <div class="col-4">
+                                    {{-- <div class="col-4">
                                         <label class="form-label">Status</label>
                                         <select name="status" id="" class="form-control">
                                             <option value="active">Active</option>
                                             <option value="inactive">Inactive</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="my-3"></div>
                                 <div class="row">
@@ -99,13 +99,13 @@
                                         <textarea class="form-control" name="shipping_address" cols="30" rows="4" required></textarea>
                                     </div>
                                 </div>
-                                <div class="my-3"></div>
+                                {{-- <div class="my-3"></div>
                                 <div class="row">
                                     <div class="col-12">
                                         <label class="form-label">Role</label>
                                         <input type="text" name="role" value="supplier" class="form-control" name="supplier" readonly>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -124,7 +124,7 @@
                 <tr class="text-capitalize"> 
                     <th>SN</th>
 
-                    <th>group</th>
+                    {{-- <th>group</th> --}}
                     <th>Name</th>
                     <th>email</th>
                     <th>contact</th>
@@ -133,8 +133,6 @@
                     <th>father name</th>
                     <th>mother name</th>
                     <th>NID</th>
-                    <th>role</th>
-                    <th>status</th>
 
                     <th>Action</th>
                 </tr>
@@ -145,7 +143,7 @@
                 <tr>
                     <td>{{ $key+1 }} </td>
 
-                    <td>{{ $supplier->client_group_id }}</td>
+                    {{-- <td>{{ $supplier->client_group_id }}</td> --}}
                     <td>{{ $supplier->name }}</td>
                     <td>{{ $supplier->email }}</td>
                     <td>{{ $supplier->contact }}</td>
@@ -154,8 +152,6 @@
                     <td>{{ $supplier->father_name }}</td>
                     <td>{{ $supplier->mother_name }}</td>
                     <td>{{ $supplier->NID }}</td>
-                    <td>{{ $supplier->role }}</td>
-                    <td>{{ $supplier->status }}</td>
 
                     <td>
                         <a class="btn btn-success" href="{{ route('supplier.edit', $supplier->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
