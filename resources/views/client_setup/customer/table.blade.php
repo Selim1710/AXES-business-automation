@@ -41,25 +41,10 @@
 
                             <div class="border p-3 rounded">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <label class="form-label">Group Name</label>
-                                        <select name="client_group_id" class="form-control">
-                                            <option value=""> -- SELECT -- </option>
-                                            @foreach ($groups as $group)
-                                            <option value="{{ $group->id }}">{{ $group->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+
                                     <div class="col-4">
                                         <label class="form-label">Customer Name</label>
                                         <input type="text" class="form-control" name="name" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="form-label">Status</label>
-                                        <select name="status" id="" class="form-control">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="my-3"></div>
@@ -100,12 +85,6 @@
                                     </div>
                                 </div>
                                 <div class="my-3"></div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="form-label">Role</label>
-                                        <input type="text" name="role" value="customer" class="form-control" name="customer" readonly>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -121,21 +100,16 @@
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
-                <tr class="text-capitalize"> 
+                <tr class="text-capitalize">
                     <th>SN</th>
-
-                    <th>group</th>
                     <th>Name</th>
-                    <th>email</th>
-                    <th>contact</th>
-                    <th>address</th>
-                    <th>shipping address</th>
                     <th>father name</th>
                     <th>mother name</th>
                     <th>NID</th>
-                    <th>role</th>
-                    <th>status</th>
-
+                    <th>contact</th>
+                    <th>email</th>
+                    <th>address</th>
+                    <th>shipping address</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -145,17 +119,16 @@
                 <tr>
                     <td>{{ $key+1 }} </td>
 
-                    <td>{{ $customer->client_group_id }}</td>
+
                     <td>{{ $customer->name }}</td>
-                    <td>{{ $customer->email }}</td>
-                    <td>{{ $customer->contact }}</td>
-                    <td>{{ $customer->address }}</td>
-                    <td>{{ $customer->shipping_address }}</td>
                     <td>{{ $customer->father_name }}</td>
                     <td>{{ $customer->mother_name }}</td>
                     <td>{{ $customer->NID }}</td>
-                    <td>{{ $customer->role }}</td>
-                    <td>{{ $customer->status }}</td>
+                    <td>{{ $customer->contact }}</td>
+                    <td>{{ $customer->email }}</td>
+                    <td>{{ $customer->address }}</td>
+                    <td>{{ $customer->shipping_address }}</td>
+
 
                     <td>
                         <a class="btn btn-success" href="{{ route('customer.edit', $customer->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>

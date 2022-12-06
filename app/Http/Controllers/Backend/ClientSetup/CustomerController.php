@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\ClientSetup;
 use App\Http\Controllers\Controller;
 use App\Models\ClientGroup;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,8 +14,12 @@ class CustomerController extends Controller
     public function index()
     {
         $groups = ClientGroup::with('customer')->orderBy('id', 'desc')->get();
-        $customers = User::where('role', 'customer')->orderBy('id', 'desc')->get();
-        return view('client_setup.customer.table', compact('groups', 'customers'));
+//        $customers = User::where('role', 'customer')->orderBy('id', 'desc')->get();
+        return view('client_setup.customer.table',[
+            'customers' => Customer::all()
+        ]);
+
+
     }
 
 
@@ -28,9 +33,9 @@ class CustomerController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            "client_group_id" => "required",
+
             "name" => "required",
-            "status" => "required",
+
             "father_name" => "required",
             "mother_name" => "required",
             "NID" => "required",
@@ -38,14 +43,14 @@ class CustomerController extends Controller
             "email" => "required",
             "address" => "required",
             "shipping_address" => "required",
-            "role" => "required",
+
         ]);
         // dd($request->all());
         // dd($request->client_group_id);
-        User::create([
-            "client_group_id" => $request->client_group_id,
+        Customer::create([
+//            "client_group_id" => $request->client_group_id,
             "name" => $request->name,
-            "status" => $request->status,
+//            "status" => $request->status,
             "father_name" => $request->father_name,
             "mother_name" => $request->mother_name,
             "NID" => $request->NID,
@@ -53,7 +58,7 @@ class CustomerController extends Controller
             "email" => $request->email,
             "address" => $request->address,
             "shipping_address" => $request->shipping_address,
-            "role" => $request->role,
+//            "role" => $request->role,
         ]);
         return back()->with('message', 'Customer Added Successfully');
     }
@@ -67,7 +72,7 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        $customer = User::find($id);
+        $customer = Customer::find($id);
         return view('client_setup.customer.edit', compact('customer'));
     }
 
@@ -87,7 +92,7 @@ class CustomerController extends Controller
         ]);
         // dd($request->all());
         // dd($request->client_group_id);
-        $customer = User::find($id);
+        $customer = Customer::find($id);
         $customer->update([
             "name" => $request->name,
             "status" => $request->status,
@@ -104,7 +109,7 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        $customer = User::find($id);
+        $customer = Customer::find($id);
         $customer->delete();
         return back()->with('error', 'customer deleted');
     }
