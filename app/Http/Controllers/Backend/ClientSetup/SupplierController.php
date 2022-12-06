@@ -29,7 +29,7 @@ class SupplierController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            "client_group_id" => "required",
+            // "client_group_id" => "required",
             "name" => "required",
             // "status" => "required",
             "father_name" => "required",
@@ -44,7 +44,7 @@ class SupplierController extends Controller
         // dd($request->all());
         // dd($request->client_group_id);
         Supplier::create([
-            "client_group_id" => $request->client_group_id,
+            // "client_group_id" => $request->client_group_id,
             "name" => $request->name,
             // "status" => $request->status,
             "father_name" => $request->father_name,

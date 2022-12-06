@@ -45,12 +45,21 @@
                                     <input type="date" class="form-control" name="" required>
                                 </div>
                                 <div class="col-12">
+                                    <label class="form-label">Branch Name</label>
+                                    <select name="b_name" id="branchID" class="form-control">
+                                        <option value="">-- SELECT --</option>
+                                        @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12">
 
                                     <label class="form-label">Customer</label>
                                     <select name="" class="form-control">
                                         <option value=""> -- SELECT -- </option>
-                                        {{-- @foreach ($groups as $group)
-                                        <option value="{{ $group->id }}">{{ $group->name }} --}}
+                                        {{-- @foreach ($customers as $customer) --}}
+                                        {{-- <option value="{{ $customer->id }}">{{ $customer->name }} --}}
                                         </option>
                                         {{-- @endforeach --}}
                                     </select>
