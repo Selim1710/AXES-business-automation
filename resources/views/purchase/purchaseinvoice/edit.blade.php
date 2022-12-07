@@ -31,14 +31,14 @@
                 <label class="form-label">Date</label>
                 <input type="date" class="form-control" name="date" value="{{ $PurchaseInvoice->date }}" required>
             </div>
-            <div class="col-12">
-                <label class="form-label">Branch</label>
-                <input type="text" class="form-control" name="name" value="{{ $PurchaseInvoice->b_name }}" required>
-            </div>
-            <div class="col-12">
-                <label class="form-label">Suppliar</label>
-                <input type="text" class="form-control" name="s_name" value="{{ $PurchaseInvoice->s_name }}" required>
-            </div>
+{{--            <div class="col-12">--}}
+{{--                <label class="form-label">Branch</label>--}}
+{{--                <input type="text" class="form-control" name="name" value="{{ $PurchaseInvoice->name }}" required>--}}
+{{--            </div>--}}
+{{--            <div class="col-12">--}}
+{{--                <label class="form-label">Suppliar</label>--}}
+{{--                <input type="text" class="form-control" name="s_name" value="{{ $PurchaseInvoice->ss_name }}" required>--}}
+{{--            </div>--}}
             <div class="col-12">
                 <label class="form-label">Invoice</label>
                 <input type="text" class="form-control" name="invoice" value="{{ $PurchaseInvoice->invoice }}" required>

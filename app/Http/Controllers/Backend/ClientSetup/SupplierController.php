@@ -29,8 +29,8 @@ class SupplierController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            "client_group_id" => "required",
-            "name" => "required",
+//            "client_group_id" => "required",
+            "ss_name" => "required",
             // "status" => "required",
             "father_name" => "required",
             "mother_name" => "required",
@@ -44,8 +44,8 @@ class SupplierController extends Controller
         // dd($request->all());
         // dd($request->client_group_id);
         Supplier::create([
-            "client_group_id" => $request->client_group_id,
-            "name" => $request->name,
+//            "client_group_id" => $request->client_group_id,
+            "ss_name" => $request->ss_name,
             // "status" => $request->status,
             "father_name" => $request->father_name,
             "mother_name" => $request->mother_name,
@@ -76,7 +76,7 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "name" => "required",
+            "ss_name" => "required",
             // "status" => "required",
             "father_name" => "required",
             "mother_name" => "required",
@@ -90,7 +90,7 @@ class SupplierController extends Controller
         // dd($request->client_group_id);
         $supplier = Supplier::find($id);
         $supplier->update([
-            "name" => $request->name,
+            "ss_name" => $request->ss_name,
             // "status" => $request->status,
             "father_name" => $request->father_name,
             "mother_name" => $request->mother_name,
