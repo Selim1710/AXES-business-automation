@@ -15,7 +15,7 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('ss_name');
             $table->string('email')->unique()->nullable();
             $table->string('address')->unique()->nullable();
             $table->string('shipping_address')->unique()->nullable();
@@ -24,6 +24,7 @@ class CreateSuppliersTable extends Migration
             $table->string('phone_number')->unique()->nullable();
             $table->string('NID')->unique()->nullable();
             $table->string('contact')->unique()->nullable();
+            $table->tinyInteger('status')->default(1);
 
 
             $table->unsignedBigInteger('client_group_id')->nullable();

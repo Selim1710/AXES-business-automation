@@ -52,7 +52,7 @@
                                     </div> --}}
                                     <div class="col-4">
                                         <label class="form-label">supplier Name</label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="ss_name" required>
                                     </div>
                                     {{-- <div class="col-4">
                                         <label class="form-label">Status</label>
@@ -121,7 +121,7 @@
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
-                <tr class="text-capitalize"> 
+                <tr class="text-capitalize">
                     <th>SN</th>
 
                     {{-- <th>group</th> --}}
@@ -144,7 +144,7 @@
                     <td>{{ $key+1 }} </td>
 
                     {{-- <td>{{ $supplier->client_group_id }}</td> --}}
-                    <td>{{ $supplier->name }}</td>
+                    <td>{{ $supplier->ss_name }}</td>
                     <td>{{ $supplier->email }}</td>
                     <td>{{ $supplier->contact }}</td>
                     <td>{{ $supplier->address }}</td>

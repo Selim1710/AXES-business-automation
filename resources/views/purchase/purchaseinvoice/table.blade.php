@@ -56,9 +56,17 @@
                                     <input type="text" class="form-control" name="b_name" required> --}}
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Suppliar Name</label>
-                                    <input type="text" class="form-control" name="s_name" required>
+                                        <label class="form-label">Suppliar Name</label>
+                                        <select name="s_name" id="s_nameID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}">{{ $supplier->ss_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    {{-- <label class="form-label">Branch Name</label>
+                                    <input type="text" class="form-control" name="b_name" required> --}}
                                 </div>
+
                                 <div class="col-12">
                                     <label class="form-label">Invoice</label>
                                     <input type="text" class="form-control" name="invoice" required>
@@ -106,7 +114,7 @@
                     <td>{{ $key+1 }} </td>
                     <td>{{ $purchaseInvoice->date }}</td>
                     <td>{{ $purchaseInvoice->name }}</td>
-                    <td>{{ $purchaseInvoice->s_name }}</td>
+                    <td>{{ $purchaseInvoice->ss_name }}</td>
                     <td>{{ $purchaseInvoice->invoice }}</td>
                     <td>{{ $purchaseInvoice->total }}</td>
                     <td>{{ $purchaseInvoice->note }}</td>

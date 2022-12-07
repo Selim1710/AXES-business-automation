@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\Inventory\Branch;
 use App\Http\Controllers\Controller;
@@ -61,14 +62,17 @@ class PurchaseController extends Controller
     {
         $PurchaseInvoices=DB::table('purchase_invoices')
             ->join('branches','purchase_invoices.b_name','branches.id')
-            ->select('purchase_invoices.*','branches.name')
+            ->join('suppliers','purchase_invoices.s_name','suppliers.id')
+            ->select('purchase_invoices.*','branches.name','suppliers.ss_name')
             ->orderby('id','desc')
             ->get();
 
         $branches = Branch::with('product')->orderBy('id', 'desc')->get();
+
         $purchaseinvoices = PurchaseInvoice::all()->sortByDesc('id')->values();
         return view('purchase.purchaseinvoice.table', compact('purchaseinvoices','branches'),[
-            'PurchaseInvoicesss'=>$PurchaseInvoices
+            'PurchaseInvoicesss'=>$PurchaseInvoices,
+            'suppliers'=> Supplier::where('status',1)->orderby('id','desc')->get(),
         ]);
     }
 
@@ -103,8 +107,8 @@ class PurchaseController extends Controller
         $PurchaseInvoice = PurchaseInvoice::find($id);
         $PurchaseInvoice->update([
             'date' => $request->date,
-            'b_name' => $request->b_name,
-            's_name' => $request->s_name,
+//            'b_name' => $request->b_name,
+//            's_name' => $request->s_name,
             'invoice' => $request->invoice,
             'total' => $request->total,
             'note' => $request->note,
