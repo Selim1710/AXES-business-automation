@@ -6,10 +6,11 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\Inventory\Branch;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseReturn;
 use App\Models\Purchase\PurchaseInvoice;
-use DB;
+
 
 class PurchaseController extends Controller
 {

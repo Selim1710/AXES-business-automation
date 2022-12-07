@@ -15,6 +15,13 @@ class CreateSalesInvoicesTable extends Migration
     {
         Schema::create('sales_invoices', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('c_name')->nullable();
+            $table->string('b_name')->nullable();
+            $table->string('invoice');
+            $table->integer('total');
+            $table->string('note')->nullable();
+         
             $table->timestamps();
         });
     }

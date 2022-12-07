@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-4">
                     <label class="form-label">Customer Name</label>
-                    <input type="text" class="form-control" name="name" value="{{ $customer->name }}" required>
+                    <input type="text" class="form-control" name="cc_name" value="{{ $customer->name }}" required>
                 </div>
                 <div class="col-4">
                     <label class="form-label">Status</label>

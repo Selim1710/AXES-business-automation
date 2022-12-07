@@ -218,6 +218,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         //sales invoice
         Route::get('/manage/sales/invoice', [SalesInvoiceController::class, 'SalesInvoice'])->name('admin-sales-invoice-manage');
         Route::get('/sales-invoice-create', [SalesInvoiceController::class, 'salesInvoiceCreate'])->name('admin-sales-invoice-create');
+        Route::post('/store/salesinvoice', [SalesInvoiceController::class, 'storeSalesInvoice'])->name('admin.store.salesinvoice');
 
         // Sales Return
         Route::get('/sales-return', [SalesReturnController::class, 'salesReturn'])->name('admin.sales-return');
