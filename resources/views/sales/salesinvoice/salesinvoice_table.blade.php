@@ -27,7 +27,7 @@
                     <form action="#" method="POST">
                         @csrf
                         <div class="modal-body">
-                            {{-- <div class="message">
+                            <div class="message">
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -37,12 +37,12 @@
                                     </ul>
                                 </div>
                                 @endif
-                            </div> --}}
+                            </div>
 
                             <div class="border p-3 rounded">
                                 <div class="col-12">
                                     <label class="form-label">Date</label>
-                                    <input type="date" class="form-control" name="" required>
+                                    <input type="date" class="form-control" name="date" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Branch Name</label>
@@ -56,25 +56,25 @@
                                 <div class="col-12">
 
                                     <label class="form-label">Customer</label>
-                                    <select name="" class="form-control">
+                                    <select name="c_name" class="form-control">
                                         <option value=""> -- SELECT -- </option>
-                                        {{-- @foreach ($customers as $customer) --}}
-                                        {{-- <option value="{{ $customer->id }}">{{ $customer->name }} --}}
+                                        @foreach ($customers as $customer)
+                                        <option value="{{ $customer->id }}">{{ $customer->name }}
                                         </option>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Invoice</label>
-                                    <input type="text" class="form-control" name="" required>
+                                    <input type="text" class="form-control" name="invoice" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Total</label>
-                                    <input type="text" class="form-control" name="" required>
+                                    <input type="text" class="form-control" name="total" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">isInvoice</label>
-                                    <input type="text" class="form-control" name="" required>
+                                    <label class="form-label">Note</label>
+                                    <input type="text" class="form-control" name="note" required>
                                 </div>
 
                             </div>

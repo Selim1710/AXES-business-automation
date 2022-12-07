@@ -12,8 +12,9 @@ class SalesInvoiceController extends Controller
 {
     public function SalesInvoice()
     {   
+        $customers = Customer::all();
         $branches = Branch::with('product')->orderBy('id', 'desc')->get();
-        return view('sales.salesinvoice.salesinvoice_table',compact('branches'));
+        return view('sales.salesinvoice.salesinvoice_table',compact('branches','customers'));
     }
 
     public function salesInvoiceCreate()
