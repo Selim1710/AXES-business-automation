@@ -21,6 +21,7 @@ class CreateSalesInvoicesTable extends Migration
             $table->string('invoice');
             $table->integer('total');
             $table->string('note')->nullable();
+         
             $table->timestamps();
         });
     }

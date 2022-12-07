@@ -34,7 +34,7 @@ class CustomerController extends Controller
         // dd($request->all());
         $request->validate([
 
-            "name" => "required",
+            "cc_name" => "required",
 
             "father_name" => "required",
             "mother_name" => "required",
@@ -49,7 +49,7 @@ class CustomerController extends Controller
         // dd($request->client_group_id);
         Customer::create([
 //            "client_group_id" => $request->client_group_id,
-            "name" => $request->name,
+            "cc_name" => $request->cc_name,
 //            "status" => $request->status,
             "father_name" => $request->father_name,
             "mother_name" => $request->mother_name,
@@ -80,7 +80,7 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "name" => "required",
+            "cc_name" => "required",
             "status" => "required",
             "father_name" => "required",
             "mother_name" => "required",
@@ -94,7 +94,7 @@ class CustomerController extends Controller
         // dd($request->client_group_id);
         $customer = Customer::find($id);
         $customer->update([
-            "name" => $request->name,
+            "cc_name" => $request->cc_name,
             "status" => $request->status,
             "father_name" => $request->father_name,
             "mother_name" => $request->mother_name,

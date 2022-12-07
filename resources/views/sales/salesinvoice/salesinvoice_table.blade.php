@@ -24,7 +24,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.store.salesinvoice') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="message">
@@ -59,7 +59,7 @@
                                     <select name="c_name" class="form-control">
                                         <option value=""> -- SELECT -- </option>
                                         @foreach ($customers as $customer)
-                                        <option value="{{ $customer->id }}">{{ $customer->name }}
+                                        <option value="{{ $customer->id }}">{{ $customer->cc_name }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Total</label>
-                                    <input type="text" class="form-control" name="total" required>
+                                    <input type="number" class="form-control" name="total" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Note</label>
@@ -106,20 +106,24 @@
             </thead>
 
             <tbody>
-                {{-- @forelse ($brands as $key=>$brand) --}}
+                @forelse ($SalesInvoicessss as $key=>$SalesInvoic)
                 <tr>
-                    {{-- <td>{{ $key+1 }} </td> --}}
-                    <td></td>
-                    <td></td>
+                    <td>{{ $key+1 }} </td>
+                    <td>{{ $SalesInvoic->date }}</td>
+                    <td>{{ $SalesInvoic->name }}</td>
+                    <td>{{ $SalesInvoic->cc_name }}</td>
+                    <td>{{ $SalesInvoic->invoice }}</td>
+                    <td>{{ $SalesInvoic->total }}</td>
+                    <td>{{ $SalesInvoic->note }}</td>
 
                     <td>
-                        {{-- <a class="btn btn-success" href="#" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
-                        {{-- <a class="btn btn-danger" href="#" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a> --}}
+                        {{-- <a class="btn btn-success" href="{{ route('admin.edit.invoice', $SalesInvoic->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.invoice', $SalesInvoic->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a> --}}
                     </td>
                 </tr>
-                {{-- @empty --}}
-                <p class="text-danger text-center">No brand available</p>
-                {{-- @endforelse --}}
+                @empty -
+                <p class="text-danger text-center">No purchaseInvoice available</p>
+                 @endforelse
             </tbody>
         </table>
     </div>

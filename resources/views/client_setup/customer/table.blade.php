@@ -44,7 +44,7 @@
 
                                     <div class="col-4">
                                         <label class="form-label">Customer Name</label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="cc_name" required>
                                     </div>
                                 </div>
                                 <div class="my-3"></div>
@@ -120,7 +120,7 @@
                     <td>{{ $key+1 }} </td>
 
 
-                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->cc_name }}</td>
                     <td>{{ $customer->father_name }}</td>
                     <td>{{ $customer->mother_name }}</td>
                     <td>{{ $customer->NID }}</td>
