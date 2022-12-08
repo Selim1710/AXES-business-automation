@@ -26,18 +26,8 @@ class SalesInvoiceController extends Controller
 
         'customers'=>Customer::where('status',1)->orderby('id','desc')->get(),
             'SalesInvoicessss'=>$SalesInvoices,
-        ]);
-
-
-        
+        ]);  
     }
-
-    public function salesInvoiceCreate()
-    {
-        $products = Product::with('stock')->get();
-        return view('sales.salesinvoice.sales-invoice-create',compact('products'));
-    }
-
     public function storeSalesInvoice(Request $request)
     {
         $request->validate([
@@ -59,4 +49,35 @@ class SalesInvoiceController extends Controller
         ]);
         return redirect()->route('admin-sales-invoice-manage')->with('message', 'SalesInvoice Added Successfully');
     }
+    public function editSalesInvoice($id)
+    {
+        $SalesInvoice = SalesInvoice::find($id);
+        return view('sales.salesinvoice.edit', compact('SalesInvoice'));
+    }
+    public function updateSalesInvoice(Request $request, $id)
+    {
+        $SalesInvoice = SalesInvoice::find($id);
+        $SalesInvoice->update([
+            'date' => $request->date,
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'note' => $request->note,
+        ]);
+        return redirect()->route('admin-sales-invoice-manage')->with('message', 'SalesInvoice Updated');
+    }
+
+    public function deleteSalesInvoice($id)
+    {
+        $SalesInvoice = SalesInvoice::find($id);
+        $SalesInvoice->delete();
+        return redirect()->route('admin-sales-invoice-manage')->with('error', 'SalesInvoice deleted');
+    }
+
+    public function salesInvoiceCreate()
+    {
+        $products = Product::with('stock')->get();
+        return view('sales.salesinvoice.sales-invoice-create',compact('products'));
+    }
+
+    
 }

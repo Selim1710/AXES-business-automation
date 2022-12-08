@@ -14,13 +14,13 @@
     <div class="card-header d-flex justify-content-between">
         <span>
         </span>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brand">Create New Invoice</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sales">Create New Invoice</button>
         <!-- Modal -->
-        <div class="modal fade" id="brand" tabindex="-1" aria-labelledby="brandLabel" aria-hidden="true">
+        <div class="modal fade" id="sales" tabindex="-1" aria-labelledby="salesLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="brandLabel">Create New Invoice</h5>
+                        <h5 class="modal-title" id="salesLabel">Create New Invoice</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- add form -->
@@ -117,8 +117,8 @@
                     <td>{{ $SalesInvoic->note }}</td>
 
                     <td>
-                        {{-- <a class="btn btn-success" href="{{ route('admin.edit.invoice', $SalesInvoic->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger" href="{{ route('admin.delete.invoice', $SalesInvoic->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a> --}}
+                        <a class="btn btn-success" href="{{ route('admin.edit.salesinvoice', $SalesInvoic->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="{{ route('admin.delete.salesinvoice', $SalesInvoic->id) }}" onclick="return confirm('are you sure !!!')" style="font-size:13px"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @empty -
