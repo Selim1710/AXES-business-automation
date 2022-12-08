@@ -13,23 +13,23 @@ use App\Models\Sales\SalesInvoice;
 class SalesInvoiceController extends Controller
 {
     public function SalesInvoice()
-    {   
+    {
         $SalesInvoices=DB::table('sales_invoices')
             ->join('branches','sales_invoices.b_name','branches.id')
             ->join('customers','sales_invoices.c_name','customers.id')
             ->select('sales_invoices.*','branches.name','customers.cc_name')
             ->orderby('id','desc')
             ->get();
-
-
-        // $customers = Customer::all()->sortByDesc('id')->values();
-        
         $branches = Branch::with('product')->orderBy('id', 'desc')->get();
-        $SalesInvoices = SalesInvoice::all()->sortByDesc('id')->values();
+
         return view('sales.salesinvoice.salesinvoice_table',compact('branches','SalesInvoices'),[
+
+        'customers'=>Customer::where('status',1)->orderby('id','desc')->get(),
             'SalesInvoicessss'=>$SalesInvoices,
-            'customers'=> Customer::where('status',1)->orderby('id','desc')->get(),
         ]);
+
+
+        
     }
 
     public function salesInvoiceCreate()

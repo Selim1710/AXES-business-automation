@@ -24,6 +24,8 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('shipping_address');
             // $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('status')->default(1);
+
 
             $table->timestamps();
         });
