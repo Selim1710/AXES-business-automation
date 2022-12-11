@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Invoice</b></label>
-                                    <input type="text" class="form-control" id="invno" name="invoice" placeholder="PUR:121213" required>
+                                    <input type="text" class="form-control" id="pr_invno" name="invoice" placeholder="PUR:121213" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Against</b></label>
@@ -102,15 +102,16 @@
 
         </table>
     </div>
-    {{-- <input type="hidden" id="totalInvoices"  value="{{ $invoice }}"/> --}}
+    <input type="hidden" id="total-invoices"  value="{{ count($purchasereturns) }}"/>
     <script>
-        var i = 100 + parseInt(document.getElementById('totalInvoices').value);
+        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        // console.log(typeof i);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-        `PUR:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${++i}`;
-        document.getElementById('invno').value = defaultExpense;
+            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+        document.getElementById('pr_invno').value = defaultExpense;
     </script>
     @endsection

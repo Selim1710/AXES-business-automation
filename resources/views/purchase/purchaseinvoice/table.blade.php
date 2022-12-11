@@ -69,7 +69,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Invoice</label>
-                                    <input type="text" class="form-control" name="invoice" required>
+                                    <input type="text" class="form-control" id="p_invno" name="invoice" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Total</label>
@@ -131,10 +131,17 @@
         </table>
     </div>
 </div>
-<script>
-    var date = new Date();
-    var currentDate = date.toISOString().slice(0, 10);
-    document.getElementById('currentDate').value = currentDate;
-</script>
+<input type="hidden" id="total-invoices"  value="{{ count($PurchaseInvoicesss) }}"/>
+    <script>
+        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        // console.log(typeof i);
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0, 10);
+        document.getElementById('currentDate').value = currentDate;
+
+        var defaultExpense =
+            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+        document.getElementById('p_invno').value = defaultExpense;
+    </script>
 
 @endsection

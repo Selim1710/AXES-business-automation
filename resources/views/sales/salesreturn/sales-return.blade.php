@@ -39,7 +39,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><b>Invoice No:</b></span>
                                         <input type="text" class="form-control ms-2" maxlength="15"
-                                               name="invoice" id="invno"
+                                               name="invoice" id="invno3"
                                                autocomplete="off">
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
         </table>
     </div>
 
-    <input type="hidden" id="total-invoices"  value="{{ $salesreturns }}"/>
+    <input type="hidden" id="total-invoices"  value="{{ count($salesreturns) }}"/>
     <script>
         var i = 100 + parseInt(document.getElementById('total-invoices').value);
         // console.log(typeof i);
@@ -120,8 +120,8 @@
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-            `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,2)}${i++}`;
-        document.getElementById('invno').value = defaultExpense;
+            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+        document.getElementById('invno3').value = defaultExpense;
     </script>
 
     @endsection
