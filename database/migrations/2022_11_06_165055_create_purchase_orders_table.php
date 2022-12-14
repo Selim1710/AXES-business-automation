@@ -15,10 +15,10 @@ class CreatePurchaseOrdersTable extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('date')->nullable();
-            $table->string('product');
-            $table->string('serial')->nullable();
-            $table->string('total')->nullable();
+            $table->string('date');
+            $table->string('c_supplier');
+            $table->string('o_no')->nullable();
+            $table->string('total');
             $table->string('note')->nullable();
             $table->timestamps();
         });

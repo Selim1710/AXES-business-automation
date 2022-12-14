@@ -19,7 +19,7 @@
                 <div class="modal-content">
 
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{route('purchase-order-store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="border p-3 rounded">
@@ -31,33 +31,28 @@
                                 <br>
 
                                 <div class="col-12">
-                                    <select class="form-control" name="c_supplier_id" id="" type="text"required>
+                                    <select class="form-control" name="c_supplier" id="" type="text"required>
                                         <option value=""><b>Select Supplier </b> </option>
-{{--                                        @foreach($categories as $category)--}}
-{{--                                            <option value="{{$category->id}}">{{$category->category_name}}</option>--}}
-{{--                                        @endforeach--}}
+                                        @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}">{{ $supplier->ss_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
                                 <br>
                                 <div class="col-12">
                                     <label class="form-label"><b>Order No</b></label>
-                                    <input type="text" class="form-control" name="o_no"  required>
+                                    <input type="number" class="form-control" name="o_no"  required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="total" required>
+                                    <input type="number" class="form-control" name="total" required>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
                                     <input type="text" class="form-control" name="note"  required>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label"><b>Approve</b></label>
-                                    <input type="text" class="form-control" name="approve"  required>
-                                </div>
-
 
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>
                             </div>
@@ -85,31 +80,38 @@
                     <th>Order No</th>
                     <th>Total</th>
                     <th>Note</th>
-                    <th>Approve</th>
                     <th>Action</th>
 
                 </tr>
             </thead>
             <tbody>
 
-
+            @php $i=1; @endphp
+            @foreach($PurchaseOrders as $PurchaseOrder)
 
                 <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$PurchaseOrder->date}} </td>
+                    <td>{{$PurchaseOrder->ss_name}} </td>
+                    <td>{{$PurchaseOrder->o_no}} </td>
+                    <td>{{$PurchaseOrder->total}} </td>
+                    <td>{{$PurchaseOrder->note}} </td>
+
 
                     <td>
                         <div style="min-width: 10rem;">
-                            {{-- <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a> --}}
+                            <a class="btn btn-success" style="font-size:13px" href="" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                             <form action="" method="post" style="display:inline">
                                 @csrf
-                                <input type="hidden" name="warranty_delete" value="">
-                                {{-- <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button> --}}
+                                <input type="hidden" name="claim_supplier_delete" value="">
+                                <button class="btn btn-danger" style="font-size:13px " role="button" onclick="return confirm('Are You Sure !!')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
 
                     </td>
                 </tr>
 
-
+            @endforeach
             </tbody>
 
         </table>

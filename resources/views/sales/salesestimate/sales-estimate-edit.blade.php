@@ -30,10 +30,7 @@
                             <label class="form-label"><b>Date</b> </label>
                             <input type="text" class="form-control" name="date" value="{{$SalesEstimateEdit->date}}">
                         </div>
-                        <div class="col-12">
-                            <label class="form-label"><b>Customer</b> </label>
-                            <input type="text" class="form-control" name="customer" value="{{$SalesEstimateEdit->customer}}">
-                        </div>
+
                         <div class="col-12">
                             <label class="form-label"><b>Invoice</b> </label>
                             <input type="text" class="form-control" name="invoice" value="{{$SalesEstimateEdit->invoice}}">

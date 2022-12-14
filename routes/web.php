@@ -46,6 +46,7 @@ use App\Http\Controllers\Backend\Sales\SalesReturnController;
 use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
 use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
 use App\Http\Controllers\Backend\PurchaseController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Purchase\PurchaseInvoice;
 
 /*
@@ -59,9 +60,8 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware(['guest']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'dashboard5'])
+    ->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 
@@ -183,9 +183,9 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         // Purchase Invoice
         Route::get('/purchase/invoice', [PurchaseController::class, 'PurchaseInvoice'])->name('admin.purchase.invoice');
         Route::post('/store/invoice', [PurchaseController::class, 'storePurchaseInvoice'])->name('admin.store.invoice');
-        
+
         Route::get('/purchase/invoice/create', [PurchaseInvoiceController::class, 'purchaseInvoiceCreate'])->name('admin.purchase-invoice.create');
-        
+
         Route::get('/edit/invoice/{id}', [PurchaseController::class, 'editPurchaseInvoice'])->name('admin.edit.invoice');
         Route::post('/update/invoice/{id}', [PurchaseController::class, 'updatePurchaseInvoice'])->name('admin.update.invoice');
         Route::get('/delete/invoice/{id}', [PurchaseController::class, 'deletePurchaseInvoice'])->name('admin.delete.invoice');

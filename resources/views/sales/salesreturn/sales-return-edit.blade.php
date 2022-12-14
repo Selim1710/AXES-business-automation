@@ -31,10 +31,7 @@
                 <label class="form-label">Date</label>
                 <input type="date" class="form-control" name="date" value="{{ $salesreturn->date }}" required>
             </div>
-            <div class="col-12">
-                <label class="form-label">Customer</label>
-                <input type="text" class="form-control" name="customer" value="{{ $salesreturn->customer }}" required>
-            </div>
+
             <div class="col-12">
                 <label class="form-label">Invoice</label>
                 <input type="text" class="form-control" name="invoice" value="{{ $salesreturn->invoice }}" required>
