@@ -53,6 +53,34 @@ class PurchaseOrderController extends Controller
         return view('purchase.purchaseorder.view',compact('previewDeliveries'));
     }
 
+
+
+    public function purchaseOrderEdit($id)
+    {
+        $purchaseorder = PurchaseOrder::find($id);
+        return view('purchase.purchaseorder.parchase_edit',compact('purchaseorder'));
+    }
+    public function purchaseOrderUpdate(Request $request, $id)
+    {
+        $purchaseorder = PurchaseOrder::find($id);
+        $purchaseorder->update([
+            'date' => $request->date,
+            'o_no' => $request->o_no,
+            'total' => $request->total,
+            'note' => $request->note,
+        ]);
+        return redirect()->route('admin.purchase-order')->with('message', 'Purchase orderUpdated');
+    }
+
+    public function purchaseOrderDelete($id)
+    {
+        $purchaseorder = PurchaseOrder::find($id);
+        $purchaseorder->delete();
+        return redirect()->route('admin.purchase-order')->with('error', 'Purchase Order deleted');
+    }
+
+    // add Product
+
     public function addProduct($id)
     {
         $product = Product::with('stock')->find($id);
