@@ -178,6 +178,11 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/purchase/order/product/add/{id}', [PurchaseOrderController::class, 'addProduct'])->name('add.pur.order.product');
         Route::get('/purchase/order/product/view', [PurchaseOrderController::class, 'view'])->name('view.purchase.order.product');
         Route::post('/purchase/order/product/clear', [PurchaseOrderController::class, 'clear'])->name('clear.purchase.order.product');
+        
+        Route::get('/edit/order/{id}', [PurchaseOrderController::class, 'purchaseOrderEdit'])->name('admin.edit.order');
+        Route::post('/update/order/{id}', [PurchaseOrderController::class, 'purchaseOrderUpdate'])->name('admin.update.order');
+        Route::get('/delete/order/{id}', [PurchaseOrderController::class, 'purchaseOrderDelete'])->name('admin.delete.order');
+
         Route::get('/purchase/order/product/delete', [PurchaseOrderController::class, 'destroy'])->name('purchase.order.product.delete');
 
         // Purchase Invoice
