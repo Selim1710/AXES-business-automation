@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend\make;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\DailyProcess\ExpensestypeModel;
