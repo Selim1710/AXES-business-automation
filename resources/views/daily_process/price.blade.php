@@ -117,11 +117,12 @@
         </table>
     </div>
 
-    <script src="JsBarcode.all.min.js"></script>
+    <input type="hidden" id="pricecode"  value="{{ count($PriceList) }}"/>
     <script>
-        document.getElementById('submitbutton').addEventListener('click',function(){
-            var text = document.getElementById('barcode').value;
-        })
+        var i = 100 + parseInt(document.getElementById('pricecode').value);
+        var date = new Date();
+        var defaultExpense =
+            `BAR${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(0,4)}${++i}`;
+        document.getElementById('barcode').value = defaultExpense;
     </script>
-
     @endsection
