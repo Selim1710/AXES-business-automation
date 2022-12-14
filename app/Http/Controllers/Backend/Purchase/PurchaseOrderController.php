@@ -6,13 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\Product;
 use App\Models\Purchase\PurchaseOrder;
 use App\Models\Purchase\PurchaseOrderNew;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseOrderController extends Controller
 {
     public function purchaseOrder()
     {
-        return view('purchase.purchaseorder.purchase-order');
+        $PurchaseOrder=DB::table('purchase_orders')
+
+            ->join('suppliers','purchase_orders.c_supplier','suppliers.id')
+            ->select('purchase_orders.*','suppliers.ss_name')
+            ->orderby('id','desc')
+            ->get();
+
+
+        return view('purchase.purchaseorder.purchase-order',[
+            'suppliers'=> Supplier::where('status',1)->orderby('id','desc')->get(),
+            'PurchaseOrders'=>$PurchaseOrder,
+        ]);
     }
 
 
@@ -24,7 +37,7 @@ class PurchaseOrderController extends Controller
             'o_no' => $request->o_no,
             'total' => $request->total,
             'note' => $request->note,
-            'approve' => $request->approve,
+
 
         ]);
 

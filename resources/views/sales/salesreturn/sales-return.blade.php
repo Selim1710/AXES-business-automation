@@ -31,7 +31,13 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Customer</b></label>
-                                    <input type="text" class="form-control" name="customer" placeholder="e.g  hp-12012" required>
+                                    <select name="customer" class="form-control" required>
+                                        <option value=""> -- SELECT -- </option>
+                                        @foreach ($customers as $customer)
+                                            <option value="{{ $customer->id }}">{{ $customer->cc_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <br>
                                 <div class="col-12">
@@ -45,15 +51,15 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Against</b></label>
-                                    <input type="text" class="form-control" name="against" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="against"  required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
-                                    <input type="text" class="form-control" name="total" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="total" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
-                                    <input type="text" class="form-control" name="note" placeholder="e.g waiting" required>
+                                    <input type="text" class="form-control" name="note"  required>
                                 </div>
 
 
@@ -88,11 +94,11 @@
 
                 </tr>
             </thead>
-            @forelse ($salesreturns as $key=>$salesreturn)
+            @forelse ($salesreturndbs as $key=>$salesreturn)
                 <tr>
                     <td>{{ $key+1 }} </td>
                     <td>{{ $salesreturn->date }}</td>
-                    <td>{{ $salesreturn->customer }}</td>
+                    <td>{{ $salesreturn->cc_name }}</td>
                     <td>{{ $salesreturn->invoice }}</td>
                     <td>{{ $salesreturn->against }}</td>
                     <td>{{ $salesreturn->total }}</td>

@@ -3,17 +3,28 @@
 namespace App\Http\Controllers\Backend\Sales;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\ProductSetup\Product;
 use App\Models\SalesEstimate;
 use App\Models\Warranty\ManageProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
     public function SalesEstimate()
     {
+        $SalesEstimate=DB::table('sales_estimates')
+
+            ->join('customers','sales_estimates.customer','customers.id')
+            ->select('sales_estimates.*','customers.cc_name')
+            ->orderby('id','desc')
+            ->get();
+
         return view('sales.salesestimate.sales_table',[
-            'SalesEstimate' => SalesEstimate::all()
+            'SalesEstimate' => SalesEstimate::all(),
+            'customers'=>Customer::where('status',1)->orderby('id','desc')->get(),
+            'SalesEstimatess'=>$SalesEstimate,
         ]);
     }
 

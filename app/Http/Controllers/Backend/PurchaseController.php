@@ -17,7 +17,8 @@ class PurchaseController extends Controller
     //Purchase Order
     public function purchaseOrderShow(){
         return view('purchase.purchase-order-show',[
-            'PurchaseOrder' => PurchaseOrder::all()
+            'PurchaseOrder' => PurchaseOrder::all(),
+
         ]);
 
     }

@@ -46,7 +46,14 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Customer</label>
-                                    <input type="text" class="form-control" name="customer" required>
+
+                                    <select name="customer" class="form-control" required>
+                                        <option value=""> -- SELECT -- </option>
+                                        @foreach ($customers as $customer)
+                                            <option value="{{ $customer->id }}">{{ $customer->cc_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Invoice</label>
@@ -54,7 +61,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Total</label>
-                                    <input type="text" class="form-control" name="total" required>
+                                    <input type="number" class="form-control" name="total" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Note</label>
@@ -92,13 +99,13 @@
             <tbody>
 
             @php $i=1; @endphp
-            @foreach($SalesEstimate as $SalesEstimates)
+            @foreach($SalesEstimatess as $SalesEstimates)
 
                 <tr>
                     <td>{{$i++}}</td>
 
                     <td>{{$SalesEstimates->date}} </td>
-                    <td>{{$SalesEstimates->customer}} </td>
+                    <td>{{$SalesEstimates->cc_name}} </td>
                     <td>{{$SalesEstimates->invoice}} </td>
                     <td>{{$SalesEstimates->total}} </td>
                     <td>{{$SalesEstimates->note}} </td>

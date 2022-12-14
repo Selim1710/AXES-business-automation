@@ -3,15 +3,27 @@
 namespace App\Http\Controllers\Backend\Sales;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Sales\SalesReturn;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalesReturnController extends Controller
 {
     public function salesReturn()
     {
+        $salesreturndb=DB::table('sales_returns')
+
+            ->join('customers','sales_returns.customer','customers.id')
+            ->select('sales_returns.*','customers.cc_name')
+            ->orderby('id','desc')
+            ->get();
+
         $salesreturns = SalesReturn::all()->sortByDesc('id')->values();
-        return view('sales.salesreturn.sales-return',compact('salesreturns'));
+        return view('sales.salesreturn.sales-return',compact('salesreturns'),[
+            'customers'=>Customer::where('status',1)->orderby('id','desc')->get(),
+            'salesreturndbs'=>$salesreturndb,
+        ]);
     }
     public function salesReturnCreate(){
         return view('sales.salesreturn.sales-return-create',[
