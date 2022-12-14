@@ -6,7 +6,11 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
-            <h6 class="text-white m-0"> Auguest 19, 2022</h6>
+            <h6 class="text-white m-0"> <?php
+                echo "" . date("Y/m/d") . "<br>";
+
+                echo "Today is " . date("l");
+                ?></h6>
         </div>
     </form>
     <!-- Navbar-->
