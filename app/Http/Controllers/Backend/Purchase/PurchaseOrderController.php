@@ -38,7 +38,6 @@ class PurchaseOrderController extends Controller
             'total' => $request->total,
             'note' => $request->note,
 
-
         ]);
 
     }
