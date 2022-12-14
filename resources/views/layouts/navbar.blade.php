@@ -9,7 +9,7 @@
             <h6 class="text-white m-0"> <?php
                 echo "" . date("Y/m/d") . "<br>";
 
-                echo "Today is " . date("l");
+                echo "" . date("l");
                 ?></h6>
         </div>
     </form>
