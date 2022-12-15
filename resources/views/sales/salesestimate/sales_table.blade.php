@@ -44,6 +44,18 @@
                                     <label class="form-label">Date</label>
                                     <input type="date" class="form-control" id="currentDate" name="date" required>
                                 </div>
+                                <br>
+
+                                <div class="col-12">
+                                    <label class="form-label">Product</label>
+                                    <select class="form-control" name="p_name" id="" type="text"required>
+                                        <option value=""><b>Select Product </b> </option>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
                                 <div class="col-12">
                                     <label class="form-label">Customer</label>
 
@@ -86,6 +98,7 @@
                 <tr>
                     <th>SN</th>
                     <th>Date</th>
+                    <th>Product</th>
                     <th>Customer</th>
                     <th>Invoice</th>
                     <th>Total</th>
@@ -105,6 +118,7 @@
                     <td>{{$i++}}</td>
 
                     <td>{{$SalesEstimates->date}} </td>
+                    <td>{{$SalesEstimates->name}} </td>
                     <td>{{$SalesEstimates->cc_name}} </td>
                     <td>{{$SalesEstimates->invoice}} </td>
                     <td>{{$SalesEstimates->total}} </td>

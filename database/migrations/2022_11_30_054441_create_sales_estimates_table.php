@@ -16,6 +16,7 @@ class CreateSalesEstimatesTable extends Migration
         Schema::create('sales_estimates', function (Blueprint $table) {
             $table->id();
             $table->string('date');
+            $table->string('p_name');
             $table->string('customer');
             $table->string('invoice');
             $table->string('total');

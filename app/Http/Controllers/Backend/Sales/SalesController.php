@@ -17,13 +17,15 @@ class SalesController extends Controller
         $SalesEstimate=DB::table('sales_estimates')
 
             ->join('customers','sales_estimates.customer','customers.id')
-            ->select('sales_estimates.*','customers.cc_name')
+            ->join('products','sales_estimates.p_name','products.id')
+            ->select('sales_estimates.*','customers.cc_name','products.name')
             ->orderby('id','desc')
             ->get();
 
         return view('sales.salesestimate.sales_table',[
             'SalesEstimate' => SalesEstimate::all(),
             'customers'=>Customer::where('status',1)->orderby('id','desc')->get(),
+            'products'=>Product::where('status',1)->orderby('id','desc')->get(),
             'SalesEstimatess'=>$SalesEstimate,
         ]);
     }
@@ -40,6 +42,7 @@ class SalesController extends Controller
     {
         SalesEstimate::create([
             'date' => $request->date,
+            'p_name' => $request->p_name,
             'customer' => $request->customer,
             'invoice' => $request->invoice,
             'total' => $request->total,

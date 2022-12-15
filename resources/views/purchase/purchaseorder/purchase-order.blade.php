@@ -31,6 +31,15 @@
                                 <br>
 
                                 <div class="col-12">
+                                    <select class="form-control" name="pd_name" id="" type="text"required>
+                                        <option value=""><b>Select Product </b> </option>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="col-12">
                                     <select class="form-control" name="c_supplier" id="" type="text"required>
                                         <option value=""><b>Select Supplier </b> </option>
                                         @foreach ($suppliers as $supplier)
@@ -76,6 +85,7 @@
                 <tr>
                     <th>SN</th>
                     <th>Date</th>
+                    <th>Product</th>
                     <th>Supplier</th>
                     <th>Order No</th>
                     <th>Total</th>
@@ -92,6 +102,7 @@
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$PurchaseOrder->date}} </td>
+                    <td>{{$PurchaseOrder->name}} </td>
                     <td>{{$PurchaseOrder->ss_name}} </td>
                     <td>{{$PurchaseOrder->o_no}} </td>
                     <td>{{$PurchaseOrder->total}} </td>

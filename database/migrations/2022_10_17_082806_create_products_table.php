@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('offer');
             $table->string('warranty');
             $table->text('description');
+            $table->tinyInteger('status')->default(1);
 
             $table->unsignedBigInteger('category_id')->nullable();
 

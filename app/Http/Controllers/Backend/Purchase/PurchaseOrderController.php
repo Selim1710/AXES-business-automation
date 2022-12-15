@@ -17,13 +17,15 @@ class PurchaseOrderController extends Controller
         $PurchaseOrder=DB::table('purchase_orders')
 
             ->join('suppliers','purchase_orders.c_supplier','suppliers.id')
-            ->select('purchase_orders.*','suppliers.ss_name')
+            ->join('products','purchase_orders.pd_name','products.id')
+            ->select('purchase_orders.*','suppliers.ss_name','products.name')
             ->orderby('id','desc')
             ->get();
 
 
         return view('purchase.purchaseorder.purchase-order',[
             'suppliers'=> Supplier::where('status',1)->orderby('id','desc')->get(),
+            'products'=> Product::where('status',1)->orderby('id','desc')->get(),
             'PurchaseOrders'=>$PurchaseOrder,
         ]);
     }
@@ -33,6 +35,7 @@ class PurchaseOrderController extends Controller
     {
         PurchaseOrder::create([
             'date' => $request->date,
+            'pd_name' => $request->pd_name,
             'c_supplier' => $request->c_supplier,
             'o_no' => $request->o_no,
             'total' => $request->total,
