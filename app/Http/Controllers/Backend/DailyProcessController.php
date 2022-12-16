@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend\make;
+use App\Models\ProductSetup\Product;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Http\Request;
@@ -17,15 +18,24 @@ class DailyProcessController extends Controller
 {
     public function PriceList()
     {
+        $PriceLists=DB::table('price_lists')
+
+            ->join('products','price_lists.P_Name','products.id')
+            ->select('price_lists.*','products.name')
+            ->orderby('id','desc')
+            ->get();
+
         return view('daily_process.price',[
-            'PriceList' => PriceList::all()
+
+            'products'=> Product::where('status',1)->orderby('id','desc')->get(),
+            'PriceList'=>$PriceLists,
         ]);
     }
     public function PriceListStore(Request $request)
 
     {
         PriceList::create([
-            'name' => $request->name,
+            'P_Name' => $request->P_Name,
             'code' => $request->code,
             'barcode' => $request->barcode,
             'qty' => $request->qty,
@@ -40,7 +50,7 @@ class DailyProcessController extends Controller
 
         $PriceListUpdate = PriceList::find($id);
         $PriceListUpdate->update([
-            'name' => $request->name,
+            'code' => $request->code,
             'c_price' => $request->c_price,
 
         ]);

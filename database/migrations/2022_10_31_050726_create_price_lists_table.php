@@ -15,7 +15,7 @@ class CreatePriceListsTable extends Migration
     {
         Schema::create('price_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('P_Name');
             $table->string('code')->nullable();
             $table->text('barcode')->nullable();
             $table->string('qty')->nullable();

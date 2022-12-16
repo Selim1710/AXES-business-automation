@@ -26,9 +26,15 @@
 
 
                                 <div class="col-12">
-                                    <label class="form-label"><b>Name</b></label>
-                                    <input type="text" class="form-control" name="name" placeholder="e.g  hp" required>
+                                    <label class="form-label"><b>P_Name</b></label>
+                                    <select class="form-control" name="P_Name" id="" type="text"required>
+                                        <option value=""><b>Select Product </b> </option>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <br>
                                 <div class="col-12">
                                     <label class="form-label"><b>Code</b></label>
                                     <input type="text" class="form-control" name="code" placeholder="e.g 520">
@@ -73,7 +79,7 @@
 
                 <tr>
                     <th>SN</th>
-                    <th>Name</th>
+                    <th>P_Name</th>
                     <th>Code</th>
                     <th>BarCode</th>
                     <th>Available Qty</th>
