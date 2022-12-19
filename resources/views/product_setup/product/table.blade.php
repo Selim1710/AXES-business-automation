@@ -89,7 +89,7 @@
 
                                 <div class="form-group mb-2">
                                     <label class="form-label">Image</label>
-                                    <input type="file" accept="image/*" class="form-control" name="image" required>
+                                    <input type="file" accept="image/*" class="form-control" name="image" >
                                 </div>
 
                                 <div class="form-group mb-2">
@@ -217,7 +217,7 @@ ajax
 
         });
 
-        // Branch & warehouse 
+        // Branch & warehouse
         $('#branchID').change(function() {
 
             $.ajaxSetup({

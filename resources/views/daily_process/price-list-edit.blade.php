@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="text-center">
-                    Update Service Received
+                    Update Daily Process
                 </h3>
                 <!-- message -->
                 @if(session()->has('message'))
@@ -26,12 +26,12 @@
                 <form action="{{ route ('price-list-update',$PriceListEdit->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
-                        <label class="form-label"><b>Name</b> </label>
-                        <input type="text" class="form-control" name="name" value="{{$PriceListEdit->name}}">
+                        <label class="form-label"><b>Code</b> </label>
+                        <input type="text" class="form-control" name="code" value="{{$PriceListEdit->code}}">
                     </div>
                     <div class="col-12">
                         <label class="form-label"><b>Update price</b> </label>
-                        <input type="text" class="form-control" name="c_price" value="{{$PriceListEdit->c_price}}">
+                        <input type="number" class="form-control" name="c_price" value="{{$PriceListEdit->c_price}}">
                     </div>
 
 

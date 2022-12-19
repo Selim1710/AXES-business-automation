@@ -147,7 +147,7 @@ class ProductSetupController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'image' => 'required',
+            'image' => 'nullable',
             'offer' => 'required',
             'warranty' => 'required',
             'description' => 'required',
