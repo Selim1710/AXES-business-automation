@@ -3,9 +3,12 @@
 namespace App\Models\ProductSetup;
 
 use App\Models\Inventory\Branch;
+use App\Models\ProductSetup\Stock;
 use App\Models\Inventory\Warehouse;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProductSetup\Category;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ProductSetup\SubCategory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,7 +20,7 @@ class Product extends Model
     }
 
     public function subCategory(){
-        return $this->belongsTo(Subcategory::class);
+        return $this->belongsTo(SubCategory::class);
     }
     public function stock(){
         return $this ->hasOne(Stock::class);
