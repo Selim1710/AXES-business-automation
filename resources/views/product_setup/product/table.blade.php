@@ -83,6 +83,14 @@
                                 </div>
                                 <!-- Product -->
                                 <div class="form-group mb-2">
+                                    <label class="form-label">Purchase Scan</label>
+                                    <select class="form-select" name="p_code" aria-label="Default select example">
+                                        <option value="Barcode">Barcode</option>
+                                        <option value="Serial">Serial</option>
+                                        <option value="IMEI">IMEI</option>
+                                      </select>
+                                </div>
+                                <div class="form-group mb-2">
                                     <label class="form-label">Product Name</label>
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
@@ -134,6 +142,7 @@
                     <th>sub-catname</th>
                     <th>branch</th>
                     <th>warehouse</th>
+                    <th>Purchase Scan</th>
 
                     <th>Name</th>
                     <th>image</th>
@@ -164,6 +173,7 @@
                     <td>{{ $product->warehouse->name }}</td>
                     @endif
 
+                    <td>{{ $product->p_code }}</td>
                     <td>{{ $product->name }}</td>
                     <td><img src=" {{ asset('/uploads/products/'.$product->image) }}" alt="" style="height:80px;width:80px;"></td>
                     <td>{{ $product->price }}</td>

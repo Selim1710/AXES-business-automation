@@ -83,9 +83,9 @@ Service Received Create
     document.getElementById('currentDate').value = currentDate;
 
     // invoice number
-    var i = 101 + parseInt(document.getElementById('sr-invoices').value);
+    var i = 1 + parseInt(document.getElementById('sr-invoices').value);
     var defaultExpense =
-            `SR${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${i++}`;
+            `SERINV${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${i++}`;
         document.getElementById('invoice_no').value = defaultExpense;
 </script>
 @endsection

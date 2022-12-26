@@ -144,14 +144,14 @@
 </div>
 <input type="hidden" id="total-invoices"  value="{{ count($SalesEstimate) }}"/>
     <script>
-        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        var i = 0 + parseInt(document.getElementById('total-invoices').value);
         // console.log(typeof i);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+            `SALESTINV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
         document.getElementById('invno4').value = defaultExpense;
     </script>
 

@@ -111,7 +111,7 @@
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+            `PUR-RTN:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
         document.getElementById('pr_invno').value = defaultExpense;
     </script>
     @endsection

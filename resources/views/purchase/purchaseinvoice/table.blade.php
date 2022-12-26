@@ -45,6 +45,15 @@
                                     <input type="date" class="form-control" id="currentDate" name="date" required>
                                 </div>
                                 <div class="col-12">
+                                        <label class="form-label">Product Name</label>
+                                        <select name="b_name" id="branchID" class="form-control">
+                                            <option value="">-- SELECT --</option>
+                                            {{-- @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                            @endforeach --}}
+                                        </select>
+                                </div>
+                                <div class="col-12">
                                         <label class="form-label">Branch Name</label>
                                         <select name="b_name" id="branchID" class="form-control">
                                             <option value="">-- SELECT --</option>
@@ -52,8 +61,7 @@
                                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                             @endforeach
                                         </select>
-                                    {{-- <label class="form-label">Branch Name</label>
-                                    <input type="text" class="form-control" name="b_name" required> --}}
+                                    
                                 </div>
                                 <div class="col-12">
                                         <label class="form-label">Suppliar Name</label>
@@ -63,8 +71,6 @@
                                             <option value="{{ $supplier->id }}">{{ $supplier->ss_name }}</option>
                                             @endforeach
                                         </select>
-                                    {{-- <label class="form-label">Branch Name</label>
-                                    <input type="text" class="form-control" name="b_name" required> --}}
                                 </div>
 
                                 <div class="col-12">
@@ -133,14 +139,14 @@
 </div>
 <input type="hidden" id="total-invoices"  value="{{ count($PurchaseInvoicesss) }}"/>
     <script>
-        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        var i = 0 + parseInt(document.getElementById('total-invoices').value);
         // console.log(typeof i);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-            `INV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
+            `PURINV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2,4)}${++i}`;
         document.getElementById('p_invno').value = defaultExpense;
     </script>
 
