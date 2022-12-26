@@ -264,6 +264,20 @@
                         <a class="nav-link" href="{{route('manage-cheque.index')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Cheque Management</a>
                     </nav>
                 </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsereport" aria-expanded="false" aria-controls="collapseLayoutBank">
+                        <div class="sb-nav-link-icon"><i class="fa fa-credit-card-alt"></i></div>
+                        Report
+                        <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsereport" aria-labelledby="headingBank" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{route('report')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>All Report List</a>
+
+                        </nav>
+                    </div>
+
+
                 @endcan
                 @can('Users And Role read')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutUser" aria-expanded="false" aria-controls="collapseLayoutUser">

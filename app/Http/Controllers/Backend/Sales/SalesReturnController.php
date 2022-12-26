@@ -77,4 +77,7 @@ class SalesReturnController extends Controller
         $salesreturn->delete();
         return redirect()->route('admin.sales-return')->with('error', 'SalesReturn deleted');
     }
+    public function report(){
+        return view('report.report');
+    }
 }
