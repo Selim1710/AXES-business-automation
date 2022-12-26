@@ -142,13 +142,6 @@ class WarrantyController extends Controller
     public function ClaimSupplierStore(Request $request)
     {
 
-        // $request->validate([
-
-        //     'image' => 'nullable',
-        //     'note' => 'nullable',
-        // ]);
-        // dd($request->all());
-
         $filename = '';
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -301,7 +294,8 @@ class WarrantyController extends Controller
     public function warrantyDeliveredShow()
     {
         return view('warranty-management.warranty-delivered-show',[
-            'WarrantyDeliver' => WarrantyDeliver::all()
+            'WarrantyDeliver' => WarrantyDeliver::all(),
+
         ]);
     }
     public function warrantyDeliveredStore (Request $request)
