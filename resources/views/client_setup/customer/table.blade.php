@@ -65,12 +65,12 @@
                                 <div class="my-3"></div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <label class="form-label">Contact</label>
+                                        <label class="form-label">Mobile Number</label>
                                         <input type="number" name="contact" class="form-control" required>
                                     </div>
                                     <div class="col-6">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" name="email" class="form-control" required>
+                                        <label class="form-label">Credit Limit</label>
+                                        <input type="number" name="email" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="my-3"></div>
@@ -106,8 +106,8 @@
                     <th>father name</th>
                     <th>mother name</th>
                     <th>NID</th>
-                    <th>contact</th>
-                    <th>email</th>
+                    <th>mobile number</th>
+                    <th>credit limit</th>
                     <th>address</th>
                     <th>shipping address</th>
                     <th>Action</th>
