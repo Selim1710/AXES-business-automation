@@ -166,6 +166,7 @@ class ProductSetupController extends Controller
 
         Product::create([
             'name' => $request->name,
+            'p_code' => $request->p_code,
             'price' => $request->price,
             'image' => $filename,
             'offer' => $request->offer,
@@ -189,6 +190,7 @@ class ProductSetupController extends Controller
         $product = Product::find($id);
         $product->update([
             'name' => $request->name,
+            'p_code' => $request->p_code,
             'price' => $request->price,
             'offer' => $request->offer,
             'description' => $request->description,

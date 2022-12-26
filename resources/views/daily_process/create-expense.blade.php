@@ -47,7 +47,7 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><b>Expenses No:</b></span>
                                                         <input type="text" class="form-control ms-2" maxlength="15"
-                                                            name="invno" id="invno" placeholder="e.g. AXE1211198"
+                                                            name="invno" id="invno" placeholder="e.g. EXPINV 1211198"
                                                             autocomplete="off">
                                                     </div>
                                                 </div>
@@ -95,7 +95,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Amount</label>
-                                                    <input type="text" maxlength="6" class="form-control"
+                                                    <input type="number" maxlength="6" class="form-control"
                                                         name="totalamount" id="amount" placeholder="e.g. 500"
                                                         autocomplete="off">
                                                 </div>
@@ -175,14 +175,14 @@
     </section>
     <input type="hidden" id="total-invoices"  value="{{ $totalInvoices }}"/>
     <script>
-        var i = 100 + parseInt(document.getElementById('total-invoices').value);
+        var i = 0 + parseInt(document.getElementById('total-invoices').value);
         // console.log(typeof i);
         var date = new Date();
         var currentDate = date.toISOString().slice(0, 10);
         document.getElementById('currentDate').value = currentDate;
 
         var defaultExpense =
-            `EXP:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${++i}`;
+            `EXPINV:${date.getDate()}${date.getMonth() + 1}${date.getUTCFullYear().toString().slice(2, 4)}${++i}`;
         document.getElementById('invno').value = defaultExpense;
     </script>
 
