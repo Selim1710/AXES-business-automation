@@ -50,7 +50,7 @@ class DailyProcessController extends Controller
 
         $PriceListUpdate = PriceList::find($id);
         $PriceListUpdate->update([
-            'code' => $request->code,
+            // 'code' => $request->code,
             'c_price' => $request->c_price,
 
         ]);

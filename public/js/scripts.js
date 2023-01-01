@@ -35,7 +35,15 @@ $(function () {
                 var expense = $('#expense').val()
 
                 theTotal = Number(theTotal) + Number(amount);
-                $('#itemdata').append(`<tr><td style="width:40px; text-align:center"></td><td>${expense}<input type="hidden" name="expensehead[]" value="${expense}"></td><td class ="thisamount">${amount}</td><td>${ref}</td><td class="removedata" style="width:40px; text-align:center"><a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a></td></tr>`);
+                $('#itemdata').append(`<tr>
+                <td style="width:40px; text-align:center"></td>
+                <td>${expense}<input type="hidden" name="expensehead[]" value="${expense}"></td>
+                <td class ="thisamount">${amount}</td>
+                <td>${ref}</td>
+                <td class="removedata" style="width:40px; text-align:center">
+                <a class="empty" style="cursor: pointer;"><i class="fa fa-trash"></i></a>
+                </td>
+                </tr>`);
                 $('#amount').val("");
                 $('#ref').val("");
                 $('#expense').val("");

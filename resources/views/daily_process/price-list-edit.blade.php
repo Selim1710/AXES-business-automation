@@ -26,12 +26,12 @@
                 <form action="{{ route ('price-list-update',$PriceListEdit->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
-                        <label class="form-label"><b>Code</b> </label>
-                        <input type="text" class="form-control" name="code" value="{{$PriceListEdit->code}}">
+                        <label class="form-label"><b>Old Price</b> </label>
+                        <input type="text" class="form-control" value="{{$PriceListEdit->c_price}}" readonly>
                     </div>
                     <div class="col-12">
                         <label class="form-label"><b>Update price</b> </label>
-                        <input type="number" class="form-control" name="c_price" value="{{$PriceListEdit->c_price}}">
+                        <input type="number" class="form-control" name="c_price">
                     </div>
 
 

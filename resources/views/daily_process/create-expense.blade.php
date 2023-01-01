@@ -139,7 +139,8 @@
                                                         <input type="hidden" name="totalamount" id="totalvalue">
                                                         <td></td>
                                                         <td class="removedata" style="width:40px; text-align:center"><a
-                                                                class="empty" style="cursor: pointer;"></a></td>
+                                                                class="empty" style="cursor: pointer;"></a>
+                                                        </td>
                                                     </tfoot>
                                                 </table>
                                             </div>

@@ -41,7 +41,7 @@ Expenses Record List
 
                     <td>
                         <div style="min-width: 10rem;">
-                            <a class="btn btn-success" style="font-size:13px" href="{{route('edit-expenses-record',['id'=>$invoice->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                            {{-- <a class="btn btn-success" style="font-size:13px" href="{{route('edit-expenses-record',['id'=>$invoice->id])}}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a> --}}
                             <form action="{{route('delete-expenses-record')}}" method="post" style="display:inline">
                                 @csrf
                                 <input type="hidden" name="invoice_id" value="{{$invoice->id}}">

@@ -22,8 +22,8 @@ Add Expenses Category
                         @csrf
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputEmail" type="text" name="category_name" placeholder="Category" required />
-                            <label for="inputEmail">Category</label>
+                            <input class="form-control" id="inputtext" type="text" name="category_name" placeholder="Category" required />
+                            <label for="inputtext">Category</label>
                         </div>
                         <div class="mt-4 mb-0">
                             <div class="d-grid">
