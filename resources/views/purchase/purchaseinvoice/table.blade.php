@@ -46,11 +46,11 @@
                                 </div>
                                 <div class="col-12">
                                         <label class="form-label">Product Name</label>
-                                        <select name="b_name" id="branchID" class="form-control">
+                                        <select name="pro_name" id="branchID" class="form-control">
                                             <option value="">-- SELECT --</option>
-                                            {{-- @foreach ($branches as $branch)
-                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                            @endforeach --}}
+                                             @foreach ($Products as $Product)
+                                            <option value="{{ $Product->id }}">{{ $Product->name }}</option>
+                                            @endforeach
                                         </select>
                                 </div>
                                 <div class="col-12">
@@ -61,7 +61,7 @@
                                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                             @endforeach
                                         </select>
-                                    
+
                                 </div>
                                 <div class="col-12">
                                         <label class="form-label">Suppliar Name</label>
@@ -85,8 +85,8 @@
                                     <label class="form-label">Note</label>
                                     <input type="text" class="form-control" name="note" required>
                                 </div>
-
-
+                                <label class="form-label">IMEI/Serial</label>
+                                <input type="text" class="form-control" name="imei" required>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -105,7 +105,8 @@
                 <tr>
                     <th>SN</th>
                     <th>Date</th>
-                    <th>Branch</th>
+                    <th>Product Name</th>
+{{--                    <th>Branch</th>--}}
                     <th>Suppliar</th>
                     <th>Invoice</th>
                     <th>Total</th>
@@ -120,6 +121,7 @@
                     <td>{{ $key+1 }} </td>
                     <td>{{ $purchaseInvoice->date }}</td>
                     <td>{{ $purchaseInvoice->name }}</td>
+{{--                    <td>{{ $purchaseInvoice->name }}</td>--}}
                     <td>{{ $purchaseInvoice->ss_name }}</td>
                     <td>{{ $purchaseInvoice->invoice }}</td>
                     <td>{{ $purchaseInvoice->total }}</td>

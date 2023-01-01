@@ -78,11 +78,11 @@
                                     <input type="text" class="form-control" id="invno2" name="invoice" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Total</label>
+                                    <label class="form-label">Total Cost</label>
                                     <input type="number" class="form-control" name="total" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Note</label>
+                                    <label class="form-label">Description</label>
                                     <input type="text" class="form-control" name="note" required>
                                 </div>
 
@@ -107,8 +107,8 @@
                     <th>Branch</th>
                     <th>Customer</th>
                     <th>Invoice</th>
-                    <th>Total</th>
-                    <th>Note</th>
+                    <th>Total Cost</th>
+                    <th>Description</th>
 
                     <th>Action</th>
                 </tr>

@@ -25,8 +25,8 @@
                             <div class="border p-3 rounded">
 
                                 <div class="col-12">
-                                    <label class="form-label"><b>Name</b></label>
-                                    <input type="text" class="form-control" name="name" placeholder="e.g  Bashundhara" required>
+                                    <label class="form-label"><b>Name/SL</b></label>
+                                    <input type="text" class="form-control" name="name"  required>
                                 </div>
 
                                 @error('name')
@@ -35,7 +35,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Contact</b></label>
-                                    <input type="text" class="form-control" name="contact" placeholder="e.g 01934000000" required>
+                                    <input type="text" class="form-control" name="contact"  required>
                                 </div>
 
                                 @error('contact')
@@ -44,7 +44,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Product</b></label>
-                                    <input type="text" class="form-control" name="product" placeholder="e.g HP i5" required>
+                                    <input type="text" class="form-control" name="product" required>
                                 </div>
 
                                 @error('product')
