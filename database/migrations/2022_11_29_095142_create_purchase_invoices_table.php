@@ -21,6 +21,8 @@ class CreatePurchaseInvoicesTable extends Migration
             $table->string('invoice');
             $table->integer('total');
             $table->string('note')->nullable();
+            $table->string('pro_name');
+            $table->string('imei');
             $table->timestamps();
         });
     }
