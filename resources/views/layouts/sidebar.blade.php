@@ -41,6 +41,7 @@
                         <a class="nav-link" href="{{route('service-list-show')}}"> <i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service List</a>
                         <a class="nav-link" href="{{route('service-received-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received List</a>
                         <a class="nav-link" href="{{route('service-received-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Received Create</a>
+                        <a class="nav-link" href="{{route('service-sales-show')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Service Sales</a>
                     </nav>
                 </div>
                 @endcan

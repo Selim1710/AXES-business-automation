@@ -115,7 +115,14 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/service-list-store', [ServiceController::class, 'serviceListStore'])->name('service-list-store');
         Route::get('/service-list-edit/{id}', [ServiceController::class, 'serviceListEdit'])->name('service-list-edit');
         Route::post('/service-list-update/{id}', [ServiceController::class, 'serviceListUpdate'])->name('service-list-update');
-        Route::get('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
+        Route::post('/service-list-delete', [ServiceController::class, 'serviceListDelete'])->name('service-list-delete');
+
+        // Service sales
+        Route::get('/service-sales-show', [ServiceController::class, 'serviceSalesShow'])->name('service-sales-show');
+        Route::post('/service-sales-store', [ServiceController::class, 'serviceSalesStore'])->name('service-sales-store');
+        Route::get('/service-sales-edit/{id}', [ServiceController::class, 'serviceSalesEdit'])->name('service-sales-edit');
+        Route::post('/service-sales-update/{id}', [ServiceController::class, 'serviceSalesUpdate'])->name('service-sales-update');
+        Route::post('/service-sales-delete', [ServiceController::class, 'serviceSalesDelete'])->name('service-sales-delete');
     });
 
     // Warranty management

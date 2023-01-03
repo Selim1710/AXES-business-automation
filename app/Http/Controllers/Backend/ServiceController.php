@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Service\ServiceCreate;
 use App\Models\Service\ServiceList;
+use App\Models\Service\ServiceSales;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -75,6 +76,8 @@ class ServiceController extends Controller
         $servicestore->delete();
         return back()->with('message', 'Deleted Successfully');
     }
+
+    //service list
     public function serviceListShow()
     {
         return view('service.service-list.service-list', [
@@ -119,12 +122,67 @@ class ServiceController extends Controller
             'description' => $request->description,
 
         ]);
-        return back()->with('message', 'Update Successfully');
+        return redirect()->route('service-list-show')->with('message', 'Service Sales Updated');
     }
     public function serviceListDelete(Request $request)
     {
         $liststores = ServiceList::find($request->liststore_id);
         $liststores->delete();
+        return back()->with('message', 'Deleted Successfully');
+    }
+
+    //service sales
+    public function serviceSalesShow()
+    {
+        return view('service.service-sales.service_sales-list', [
+            'salestores' => ServiceSales::all()
+        ]);
+    }
+    public function serviceSalesStore(Request $request)
+    {
+        $this->validate($request, [
+            'customer' => 'required',
+            'invoice' => 'required',
+            'phone' => 'required',
+            'product' => 'required',
+            'description' => 'nullable',
+
+        ]);;
+        $salestores = new ServiceSales();
+        $salestores->date = $request->date;
+        $salestores->customer = $request->customer;
+        $salestores->invoice = $request->invoice;
+        $salestores->phone = $request->phone;
+        $salestores->product = $request->product;
+        $salestores->description = $request->description;
+        $salestores->save();
+
+        return redirect()->route('service-sales-show')->with('message', 'Create Successfully');
+    }
+    public function serviceSalesEdit($id)
+    {
+        return view('service.service-sales.service_sales-edit', [
+            'salestores' => ServiceSales::find($id),
+        ]);
+    }
+    public function serviceSalesUpdate(Request $request, $id)
+    {
+
+        $salestores = ServiceSales::find($id);
+        $salestores->update([
+            'customer' => $request->customer,
+            'invoice' => $request->invoice,
+            'phone' => $request->phone,
+            'product' => $request->product,
+            'description' => $request->description,
+
+        ]);
+        return redirect()->route('service-sales-show')->with('message', 'Service Sales Updated');
+    }
+    public function serviceSalesDelete(Request $request)
+    {
+        $salestores = ServiceSales::find($request->salestores_id);
+        $salestores->delete();
         return back()->with('message', 'Deleted Successfully');
     }
 }
