@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Expenses Head</label>
                                                     <div class="input-group">
@@ -81,10 +81,12 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        <a href="{{ url('/backend/daily-process/expenses-head') }}"><span class="fa fa-plus" style="border: 1px solid gray; padding:12px; color:white; background:#FF0000;">+</span></a>
 
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Ref</label>
