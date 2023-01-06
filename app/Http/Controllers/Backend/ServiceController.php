@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     public function CustomerReceivedCreate()
     {
-        return view('Service.Service-received-create.Service-received-add',[
+        return view('service.service-received-create.service-received-add',[
 
             'servecesInvoice' => count( ServiceCreate::all()),
         ]);
