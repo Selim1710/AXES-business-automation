@@ -105,17 +105,6 @@
                                     <input type="text" class="form-control" name="price" required>
                                 </div>
 
-                                <div class="row mb-2">
-                                    <div class="col-6">
-                                        <label class="form-label">Offer</label>
-                                        <input type="text" class="form-control" name="offer" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Warranty Days</label>
-                                        <input type="text" class="form-control" name="warranty" required>
-                                    </div>
-                                </div>
-
                                 <div class="form-group mb-2">
                                     <label class="form-label">Description</label>
                                     <textarea class="form-control" name="description" cols="30" rows="4" required></textarea>
@@ -147,8 +136,6 @@
                     <th>Name</th>
                     <th>image</th>
                     <th>price</th>
-                    <th>offer</th>
-                    <th>warranty</th>
                     <th>description</th>
 
                     <th>Action</th>
@@ -177,8 +164,6 @@
                     <td>{{ $product->name }}</td>
                     <td><img src=" {{ asset('/uploads/products/'.$product->image) }}" alt="" style="height:80px;width:80px;"></td>
                     <td>{{ $product->price }}</td>
-                    <td>{{ $product->offer }}</td>
-                    <td>{{ $product->warranty }}</td>
                     <td>{{ $product->description }}</td>
 
                     <td>

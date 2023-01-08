@@ -111,6 +111,7 @@
                     <th>Invoice</th>
                     <th>Total</th>
                     <th>Note</th>
+                    <th>IMEI</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -126,6 +127,7 @@
                     <td>{{ $purchaseInvoice->invoice }}</td>
                     <td>{{ $purchaseInvoice->total }}</td>
                     <td>{{ $purchaseInvoice->note }}</td>
+                    <td>{{ $purchaseInvoice->imei }}</td>
 
                     <td>
                         <a class="btn btn-success" href="{{ route('admin.edit.invoice', $purchaseInvoice->id) }}" style="font-size:13px"><i class="fa fa-pencil" aria-hidden="true"></i></a>

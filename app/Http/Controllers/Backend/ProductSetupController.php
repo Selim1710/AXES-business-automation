@@ -148,8 +148,6 @@ class ProductSetupController extends Controller
             'name' => 'required',
             'price' => 'required',
             'image' => 'nullable',
-            'offer' => 'required',
-            'warranty' => 'required',
             'description' => 'required',
 
             'category_id' => 'required',
@@ -169,8 +167,6 @@ class ProductSetupController extends Controller
             'p_code' => $request->p_code,
             'price' => $request->price,
             'image' => $filename,
-            'offer' => $request->offer,
-            'warranty' => $request->warranty,
             'description' => $request->description,
 
             'category_id' => $request->category_id,
@@ -192,9 +188,7 @@ class ProductSetupController extends Controller
             'name' => $request->name,
             'p_code' => $request->p_code,
             'price' => $request->price,
-            'offer' => $request->offer,
             'description' => $request->description,
-            'warranty' => $request->warranty,
         ]);
         return redirect()->route('admin.manage.product')->with('message', 'Product updated');
     }

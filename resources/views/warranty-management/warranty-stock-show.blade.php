@@ -38,14 +38,14 @@
                                     <input type="text" class="form-control" name="in">
                                 </div>
 
-                                {{-- <div class="col-12">--}}
-                                {{-- <label class="form-label"><b>OUT</b></label>--}}
-                                {{-- <input type="text" class="form-control" name="out">--}}
-                                {{-- </div>--}}
-                                {{-- <div class="col-12">--}}
-                                {{-- <label class="form-label"><b>Available</b></label>--}}
-                                {{-- <input type="text" class="form-control" name="available">--}}
-                                {{-- </div>--}}
+                                <div class="col-12">
+                                <label class="form-label"><b>OUT</b></label>
+                                <input type="text" class="form-control" name="out">
+                                </div>
+                                <div class="col-12">
+                                <label class="form-label"><b>Available</b></label>
+                                <input type="text" class="form-control" name="available">
+                                </div>
 
 
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>

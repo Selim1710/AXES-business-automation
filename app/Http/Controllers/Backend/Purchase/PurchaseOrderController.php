@@ -45,11 +45,12 @@ class PurchaseOrderController extends Controller
 
     }
 
-        public function purchaseOrderCreate()
+    public function purchaseOrderCreate()
     {
-        $products = Product::with('stock')->get();
+        $products = Product::all();
         return view('purchase.purchaseorder.purchase-order-create',compact('products'));
     }
+
     public function view()
     {
         $previewDeliveries = session()->get('purOrderCreate');

@@ -19,9 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('p_code');
             $table->integer('price');
             $table->string('image');
-            $table->string('offer');
-            $table->string('warranty');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->tinyInteger('status')->default(1);
 
             $table->unsignedBigInteger('category_id')->nullable();
