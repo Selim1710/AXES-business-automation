@@ -286,4 +286,13 @@ class ProductSetupController extends Controller
         $stock->delete();
         return redirect()->route('admin.manage.stock')->with('error', 'Stock deleted');
     }
+
+    public function getPrice()
+    {
+        $productId = $_GET['id'];
+        $product = Product::find($productId);
+        return response()->json([
+            'price' => $product->price,
+        ]);
+    }
 }

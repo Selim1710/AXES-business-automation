@@ -55,7 +55,7 @@
                           <input type="number" id="qty" min="0" value="0" class="form-control">
                         </td>
                         <td>
-                           <h5 class="mt-1" id="price" ></h5>
+                           <h5 class="mt-1" id="price" >{{ $products[0]->price }}</h5>
                         </td>
                         <td><button id="add" class="btn btn-success">Add</button></td>
                      </tr>
@@ -133,22 +133,21 @@
     <script>
         $(document).ready(function(){
         $('#vegitable').change(function() {
+
         var ids =   $(this).find(':selected')[0].id;
-            $.ajax({
+         $.ajax({
+
             type:'GET',
-            url:'getPrice/{id}',
-            data:{id:ids},
+            url:'/backend/product-setup/get-price/{id}',
+            data: {id:ids},
             dataType:'json',
-            success:function(data)
-                {
-                    
-                    $.each(data, function(key, resp)
-                    {     
-                    $('#price').text(resp.price);
-                    });
-                }
-            });
-        });
+
+            success: function(data)
+               {
+                  $('#price').text(data.price);
+               }
+            });,
+         });
         
         //add to cart 
         var count = 1;

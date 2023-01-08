@@ -163,7 +163,6 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::post('/manage-product-update/{id}', [WarrantyController::class, 'manageProductUpdate'])->name('manage-product-update');
         Route::post('/manage-product-delete', [WarrantyController::class, 'manageProductDelete'])->name('manage-product-delete');
 
-
         // Warranty Delivered
         Route::get('/warranty-delivered-show', [WarrantyController::class, 'warrantyDeliveredShow'])->name('warranty-delivered-show');
         Route::post('/warranty-delivered-store', [WarrantyController::class, 'warrantyDeliveredStore'])->name('warranty-delivered-store');
@@ -357,6 +356,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/delete/product/{id}', [ProductSetupController::class, 'deleteProduct'])->name('admin.delete.product');
         Route::get('/view/product/image/{id}', [ProductSetupController::class, 'viewProduct'])->name('admin.view.product');
         Route::post('/change/product/image/{id}', [ProductSetupController::class, 'changeProduct'])->name('admin.change.product.image');
+        Route::get('/get-price/{id}', [ProductSetupController::class, 'getPrice'])->name('get-price');
 
         // Stock
         Route::get('/manage/stock', [ProductSetupController::class, 'manageStock'])->name('admin.manage.stock');

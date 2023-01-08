@@ -34,6 +34,8 @@ $(function () {
                 var ref = $('#ref').val()
                 var expense = $('#expense').val()
 
+                console.log(expense, amount, ref);
+
                 theTotal = Number(theTotal) + Number(amount);
                 $('#itemdata').append(`<tr>
                 <td style="width:40px; text-align:center"></td>
