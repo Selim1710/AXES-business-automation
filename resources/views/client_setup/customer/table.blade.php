@@ -42,35 +42,24 @@
                             <div class="border p-3 rounded">
                                 <div class="row">
 
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <label class="form-label">Customer Name</label>
                                         <input type="text" class="form-control" name="cc_name" required>
                                     </div>
-                                </div>
-                                <div class="my-3"></div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label class="form-label">Father name</label>
-                                        <input type="text" name="father_name" class="form-control" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="form-label">Mother name</label>
-                                        <input type="text" name="mother_name" class="form-control" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="form-label">National ID(NID)</label>
-                                        <input type="number" name="NID" class="form-control" required>
+                                    <div class="col-6">
+                                        <label class="form-label">Customer Code</label>
+                                        <input type="text" name="father_name" class="form-control"required >
                                     </div>
                                 </div>
-                                <div class="my-3"></div>
+
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="form-label">Mobile Number</label>
-                                        <input type="number" name="contact" class="form-control" required>
+                                        <input type="number" name="contact" class="form-control"required >
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Credit Limit</label>
-                                        <input type="number" name="email" class="form-control" required>
+                                        <input type="number" name="email" class="form-control"required>
                                     </div>
                                 </div>
                                 <div class="my-3"></div>
@@ -79,10 +68,7 @@
                                         <label class="form-label">Address</label>
                                         <textarea class="form-control" name="address" cols="30" rows="4" required></textarea>
                                     </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Shipping Address</label>
-                                        <textarea class="form-control" name="shipping_address" cols="30" rows="4" required></textarea>
-                                    </div>
+
                                 </div>
                                 <div class="my-3"></div>
                             </div>
@@ -102,14 +88,13 @@
             <thead>
                 <tr class="text-capitalize">
                     <th>SN</th>
-                    <th>Name</th>
-                    <th>father name</th>
-                    <th>mother name</th>
-                    <th>NID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Code</th>
+
                     <th>mobile number</th>
                     <th>credit limit</th>
                     <th>address</th>
-                    <th>shipping address</th>
+
                     <th>Action</th>
                 </tr>
             </thead>
@@ -122,12 +107,10 @@
 
                     <td>{{ $customer->cc_name }}</td>
                     <td>{{ $customer->father_name }}</td>
-                    <td>{{ $customer->mother_name }}</td>
-                    <td>{{ $customer->NID }}</td>
                     <td>{{ $customer->contact }}</td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->address }}</td>
-                    <td>{{ $customer->shipping_address }}</td>
+
 
 
                     <td>

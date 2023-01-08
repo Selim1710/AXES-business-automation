@@ -51,7 +51,7 @@
                                 <br>
                                 <div class="col-12">
                                     <label class="form-label"><b>Order No</b></label>
-                                    <input type="number" class="form-control" name="o_no"  required>
+                                    <input type="number" class="form-control" name="o_no">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label"><b>Total</b></label>
@@ -60,7 +60,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label"><b>Note</b></label>
-                                    <input type="text" class="form-control" name="note"  required>
+                                    <input type="text" class="form-control" name="note">
                                 </div>
 
                                 <div class="alert alert-danger mt-2" id="name_error" style="display: none"></div>

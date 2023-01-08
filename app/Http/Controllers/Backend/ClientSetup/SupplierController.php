@@ -27,34 +27,18 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        $request->validate([
-//            "client_group_id" => "required",
-            "ss_name" => "required",
-            // "status" => "required",
-            "father_name" => "required",
-            "mother_name" => "required",
-            "NID" => "required",
-            "contact" => "required",
-            "email" => "required",
-            "address" => "required",
-            "shipping_address" => "required",
-            // "role" => "required",
-        ]);
+
         // dd($request->all());
         // dd($request->client_group_id);
         Supplier::create([
 //            "client_group_id" => $request->client_group_id,
             "ss_name" => $request->ss_name,
             // "status" => $request->status,
-            "father_name" => $request->father_name,
-            "mother_name" => $request->mother_name,
-            "NID" => $request->NID,
+
             "contact" => $request->contact,
-            "email" => $request->email,
+
             "address" => $request->address,
-            "shipping_address" => $request->shipping_address,
-            // "role" => $request->role,
+
         ]);
         return back()->with('message', 'supplier Added Successfully');
     }
@@ -75,30 +59,17 @@ class SupplierController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            "ss_name" => "required",
-            // "status" => "required",
-            "father_name" => "required",
-            "mother_name" => "required",
-            "NID" => "required",
-            "contact" => "required",
-            "email" => "required",
-            "address" => "required",
-            "shipping_address" => "required",
-        ]);
-        // dd($request->all());
-        // dd($request->client_group_id);
+
+
         $supplier = Supplier::find($id);
         $supplier->update([
             "ss_name" => $request->ss_name,
             // "status" => $request->status,
-            "father_name" => $request->father_name,
-            "mother_name" => $request->mother_name,
-            "NID" => $request->NID,
+
             "contact" => $request->contact,
-            "email" => $request->email,
+
             "address" => $request->address,
-            "shipping_address" => $request->shipping_address,
+
         ]);
         return back()->with('message', 'supplier updated');
     }

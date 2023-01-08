@@ -34,30 +34,18 @@ class CustomerController extends Controller
         // dd($request->all());
         $request->validate([
 
-            "cc_name" => "required",
-
-            "father_name" => "required",
-            "mother_name" => "required",
-            "NID" => "required",
-            "contact" => "required",
-            "email" => "required",
-            "address" => "required",
-            "shipping_address" => "required",
 
         ]);
-        // dd($request->all());
-        // dd($request->client_group_id);
+
         Customer::create([
 //            "client_group_id" => $request->client_group_id,
             "cc_name" => $request->cc_name,
 //            "status" => $request->status,
             "father_name" => $request->father_name,
-            "mother_name" => $request->mother_name,
-            "NID" => $request->NID,
+
             "contact" => $request->contact,
             "email" => $request->email,
             "address" => $request->address,
-            "shipping_address" => $request->shipping_address,
 //            "role" => $request->role,
         ]);
         return back()->with('message', 'Customer Added Successfully');
@@ -79,30 +67,17 @@ class CustomerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            "cc_name" => "required",
-            "status" => "required",
-            "father_name" => "required",
-            "mother_name" => "required",
-            "NID" => "required",
-            "contact" => "required",
-            "email" => "required",
-            "address" => "required",
-            "shipping_address" => "required",
-        ]);
-        // dd($request->all());
-        // dd($request->client_group_id);
+
+
         $customer = Customer::find($id);
         $customer->update([
             "cc_name" => $request->cc_name,
             "status" => $request->status,
             "father_name" => $request->father_name,
-            "mother_name" => $request->mother_name,
-            "NID" => $request->NID,
+
             "contact" => $request->contact,
             "email" => $request->email,
             "address" => $request->address,
-            "shipping_address" => $request->shipping_address,
         ]);
         return back()->with('message', 'Customer updated');
     }
