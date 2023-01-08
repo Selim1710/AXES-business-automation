@@ -42,6 +42,7 @@ class PurchaseOrderController extends Controller
             'note' => $request->note,
 
         ]);
+        return back()->with('message', 'create Successfully');
 
     }
 

@@ -49,17 +49,10 @@
             <div class="my-3"></div>
             <div class="row">
                 <div class="col-4">
-                    <label class="form-label">Father name</label>
+                    <label class="form-label">Customer Code</label>
                     <input type="text" name="father_name" value="{{ $customer->father_name }}" class="form-control" required>
                 </div>
-                <div class="col-4">
-                    <label class="form-label">Mother name</label>
-                    <input type="text" name="mother_name" value="{{ $customer->mother_name }}" class="form-control" required>
-                </div>
-                <div class="col-4">
-                    <label class="form-label">National ID(NID)</label>
-                    <input type="number" name="NID" value="{{ $customer->NID }}" class="form-control" required>
-                </div>
+
             </div>
             <div class="my-3"></div>
             <div class="row">
@@ -83,7 +76,7 @@
                     <textarea class="form-control" name="shipping_address" cols="30" rows="4" required>{{ $customer->shipping_address }}</textarea>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <div class="modal-footer">

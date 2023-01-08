@@ -17,12 +17,10 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string('cc_name');
             $table->string('father_name');
-            $table->string('mother_name');
-            $table->string('NID');
-            $table->string('contact');
+
+            $table->string('contact')->nullable();
             $table->string('email');
-            $table->string('address');
-            $table->string('shipping_address');
+            $table->string('address')->nullable();
             // $table->tinyInteger('status')->default(1);
             $table->tinyInteger('status')->default(1);
 
