@@ -30,7 +30,7 @@
          <div class="row">
             <div class="col-md-5  mt-4 ">
                <table class="table" style="background-color:#e0e0e0;" >
-                 
+
                   <thead>
                      <tr>
                         <th>No.</th>
@@ -60,8 +60,8 @@
                         <td><button id="add" class="btn btn-success">Add</button></td>
                      </tr>
                      <tr>
-                     </tr>    
-                  
+                     </tr>
+
                   </tbody>
                </table>
                <div role="alert" id="errorMsg" class="mt-5" >
@@ -95,7 +95,7 @@
                            </tr>
                         </thead>
                         <tbody id="new" >
-                          
+
                         </tbody>
                         <tr>
                            <td> </td>
@@ -119,7 +119,7 @@
                            </td>
                            <td class="text-center text-danger">
                               <h5 id="totalPayment"><strong> </strong></h5>
-                               
+
                            </td>
                         </tr>
                      </table>
@@ -148,15 +148,15 @@
                }
             });
          });
-        
-        //add to cart 
+
+        //add to cart
         var count = 1;
         $('#add').on('click',function(){
-        
+
             var name = $('#vegitable').val();
             var qty = $('#qty').val();
             var price = $('#price').text();
-    
+
             if(qty == 0)
             {
                 var erroMsg =  '<span class="alert alert-danger ml-5">Minimum Qty should be 1 or More than 1</span>';
@@ -164,22 +164,22 @@
             }
             else
             {
-                billFunction(); // Below Function passing here 
+                billFunction(); // Below Function passing here
             }
-            
+
             function billFunction()
             {
             var total = 0;
-            
+
             $("#receipt_bill").each(function () {
             var total =  price*qty;
             var subTotal = 0;
             subTotal += parseInt(total);
-            
+
             var table =   '<tr><td>'+ count +'</td><td>'+ name + '</td><td>' + qty + '</td><td>' + price + '</td><td><strong><input type="hidden" id="total" value="'+total+'">' +total+ '</strong></td></tr>';
             $('#new').append(table)
-    
-                // Code for Sub Total of Vegitables 
+
+                // Code for Sub Total of Vegitables
                 var total = 0;
                 $('tbody tr td:last-child').each(function() {
                     var value = parseInt($('#total', this).val());
@@ -188,34 +188,34 @@
                     }
                 });
                 $('#subTotal').text(total);
-                    
+
                 // Code for calculate tax of Subtoal 5% Tax Applied
                 var Tax = (total * 5) / 100;
                 $('#taxAmount').text(Tax.toFixed(2));
-    
+
                 // Code for Total Payment Amount
-    
+
                 var Subtotal = $('#subTotal').text();
                 var taxAmount = $('#taxAmount').text();
-    
+
                 var totalPayment = parseFloat(Subtotal) + parseFloat(taxAmount);
-                $('#totalPayment').text(totalPayment.toFixed(2)); // Showing using ID 
-            
+                $('#totalPayment').text(totalPayment.toFixed(2)); // Showing using ID
+
             });
             count++;
-            } 
+            }
             });
-                // Code for year 
-    
-                var currentdate = new Date(); 
+                // Code for year
+
+                var currentdate = new Date();
                 var datetime = currentdate.getDate() + "/"
                     + (currentdate.getMonth()+1)  + "/"
                     + currentdate.getFullYear();
                     $('#year').text(datetime);
-        
-    
-                
-                // Code for extract Weekday     
+
+
+
+                // Code for extract Weekday
                     function myFunction()
                     {
                         var d = new Date();
@@ -227,7 +227,7 @@
                         weekday[4] = "Thursday";
                         weekday[5] = "Friday";
                         weekday[6] = "Saturday";
-    
+
                         var day = weekday[d.getDay()];
                         return day;
                         }
@@ -237,11 +237,11 @@
     </script>
     <script>
         window.onload = displayClock();
-    
+
         function displayClock(){
         var time = new Date().toLocaleTimeString();
         document.getElementById("time").innerHTML = time;
-            setTimeout(displayClock, 1000); 
+            setTimeout(displayClock, 1000);
         }
     </script>
 

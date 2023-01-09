@@ -21,6 +21,7 @@
     <link href="{{asset('adminAsset')}}/assets/css/style.css" rel="stylesheet" />
     <link href="{{asset('adminAsset')}}/assets/css/icons.css" rel="stylesheet">
 
+//report
 
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
