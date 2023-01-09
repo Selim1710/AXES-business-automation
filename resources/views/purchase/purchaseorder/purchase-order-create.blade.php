@@ -146,7 +146,7 @@
                {
                   $('#price').text(data.price);
                }
-            });,
+            });
          });
 
         //add to cart
