@@ -47,6 +47,8 @@ use App\Http\Controllers\Backend\Payroll\LeaveApplicationController;
 use App\Http\Controllers\Backend\Payroll\LeaveTypeController;
 use App\Http\Controllers\Backend\PurchaseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SalesEstimateInvoiceController;
 use App\Models\Purchase\PurchaseInvoice;
 
 /*
@@ -240,6 +242,12 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
         Route::get('/edit/sales-return/{id}', [SalesReturnController::class, 'editSalesReturn'])->name('admin.edit.sales-return');
         Route::post('/update/sales-return/{id}', [SalesReturnController::class, 'updateSalesReturn'])->name('admin.update.sales-return');
         Route::get('/delete/sales-return/{id}', [SalesReturnController::class, 'deleteSalesReturn'])->name('admin.delete.sales-return');
+
+        //sakes estimate invoice create
+
+        Route::get('/sales-estimate-create-invoice', [SalesEstimateInvoiceController::class, 'index'])->name('sales-estimate-create-invoice');
+        Route::get('/sells-get-price/{id}', [SalesEstimateInvoiceController::class, 'getPrice'])->name('sells-get-price');
+
 
         //report
         Route::get('/report', [SalesReturnController::class, 'report'])->name('report');
@@ -538,4 +546,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
 
     //LeaveApplication Controller
     Route::resource('leave-application', LeaveApplicationController::class);
+
+    //Report
+
+    Route::get('/inventory-summery', [ReportController::class, 'inventorySummery'])->name('inventory-summery');
+
+
 });

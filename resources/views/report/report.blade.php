@@ -41,7 +41,7 @@
                 <tr>
                     <td> <a href="#" style="text-decoration: none">PRODUCT LIST</a></td><br>
                     <td> <a href="#" style="text-decoration: none"> SERIAL RECORD</a></td><br>
-                    <td> <a href="#" style="text-decoration: none"> INVENTORY SUMMARY</a></td><br>
+                    <td> <a href="{{route('inventory-summery')}}" style="text-decoration: none"> INVENTORY SUMMARY</a></td><br>
                     <td> <a href="#" style="text-decoration: none"> PERIODIC INVENTORY COUNT</a></td><br>
                     <td> <a href="#" style="text-decoration: none"> INVENTORY VALUATION</a></td><br>
                     <td> <a href="#" style="text-decoration: none"> PERIODIC INVENTORY VALUATION</a></td><br>

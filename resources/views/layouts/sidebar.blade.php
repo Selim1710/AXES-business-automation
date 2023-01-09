@@ -104,6 +104,7 @@
                         {{-- sales estimate --}}
                         <a class="nav-link" href="{{route('admin-sales-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate</a>
                         <a class="nav-link" href="{{route('sales-estimate-create')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create</a>
+                        <a class="nav-link" href="{{route('sales-estimate-create-invoice')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Estimate Create2</a>
 
                         {{-- sales invoice --}}
                         <a class="nav-link" href="{{route('admin-sales-invoice-manage')}}"><i class="fa fa-angle-right" style="margin-right: 10px;" aria-hidden="true"></i>Sales Invoice</a>
